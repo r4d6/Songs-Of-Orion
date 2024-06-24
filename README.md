@@ -9,4 +9,4 @@
 Please see [CONTRIBUTING.md](CONTRIBUTING.md)
 
 
-[![discord](https://discord.com/api/guilds/874074881275363458/widget.json)](https://discord.gg/WWpFY4E9Aq)
+[![discord](https://discord.com/api/guilds/874074881275363458/widget.png)](https://discord.gg/WWpFY4E9Aq)
