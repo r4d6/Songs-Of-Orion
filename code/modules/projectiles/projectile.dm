@@ -90,6 +90,8 @@
 	var/datum/vector_loc/location		// current location of the projectile in pixel space
 	var/matrix/effect_transform			// matrix to rotate and scale projectile effects - putting it here so it doesn't
 										//  have to be recreated multiple times
+	var/friendly_fire_faction = list() // A list of the factions that we go through
+
 
 /obj/item/projectile/Destroy()
 	firer = null
@@ -303,6 +305,9 @@
 /obj/item/projectile/proc/attack_mob(mob/living/target_mob, miss_modifier=0)
 	if(!istype(target_mob))
 		return
+
+	if(target_mob.faction in friendly_fire_faction) // If we have the mob's faction in the bullet's IFF
+		return FALSE
 
 	//roll to-hit
 	miss_modifier = 0
