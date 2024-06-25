@@ -330,6 +330,7 @@
 	density = TRUE
 	volume = 600
 	var/lid = TRUE
+	var/obj/machinery/anchored_machine
 
 /obj/structure/reagent_dispensers/bidon/advanced
 	name = "stasis B.I.D.O.N. canister"
@@ -354,6 +355,11 @@
 	..(user, extra_description)
 
 /obj/structure/reagent_dispensers/bidon/attack_hand(mob/user)
+	//Prevent the bidon from being messed with while it is anchored.
+	if(anchored)
+		to_chat(user, SPAN_NOTICE("You can't remove the lid while the canister is anchored!"))
+		return
+
 	lid = !lid
 	if(lid)
 		to_chat(user, SPAN_NOTICE("You put the lid on."))
@@ -365,7 +371,37 @@
 	update_icon()
 
 /obj/structure/reagent_dispensers/bidon/attackby(obj/item/I, mob/user)
-	if(lid)
+//Handle attaching the BIDON to a valid machine
+	var/tool_type = I.get_tool_type(user, list(QUALITY_BOLT_TURNING), src)
+	if(tool_type)
+		if(anchored && I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_VERY_EASY, required_stat = STAT_BIO))
+			anchored = FALSE
+			anchored_machine = null
+		else
+			var/list/directions = list(WEST, NORTH, SOUTH, EAST)
+			for(var/direction_from_obj in directions)
+				for (var/obj/machinery/valid_machine in get_step(get_turf(src), direction_from_obj))
+					if(valid_machine.anchor_type && ispath(valid_machine.anchor_type, /obj/structure/reagent_dispensers/bidon))
+						if(valid_machine.anchor_direction)
+							if(valid_machine.anchor_direction == reverse_direction(direction_from_obj))
+								anchored_machine = valid_machine
+								break
+						else
+							anchored_machine = valid_machine
+							break
+			if(anchored_machine && I.use_tool(user, src, WORKTIME_NEAR_INSTANT, tool_type, FAILCHANCE_VERY_EASY, required_stat = STAT_BIO))
+				to_chat(user, SPAN_NOTICE("You [anchored ? "detach" : "attach"] the B.I.D.O.N canister to the [anchored_machine]."))
+				anchored = TRUE
+
+				//Remove the lid if it is currently sealed, so we don't have to deal with checking for it
+				if(lid)
+					to_chat(user, SPAN_NOTICE("The machine removes the lid automatically!"))
+					lid = FALSE
+					reagent_flags |= REFILLABLE | DRAINABLE | DRAWABLE | INJECTABLE
+					playsound(src,'sound/items/trayhit2.ogg',50,1)
+				update_icon()
+				return
+	else if(lid)
 		to_chat(user, SPAN_NOTICE("Remove the lid first."))
 		return
 	else
