@@ -1,7 +1,7 @@
 /obj/machinery/multistructure/nuclear_reactor_part/fuel_rod
 	name = "fuel rod section"
 	desc = "A section designed to hold and use fuel rods to enable nuclear reactions."
-	icon_state = "rod_spot"
+	icon_state = "fuel_spot"
 	var/current_step = STEP_INTACT
 	var/obj/item/fuel_rod/fuel
 
