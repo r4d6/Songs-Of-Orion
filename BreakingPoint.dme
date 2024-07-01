@@ -2875,4 +2875,10 @@
 #include "modular\aetherium\aetherium golems\aetherium_golem.dm"
 #include "modular\aetherium\aetherium golems\aetherium_runtling.dm"
 #include "modular\aetherium\aetherium golems\aetherium_shooter.dm"
+#include "modular\reactor\_defines.dm"
+#include "modular\reactor\console.dm"
+#include "modular\reactor\control_rod_part.dm"
+#include "modular\reactor\fuel_rod_part.dm"
+#include "modular\reactor\misc.dm"
+#include "modular\reactor\reactor.dm"
 // END_INCLUDE
