@@ -25,7 +25,7 @@
 /obj/machinery/multistructure/nuclear_reactor_part/console/interact(mob/user as mob)
 	var/dat = Reactor?.Get_HTML()
 	if(dat)
-		if((get_dist(src, user) > 1) || (stat & (BROKEN|NOPOWER)))
+		if((get_dist(src, user) > 1) || (stat & (BROKEN)))
 			if(!isAI(user))
 				user.unset_machine()
 				user << browse(null, "window=NRcontrol")
@@ -39,7 +39,7 @@
 /obj/machinery/multistructure/nuclear_reactor_part/console/Topic(href, href_list)
 	..()
 	//Ignore input if we are broken or guy is not touching us, AI can control from a ways away
-	if(stat & (BROKEN|NOPOWER) || (get_dist(src, usr) > 1 && !isAI(usr)))
+	if(stat & (BROKEN) || (get_dist(src, usr) > 1 && !isAI(usr)))
 		usr.unset_machine()
 		usr << browse(null, "window=NRcontrol")
 		return
