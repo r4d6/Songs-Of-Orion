@@ -44,7 +44,7 @@
 			if(tool_type == QUALITY_PRYING)
 				if(I.use_tool(user, src, WORKTIME_NORMAL, QUALITY_PRYING, FAILCHANCE_EASY, required_stat = STAT_MEC))
 					user.visible_message(SPAN_NOTICE("[user] pries the control rod out."), SPAN_NOTICE("You pry the control rod out."))
-					eject_item(control, user)
+					control.loc = loc
 					control = null
 					current_step = STEP_NO_ROD
 					return
@@ -74,6 +74,29 @@
 		return
 
 	..()
+
+/obj/machinery/multistructure/nuclear_reactor_part/control_rod/examine(mob/user)
+	..()
+	var/message
+
+	switch(current_step)
+		if(STEP_INTACT)
+			message = "The bolts are tightly secured."
+
+		if(STEP_UNWRENCHED)
+			message = "The bolts are loose and the assembly is ready to be pulled up."
+
+		if(STEP_PULLED)
+			message = "The assembly is pulled up, but the control rod is secured by screws."
+
+		if(STEP_UNSECURED)
+			message = "The screws keeping the control rod in place are loose. Someone could just pry away the control rod!"
+
+		if(STEP_NO_ROD)
+			message = "There is no control rod!"
+
+	if(message)
+		to_chat(user, SPAN_NOTICE("[message]"))
 
 // TODO for when proper sprites are done.
 //obj/machinery/multistructure/nuclear_reactor_part/control_rod/update_icon()

@@ -73,6 +73,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 10
 	},
+/obj/machinery/meter,
 /turf/floor/dummy{
 	icon_state = "dark"
 	},
@@ -178,7 +179,7 @@
 	})
 "ay" = (
 /obj/machinery/atmospherics/pipe/tank/plasma{
-	start_pressure = 99999.1
+	start_pressure = 10000
 	},
 /turf/floor/dummy{
 	icon_state = "dark"
@@ -240,7 +241,9 @@
 	name = "\improper Test Reactor"
 	})
 "aG" = (
-/obj/machinery/atmospherics/binary/pump,
+/obj/machinery/atmospherics/binary/pump/high_power/on{
+	target_pressure = 15000
+	},
 /turf/floor/dummy{
 	icon_state = "dark"
 	},
@@ -7586,6 +7589,17 @@
 	},
 /turf/space/transit/north/shuttlespace_ns10,
 /area/space)
+"YL" = (
+/obj/machinery/atmospherics/binary/pump/high_power/on{
+	dir = 8;
+	target_pressure = 15000
+	},
+/turf/floor/dummy{
+	icon_state = "dark"
+	},
+/area/wizard_station{
+	name = "\improper Test Reactor"
+	})
 "YN" = (
 /obj/structure/table/steel_reinforced,
 /obj/effect/floor_decal/industrial/danger{
@@ -19757,7 +19771,7 @@ aa
 aa
 aa
 ae
-ak
+YL
 as
 aA
 az

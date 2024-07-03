@@ -48,9 +48,11 @@
 
 	gas_input = Get_Pipe_Input()
 	gas_output = Get_Pipe_Output()
+	control_average = Get_Average_Control_Height()
 
 	Console = locate() in get_area(wall_input)
 	Console?.Reactor = src
+	START_PROCESSING(SSprocessing, src)
 
 /datum/multistructure/nuclear_reactor/Process()
 	control_average = Get_Average_Control_Height()
@@ -74,15 +76,13 @@
 	core_temperature += temp_to_add
 
 	// This is where the reactor dumps its excess heat into the gas
-	if(core_temperature > target_temperature)
+	if(core_temperature > target_temperature && gas_storage.total_moles > 0 && gas_storage.temperature < core_temperature)
 		var/temp_difference = core_temperature - target_temperature
 		gas_storage.add_thermal_energy(gas_storage.get_thermal_energy_change(gas_storage.temperature + temp_difference))
 		core_temperature -= temp_difference
 
 	if(gas_output)
 		pump_gas_passive(src, gas_storage, gas_output)
-
-	Console?.updateDialog()
 
 
 /datum/multistructure/nuclear_reactor/Topic(href, href_list)
@@ -102,6 +102,7 @@
 		var/new_height = input(usr, "What height should the control rods be at?", "Control Rods", 0) as null|num
 		for(var/obj/machinery/multistructure/nuclear_reactor_part/control_rod/CR in control_spots)
 			CR.height = clamp(new_height, 0, 100)
+		control_average = Get_Average_Control_Height()
 		Console?.updateDialog()
 		return
 
@@ -122,7 +123,7 @@
 /datum/multistructure/nuclear_reactor/proc/Get_Fuel_Rods()
 	. = list()
 	for(var/obj/machinery/multistructure/nuclear_reactor_part/fuel_rod/FR in fuel_spots)
-		if(FR.fuel && FR.fuel.durability > 0)
+		if(FR.current_step < STEP_PULLED && FR.fuel)
 			. += FR.fuel
 
 /datum/multistructure/nuclear_reactor/proc/Get_Pipe_Input()
@@ -141,7 +142,7 @@
 	dat += "<A href='?src=\ref[src];scram=1'>SCRAM</A><BR>"
 
 	dat += "Control Rods Height: [control_average]% | <A href='?src=\ref[src];set_target_height=1'>Set</A><BR>"
-	dat += "Reactor Temperature: [core_temperature]<BR>"
+	dat += "Reactor Temperature: [core_temperature] K<BR>"
 
 	if(!gas_input)
 		dat += "WARNING! NO INPUT DETECTED!<BR>"

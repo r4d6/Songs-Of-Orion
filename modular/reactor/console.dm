@@ -1,6 +1,11 @@
 /obj/machinery/multistructure/nuclear_reactor_part/console
 	icon_state = "console"
+	density = TRUE
 	var/datum/multistructure/nuclear_reactor/Reactor
+
+/obj/machinery/multistructure/nuclear_reactor_part/console/New()
+	..()
+	update_icon()
 
 /obj/machinery/multistructure/nuclear_reactor_part/console/update_icon()
 	add_overlay("power_key")

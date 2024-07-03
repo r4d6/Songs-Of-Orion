@@ -41,7 +41,7 @@
 			if(tool_type == QUALITY_PRYING)
 				if(I.use_tool(user, src, WORKTIME_NORMAL, QUALITY_PRYING, FAILCHANCE_EASY, required_stat = STAT_MEC))
 					user.visible_message(SPAN_NOTICE("[user] pries the fuel rod out."), SPAN_NOTICE("You pry the fuel rod out."))
-					eject_item(fuel, user)
+					fuel.loc = loc
 					fuel = null
 					current_step = STEP_NO_ROD
 					return
@@ -69,6 +69,30 @@
 		user.visible_message(SPAN_NOTICE("[user] push the rod container down."), SPAN_NOTICE("You push the rod container down."))
 		current_step = STEP_UNWRENCHED
 		return
+
+
+/obj/machinery/multistructure/nuclear_reactor_part/fuel_rod/examine(mob/user)
+	..()
+	var/message
+
+	switch(current_step)
+		if(STEP_INTACT)
+			message = "The bolts are tightly secured."
+
+		if(STEP_UNWRENCHED)
+			message = "The bolts are loose and the assembly is ready to be pulled up."
+
+		if(STEP_PULLED)
+			message = "The assembly is pulled up, but the fuel rod is secured by screws."
+
+		if(STEP_UNSECURED)
+			message = "The screws keeping the fuel rod in place are loose. Someone could just pry away the fuel rod!"
+
+		if(STEP_NO_ROD)
+			message = "There is no fuel rod!"
+
+	if(message)
+		to_chat(user, SPAN_NOTICE("[message]"))
 
 // TODO for when proper sprites are done.
 //obj/machinery/multistructure/nuclear_reactor_part/fuel_rod/update_icon()
