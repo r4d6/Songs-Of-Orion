@@ -46,6 +46,9 @@
 			wall_output = part
 			continue
 
+	gas_input = Get_Pipe_Input()
+	gas_output = Get_Pipe_Output()
+
 	Console = locate() in get_area(wall_input)
 	Console?.Reactor = src
 
