@@ -61,6 +61,8 @@
 
 	if(core_temperature > cooled_temp)
 		core_temperature -= heat_loss
+		if(core_temperature < cooled_temp)
+			core_temperature = cooled_temp
 
 	if(!Console)
 		Console = locate() in get_area(wall_input)
