@@ -10,7 +10,7 @@
 					)
 
 	var/core_temperature
-	var/target_temperature = 1223.15 // 950 C //At what temperature in Kelvin do we try to keep the core at?
+	var/target_temperature = 1223.15 // 950 Celcius //At what temperature in Kelvin do we try to keep the core at?
 	var/heat_loss = 50 // How much heat is lost per tick.
 	var/cooled_temp = T20C // How much can we be cooled by heat_loss
 	var/control_average
@@ -75,9 +75,9 @@
 	var/temp_to_add = 0
 	var/fuel_amount = length(Get_Fuel_Rods())
 	for(var/obj/item/fuel_rod/FR in Get_Fuel_Rods())
-		temp_to_add += FR.heat_production * (control_average/100)
-		FR.durability -= FR.consumption_rate * (control_average/100) * fuel_amount
-	temp_to_add *= (1 << fuel_amount - 1)
+		temp_to_add += FR.heat_production * PERCENT(control_average)
+		FR.durability -= FR.consumption_rate * PERCENT(control_average) * fuel_amount
+	temp_to_add *= (1 << fuel_amount - 1) // Exponential heat increase with more fuel rods
 
 	core_temperature += temp_to_add
 
@@ -148,7 +148,7 @@
 	dat += "<A href='?src=\ref[src];scram=1'>SCRAM</A><BR>"
 
 	dat += "Control Rods Height: [control_average]% | <A href='?src=\ref[src];set_target_height=1'>Set</A><BR>"
-	dat += "Reactor Temperature: [core_temperature] K<BR>"
+	dat += "Reactor Temperature: [core_temperature -CELSIUS] C<BR>"
 
 	if(!gas_input)
 		dat += "WARNING! NO INPUT DETECTED!<BR>"
