@@ -75,8 +75,8 @@
 	var/temp_to_add = 0
 	var/fuel_amount = length(Get_Fuel_Rods(FALSE))
 	for(var/obj/item/fuel_rod/FR in Get_Fuel_Rods(FALSE))
-		temp_to_add += FR.heat_production * PERCENT(control_average)
-		FR.durability -= FR.consumption_rate * PERCENT(control_average) * fuel_amount
+		temp_to_add += FR.heat_production * (control_average / 100)
+		FR.durability -= FR.consumption_rate * (control_average / 100) * fuel_amount
 		FR.durability = clamp(FR.durability, 0, 100)
 	temp_to_add *= (1 << fuel_amount - 1) // Exponential heat increase with more fuel rods
 
