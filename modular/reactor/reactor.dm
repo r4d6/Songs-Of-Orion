@@ -9,8 +9,10 @@
 		list(/obj/machinery/multistructure/nuclear_reactor_part/wall, /obj/machinery/multistructure/nuclear_reactor_part/wall, /obj/machinery/multistructure/nuclear_reactor_part/wall, /obj/machinery/multistructure/nuclear_reactor_part/wall, /obj/machinery/multistructure/nuclear_reactor_part/wall)
 					)
 
-	var/core_temperature = T20C
-	var/target_temperature = 5000 //At what temperature do we try to keep the core at?
+	var/core_temperature
+	var/target_temperature = 1223.15 // 950 C //At what temperature in Kelvin do we try to keep the core at?
+	var/heat_loss = 50 // How much heat is lost per tick.
+	var/cooled_temp = T20C // How much can we be cooled by heat_loss
 	var/control_average
 	var/list/walls = list()
 	var/list/fuel_spots = list()
@@ -49,13 +51,17 @@
 	gas_input = Get_Pipe_Input()
 	gas_output = Get_Pipe_Output()
 	control_average = Get_Average_Control_Height()
-
+	core_temperature = cooled_temp
 	Console = locate() in get_area(wall_input)
 	Console?.Reactor = src
 	START_PROCESSING(SSprocessing, src)
 
 /datum/multistructure/nuclear_reactor/Process()
 	control_average = Get_Average_Control_Height()
+
+	if(core_temperature > cooled_temp)
+		core_temperature -= heat_loss
+
 	if(!Console)
 		Console = locate() in get_area(wall_input)
 		Console?.Reactor = src
