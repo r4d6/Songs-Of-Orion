@@ -73,10 +73,11 @@
 		pump_gas_passive(src, gas_input, gas_storage)
 
 	var/temp_to_add = 0
-	var/fuel_amount = length(Get_Fuel_Rods())
-	for(var/obj/item/fuel_rod/FR in Get_Fuel_Rods())
+	var/fuel_amount = length(Get_Fuel_Rods(FALSE))
+	for(var/obj/item/fuel_rod/FR in Get_Fuel_Rods(FALSE))
 		temp_to_add += FR.heat_production * PERCENT(control_average)
 		FR.durability -= FR.consumption_rate * PERCENT(control_average) * fuel_amount
+		FR.durability = clamp(FR.durability, 0, 100)
 	temp_to_add *= (1 << fuel_amount - 1) // Exponential heat increase with more fuel rods
 
 	core_temperature += temp_to_add
@@ -126,11 +127,14 @@
 	var/average = sum_rod / control_spots.len
 	return average
 
-/datum/multistructure/nuclear_reactor/proc/Get_Fuel_Rods()
+/datum/multistructure/nuclear_reactor/proc/Get_Fuel_Rods(var/count_empty = TRUE)
 	. = list()
 	for(var/obj/machinery/multistructure/nuclear_reactor_part/fuel_rod/FR in fuel_spots)
 		if(FR.current_step < STEP_PULLED && FR.fuel)
-			. += FR.fuel
+			if(count_empty)
+				. += FR.fuel
+			else if(FR.fuel.durability > 0)
+				. += FR.fuel
 
 /datum/multistructure/nuclear_reactor/proc/Get_Pipe_Input()
 	var/obj/machinery/atmospherics/pipe/P = locate() in orange(1, wall_input)
@@ -148,7 +152,7 @@
 	dat += "<A href='?src=\ref[src];scram=1'>SCRAM</A><BR>"
 
 	dat += "Control Rods Height: [control_average]% | <A href='?src=\ref[src];set_target_height=1'>Set</A><BR>"
-	dat += "Reactor Temperature: [core_temperature -CELSIUS] C<BR>"
+	dat += "Reactor Temperature: [core_temperature - T0C] C<BR>"
 
 	if(!gas_input)
 		dat += "WARNING! NO INPUT DETECTED!<BR>"
