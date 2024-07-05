@@ -30,3 +30,18 @@
 	var/durability = 100
 	var/consumption_rate = 0.1
 	var/heat_production = 100 // How much does the fuel rod increase the temperature of the reactor, in celcius
+
+/obj/item/fuel_rod/thorium
+	name = "thorium fuel rod"
+	desc = "A rod made of thorium, acting as a suitable substitute for proper nuclear fuel. It is contained within a lead casing."
+	heat_production = 50
+
+/obj/item/fuel_rod/uranium
+	name = "uranium fuel rod"
+	desc = "A rod made of uranium, acting as a suitable substitute for proper nuclear fuel. It is contained within a lead casing."
+	heat_production = 25
+
+/obj/item/fuel_rod/low_uranium
+	name = "low uranium fuel rod"
+	desc = "A rod made of low-quality uranium, acting as a barely suitable substitute for proper nuclear fuel. It is contained within a lead casing."
+	heat_production = 10
