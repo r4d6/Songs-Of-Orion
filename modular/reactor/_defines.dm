@@ -74,3 +74,16 @@ Used Fuel Rods will require players to use thick temperature resistant gloves to
 #define STEP_UNSECURED 3 // Unsecured, need to crowbar
 #define STEP_NO_ROD 4 // Rod removed, need a new one.
 
+#define REACTOR_RADIATION_MULTIPLIER 200
+#define BREACH_RADIATION_MULTIPLIER 1
+#define REACTOR_TEMPERATURE_CUTOFF 10000
+#define REACTOR_RADS_TO_MJ 10000
+
+#define ROD_RADIATION_MULTIPLIER 15
+#define ROD_TEMPERATURE_CUTOFF 10000
+#define ROD_EXPOSED_POWER 0.1
+
+#define RAD_FALLOFF_ENGINE_FISSION 0.5
+
+/// minimum temperature difference before we can stop ticking/just equalize
+#define MINIMUM_MEANINGFUL_TEMPERATURE_DELTA		0.5
