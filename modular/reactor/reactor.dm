@@ -38,7 +38,7 @@
 	var/specific_heat = 40	// J/(mol*K)
 	var/molar_mass = 0.196	// kg/mol
 	var/mass = 200			// kg
-	var/max_temp = 3058
+	var/max_temp = 0 //3058
 	var/temperature = T20C
 	var/list/obj/item/fuel_rod/rods
 	var/obj/item/device/radio/radio
@@ -120,7 +120,7 @@
 
 	equalize(gas_storage, envefficiency)
 
-	if(temperature > max_temp && health > 0 && max_temp > 0) // Overheating, reduce structural integrity, emit more rads.
+	if(max_temp > 0 && temperature > max_temp && health > 0) // Overheating, reduce structural integrity, emit more rads.
 		health = max(0, health - (temperature / max_temp))
 		health = clamp( health, 0,  max_health)
 		//if(health < 1)
