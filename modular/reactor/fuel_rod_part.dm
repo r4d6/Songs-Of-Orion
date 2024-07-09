@@ -2,13 +2,13 @@
 	name = "fuel rod section"
 	desc = "A section designed to hold and use fuel rods to enable nuclear reactions."
 	icon_state = "fuel_spot"
-	var/current_step = STEP_INTACT
+	var/current_step = STEP_NO_ROD
 	var/obj/item/fuel_rod/fuel
 
 /obj/machinery/multistructure/nuclear_reactor_part/fuel_rod/Initialize(mapload, ...)
 	..()
-	if(mapload)
-		fuel = new /obj/item/fuel_rod/uranium()
+//	if(mapload)
+//		fuel = new /obj/item/fuel_rod/uranium()
 
 /obj/machinery/multistructure/nuclear_reactor_part/fuel_rod/attackby(obj/item/I, mob/user)
 	switch(current_step)
