@@ -118,13 +118,14 @@
 			sharer.temperature = clamp( sharer.temperature, 0,  ROD_TEMPERATURE_CUTOFF)
 		env.merge(sharer)
 
+/*
 	var/integrity_lost = integrity
 	if(temperature > melting_point && melting_point > 0)
 		integrity = max(0, integrity - (temperature / melting_point))
 	else if(temperature > (melting_point * 0.9))
 		integrity = max(0, integrity - ((1 / lifespan) * 100))
 	if(integrity == 0 && integrity_lost > 0) // Meltdown time.
-		meltdown()
+		meltdown()*/
 
 /obj/item/fuel_rod/proc/adjust_thermal_energy(var/thermal_energy)
 	if(mass < 1)
