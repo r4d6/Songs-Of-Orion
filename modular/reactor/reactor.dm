@@ -27,8 +27,8 @@
 	var/announce = 1
 	var/decay_archived = 0
 	var/exploded = 0
-	var/envefficiency = 0.01
-	var/gasefficiency = 0.5
+	var/envefficiency = 1 //0.01
+	var/gasefficiency = 1 //0.5
 	var/warning_delay = 20
 	var/meltwarned = 0
 	var/lastwarning = 0
@@ -111,10 +111,10 @@
 
 	if(disabledrods > 0 && !exploded)
 		radio.autosay("Core exceeded temperature bounds, and has been shut down.", "Nuclear Monitor", "Engineering")
-	announce_warning(meltedrods, meltingrods, temperature >= max_temp ? 1 : 0)
+	announce_warning(meltedrods, meltingrods, (temperature >= max_temp && !(max_temp <= 0)) ? 1 : 0)
 
 	decay_archived = decay_heat
-	adjust_thermal_energy(decay_heat * activerods * (control_average / 100))
+	adjust_thermal_energy(decay_heat * activerods * control_average)
 
 	for(var/obj/item/fuel_rod/rod in rods)
 		rod.equalize(src, gasefficiency)
