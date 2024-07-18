@@ -114,7 +114,7 @@
 	announce_warning(meltedrods, meltingrods, (temperature >= max_temp && !(max_temp <= 0)) ? 1 : 0)
 
 	decay_archived = decay_heat
-	adjust_thermal_energy(decay_heat * activerods * control_average)
+	adjust_thermal_energy(decay_heat * activerods /* * (control_average/100)*/)
 
 	for(var/obj/item/fuel_rod/rod in rods)
 		rod.equalize(src, gasefficiency)

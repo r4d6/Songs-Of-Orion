@@ -7,8 +7,9 @@
 
 /obj/machinery/multistructure/nuclear_reactor_part/fuel_rod/Initialize(mapload, ...)
 	..()
-//	if(mapload)
-//		fuel = new /obj/item/fuel_rod/uranium()
+	if(mapload)
+		fuel = new /obj/item/fuel_rod/uranium()
+		current_step = STEP_INTACT
 
 /obj/machinery/multistructure/nuclear_reactor_part/fuel_rod/attackby(obj/item/I, mob/user)
 	switch(current_step)
