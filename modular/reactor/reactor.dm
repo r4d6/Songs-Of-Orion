@@ -71,6 +71,7 @@
 	control_average = Get_Average_Control_Height()
 	Console = locate() in get_area(wall_input)
 	Console?.Reactor = src
+	radio = new()
 	START_PROCESSING(SSprocessing, src)
 
 /datum/multistructure/nuclear_reactor/Process()
@@ -214,6 +215,10 @@
 
 /datum/multistructure/nuclear_reactor/proc/equalize(datum/gas_mixture/env, var/efficiency)
 	var/datum/gas_mixture/sharer = env.remove(efficiency * env.total_moles)
+
+	if(!sharer)
+		return
+
 	var/our_heatcap = heat_capacity()
 	var/share_heatcap = sharer.heat_capacity()
 
