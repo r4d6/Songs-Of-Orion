@@ -32,6 +32,7 @@
 
 
 // Design categories
+#define CAT_AETHERIUM    "Aetherium"
 #define CAT_MISC        "Misc"
 #define CAT_COMP        "Computers"
 #define CAT_AI          "AI"
