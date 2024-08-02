@@ -25,7 +25,7 @@
 		user.set_machine(src)
 
 		user << browse(dat, "window=NRcontrol;size=420x500")
-		onclose(user, "AMcontrol")
+		onclose(user, "NRcontrol")
 		return
 
 /obj/machinery/multistructure/nuclear_reactor_part/console/Topic(href, href_list)
