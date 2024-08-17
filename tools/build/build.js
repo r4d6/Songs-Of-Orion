@@ -22,7 +22,7 @@ Juke.setup({ file: import.meta.url }).then((code) => {
   process.exit(code);
 });
 
-const DME_NAME = 'cev_eris';
+const DME_NAME = 'BreakingPoint';
 
 export const DefineParameter = new Juke.Parameter({
   type: 'string[]',
@@ -49,10 +49,11 @@ export const DmMapsIncludeTarget = new Juke.Target({
       ...Juke.glob('_maps/shuttles/**/*.dmm'),
       ...Juke.glob('_maps/templates/**/*.dmm'),
     ];
-    const content = folders
-      .map((file) => file.replace('maps/', ''))
-      .map((file) => `#include "${file}"`)
-      .join('\n') + '\n';
+    const content =
+      folders
+        .map((file) => file.replace('maps/', ''))
+        .map((file) => `#include "${file}"`)
+        .join('\n') + '\n';
     fs.writeFileSync('_maps/templates.dm', content);
   },
 });
@@ -71,10 +72,7 @@ export const DmTarget = new Juke.Target({
     'interface/**',
     `${DME_NAME}.dme`,
   ],
-  outputs: [
-    `${DME_NAME}.dmb`,
-    `${DME_NAME}.rsc`,
-  ],
+  outputs: [`${DME_NAME}.dmb`, `${DME_NAME}.rsc`],
   executes: async ({ get }) => {
     await DreamMaker(`${DME_NAME}.dme`, {
       defines: ['CBT', ...get(DefineParameter)],
@@ -97,15 +95,17 @@ export const DmTestTarget = new Juke.Target({
     Juke.rm('data/logs/ci', { recursive: true });
     await DreamDaemon(
       `${DME_NAME}.test.dmb`,
-      '-close', '-trusted', '-verbose',
-      '-params', 'log-directory=ci'
+      '-close',
+      '-trusted',
+      '-verbose',
+      '-params',
+      'log-directory=ci'
     );
     Juke.rm('*.test.*');
     try {
       const cleanRun = fs.readFileSync('data/logs/ci/clean_run.lk', 'utf-8');
       console.log(cleanRun);
-    }
-    catch (err) {
+    } catch (err) {
       Juke.logger.error('Test run was not clean, exiting');
       throw new Juke.ExitCode(1);
     }
@@ -119,9 +119,7 @@ export const YarnTarget = new Juke.Target({
     'tgui/**/package.json',
     'tgui/yarn.lock',
   ],
-  outputs: [
-    'tgui/.yarn/install-target',
-  ],
+  outputs: ['tgui/.yarn/install-target'],
   executes: ({ get }) => yarn('install', get(CiParameter) && '--immutable'),
 });
 
@@ -183,7 +181,8 @@ export const TguiTscTarget = new Juke.Target({
 export const TguiTestTarget = new Juke.Target({
   parameters: [CiParameter],
   dependsOn: [YarnTarget],
-  executes: ({ get }) => yarn(`tgui:test-${get(CiParameter) ? 'ci' : 'simple'}`),
+  executes: ({ get }) =>
+    yarn(`tgui:test-${get(CiParameter) ? 'ci' : 'simple'}`),
 });
 
 export const TguiLintTarget = new Juke.Target({
@@ -273,7 +272,7 @@ export const CleanAllTarget = new Juke.Target({
  */
 const prependDefines = (...defines) => {
   const dmeContents = fs.readFileSync(`${DME_NAME}.dme`);
-  const textToWrite = defines.map(define => `#define ${define}\n`);
+  const textToWrite = defines.map((define) => `#define ${define}\n`);
   fs.writeFileSync(`${DME_NAME}.dme`, `${textToWrite}\n${dmeContents}`);
 };
 
