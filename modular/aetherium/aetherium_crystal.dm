@@ -247,7 +247,7 @@
 	return TRUE
 
 /obj/structure/aetherium_crystal/proc/shoot(var/mob/living/M)
-	if(!M || !M in view()) // Can't see it. Intentionally bigger than the targeting range
+	if((!M) || ((!M)in view())) // Can't see it. Intentionally bigger than the targeting range
 		return FALSE
 	if(!projectile_count) // Nothing to shoot
 		return FALSE
