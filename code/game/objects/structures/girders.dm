@@ -10,6 +10,9 @@
 	var/is_reinforced = FALSE // If girder have been reinforced with metal rods, finishing construction will produce a reinforced wall
 	var/is_low = FALSE // If girder should produce a low wall, mutually exclusive with reinforcing
 
+	var/is_glass = FALSE
+	var/is_rglass = FALSE
+
 	var/static/rods_amount_to_reinforce = 2
 	var/static/metal_amount_to_complete = 5
 
@@ -177,6 +180,22 @@
 					to_chat(user, SPAN_NOTICE("You've built a [is_low ? "low " : ""]wall!"))
 			else
 				to_chat(user, SPAN_NOTICE("You need steel to finish the [is_low ? "low " : ""]wall!"))
+			if(istype(I, /obj/item/stack/material/glass))
+				var/obj/item/stack/material/glass/glass = I
+				if(do_after(user, 40, src) && glass.use(metal_amount_to_complete))
+					is_glass = TRUE
+					construct_wall(user)
+					to_chat(user, SPAN_NOTICE("You've built a glass wall!"))
+			else
+				to_chat(user, SPAN_NOTICE("You need glass to finish the [is_glass ? "glass " : ""]wall!"))
+			if(istype(I, /obj/item/stack/material/glass/reinforced))
+				var/obj/item/stack/material/glass/reinforced/rglass = I
+				if(do_after(user, 40, src) && rglass.use(metal_amount_to_complete))
+					is_rglass = TRUE
+					construct_wall(user)
+					to_chat(user, SPAN_NOTICE("You've built a reinforced glass wall!"))
+			else
+				to_chat(user, SPAN_NOTICE("You need glass to finish the [is_glass ? "glass " : ""]wall!"))
 	else
 		take_damage(I.force * I.structure_damage_factor)
 		. = ..() // Calls /atom/movable/attackby(), which plays the sound, animation, sets a cooldown, but doesn't do damage
@@ -187,6 +206,10 @@
 		wall_type_to_make = /turf/wall/low
 	else if(is_reinforced)
 		wall_type_to_make = /turf/wall/reinforced
+	else if(is_glass)
+		wall_type_to_make = /turf/wall/untinted/orion/window/basic
+	else if(is_rglass)
+		wall_type_to_make = /turf/wall/untinted/orion/window/reinforced
 	var/turf/turf_to_change = get_turf(src)
 	turf_to_change.ChangeTurf(wall_type_to_make)
 	var/turf/wall/created_wall = get_turf(src)
