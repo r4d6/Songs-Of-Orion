@@ -23,14 +23,16 @@ By design, d1 is the smallest direction and d2 is the highest
 */
 
 var/list/possible_cable_coil_colours = list(
-		"Yellow" = COLOR_YELLOW,
-		"Green" = COLOR_LIME,
-		"Pink" = COLOR_PINK,
-		"Blue" = COLOR_BLUE,
-		"Orange" = COLOR_ORANGE,
-		"Cyan" = COLOR_CYAN,
-		"Red" = COLOR_RED
+		"Yellow" = "#b08b4f",
+		"Green" = "#487559",
+		"Violet" = "#a16fc3",
+		"Blue" = "#527d97",
+		"Orange" = "#af4d32",
+		"Aqua" = "#299491",
+		"White" = "#527d97",
+		"Red" = "#812a3d"
 	)
+
 
 /obj/structure/cable
 	layer = WIRE_LAYER //Above hidden pipes, GAS_PIPE_HIDDEN_LAYER
@@ -45,7 +47,7 @@ var/list/possible_cable_coil_colours = list(
 	maxHealth = 20
 	var/d1 = 0
 	var/d2 = 1
-	color = COLOR_RED_LIGHT
+	color = "#812a3d"
 	var/obj/machinery/power/breakerbox/breaker_box
 
 /obj/structure/cable/drain_power(var/drain_check, var/surge, var/amount = 0)
@@ -59,25 +61,25 @@ var/list/possible_cable_coil_colours = list(
 	return PN.draw_power(amount)
 
 /obj/structure/cable/yellow
-	color = COLOR_YELLOW
+	color = "#b08b4f"
 
 /obj/structure/cable/green
-	color = COLOR_GREEN
+	color = "#487559"
 
 /obj/structure/cable/blue
-	color = COLOR_BLUE
+	color = "#527d97"
 
 /obj/structure/cable/pink
-	color = COLOR_PINK
+	color = "#a16fc3"
 
 /obj/structure/cable/orange
-	color = COLOR_ORANGE
+	color = "#af4d32"
 
 /obj/structure/cable/cyan
-	color = COLOR_CYAN
+	color = "#299491"
 
 /obj/structure/cable/white
-	color = COLOR_WHITE
+	color = "#527d97"
 
 /obj/structure/cable/New()
 	..()
@@ -596,7 +598,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 
 /obj/item/stack/cable_coil/update_icon()
 	if (!color)
-		color = pick(COLOR_RED, COLOR_BLUE, COLOR_LIME, COLOR_ORANGE, COLOR_WHITE, COLOR_PINK, COLOR_YELLOW, COLOR_CYAN)
+		color = pick("#812a3d", "#527d97", "#487559", COLOR_WHITE, "#487559", "#a16fc3", "#b08b4f", "#299491")
 	if(amount == 1)
 		icon_state = "coil1"
 		name = "cable piece"
@@ -870,26 +872,26 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	update_wclass()
 
 /obj/item/stack/cable_coil/yellow
-	color = COLOR_YELLOW
+	color = "#b08b4f"
 
 /obj/item/stack/cable_coil/blue
-	color = COLOR_BLUE
+	color = "#527d97"
 
 /obj/item/stack/cable_coil/green
-	color = COLOR_LIME
+	color = "#487559"
 
 /obj/item/stack/cable_coil/pink
-	color = COLOR_PINK
+	color = "#a16fc3"
 
 /obj/item/stack/cable_coil/orange
-	color = COLOR_ORANGE
+	color = "#af4d32"
 
 /obj/item/stack/cable_coil/cyan
-	color = COLOR_CYAN
+	color = "#299491"
 
 /obj/item/stack/cable_coil/white
 	color = COLOR_WHITE
 
 /obj/item/stack/cable_coil/random/New()
-	color = pick(COLOR_RED, COLOR_BLUE, COLOR_LIME, COLOR_WHITE, COLOR_PINK, COLOR_YELLOW, COLOR_CYAN)
+	color = pick("#812a3d", "#527d97", "#487559", COLOR_WHITE, "#487559", "#a16fc3", "#b08b4f", "#299491")
 	..()
