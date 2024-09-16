@@ -1,4 +1,4 @@
-environment = "cev_eris.dme"
+environment = "BreakingPoint.dme"
 
 [langserver]
 dreamchecker = true
