@@ -47,7 +47,7 @@ var/list/possible_cable_coil_colours = list(
 	maxHealth = 20
 	var/d1 = 0
 	var/d2 = 1
-	color = "#812a3d"
+	var/cable_color = "Red"
 	var/obj/machinery/power/breakerbox/breaker_box
 
 /obj/structure/cable/drain_power(var/drain_check, var/surge, var/amount = 0)
@@ -61,28 +61,29 @@ var/list/possible_cable_coil_colours = list(
 	return PN.draw_power(amount)
 
 /obj/structure/cable/yellow
-	color = "#b08b4f"
+	cable_color = "Yellow"
 
 /obj/structure/cable/green
-	color = "#487559"
+	cable_color = "Green"
 
 /obj/structure/cable/blue
-	color = "#527d97"
+	cable_color = "Blue"
 
 /obj/structure/cable/pink
-	color = "#a16fc3"
+	cable_color = "Pink"
 
 /obj/structure/cable/orange
-	color = "#af4d32"
+	cable_color = "Orange"
 
 /obj/structure/cable/cyan
-	color = "#299491"
+	cable_color = "Cyan"
 
 /obj/structure/cable/white
-	color = "#527d97"
+	cable_color = "White"
 
-/obj/structure/cable/New()
-	..()
+/obj/structure/cable/Initialize(mapload, ...)
+	. = ..()
+	color = possible_cable_coil_colours[cable_color] || possible_cable_coil_colours["Red"]
 
 	// ensure d1 & d2 reflect the icon_state for entering and exiting cable
 
@@ -96,6 +97,7 @@ var/list/possible_cable_coil_colours = list(
 	if(level==1 && T) hide(!T.is_plating())
 	GLOB.cable_list += src //add it to the global cable list
 
+	return ..()
 
 /obj/structure/cable/Destroy()					// called when a cable is deleted
 	if(powernet)
@@ -515,7 +517,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	icon_state = "coil"
 	amount = MAXCOIL
 	max_amount = MAXCOIL
-	color = COLOR_RED
+	var/cable_color = "Red"
 	desc = "A coil of power cable."
 	throwforce = WEAPON_FORCE_HARMLESS
 	description_info = "Can link between z-levels by going on the upper level and clicking the empty space, and to below, looking up and clicking the space above"
@@ -542,11 +544,11 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	charge_costs = list(1)
 	spawn_frequency = 0
 
-/obj/item/stack/cable_coil/New(loc, length = MAXCOIL, var/param_color = null)
-	..()
+/obj/item/stack/cable_coil/Initialize(loc, length = MAXCOIL, var/cable_color = null)
+	. = ..()
 	src.amount = length
-	if (param_color) // It should be red by default, so only recolor it if parameter was specified.
-		color = param_color
+	if (cable_color) // It should be red by default, so only recolor it if parameter was specified.
+		color = cable_color
 	pixel_x = rand(-2,2)
 	pixel_y = rand(-2,2)
 	update_icon()
@@ -892,6 +894,6 @@ obj/structure/cable/proc/cableColor(var/colorC)
 /obj/item/stack/cable_coil/white
 	color = COLOR_WHITE
 
-/obj/item/stack/cable_coil/random/New()
+/obj/item/stack/cable_coil/random/Initialize()
+	. = ..()
 	color = pick("#812a3d", "#527d97", "#487559", COLOR_WHITE, "#487559", "#a16fc3", "#b08b4f", "#299491")
-	..()
