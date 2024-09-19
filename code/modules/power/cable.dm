@@ -29,7 +29,7 @@ var/list/possible_cable_coil_colours = list(
 		"Blue" = "#527d97",
 		"Orange" = "#af4d32",
 		"Aqua" = "#299491",
-		"White" = "#527d97",
+		"White" = "#c2c1c0",
 		"Red" = "#812a3d"
 	)
 
