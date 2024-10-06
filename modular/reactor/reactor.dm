@@ -47,7 +47,10 @@
 	..()
 	gas_storage = new()
 
+	var/part_count = 0
 	for(var/obj/machinery/multistructure/nuclear_reactor_part/part in elements)
+		part.icon_state = "[part_count]"
+		part_count++
 		if(istype(part, /obj/machinery/multistructure/nuclear_reactor_part/wall))
 			walls += part
 			continue
@@ -152,6 +155,7 @@
 		var/new_height = input(usr, "What height should the control rods be at?", "Control Rods", 0) as null|num
 		for(var/obj/machinery/multistructure/nuclear_reactor_part/control_rod/CR in control_spots)
 			CR.height = clamp(new_height, 0, 100)
+			CR.update_icon()
 		control_average = Get_Average_Control_Height()
 		Console?.updateDialog()
 		return

@@ -1,5 +1,5 @@
 /obj/machinery/multistructure/nuclear_reactor_part
-	icon = './placeholders.dmi'
+	icon = './astra_reactor.dmi'
 	MS_type = /datum/multistructure/nuclear_reactor
 	anchored = TRUE
 
@@ -18,14 +18,14 @@
 /obj/item/control_rod
 	name = "control rod"
 	desc = "A rod made of graphite, designed to moderate nuclear reactions by its presence."
-	icon = 'placeholders.dmi'
+	icon = 'astra_reactor.dmi'
 	icon_state = "control_rod"
 	var/durability = 100
 
 /obj/item/fuel_rod
 	name = "aetherium fuel rod"
 	desc = "You shouldn't be seeing this."
-	icon = 'placeholders.dmi'
+	icon = 'astra_reactor.dmi'
 	icon_state = "fuel_rod"
 
 	var/gasefficiency = 0.05

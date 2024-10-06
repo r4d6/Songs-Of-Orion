@@ -1,7 +1,7 @@
 /obj/machinery/multistructure/nuclear_reactor_part/fuel_rod
 	name = "fuel rod section"
 	desc = "A section designed to hold and use fuel rods to enable nuclear reactions."
-	icon_state = "fuel_spot"
+	//icon_state = "fuel_spot"
 	var/current_step = STEP_NO_ROD
 	var/obj/item/fuel_rod/fuel
 
@@ -10,6 +10,7 @@
 	if(mapload)
 		fuel = new /obj/item/fuel_rod/uranium()
 		current_step = STEP_INTACT
+	update_icon()
 
 /obj/machinery/multistructure/nuclear_reactor_part/fuel_rod/attackby(obj/item/I, mob/user)
 	switch(current_step)
@@ -64,11 +65,13 @@
 	if(current_step == STEP_UNWRENCHED)
 		user.visible_message(SPAN_NOTICE("[user] pulls the rod container up."), SPAN_NOTICE("You pulls the rod container up."))
 		current_step = STEP_PULLED
+		update_icon()
 		return
 
 	if(current_step == STEP_PULLED)
 		user.visible_message(SPAN_NOTICE("[user] push the rod container down."), SPAN_NOTICE("You push the rod container down."))
 		current_step = STEP_UNWRENCHED
+		update_icon()
 		return
 
 
@@ -96,4 +99,9 @@
 		to_chat(user, SPAN_NOTICE("[message]"))
 
 // TODO for when proper sprites are done.
-//obj/machinery/multistructure/nuclear_reactor_part/fuel_rod/update_icon()
+/obj/machinery/multistructure/nuclear_reactor_part/fuel_rod/update_icon()
+	cut_overlays()
+	if(current_step == STEP_PULLED)
+		add_overlay("F100")
+	else
+		add_overlay("F0")

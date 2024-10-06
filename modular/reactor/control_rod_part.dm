@@ -1,7 +1,7 @@
 /obj/machinery/multistructure/nuclear_reactor_part/control_rod
 	name = "control rod section"
 	desc = "A section designed to hold and use control rods to moderate nuclear reactions."
-	icon_state = "control_spot"
+	//icon_state = "control_spot"
 	var/height = 0
 	var/max_height = 100
 	var/min_height = 0
@@ -12,6 +12,7 @@
 	..()
 	if(mapload)
 		control = new()
+	update_icon()
 
 /obj/machinery/multistructure/nuclear_reactor_part/control_rod/attackby(obj/item/I, mob/user)
 	switch(current_step)
@@ -66,11 +67,13 @@
 	if(current_step == STEP_UNWRENCHED)
 		user.visible_message(SPAN_NOTICE("[user] pulls the rod container up."), SPAN_NOTICE("You pulls the rod container up."))
 		current_step = STEP_PULLED
+		update_icon()
 		return
 
 	if(current_step == STEP_PULLED)
 		user.visible_message(SPAN_NOTICE("[user] push the rod container down."), SPAN_NOTICE("You push the rod container down."))
 		current_step = STEP_UNWRENCHED
+		update_icon()
 		return
 
 	..()
@@ -99,7 +102,19 @@
 		to_chat(user, SPAN_NOTICE("[message]"))
 
 // TODO for when proper sprites are done.
-//obj/machinery/multistructure/nuclear_reactor_part/control_rod/update_icon()
+/obj/machinery/multistructure/nuclear_reactor_part/control_rod/update_icon()
+	cut_overlays()
+	switch(Get_Rod_Height())
+		if(0 to 24)
+			add_overlay("C0")
+		if(25 to 49)
+			add_overlay("C25")
+		if(50 to 74)
+			add_overlay("C50")
+		if(75 to 99)
+			add_overlay("C75")
+		if(100)
+			add_overlay("C100")
 
 /obj/machinery/multistructure/nuclear_reactor_part/control_rod/proc/Get_Rod_Height()
 	if(!control) // No control rod? Well it's not there.
