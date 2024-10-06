@@ -13,8 +13,8 @@
 	var/list/walls = list()
 	var/list/fuel_spots = list()
 	var/list/control_spots = list()
-	var/wall_input
-	var/wall_output
+	var/obj/machinery/multistructure/nuclear_reactor_part/wall_input/wall_input
+	var/obj/machinery/multistructure/nuclear_reactor_part/wall_output/wall_output
 	var/obj/machinery/multistructure/nuclear_reactor_part/console/Console
 
 	var/datum/gas_mixture/gas_input
