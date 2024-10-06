@@ -258,7 +258,7 @@
 
 /datum/multistructure/nuclear_reactor/proc/announce_warning(var/meltedrods, var/meltingrods, var/core_overheat)
 	if(!exploded && (meltedrods > 0 || meltingrods > 0 || temperature >= max_temp))
-		var/location = sanitize((get_area(wall_input)).name)
+		var/location = sanitize((get_area(wall_input))?.name)
 		if((world.timeofday - lastwarning) >= warning_delay * 10)
 			lastwarning = world.timeofday
 			if(core_overheat)
