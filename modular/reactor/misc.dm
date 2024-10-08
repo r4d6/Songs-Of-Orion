@@ -19,14 +19,13 @@
 	name = "control rod"
 	desc = "A rod made of graphite, designed to moderate nuclear reactions by its presence."
 	icon = 'astra_reactor.dmi'
-	icon_state = "control_rod"
+	icon_state = "control"
 	var/durability = 100
 
 /obj/item/fuel_rod
 	name = "aetherium fuel rod"
 	desc = "You shouldn't be seeing this."
 	icon = 'astra_reactor.dmi'
-	icon_state = "fuel_rod"
 
 	var/gasefficiency = 0.05
 	var/insertion = 0
@@ -45,11 +44,13 @@
 /obj/item/fuel_rod/aetherium
 	name = "aetherium fuel rod"
 	desc = "A rod made of aetherium, acting as a suitable substitute for proper nuclear fuel. It is contained within a lead casing."
+	icon_state = "unobtanium"
 	//heat_production = 50
 
 /obj/item/fuel_rod/plutonium
 	name = "plutonium fuel rod"
 	desc = "A rod made of plutonium, acting as a suitable substitute for proper nuclear fuel. It is contained within a lead casing."
+	icon_state = "plasma"
 	specific_heat = 36	// J/(mol*K)
 	molar_mass = 0.244	// kg/mol
 	mass = 5 // kg
@@ -60,6 +61,7 @@
 /obj/item/fuel_rod/uranium
 	name = "uranium fuel rod"
 	desc = "A rod made of uranium, acting as a suitable substitute for proper nuclear fuel. It is contained within a lead casing."
+	icon_state = "uranium"
 	specific_heat = 28	// J/(mol*K)
 	molar_mass = 0.235	// kg/mol
 	mass = 20 // kg
