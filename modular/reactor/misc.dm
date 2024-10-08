@@ -22,6 +22,12 @@
 	icon_state = "control"
 	var/durability = 100
 
+/obj/item/control_rod/update_icon()
+	if(durability <= 0)
+		icon_state = "control_spent"
+	else
+		icon_state = "control"
+
 /obj/item/fuel_rod
 	name = "aetherium fuel rod"
 	desc = "You shouldn't be seeing this."
@@ -68,7 +74,11 @@
 	melting_point = 1405
 	decay_heat = 19536350 // MJ/mol
 
-
+/obj/item/fuel_rod/update_icon()
+	if(life <= 0)
+		icon_state = "[initial(icon_state)]_spent"
+	else
+		icon_state = "[initial(icon_state)]"
 
 /obj/item/fuel_rod/Initialize(mapload)
 	. = ..()
@@ -154,10 +164,12 @@
 	else if(life > 0)
 		if(decay_heat > 0 || apply_heat)
 			life = max(0, life - ((1 / lifespan) * applied_insertion * 100))
-		if(life == 0 && integrity > 0)
+		if(life <= 0 && integrity > 0)
 			name = "depleted [name]"
 		else if(decay_heat > 0)
 			return ((decay_heat * (mass / molar_mass)) / lifespan) * (min(life, 100) / 100) * applied_insertion
+
+	update_icon()
 	return 0
 
 /obj/item/fuel_rod/proc/get_insertion()
