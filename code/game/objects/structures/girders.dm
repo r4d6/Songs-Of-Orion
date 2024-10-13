@@ -10,8 +10,11 @@
 	var/is_reinforced = FALSE // If girder have been reinforced with metal rods, finishing construction will produce a reinforced wall
 	var/is_low = FALSE // If girder should produce a low wall, mutually exclusive with reinforcing
 
+//ASTRA walls: It sucks, but this allows us to make more flavors of walls.
 	var/is_glass = FALSE
 	var/is_rglass = FALSE
+	var/is_padded = FALSE
+	var/is_wood = FALSE
 
 	var/static/rods_amount_to_reinforce = 2
 	var/static/metal_amount_to_complete = 5
@@ -196,6 +199,14 @@
 					to_chat(user, SPAN_NOTICE("You've built a reinforced glass wall!"))
 			else
 				to_chat(user, SPAN_NOTICE("You need glass to finish the [is_glass ? "glass " : ""]wall!"))
+			if(istype(I, /obj/item/stack/material/wood))
+				var/obj/item/stack/material/wood/wood = I
+				if(do_after(user, 40, src) && wood.use(metal_amount_to_complete))
+					is_wood = TRUE
+					construct_wall(user)
+					to_chat(user, SPAN_NOTICE("You've built a wood panel wall!"))
+			else
+				to_chat(user, SPAN_NOTICE("You need wood to finish the [is_wood ? "wooden " : ""]wall!"))
 	else
 		take_damage(I.force * I.structure_damage_factor)
 		. = ..() // Calls /atom/movable/attackby(), which plays the sound, animation, sets a cooldown, but doesn't do damage
@@ -210,6 +221,8 @@
 		wall_type_to_make = /turf/wall/untinted/orion/window/basic
 	else if(is_rglass)
 		wall_type_to_make = /turf/wall/untinted/orion/window/reinforced
+	else if(is_wood)
+		wall_type_to_make = /turf/wall/untinted/orion/wood
 	var/turf/turf_to_change = get_turf(src)
 	turf_to_change.ChangeTurf(wall_type_to_make)
 	var/turf/wall/created_wall = get_turf(src)

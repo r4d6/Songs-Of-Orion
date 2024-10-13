@@ -12,6 +12,9 @@
 	var/shardtype = /obj/item/material/shard
 	var/glasstype = null // Set this in subtypes. Null is assumed strange or otherwise impossible to dismantle, such as for shuttle glass.
 
+/turf/wall/untinted/orion/window/attack_tk(mob/user as mob)
+	user.visible_message(SPAN_NOTICE("Something knocks on [src]."))
+	playsound(loc, 'sound/effects/Glasshit.ogg', 50, 1)
 
 /turf/wall/untinted/orion/window/take_damage(damage)
 	if(!is_simulated)
@@ -68,6 +71,7 @@
 
 	if(display_message)
 		visible_message("[src] shatters!")
+	if(is_wall)
 		var/index = null
 		index = 0
 		while(index < rand(4,6))
@@ -79,6 +83,7 @@
 			index++
 	else
 		new shardtype(loc) //todo pooling?
+	qdel(src)
 	dismantle_wall()
 	return
 
@@ -87,6 +92,7 @@
 	name = "glass wall"
 	desc = "Cheaper than it looks."
 	glasstype = /obj/item/stack/material/glass
+	shardtype = /obj/item/material/shard
 	health = 150
 	max_health = 150
 	hardness = 30
@@ -97,6 +103,7 @@
 /turf/wall/untinted/orion/window/reinforced
 	icon_state = "paneglass_wall"
 	name = "reinforced glass wall"
+	shardtype = /obj/item/material/shard
 	desc = "More durable than it looks."
 	health = 400
 	max_health = 400
