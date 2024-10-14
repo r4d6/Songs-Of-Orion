@@ -9,6 +9,7 @@
 	hardness = 30
 	wall_type = "paneglass_wall"
 	opacity = FALSE
+	var/reinf = FALSE
 	var/shardtype = /obj/item/material/shard
 	var/glasstype = null // Set this in subtypes. Null is assumed strange or otherwise impossible to dismantle, such as for shuttle glass.
 
@@ -26,9 +27,7 @@
 	. = min(health, damage)
 	health -= damage
 	if(health <= 0)
-		dismantle_wall()
-		playsound(src, "shatter", 70, 1)
-		visible_message("[src] shatters!")
+		shatter()
 	else
 		update_icon()
 
@@ -71,11 +70,13 @@
 
 	if(display_message)
 		visible_message("[src] shatters!")
-	if(is_wall)
+	if(glasstype != null)
 		var/index = null
 		index = 0
+		if(reinf)
+			new /obj/item/stack/rods(get_turf(src))
 		while(index < rand(4,6))
-			var/obj/item/material/shard/S = new shardtype(loc)
+			var/obj/item/material/shard/S = new shardtype(get_turf(src))
 			if (nearby.len > 0)
 				var/turf/target = pick(nearby)
 				//spawn()
@@ -83,8 +84,9 @@
 			index++
 	else
 		new shardtype(loc) //todo pooling?
-	qdel(src)
-	dismantle_wall()
+		if(reinf)
+			new /obj/item/stack/rods(loc)
+	dismantle_wall(src)
 	return
 
 /turf/wall/untinted/orion/window/basic
@@ -111,6 +113,7 @@
 	wall_type = "reinfglass_wall"
 	glasstype = /obj/item/stack/material/glass/reinforced
 	opacity = FALSE
+	reinf = TRUE
 
 /turf/wall/untinted/orion/window/reinforced/get_matter()
 	return list(MATERIAL_RGLASS  = 5)
