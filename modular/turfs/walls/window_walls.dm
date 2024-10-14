@@ -31,6 +31,20 @@
 	else
 		update_icon()
 
+// This is only called in an event of IC wall deconstruction
+// Admin deleting the object will not call this, hence producing no girder or shards
+/turf/wall/untinted/orion/window/proc/dismantle_window(mob/user)
+	for(var/obj/O in contents) //Eject contents!
+		if(istype(O,/obj/item/contraband/poster))
+			var/obj/item/contraband/poster/P = O
+			P.roll_and_drop(src)
+		else
+			O.loc = src
+	playsound(src, 'sound/effects/GLASS_Rattle_Many_Fragments_01_stereo.ogg', 100, 1)
+	var/obj/structure/girder/girder = new(src)
+	girder.is_reinforced = is_reinforced
+	girder.update_icon()
+	qdel(src)
 
 /turf/wall/untinted/orion/window/attack_hand(mob/user as mob)
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
@@ -86,7 +100,7 @@
 		new shardtype(loc) //todo pooling?
 		if(reinf)
 			new /obj/item/stack/rods(loc)
-	dismantle_wall(src)
+	dismantle_window(src)
 	return
 
 /turf/wall/untinted/orion/window/basic
@@ -112,7 +126,6 @@
 	hardness = 100
 	wall_type = "reinfglass_wall"
 	glasstype = /obj/item/stack/material/glass/reinforced
-	opacity = FALSE
 	reinf = TRUE
 
 /turf/wall/untinted/orion/window/reinforced/get_matter()
