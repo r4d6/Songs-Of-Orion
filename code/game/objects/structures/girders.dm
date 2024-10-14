@@ -11,6 +11,7 @@
 	var/is_low = FALSE // If girder should produce a low wall, mutually exclusive with reinforcing
 
 //ASTRA walls: It sucks, but this allows us to make more flavors of walls.
+// TODO: We should probably handle this in a baylike way by adding a var for basic materials
 	var/is_glass = FALSE
 	var/is_rglass = FALSE
 	var/is_padded = FALSE
