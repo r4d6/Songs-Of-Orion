@@ -16,6 +16,7 @@
 	var/is_rglass = FALSE
 	var/is_padded = FALSE
 	var/is_wood = FALSE
+	var/is_panel = FALSE
 
 	var/static/rods_amount_to_reinforce = 2
 	var/static/metal_amount_to_complete = 5
@@ -175,7 +176,15 @@
 					construct_wall(user)
 					to_chat(user, SPAN_NOTICE("You've built a reinforced wall!"))
 			else
-				to_chat(user, SPAN_NOTICE("You need plasteel to finish the reinforced wall!"))
+				to_chat(user, SPAN_NOTICE("You need materials to finish the reinforced wall!"))
+			if(istype(I, /obj/item/stack/material/plastic))
+				var/obj/item/stack/material/plastic/plastic = I
+				if(do_after(user, 40, src) && plastic.use(metal_amount_to_complete))
+					is_padded = TRUE
+					construct_wall(user)
+					to_chat(user, SPAN_NOTICE("You've built a wall!"))
+			else
+				to_chat(user, SPAN_NOTICE("You need materials to finish the reinforced wall!"))
 		else
 			if(istype(I, /obj/item/stack/material/steel))
 				var/obj/item/stack/material/steel/steel = I
@@ -183,47 +192,61 @@
 					construct_wall(user)
 					to_chat(user, SPAN_NOTICE("You've built a [is_low ? "low " : ""]wall!"))
 			else
-				to_chat(user, SPAN_NOTICE("You need steel to finish the [is_low ? "low " : ""]wall!"))
+				to_chat(user, SPAN_NOTICE("You need materials to finish the [is_low ? "low " : ""]wall!"))
 			if(istype(I, /obj/item/stack/material/glass))
 				var/obj/item/stack/material/glass/glass = I
 				if(do_after(user, 40, src) && glass.use(metal_amount_to_complete))
 					is_glass = TRUE
 					construct_wall(user)
-					to_chat(user, SPAN_NOTICE("You've built a glass wall!"))
+					to_chat(user, SPAN_NOTICE("You've built a wall!"))
 			else
-				to_chat(user, SPAN_NOTICE("You need glass to finish the [is_glass ? "glass " : ""]wall!"))
+				to_chat(user, SPAN_NOTICE("You need materials to finish the [is_glass ? "glass " : ""]wall!"))
 			if(istype(I, /obj/item/stack/material/glass/reinforced))
 				var/obj/item/stack/material/glass/reinforced/rglass = I
 				if(do_after(user, 40, src) && rglass.use(metal_amount_to_complete))
 					is_rglass = TRUE
 					construct_wall(user)
-					to_chat(user, SPAN_NOTICE("You've built a reinforced glass wall!"))
+					to_chat(user, SPAN_NOTICE("You've built a wall!"))
 			else
-				to_chat(user, SPAN_NOTICE("You need glass to finish the [is_glass ? "glass " : ""]wall!"))
+				to_chat(user, SPAN_NOTICE("You need materials to finish the wall!"))
+			if(istype(I, /obj/item/stack/material/plastic))
+				var/obj/item/stack/material/plastic/plastic = I
+				if(do_after(user, 40, src) && plastic.use(metal_amount_to_complete))
+					is_panel = TRUE
+					construct_wall(user)
+					to_chat(user, SPAN_NOTICE("You've built a wall!"))
+			else
+				to_chat(user, SPAN_NOTICE("You need materials to finish the [is_glass ? "glass " : ""]wall!"))
 			if(istype(I, /obj/item/stack/material/wood))
 				var/obj/item/stack/material/wood/wood = I
 				if(do_after(user, 40, src) && wood.use(metal_amount_to_complete))
 					is_wood = TRUE
 					construct_wall(user)
-					to_chat(user, SPAN_NOTICE("You've built a wood panel wall!"))
+					to_chat(user, SPAN_NOTICE("You've built a wall!"))
 			else
-				to_chat(user, SPAN_NOTICE("You need wood to finish the [is_wood ? "wooden " : ""]wall!"))
+				to_chat(user, SPAN_NOTICE("You need materials to finish the wall!"))
 	else
 		take_damage(I.force * I.structure_damage_factor)
 		. = ..() // Calls /atom/movable/attackby(), which plays the sound, animation, sets a cooldown, but doesn't do damage
 
+
+//God forgive us
 /obj/structure/girder/proc/construct_wall(mob/user)
-	var/wall_type_to_make = /turf/wall
+	var/wall_type_to_make = /turf/wall/untinted/orion
 	if(is_low)
-		wall_type_to_make = /turf/wall/low
+		wall_type_to_make = /turf/wall/low/orion
+	else if(is_padded)
+		wall_type_to_make = /turf/wall/untinted/orion_reinforced/psych
 	else if(is_reinforced)
-		wall_type_to_make = /turf/wall/reinforced
+		wall_type_to_make = /turf/wall/untinted/orion_reinforced
 	else if(is_glass)
 		wall_type_to_make = /turf/wall/untinted/orion/window/basic
 	else if(is_rglass)
 		wall_type_to_make = /turf/wall/untinted/orion/window/reinforced
 	else if(is_wood)
 		wall_type_to_make = /turf/wall/untinted/orion/wood
+	else if(is_panel)
+		wall_type_to_make = /turf/wall/untinted/orion/panel
 	var/turf/turf_to_change = get_turf(src)
 	turf_to_change.ChangeTurf(wall_type_to_make)
 	var/turf/wall/created_wall = get_turf(src)

@@ -1,13 +1,13 @@
 //This is the cargo-est of cargo cult coding and kitbashing anyone has ever done and may God have mercy on us for it.
 
 /turf/wall/untinted/orion/window
-	icon_state = "paneglass_wall"
+	icon_state = "testglass_wall"
 	name = "glass wall"
-	desc = "Cheaper than it looks."
-	health = 150
-	max_health = 150
-	hardness = 30
-	wall_type = "paneglass_wall"
+	desc = "Part of the set, not for human consumption. "
+	health = 15000
+	max_health = 15000
+	hardness = 3000
+	wall_type = "testglass_wall"
 	opacity = FALSE
 	var/reinf = FALSE
 	var/shardtype = /obj/item/material/shard
@@ -117,7 +117,7 @@
 	return list(MATERIAL_GLASS = 5)
 
 /turf/wall/untinted/orion/window/reinforced
-	icon_state = "paneglass_wall"
+	icon_state = "reinfglass_wall"
 	name = "reinforced glass wall"
 	shardtype = /obj/item/material/shard
 	desc = "More durable than it looks."
