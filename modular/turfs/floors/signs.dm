@@ -7,7 +7,7 @@
 
 /obj/structure/sign/semiotic/attackby(obj/item/tool as obj, mob/user as mob)	//construction
 	if(istype(tool, /obj/item/tool/screwdriver) && isturf(user.loc))
-		to_chat(user, "You somehow destroy \the [S] with your [tool].")
+		to_chat(user, "You somehow destroy the sign with your [tool].")
 		qdel(src)
 	else ..()
 
