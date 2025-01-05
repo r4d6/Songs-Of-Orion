@@ -2881,7 +2881,9 @@
 #include "modular\reactor\fuel_rod_part.dm"
 #include "modular\reactor\misc.dm"
 #include "modular\reactor\reactor.dm"
+#include "modular\turfs\floors\decals.dm"
 #include "modular\turfs\floors\floorinng_premade.dm"
+#include "modular\turfs\floors\signs.dm"
 #include "modular\turfs\walls\walls.dm"
 #include "modular\turfs\walls\window_walls.dm"
 // END_INCLUDE
