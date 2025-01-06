@@ -23,16 +23,15 @@ By design, d1 is the smallest direction and d2 is the highest
 */
 
 var/list/possible_cable_coil_colours = list(
-		"Yellow" = "#b08b4f",
-		"Green" = "#487559",
-		"Violet" = "#a16fc3",
-		"Blue" = "#527d97",
-		"Orange" = "#af4d32",
-		"Aqua" = "#299491",
-		"White" = "#c2c1c0",
-		"Red" = "#812a3d"
-	)
-
+        "Yellow" = "#b08b4f",
+        "Green" = "#487559",
+        "Violet" = "#a16fc3",
+        "Blue" = "#527d97",
+        "Orange" = "#af4d32",
+        "Aqua" = "#299491",
+        "White" = "#c2c1c0",
+        "Red" = "#812a3d"
+    )
 
 /obj/structure/cable
 	layer = WIRE_LAYER //Above hidden pipes, GAS_PIPE_HIDDEN_LAYER
@@ -47,7 +46,7 @@ var/list/possible_cable_coil_colours = list(
 	maxHealth = 20
 	var/d1 = 0
 	var/d2 = 1
-	var/cable_color = "Red"
+	color = COLOR_RED_LIGHT
 	var/obj/machinery/power/breakerbox/breaker_box
 
 /obj/structure/cable/drain_power(var/drain_check, var/surge, var/amount = 0)
@@ -61,29 +60,28 @@ var/list/possible_cable_coil_colours = list(
 	return PN.draw_power(amount)
 
 /obj/structure/cable/yellow
-	cable_color = "Yellow"
+	color = COLOR_YELLOW
 
 /obj/structure/cable/green
-	cable_color = "Green"
+	color = COLOR_GREEN
 
 /obj/structure/cable/blue
-	cable_color = "Blue"
+	color = COLOR_BLUE
 
 /obj/structure/cable/pink
-	cable_color = "Pink"
+	color = COLOR_PINK
 
 /obj/structure/cable/orange
-	cable_color = "Orange"
+	color = COLOR_ORANGE
 
 /obj/structure/cable/cyan
-	cable_color = "Cyan"
+	color = COLOR_CYAN
 
 /obj/structure/cable/white
-	cable_color = "White"
+	color = COLOR_WHITE
 
-/obj/structure/cable/Initialize(mapload, ...)
-	. = ..()
-	color = possible_cable_coil_colours[cable_color] || possible_cable_coil_colours["Red"]
+/obj/structure/cable/New()
+	..()
 
 	// ensure d1 & d2 reflect the icon_state for entering and exiting cable
 
@@ -97,7 +95,6 @@ var/list/possible_cable_coil_colours = list(
 	if(level==1 && T) hide(!T.is_plating())
 	GLOB.cable_list += src //add it to the global cable list
 
-	return ..()
 
 /obj/structure/cable/Destroy()					// called when a cable is deleted
 	if(powernet)
@@ -517,7 +514,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	icon_state = "coil"
 	amount = MAXCOIL
 	max_amount = MAXCOIL
-	var/cable_color = "Red"
+	color = COLOR_RED
 	desc = "A coil of power cable."
 	throwforce = WEAPON_FORCE_HARMLESS
 	description_info = "Can link between z-levels by going on the upper level and clicking the empty space, and to below, looking up and clicking the space above"
@@ -544,11 +541,11 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	charge_costs = list(1)
 	spawn_frequency = 0
 
-/obj/item/stack/cable_coil/Initialize(loc, length = MAXCOIL, var/cable_color = null)
-	. = ..()
+/obj/item/stack/cable_coil/New(loc, length = MAXCOIL, var/param_color = null)
+	..()
 	src.amount = length
-	if (cable_color) // It should be red by default, so only recolor it if parameter was specified.
-		color = cable_color
+	if (param_color) // It should be red by default, so only recolor it if parameter was specified.
+		color = param_color
 	pixel_x = rand(-2,2)
 	pixel_y = rand(-2,2)
 	update_icon()
@@ -600,7 +597,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 
 /obj/item/stack/cable_coil/update_icon()
 	if (!color)
-		color = pick("#812a3d", "#527d97", "#487559", COLOR_WHITE, "#487559", "#a16fc3", "#b08b4f", "#299491")
+		color = pick(COLOR_RED, COLOR_BLUE, COLOR_LIME, COLOR_ORANGE, COLOR_WHITE, COLOR_PINK, COLOR_YELLOW, COLOR_CYAN)
 	if(amount == 1)
 		icon_state = "coil1"
 		name = "cable piece"
@@ -874,26 +871,26 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	update_wclass()
 
 /obj/item/stack/cable_coil/yellow
-	color = "#b08b4f"
+	color = COLOR_YELLOW
 
 /obj/item/stack/cable_coil/blue
-	color = "#527d97"
+	color = COLOR_BLUE
 
 /obj/item/stack/cable_coil/green
-	color = "#487559"
+	color = COLOR_LIME
 
 /obj/item/stack/cable_coil/pink
-	color = "#a16fc3"
+	color = COLOR_PINK
 
 /obj/item/stack/cable_coil/orange
-	color = "#af4d32"
+	color = COLOR_ORANGE
 
 /obj/item/stack/cable_coil/cyan
-	color = "#299491"
+	color = COLOR_CYAN
 
 /obj/item/stack/cable_coil/white
 	color = COLOR_WHITE
 
-/obj/item/stack/cable_coil/random/Initialize()
-	. = ..()
-	color = pick("#812a3d", "#527d97", "#487559", COLOR_WHITE, "#487559", "#a16fc3", "#b08b4f", "#299491")
+/obj/item/stack/cable_coil/random/New()
+	color = pick(COLOR_RED, COLOR_BLUE, COLOR_LIME, COLOR_WHITE, COLOR_PINK, COLOR_YELLOW, COLOR_CYAN)
+	..()
