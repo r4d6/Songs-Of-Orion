@@ -67,7 +67,6 @@
 							"You hear a knocking sound.")
 	return
 
-//TODO: Actually make this nonsense work
 /turf/wall/untinted/orion/window/proc/shatter(var/display_message = 1, var/explode = FALSE)
 	alpha = 0
 	if (explode)
