@@ -2,7 +2,7 @@
 
 /obj/effect/floor_decal/semiotic
 	name = "pressurized area"
-	icon = 'modular/turfs/floors/icon/decals_small.dmi'
+	icon = 'modular/turfs/floors/icons/decals_small.dmi'
 	icon_state = "pressure"
 	desc = "Pressurized area."
 	description_info = "The Semiotic Standard is a pictographic system older than recorded history and known by everyone."
@@ -282,7 +282,7 @@
 
 /obj/effect/floor_decal/semiotic/large
 	name = "pressurized area"
-	icon = 'modular/turfs/floors/icon/decals.dmi'
+	icon = 'modular/turfs/floors/icons/decals.dmi'
 	icon_state = "pressure"
 	desc = "Pressurized area."
 
