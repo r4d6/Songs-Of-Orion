@@ -60,7 +60,7 @@
 /obj/effect/floor_decal/semiotic/spacegrav
 	name = "EVA area"
 	icon_state = "spacegrav"
-	desc = "Vacuum exposed area with artifical gravity, suit required."
+	desc = "Vacuum exposed area with artificial gravity, suit required."
 
 /obj/effect/floor_decal/semiotic/space
 	name = "space"
@@ -203,7 +203,7 @@
 	desc = "Security station or checkpoint."
 
 /obj/effect/floor_decal/semiotic/marshal
-	name = "Mashals"
+	name = "Marshals"
 	icon_state = "marshal"
 	desc = "Solar Marshal office."
 
@@ -339,7 +339,7 @@
 /obj/effect/floor_decal/semiotic/large/spacegrav
 	name = "EVA area"
 	icon_state = "spacegrav"
-	desc = "Vacuum exposed area with artifical gravity, suit required."
+	desc = "Vacuum exposed area with artificial gravity, suit required."
 
 /obj/effect/floor_decal/semiotic/large/space
 	name = "space"

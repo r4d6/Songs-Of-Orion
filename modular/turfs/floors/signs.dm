@@ -65,7 +65,7 @@
 /obj/structure/sign/semiotic/spacegrav
 	name = "EVA area"
 	icon_state = "spacegrav"
-	desc = "Vacuum exposed area with artifical gravity, suit required."
+	desc = "Vacuum exposed area with artificial gravity, suit required."
 
 /obj/structure/sign/semiotic/space
 	name = "space"
@@ -208,7 +208,7 @@
 	desc = "Security station or checkpoint."
 
 /obj/structure/sign/semiotic/marshal
-	name = "Mashals"
+	name = "Marshals"
 	icon_state = "marshal"
 	desc = "Solar Marshal office."
 

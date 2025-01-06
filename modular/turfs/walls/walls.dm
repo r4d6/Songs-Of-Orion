@@ -23,7 +23,7 @@
 	return list(MATERIAL_PLASTEEL = 5)
 
 /turf/wall/untinted/test
-	name = "test artical wall"
+	name = "test article wall"
 	desc = "Back stage walls, not for sore eyes."
 	icon_state = "reinforced_wall"
 	icon = 'modular/turfs/walls/icons/walls.dmi'
