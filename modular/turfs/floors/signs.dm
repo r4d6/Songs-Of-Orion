@@ -2,7 +2,7 @@
 
 /obj/structure/sign/semiotic
 	name = "semiotic standard signage"
-	icon = 'modular/turfs/floors/icon/decals_small.dmi'
+	icon = 'modular/turfs/floors/icons/decals_small.dmi'
 	description_info = "The Semiotic Standard is a pictographic system older than recorded history and known by everyone."
 
 /obj/structure/sign/semiotic/attackby(obj/item/tool as obj, mob/user as mob)	//construction
