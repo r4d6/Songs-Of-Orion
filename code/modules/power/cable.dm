@@ -23,14 +23,15 @@ By design, d1 is the smallest direction and d2 is the highest
 */
 
 var/list/possible_cable_coil_colours = list(
-		"Yellow" = COLOR_YELLOW,
-		"Green" = COLOR_LIME,
-		"Pink" = COLOR_PINK,
-		"Blue" = COLOR_BLUE,
-		"Orange" = COLOR_ORANGE,
-		"Cyan" = COLOR_CYAN,
-		"Red" = COLOR_RED
-	)
+        "Yellow" = "#b08b4f",
+        "Green" = "#487559",
+        "Violet" = "#a16fc3",
+        "Blue" = "#527d97",
+        "Orange" = "#af4d32",
+        "Aqua" = "#299491",
+        "White" = "#c2c1c0",
+        "Red" = "#812a3d"
+    )
 
 /obj/structure/cable
 	layer = WIRE_LAYER //Above hidden pipes, GAS_PIPE_HIDDEN_LAYER
