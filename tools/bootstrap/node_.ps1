@@ -39,7 +39,7 @@ if ($OSVersion -gt 6.1) {
 	$NodeVersion = Extract-Variable -Path "$BaseDir\..\..\dependencies.sh" -Key "NODE_VERSION_COMPAT"
 }
 else {
-	$NodeVersion = Extract-Variable -Path "$BaseDir\..\..\dependencies.sh" -Key "NODE_VERSION_LTS"
+	$NodeVersion = Extract-Variable -Path "$BaseDir\..\..\dependencies.sh" -Key "NODE_VERSION_PRECISE"
 }
 
 $NodeSource = "https://nodejs.org/download/release/v$NodeVersion/win-x64/node.exe"
