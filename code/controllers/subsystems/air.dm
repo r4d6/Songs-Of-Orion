@@ -329,6 +329,8 @@ SUBSYSTEM_DEF(air)
 	#ifdef ZASDBG
 	ASSERT(isturf(A))
 	ASSERT(isturf(B))
+	if(istype(B, /turf/space))
+		return FALSE
 	#endif
 
 	var/ablock = A.c_airblock(B)
@@ -375,7 +377,7 @@ SUBSYSTEM_DEF(air)
 
 	var/direct = !(block & ZONE_BLOCKED)
 
-	if(!istype(B, /turf/space))
+	if(!istype(B, /turf/space) && B.is_simulated && A.is_simulated)
 		if(min(A.zone.contents.len, B.zone.contents.len) < ZONE_MIN_SIZE || (direct && (equivalent_pressure(A.zone, B.zone) || times_fired == 0)))
 			merge(A.zone, B.zone)
 			return
