@@ -2276,6 +2276,10 @@
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/item/contraband/poster/placed{
+	icon_state = "ironhammer";
+	pixel_x = 32
+	},
 /turf/floor/wood,
 /area/eris/command/commander)
 "afJ" = (
@@ -3350,6 +3354,10 @@
 /area/eris/crew_quarters/sleep)
 "aih" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/item/contraband/poster/placed{
+	icon_state = "ironhammer2";
+	pixel_x = 32
+	},
 /turf/floor/tiled/dark,
 /area/eris/security/exerooms)
 "aii" = (
@@ -23205,6 +23213,10 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
+/obj/item/contraband/poster/placed{
+	icon_state = "chrome";
+	pixel_x = -32
+	},
 /turf/floor/plating,
 /area/eris/maintenance/substation/section2)
 "bfd" = (
@@ -25651,6 +25663,10 @@
 "bkM" = (
 /obj/structure/table/standard,
 /obj/item/storage/box/bodybags,
+/obj/item/contraband/poster/placed{
+	icon_state = "chrome";
+	pixel_x = 32
+	},
 /turf/floor/tiled/white/brown_perforated,
 /area/eris/rnd/lab)
 "bkN" = (
@@ -32174,6 +32190,10 @@
 /obj/spawner/pack/gun_loot,
 /obj/spawner/pack/rare/low_chance,
 /obj/spawner/pack/rare/low_chance,
+/obj/item/contraband/poster/placed{
+	icon_state = "stonks";
+	pixel_x = 32
+	},
 /turf/floor/plating/under,
 /area/eris/maintenance/section3deck1central)
 "bAP" = (
@@ -44054,6 +44074,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/blue{
 	dir = 6
 	},
+/obj/item/contraband/poster/placed{
+	icon_state = "chrome";
+	pixel_y = 32
+	},
 /turf/floor/plating/under,
 /area/eris/maintenance/section3deck4central)
 "cdG" = (
@@ -47705,9 +47729,15 @@
 /area/eris/command/mbo)
 "cmk" = (
 /obj/structure/table/rack,
-/obj/item/electronics/circuitboard/communications,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
+	},
+/obj/item/electronics/circuitboard/shield_conduit{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/obj/item/electronics/circuitboard/communications{
+	pixel_y = -2
 	},
 /obj/structure/cable/green{
 	d1 = 1;
@@ -48683,6 +48713,10 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
+	},
+/obj/item/contraband/poster/placed{
+	icon_state = "roachburger";
+	pixel_x = -32
 	},
 /turf/floor/plating/under,
 /area/eris/maintenance/section3deck4central)
@@ -51919,6 +51953,10 @@
 /area/eris/maintenance/section4deck3port)
 "cxy" = (
 /obj/spawner/material/resources/rare/low_chance,
+/obj/item/contraband/poster/placed{
+	icon_state = "founders";
+	pixel_x = -32
+	},
 /turf/floor/tiled/techmaint,
 /area/eris/maintenance/oldtele)
 "cxz" = (
@@ -79619,6 +79657,10 @@
 /turf/wall/low/with_glass/smart,
 /area/eris/engineering/gravity_generator)
 "dPl" = (
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
+	},
 /turf/floor/tiled/steel/gray_platform,
 /area/eris/engineering/shield_generator)
 "dPm" = (
@@ -79696,11 +79738,22 @@
 /turf/floor/tiled/steel/gray_perforated,
 /area/eris/engineering/shield_generator)
 "dPx" = (
+/obj/machinery/power/shipside/shield_generator/hull/installed,
 /obj/structure/cable/green{
-	d2 = 2;
-	icon_state = "0-2"
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
 	},
-/obj/machinery/power/shield_generator/hull/installed,
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/floor/tiled/steel/gray_platform,
 /area/eris/engineering/shield_generator)
 "dPy" = (
@@ -97691,6 +97744,16 @@
 /obj/structure/disposalpipe/segment,
 /turf/floor/tiled/dark/golden,
 /area/eris/neotheology/churchcorridor)
+"grn" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/spawner/junk/low_chance,
+/obj/spawner/junk/low_chance,
+/obj/item/contraband/poster/placed{
+	icon_state = "founders";
+	pixel_y = 32
+	},
+/turf/floor/plating/under,
+/area/eris/maintenance/section4deck1central)
 "grN" = (
 /obj/machinery/door/airlock/maintenance_common{
 	name = "Service Maintenance";
@@ -99685,11 +99748,22 @@
 /turf/floor/reinforced/almost_airless,
 /area/eris/engineering/propulsion/left)
 "kaS" = (
+/obj/machinery/power/shipside/long_range_scanner/hull/installed,
 /obj/structure/cable/green{
-	d2 = 2;
-	icon_state = "0-2"
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
 	},
-/obj/machinery/power/long_range_scanner/hull/installed,
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/floor/tiled/steel/gray_platform,
 /area/eris/engineering/long_range_scanner)
 "kaZ" = (
@@ -99987,6 +100061,13 @@
 /obj/structure/kitchenspike,
 /turf/floor/tiled/white/brown_perforated,
 /area/eris/crew_quarters/kitchen_freezer)
+"kFz" = (
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/turf/floor/tiled/steel/gray_platform,
+/area/eris/engineering/long_range_scanner)
 "kFA" = (
 /obj/machinery/door/firedoor,
 /turf/wall/low/with_glass/smart,
@@ -101749,6 +101830,13 @@
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /turf/floor/plating/under,
 /area/eris/maintenance/section4deck5port)
+"orh" = (
+/obj/structure/cable/green{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/turf/floor/tiled/steel/gray_platform,
+/area/eris/engineering/shield_generator)
 "orM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
@@ -102167,6 +102255,13 @@
 	},
 /turf/floor/tiled/steel,
 /area/eris/hallway/side/section3starboard)
+"oYo" = (
+/obj/item/contraband/poster/placed{
+	icon_state = "paramedic";
+	pixel_y = -32
+	},
+/turf/floor/tiled/white/techfloor,
+/area/eris/medical/medeva)
 "oYV" = (
 /obj/spawner/junk/low_chance,
 /obj/spawner/pack/machine,
@@ -103490,6 +103585,15 @@
 /obj/machinery/shield_diffuser,
 /turf/floor/hull,
 /area/eris/engineering/wastingroom)
+"rKX" = (
+/obj/structure/bed/padded,
+/obj/item/bedsheet/blue,
+/obj/item/contraband/poster/placed{
+	icon_state = "ironhammer";
+	pixel_y = 32
+	},
+/turf/floor/tiled/dark/gray_platform,
+/area/eris/security/barracks)
 "rLq" = (
 /obj/structure/table/standard,
 /obj/machinery/cooking_with_jane/grill,
@@ -103761,6 +103865,14 @@
 /obj/machinery/disposal,
 /turf/floor/tiled/dark/gray_platform,
 /area/eris/crew_quarters/janitor)
+"seZ" = (
+/obj/spawner/junk/low_chance,
+/obj/item/contraband/poster/placed{
+	icon_state = "excel2";
+	pixel_y = 32
+	},
+/turf/floor/tiled/techmaint,
+/area/eris/maintenance/section2deck1port)
 "sfs" = (
 /obj/machinery/power/nt_obelisk,
 /turf/floor/grass,
@@ -104638,6 +104750,10 @@
 /area/eris/crew_quarters/kitchen_storage)
 "tCG" = (
 /obj/machinery/camera/network/engineering,
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
+	},
 /turf/floor/tiled/steel/gray_platform,
 /area/eris/engineering/long_range_scanner)
 "tEu" = (
@@ -105360,6 +105476,13 @@
 	},
 /turf/floor/tiled/steel/gray_perforated,
 /area/eris/engineering/long_range_scanner)
+"uQK" = (
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/turf/floor/tiled/steel/gray_platform,
+/area/eris/engineering/shield_generator)
 "uUD" = (
 /obj/machinery/atmospherics/valve/open{
 	dir = 4;
@@ -105443,6 +105566,17 @@
 	},
 /turf/floor/tiled/steel/gray_platform,
 /area/eris/engineering/engine_room)
+"vaH" = (
+/obj/spawner/scrap/dense/low_chance,
+/obj/spawner/scrap/dense/low_chance,
+/obj/spawner/scrap/dense/low_chance,
+/obj/spawner/scrap/dense/low_chance,
+/obj/item/contraband/poster/placed{
+	icon_state = "excel1";
+	pixel_x = 32
+	},
+/turf/floor/tiled/techmaint,
+/area/eris/maintenance/section2deck1port)
 "vci" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -106776,6 +106910,13 @@
 /obj/structure/disposalpipe/up,
 /turf/floor/plating/under,
 /area/eris/maintenance/section3deck4port)
+"xDD" = (
+/obj/structure/cable/green{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/turf/floor/tiled/steel/gray_platform,
+/area/eris/engineering/long_range_scanner)
 "xDO" = (
 /obj/item/device/radio/intercom{
 	dir = 4;
@@ -171497,7 +171638,7 @@ aad
 aaa
 aaa
 aaf
-aRP
+rKX
 aSE
 aSQ
 aTr
@@ -241852,7 +241993,7 @@ eFc
 eCf
 doo
 dpt
-dpt
+oYo
 dvi
 abF
 abF
@@ -283867,7 +284008,7 @@ anQ
 anQ
 anQ
 anQ
-aof
+seZ
 ezf
 dQZ
 dNZ
@@ -284268,7 +284409,7 @@ anQ
 anQ
 anQ
 anQ
-dAJ
+vaH
 dAJ
 anQ
 dWy
@@ -289165,7 +289306,7 @@ ekg
 ekW
 elw
 elE
-elG
+grn
 elG
 elG
 elG
@@ -292182,7 +292323,7 @@ dXi
 abF
 dKs
 dKs
-dPl
+uQK
 ezX
 dOT
 eQb
@@ -292383,7 +292524,7 @@ dXi
 dXi
 abF
 dKs
-dPl
+orh
 dPx
 dPA
 dPG
@@ -293600,7 +293741,7 @@ abF
 abF
 abF
 peB
-xoq
+xDD
 kaS
 sbX
 oAL
@@ -293803,7 +293944,7 @@ abF
 abF
 peB
 peB
-xoq
+kFz
 uPp
 sBN
 oUD
