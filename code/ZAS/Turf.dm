@@ -54,7 +54,7 @@
 
 		var/previously_open = open_directions
 		open_directions = 0
-		var/list/postponed
+		var/list/postponed = list()
 		#ifdef ZLEVELS
 		for(var/d = 1, d < 64, d *= 2)
 		#else
@@ -96,8 +96,6 @@
 						//    we are blocking them and not blocking ourselves - this prevents tiny zones from forming on doorways.
 						if(((block & ZONE_BLOCKED) && !(r_block & ZONE_BLOCKED)) || ((r_block & ZONE_BLOCKED) && !(s_block & ZONE_BLOCKED)))
 							//Postpone this tile rather than exit, since a connection can still be made.
-							if(!postponed)
-								postponed = list()
 							postponed.Add(neighbour_turf)
 						else
 							neighbour_turf.zone.add(src)
@@ -106,6 +104,10 @@
 							#endif
 					else if(neighbour_turf.zone != zone)
 						SSair.connect(src, neighbour_turf)
+			else if(zone)
+				SSair.connect(src, neighbour_turf)
+			else // This tile does not yet have a valid zone, but likely to get one from other neighbours
+				postponed.Add(neighbour_turf)
 
 		if(!TURF_HAS_VALID_ZONE(src)) //Still no zone, make a new one.
 			var/zone/newzone = new/zone()
@@ -272,6 +274,30 @@
 	if(!air) air = new/datum/gas_mixture
 	air.copy_from(zone.air)
 	air.group_multiplier = 1
+
+/turf/proc/reset_air()
+	QDEL_NULL(fire)
+	var/list/initial_gas = new
+
+	var/initial_oxygen = initial(oxygen)
+	if(initial_oxygen)
+		initial_gas["oxygen"] = initial_oxygen
+
+	var/initial_carbon_dioxide = initial(carbon_dioxide)
+	if(initial_carbon_dioxide )
+		initial_gas["carbon_dioxide"] = initial_carbon_dioxide
+
+	var/initial_nitrogen = initial(nitrogen)
+	if(initial_nitrogen)
+		initial_gas["nitrogen"] = initial_nitrogen
+
+	var/initial_plasma = initial(plasma)
+	if(initial_plasma )
+		initial_gas["plasma"] = initial_plasma
+
+	air.gas = initial_gas
+	air.temperature = initial(temperature)
+	air.update_values()
 
 
 // LINDA proc placeholder, used for compatibility with some tgstation code
