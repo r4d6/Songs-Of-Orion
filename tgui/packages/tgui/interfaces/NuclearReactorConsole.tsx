@@ -1,7 +1,15 @@
-import { useBackend } from '../backend';
+import { useBackend, useSharedState } from '../backend';
 import { toFixed } from 'common/math';
-import { Button, LabeledList, ProgressBar, Section, Slider } from '../components';
+import {
+  Button,
+  LabeledList,
+  ProgressBar,
+  Section,
+  Slider,
+  Tabs,
+} from '../components';
 import { Window } from '../layouts';
+import { Gasmix, GasmixParser } from './common/GasmixParser';
 
 const logScale = (value) => Math.log2(16 + Math.max(0, value)) - 4;
 
@@ -35,26 +43,19 @@ export const NuclearReactorConsole = (props, context) => {
     control_average,
     temperature,
     cutoffTemp,
-    gas_input,
-    gas_output,
-    fuelRods,
-    controlRods,
   }: {
     integrity: number;
     control_average: number;
     temperature: number;
     cutoffTemp: number;
-    gas_input: unknown;
-    gas_output: unknown;
-    fuelRods: fuelRod[];
-    controlRods: controlRod[];
   } = data;
+  const [tab, setTab] = useSharedState(context, 'tab', 1);
   return (
     <Window resizable>
       <Window.Content scrollable>
         <Section title="Reactor status">
           <LabeledList>
-            <LabeledList.Item label="Integrity">
+            <LabeledList.Item label="Stack Integrity">
               <ProgressBar
                 value={integrity / 100}
                 ranges={{
@@ -64,7 +65,7 @@ export const NuclearReactorConsole = (props, context) => {
                 }}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Control Average">
+            <LabeledList.Item label="Reaction Moderation">
               <Slider
                 value={control_average}
                 minValue={0}
@@ -89,11 +90,12 @@ export const NuclearReactorConsole = (props, context) => {
                   good: [logScale(100), logScale(300)],
                   average: [logScale(300), logScale(cutoffTemp)],
                   bad: [logScale(cutoffTemp), Infinity],
-                }}>
+                }}
+              >
                 {toFixed(temperature, 2) + ' K'}
               </ProgressBar>
             </LabeledList.Item>
-            <LabeledList.Item label="Reactor Shutdown">
+            <LabeledList.Item label="Reactor Trip">
               <Button
                 color="bad"
                 content="SCRAM"
@@ -102,81 +104,162 @@ export const NuclearReactorConsole = (props, context) => {
             </LabeledList.Item>
           </LabeledList>
         </Section>
-        <Section title="Fuel Rods">
-          {fuelRods !== null ? (
-            fuelRods.map((fr, i) => {
-              return RenderFuelRods(fr, i);
-            })
-          ) : (
-            <p>No Fuel Rods Found!</p>
-          )}
+        <Section>
+          <Tabs>
+            <Tabs.Tab
+              icon="atom"
+              lineHeight="23px"
+              selected={tab === 1}
+              onClick={() => setTab(1)}
+            >
+              Fissile Materials
+            </Tabs.Tab>
+            <Tabs.Tab
+              icon="list"
+              lineHeight="23px"
+              selected={tab === 2}
+              onClick={() => setTab(2)}
+            >
+              Moderator Status
+            </Tabs.Tab>
+            <Tabs.Tab
+              icon="cloud"
+              lineHeight="23px"
+              selected={tab === 3}
+              onClick={() => setTab(3)}
+            >
+              Fluid Dynamics
+            </Tabs.Tab>
+          </Tabs>
+          {tab === 1 && <ReactorFuelRods />}
+          {tab === 2 && <ReactorControlRods />}
+          {tab === 3 && <ReactorFluidDynamics />}
         </Section>
-        <Section title="Control Rods">
+        {/* <Section title="Control Rods">
           {controlRods !== null ? (
             controlRods.map((cr, i) => {
-              return RenderControlRods(cr, i, act);
+              ControlRods(cr, i, act);
             })
           ) : (
             <p>No Control Rods in Data</p>
           )}
-        </Section>
+        </Section> */}
       </Window.Content>
     </Window>
   );
 };
 
-function RenderFuelRods(fR: fuelRod, index: number) {
-  const low = Math.floor(fR.melting_point * 0.15);
-  const med = Math.floor(fR.melting_point * 0.5);
-  const high = Math.floor(fR.melting_point * 0.9);
-  const bad = Math.floor(fR.melting_point * 1.2);
+const ReactorFuelRods = (props, context) => {
+  const { data } = useBackend(context);
+  const { fuelRods }: { fuelRods: fuelRod[] } = data;
+
   return (
     <LabeledList>
-      <LabeledList.Item label={`Rod #: ${index + 1}`}>
-        <h3>Fissile Material</h3>
-        <ProgressBar
-          value={fR.life}
-          minValue={0}
-          maxValue={100}
-          ranges={{
-            bad: [-Infinity, 25],
-            average: [25, 50],
-            good: [50, 90],
-            teal: [90, Infinity],
-          }}>
-          {toFixed(fR.life, 2) + ' %'}
-        </ProgressBar>
-        <h3>Temperature</h3>
-        <ProgressBar
-          value={logScale(fR.temperature)}
-          minValue={0}
-          maxValue={logScale(bad)}
-          ranges={{
-            teal: [-Infinity, logScale(low)],
-            good: [logScale(low), logScale(med)],
-            average: [logScale(med), logScale(high)],
-            bad: [logScale(high), Infinity],
-          }}>
-          {toFixed(fR.temperature, 2) + ' K'}
-        </ProgressBar>
-      </LabeledList.Item>
+      {fuelRods.map((fR, index) => {
+        const low = Math.floor(fR.melting_point * 0.15);
+        const med = Math.floor(fR.melting_point * 0.5);
+        const high = Math.floor(fR.melting_point * 0.9);
+        const bad = Math.floor(fR.melting_point * 1.2);
+        return (
+          <LabeledList.Item
+            label={`Rod #${index + 1}`}
+            key={`FR-${index.toString()}`}
+          >
+            <h3>Fissile Material</h3>
+            <ProgressBar
+              value={fR.life}
+              minValue={0}
+              maxValue={100}
+              ranges={{
+                bad: [-Infinity, 25],
+                average: [25, 50],
+                good: [50, 90],
+                teal: [90, Infinity],
+              }}
+            >
+              {toFixed(fR.life, 2) + ' %'}
+            </ProgressBar>
+            <ProgressBar
+              value={logScale(fR.temperature)}
+              minValue={0}
+              maxValue={logScale(bad)}
+              ranges={{
+                bad: [logScale(high), Infinity],
+                average: [logScale(med), logScale(high)],
+                good: [logScale(low), logScale(med)],
+                teal: [-Infinity, logScale(low)],
+              }}
+            >
+              {toFixed(fR.temperature, 2) + ' K'}
+            </ProgressBar>
+          </LabeledList.Item>
+        );
+      })}
     </LabeledList>
   );
-}
+};
 
-function RenderControlRods(cR: controlRod, index: number, act: void) {
+const ReactorControlRods = (props, context) => {
+  const { data } = useBackend(context);
+  const { controlRods }: { controlRods: controlRod[] } = data;
   return (
     <div>
-      <p>Rod #: {index + 1}</p>
-      <p>
-        Height:
-        <Slider
-          minValue={cR.minHeight}
-          maxValue={cR.maxHeight}
-          value={cR.height}
-          disabled
-        />
-      </p>
+      <h3>Moderator Retraction</h3>
+      <LabeledList>
+        {controlRods.map((cR, index) => {
+          return (
+            <LabeledList.Item
+              label={`Rod #${index + 1}`}
+              key={`CR-${index.toString()}`}
+            >
+              <ProgressBar
+                minValue={cR.minHeight}
+                maxValue={cR.maxHeight}
+                value={cR.height}
+                ranges={{
+                  bad: [-Infinity, 25],
+                  average: [25, 50],
+                  good: [50, 90],
+                  teal: [90, Infinity],
+                }}
+              >
+                {toFixed(cR.height, 2) + ' %'}
+              </ProgressBar>
+            </LabeledList.Item>
+          );
+        })}
+      </LabeledList>
     </div>
   );
-}
+};
+
+type simpleGas = {
+  gas: any;
+  temperature: number; // kelvin
+};
+
+const ReactorFluidDynamics = (props, context) => {
+  const { data } = useBackend(context);
+  const {
+    gas_input,
+    gas_output,
+    gas_storage,
+  }: { gas_input: simpleGas; gas_output: simpleGas; gas_storage: simpleGas } =
+    data as any;
+  return (
+    <div>
+      <Section title="Input Gas">
+        {gas_input.gas ?? 'unknown'}
+        {gas_input.temperature} K
+      </Section>
+      <Section title="Internal Storage">
+        {gas_storage.gas ?? 'unknown'}
+        {gas_storage.temperature} K
+      </Section>
+      <Section title="Output Gas">
+        {gas_output.gas ?? 'unknown'}
+        {gas_output.temperature} K
+      </Section>
+    </div>
+  );
+};
