@@ -9,7 +9,6 @@ import {
   Tabs,
 } from '../components';
 import { Window } from '../layouts';
-import { Gasmix, GasmixParser } from './common/GasmixParser';
 
 const logScale = (value) => Math.log2(16 + Math.max(0, value)) - 4;
 
@@ -36,7 +35,7 @@ interface controlRod {
 }
 
 export const NuclearReactorConsole = (props, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<any>(context);
   // Extract `health` and `color` variables from the `data` object.
   const {
     integrity,
@@ -150,7 +149,7 @@ export const NuclearReactorConsole = (props, context) => {
 };
 
 const ReactorFuelRods = (props, context) => {
-  const { data } = useBackend(context);
+  const { data } = useBackend<any>(context);
   const { fuelRods }: { fuelRods: fuelRod[] } = data;
 
   return (
@@ -200,7 +199,7 @@ const ReactorFuelRods = (props, context) => {
 };
 
 const ReactorControlRods = (props, context) => {
-  const { data } = useBackend(context);
+  const { data } = useBackend<any>(context);
   const { controlRods }: { controlRods: controlRod[] } = data;
   return (
     <div>
@@ -239,7 +238,7 @@ type simpleGas = {
 };
 
 const ReactorFluidDynamics = (props, context) => {
-  const { data } = useBackend(context);
+  const { data } = useBackend<any>(context);
   const {
     gas_input,
     gas_output,
