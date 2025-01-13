@@ -167,6 +167,8 @@
 	for(var/obj/machinery/multistructure/nuclear_reactor_part/control_rod/CR in control_spots)
 		CR.height = 0
 		CR.update_icon()
+	var/location = sanitize((get_area(wall_input))?.name)
+	radio.autosay("WARNING! Reactor at [location] has initiated SCRAM!", "Nuclear Monitor")
 	return
 
 /datum/multistructure/nuclear_reactor/proc/Set_Control_Rod_Height(var/target_height)
