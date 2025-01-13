@@ -29,8 +29,9 @@
 	data["control_average"] = Reactor.control_average
 	data["temperature"] = Reactor.temperature
 	data["cutoffTemp"] = Reactor.cutoff_temp
-	data["gas_input"] = Reactor.gas_input
-	data["gas_output"] = Reactor.gas_output
+	data["gas_input"] = list()
+	data["gas_output"] = list()
+	data["gas_storage"] = list()
 	data["controlRods"] = list()
 	data["fuelRods"] = list()
 
@@ -54,6 +55,19 @@
 				"insertion" = FR.fuel.insertion,
 		))
 
+	data["gas_input"] += list(
+		"temperature" = Reactor.gas_input.temperature,
+		"gas" = Reactor.gas_input.gas
+	)
+
+	data["gas_storage"] += list(
+		"temperature" = Reactor.gas_storage.temperature,
+		"gas" = Reactor.gas_storage.gas
+	)
+	data["gas_output"] += list(
+		"temperature" = Reactor.gas_output.temperature,
+		"gas" = Reactor.gas_output.gas
+	)
 
 	return data
 
