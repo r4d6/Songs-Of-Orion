@@ -26,7 +26,6 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 /datum/category_item/player_setup_item/physical/body
 	name = "Body"
 	sort_order = 2
-	var/hide_species = TRUE
 
 /datum/category_item/player_setup_item/physical/body/load_character(var/savefile/S)
 	from_file(S["species"], pref.species)
@@ -91,6 +90,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	. += "(<a href='?src=\ref[src];random=1'>&reg;</A>)"
 	. += "<br>"
 
+	. += "Species: <a href='?src=\ref[src];species=1'>[pref.species]</a><br>"
+
 	. += "Blood Type: <a href='?src=\ref[src];blood_type=1'>[pref.b_type]</a><br>"
 
 	. += "Base Colour: <a href='?src=\ref[src];base_skin=1'>[pref.s_base]</a><br>"
@@ -133,9 +134,11 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 /datum/category_item/player_setup_item/physical/body/OnTopic(var/href,var/list/href_list, var/mob/user)
 
 	var/datum/species/mob_species = all_species[pref.species]
-	if(href_list["toggle_species_verbose"])
-		hide_species = !hide_species
-		return TOPIC_REFRESH
+	if(href_list["species"])
+		var/new_species = input(user, "Choose your character's species:", CHARACTER_PREFERENCE_INPUT_TITLE) as null|anything in playable_species
+		if(new_species && CanUseTopic(user))
+			pref.species = new_species
+			return TOPIC_REFRESH
 
 	else if(href_list["random"])
 		pref.randomize_appearance_and_body_for()
