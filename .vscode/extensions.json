@@ -1,3 +1,15 @@
 {
-	"recommendations": ["esbenp.prettier-vscode"]
+	"recommendations": [
+		"esbenp.prettier-vscode",
+		"platymuus.dm-langclient",
+		"editorconfig.editorconfig",
+		"arcanis.vscode-zipfs",
+		"dbaeumer.vscode-eslint",
+		"stylemistake.auto-comment-blocks",
+		"donkie.vscode-tgstation-test-adapter",
+		"anturk.dmi-editor",
+		"aaron-bond.better-comments",
+		"ss13.opendream",
+		"tamasfe.even-better-toml"
+	]
 }
