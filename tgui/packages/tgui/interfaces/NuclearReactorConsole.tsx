@@ -1,7 +1,9 @@
 import { useBackend, useSharedState } from '../backend';
-import { toFixed } from 'common/math';
+import { toFixed, round } from 'common/math';
 import {
   Button,
+  Knob,
+  LabeledControls,
   LabeledList,
   ProgressBar,
   Section,
@@ -49,6 +51,33 @@ export const NuclearReactorConsole = (props, context) => {
     cutoffTemp: number;
   } = data;
   const [tab, setTab] = useSharedState(context, 'tab', 1);
+
+  const [hundredths, setHundredths] = useSharedState(
+    context,
+    'reactor_hundredths',
+    control_average ? round((control_average * 100) % 10, 0) : 0,
+  );
+  const [tenths, setTenths] = useSharedState(
+    context,
+    'reactor_tenths',
+    control_average ? round((control_average * 10) % 10, 0) : 0,
+  );
+  const [ones, setOnes] = useSharedState(
+    context,
+    'reactor_ones',
+    control_average ? round(control_average % 10, 0) : 0,
+  );
+  const [tens, setTens] = useSharedState(
+    context,
+    'reactor_tens',
+    control_average ? round(control_average / 10, 0) : 0,
+  );
+
+  function setReactorHeight() {
+    const value = tens * 10 + ones + tenths * 0.1 + hundredths * 0.01;
+    act('set_target_height', { target_height: value });
+  }
+
   return (
     <Window resizable>
       <Window.Content scrollable>
@@ -65,7 +94,66 @@ export const NuclearReactorConsole = (props, context) => {
               />
             </LabeledList.Item>
             <LabeledList.Item label="Reaction Moderation">
-              <Slider
+              <LabeledControls>
+                <LabeledControls.Item label={tens}>
+                  <Knob
+                    minValue={0}
+                    maxValue={10}
+                    step={1}
+                    value={tens}
+                    onChange={(_, v) => {
+                      setTens(v), setReactorHeight();
+                    }}
+                    onDrag={(_, v) => {
+                      setTens(v), setReactorHeight();
+                    }}
+                  />
+                </LabeledControls.Item>
+                <LabeledControls.Item label={ones}>
+                  <Knob
+                    minValue={0}
+                    maxValue={9}
+                    step={1}
+                    value={ones}
+                    onChange={(_, v) => {
+                      setOnes(v), setReactorHeight();
+                    }}
+                    onDrag={(_, v) => {
+                      setOnes(v), setReactorHeight();
+                    }}
+                  />
+                </LabeledControls.Item>
+                <LabeledControls.Item label="." />
+                <LabeledControls.Item label={tenths}>
+                  <Knob
+                    minValue={0}
+                    maxValue={9}
+                    step={1}
+                    value={tenths}
+                    onChange={(_, v) => {
+                      setTenths(v), setReactorHeight();
+                    }}
+                    onDrag={(_, v) => {
+                      setTenths(v), setReactorHeight();
+                    }}
+                  />
+                </LabeledControls.Item>
+                <LabeledControls.Item label={hundredths}>
+                  <Knob
+                    minValue={0}
+                    maxValue={9}
+                    step={1}
+                    value={hundredths}
+                    onChange={(_, v) => {
+                      setHundredths(v), setReactorHeight();
+                    }}
+                    onDrag={(_, v) => {
+                      setHundredths(v), setReactorHeight();
+                    }}
+                  />
+                </LabeledControls.Item>
+              </LabeledControls>
+              {/* <Slider
                 value={control_average}
                 minValue={0}
                 maxValue={100}
@@ -77,7 +165,7 @@ export const NuclearReactorConsole = (props, context) => {
                 onChange={(e, value) =>
                   act('set_target_height', { target_height: value })
                 }
-              />
+              /> */}
             </LabeledList.Item>
             <LabeledList.Item label="Temperature">
               <ProgressBar
@@ -96,6 +184,7 @@ export const NuclearReactorConsole = (props, context) => {
             </LabeledList.Item>
             <LabeledList.Item label="Reactor Trip">
               <Button
+                disabled={control_average == 0}
                 color="bad"
                 content="SCRAM"
                 onClick={() => act('scram')}
