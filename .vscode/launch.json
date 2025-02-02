@@ -15,6 +15,6 @@
 			"preLaunchTask": "Build All",
 			"dmb": "${workspaceFolder}/${command:CurrentDMB}",
 			"dreamDaemon": true
-		},
+		}
 	]
 }
