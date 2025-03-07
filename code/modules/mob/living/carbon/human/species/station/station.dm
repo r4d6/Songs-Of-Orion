@@ -18,3 +18,17 @@
 
 /datum/species/human/get_bodytype()
 	return SPECIES_HUMAN
+
+/datum/species/human/solar
+	name = SPECIES_HUMAN_SOLAR
+	name_plural = "Solar Humans"
+	icobase = 'icons/mob/human_races/r_slime.dmi'
+	deform = 'icons/mob/human_races/r_slime.dmi'
+	perks = list(PERK_SOLAR)
+
+/datum/species/human/exile
+	name = SPECIES_HUMAN_EXILE
+	name_plural = "Exile Humans"
+	icobase = 'icons/mob/human_races/r_slime.dmi'
+	deform = 'icons/mob/human_races/r_slime.dmi'
+	perks = list(PERK_EXILE)

@@ -164,6 +164,8 @@
 
 	var/pass_flags = 0
 
+	var/list/perks = list()
+
 /datum/species/proc/get_eyes(mob/living/carbon/human/H)
 	return
 
