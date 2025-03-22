@@ -192,9 +192,9 @@
 	log_admin("LOG: Rigged power cell explosion, last touched by [fingerprintslast]")
 	message_admins("LOG: Rigged power cell explosion, last touched by [fingerprintslast]")
 
-	qdel(src)
-
 	explosion(T, explosion_power, explosion_falloff)
+
+	qdel(src)
 
 /obj/item/cell/proc/corrupt()
 	charge /= 2
