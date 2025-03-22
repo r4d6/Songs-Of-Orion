@@ -56,3 +56,7 @@
 #define PERK_COOLDOWN_REASON /datum/perk/cooldown/reason
 #define PERK_COOLDOWN_EXERTION /datum/perk/cooldown/exertion
 #define PERK_NJOY /datum/perk/njoy
+
+// Racial Perks
+#define PERK_SOLAR /datum/perk/solar
+#define PERK_EXILE /datum/perk/exile
