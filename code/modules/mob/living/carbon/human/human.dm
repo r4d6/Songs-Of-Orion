@@ -959,6 +959,12 @@ var/list/rank_prefix = list(\
 	if(species.holder_type)
 		holder_type = species.holder_type
 
+	if(species.perks)
+		if(!stats)
+			stats = new /datum/stat_holder(src)
+		for(var/P in species.perks)
+			stats.addPerk(P)
+
 	icon_state = lowertext(species.name)
 
 	if(species.has_process.len)

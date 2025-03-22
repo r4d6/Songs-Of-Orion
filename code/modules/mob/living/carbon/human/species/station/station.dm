@@ -18,3 +18,23 @@
 
 /datum/species/human/get_bodytype()
 	return SPECIES_HUMAN
+
+/datum/species/human/solar
+	name = SPECIES_HUMAN_SOLAR
+	name_plural = "Solar Humans"
+	icobase = 'icons/mob/human_races/solar/r_human.dmi'
+	deform = 'icons/mob/human_races/r_def_human.dmi'
+	damage_overlays = 'icons/mob/human_races/solar/dam_human.dmi'
+	damage_mask = 'icons/mob/human_races/solar/dam_mask_human.dmi'
+	blood_mask = 'icons/mob/human_races/masks/blood_human.dmi'
+	perks = list(PERK_SOLAR)
+
+/datum/species/human/exile
+	name = SPECIES_HUMAN_EXILE
+	name_plural = "Exile Humans"
+	icobase = 'icons/mob/human_races/exile/r_exile.dmi'
+	deform = 'icons/mob/human_races/r_def_human.dmi'
+	damage_overlays = 'icons/mob/human_races/exile/dam_exile.dmi'
+	damage_mask = 'icons/mob/human_races/exile/dam_mask_exile.dmi'
+	blood_mask = 'icons/mob/human_races/masks/blood_human.dmi'
+	perks = list(PERK_EXILE)

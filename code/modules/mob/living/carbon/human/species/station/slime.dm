@@ -13,7 +13,7 @@
 	total_health = 200
 	brute_mod = 1.2
 	burn_mod = 0.7
-	spawn_flags = IS_RESTRICTED
+	spawn_flags = CAN_JOIN
 	siemens_coefficient = 3 //conductive
 	darksight = 3
 

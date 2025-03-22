@@ -14,8 +14,6 @@
 #define PERCENT(val) (round((val)*100, 0.1))
 #define CLAMP01(x) (CLAMP(x, 0, 1))
 
-#define SIGN(x) ( x < 0 ? -1  : 1 )
-
 #define CEILING(x, y) ( -round(-(x) / (y)) * (y) )
 
 #define DIST_EUCLIDIAN(x1,y1,x2,y2) (sqrt((x1-x2)**2 + (y1-y2)**2))
