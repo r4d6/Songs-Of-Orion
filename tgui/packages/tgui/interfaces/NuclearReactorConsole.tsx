@@ -184,7 +184,7 @@ export const NuclearReactorConsole = (props, context) => {
             </LabeledList.Item>
             <LabeledList.Item label="Reactor Trip">
               <Button
-                disabled={control_average == 0}
+                disabled={control_average === 0}
                 color="bad"
                 content="SCRAM"
                 onClick={() => act('scram')}
@@ -249,10 +249,7 @@ const ReactorFuelRods = (props, context) => {
         const high = Math.floor(fR.melting_point * 0.9);
         const bad = Math.floor(fR.melting_point * 1.2);
         return (
-          <LabeledList.Item
-            label={`Rod #${index + 1}`}
-            key={`FR-${index.toString()}`}
-          >
+          <LabeledList.Item label={`Rod #${index + 1}`}>
             <h3>Fissile Material</h3>
             <ProgressBar
               value={fR.life}
@@ -341,7 +338,7 @@ const ReactorFluidDynamics = (props, context) => {
         {gas_input.temperature} K
       </Section>
       <Section title="Internal Storage">
-        {gas_storage.gas.toString() ?? 'unknown'}
+        {gas_storage.gas ?? 'unknown'}
         {gas_storage.temperature} K
       </Section>
       <Section title="Output Gas">
