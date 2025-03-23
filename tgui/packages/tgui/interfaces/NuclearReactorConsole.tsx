@@ -341,7 +341,7 @@ const ReactorFluidDynamics = (props, context) => {
         {gas_input.temperature} K
       </Section>
       <Section title="Internal Storage">
-        {gas_storage.gas ?? 'unknown'}
+        {gas_storage.gas.toString() ?? 'unknown'}
         {gas_storage.temperature} K
       </Section>
       <Section title="Output Gas">
