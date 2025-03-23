@@ -7,7 +7,6 @@ import {
   LabeledList,
   ProgressBar,
   Section,
-  Slider,
   Tabs,
 } from '../components';
 import { Window } from '../layouts';
@@ -102,10 +101,12 @@ export const NuclearReactorConsole = (props, context) => {
                     step={1}
                     value={tens}
                     onChange={(_, v) => {
-                      setTens(v), setReactorHeight();
+                      setTens(v);
+                      setReactorHeight();
                     }}
                     onDrag={(_, v) => {
-                      setTens(v), setReactorHeight();
+                      setTens(v);
+                      setReactorHeight();
                     }}
                   />
                 </LabeledControls.Item>
@@ -116,10 +117,12 @@ export const NuclearReactorConsole = (props, context) => {
                     step={1}
                     value={ones}
                     onChange={(_, v) => {
-                      setOnes(v), setReactorHeight();
+                      setOnes(v);
+                      setReactorHeight();
                     }}
                     onDrag={(_, v) => {
-                      setOnes(v), setReactorHeight();
+                      setOnes(v);
+                      setReactorHeight();
                     }}
                   />
                 </LabeledControls.Item>
@@ -131,10 +134,12 @@ export const NuclearReactorConsole = (props, context) => {
                     step={1}
                     value={tenths}
                     onChange={(_, v) => {
-                      setTenths(v), setReactorHeight();
+                      setTenths(v);
+                      setReactorHeight();
                     }}
                     onDrag={(_, v) => {
-                      setTenths(v), setReactorHeight();
+                      setTenths(v);
+                      setReactorHeight();
                     }}
                   />
                 </LabeledControls.Item>
@@ -145,10 +150,12 @@ export const NuclearReactorConsole = (props, context) => {
                     step={1}
                     value={hundredths}
                     onChange={(_, v) => {
-                      setHundredths(v), setReactorHeight();
+                      setHundredths(v);
+                      setReactorHeight();
                     }}
                     onDrag={(_, v) => {
-                      setHundredths(v), setReactorHeight();
+                      setHundredths(v);
+                      setReactorHeight();
                     }}
                   />
                 </LabeledControls.Item>
