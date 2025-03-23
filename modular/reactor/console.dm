@@ -38,9 +38,9 @@
 	for(var/obj/machinery/multistructure/nuclear_reactor_part/control_rod/CR in Reactor.control_spots)
 		if(CR.current_step < STEP_PULLED && CR.control)
 			data["controlRods"] += list(list(
-				"height" = CR.height,
-				"minHeight" = CR.min_height,
-				"maxHeight" = CR.max_height,
+				"height" = CR.height ||= 0,
+				"minHeight" = CR.min_height ||= 0,
+				"maxHeight" = CR.max_height ||= 100,
 		))
 
 	for(var/obj/machinery/multistructure/nuclear_reactor_part/fuel_rod/FR in Reactor.fuel_spots)
