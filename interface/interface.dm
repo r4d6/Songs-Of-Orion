@@ -103,6 +103,7 @@
 	\tShift+b = bag-equip
 	\tr = throw
 	\tt = say
+	\ty = whisper
 	\t5 = emote
 	\tx = swap-hand
 	\tz = activate held object (or y)
