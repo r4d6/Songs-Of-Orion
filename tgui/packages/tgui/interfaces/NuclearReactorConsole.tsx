@@ -62,10 +62,10 @@ export const NuclearReactorConsole = (props, context) => {
     source: 'tens' | 'ones' | 'tenths' | 'hundredths',
     value: number,
   ) {
-    const newTens = (source == 'tens' ? value : tens) * 10;
-    const newOnes = source == 'ones' ? value : ones;
-    const newTenths = (source == 'tenths' ? value : tenths) / 0.1;
-    const newHundredths = (source == 'hundredths' ? value : hundredths) / 0.01;
+    const newTens = (source === 'tens' ? value : tens) * 10;
+    const newOnes = source === 'ones' ? value : ones;
+    const newTenths = (source === 'tenths' ? value : tenths) / 0.1;
+    const newHundredths = (source === 'hundredths' ? value : hundredths) / 0.01;
     const new_value: number = newTens + newOnes + newTenths + newHundredths;
     act('set_target_height', { target_height: new_value });
   }
@@ -245,7 +245,7 @@ const ReactorFuelRods = (props, context) => {
         const high = Math.floor(fR.melting_point * 0.9);
         const bad = Math.floor(fR.melting_point * 1.2);
         return (
-          <LabeledList.Item label={`Rod #${index + 1}`}>
+          <LabeledList.Item label={`Rod #${index + 1}`} key={index}>
             <h3>Fissile Material</h3>
             <ProgressBar
               value={fR.life}
