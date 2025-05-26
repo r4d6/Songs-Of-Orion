@@ -1,6 +1,7 @@
 import { useBackend, useSharedState } from '../backend';
 import { toFixed } from 'common/math';
 import {
+  Box,
   Button,
   Knob,
   LabeledControls,
@@ -11,7 +12,7 @@ import {
 } from '../components';
 import { Window } from '../layouts';
 
-const logScale = (value) => Math.log2(16 + Math.max(0, value)) - 4;
+const logScale = (value: number) => Math.log2(16 + Math.max(0, value)) - 4;
 
 interface fuelRod {
   gasefficiency: number;
@@ -95,10 +96,10 @@ export const NuclearReactorConsole = (props, context) => {
                     step={1}
                     suppressFlicker={500}
                     value={tens}
-                    onChange={(_, v) => {
+                    onChange={(_, v: number) => {
                       setReactorHeight('tens', v);
                     }}
-                    onDrag={(_, v) => {
+                    onDrag={(_, v: number) => {
                       setReactorHeight('tens', v);
                     }}
                   />
@@ -110,10 +111,10 @@ export const NuclearReactorConsole = (props, context) => {
                     step={1}
                     suppressFlicker={500}
                     value={ones}
-                    onChange={(_, v) => {
+                    onChange={(_, v: number) => {
                       setReactorHeight('ones', v);
                     }}
-                    onDrag={(_, v) => {
+                    onDrag={(_, v: number) => {
                       setReactorHeight('ones', v);
                     }}
                   />
@@ -126,10 +127,10 @@ export const NuclearReactorConsole = (props, context) => {
                     step={1}
                     suppressFlicker={500}
                     value={tenths}
-                    onChange={(_, v) => {
+                    onChange={(_, v: number) => {
                       setReactorHeight('tenths', v);
                     }}
-                    onDrag={(_, v) => {
+                    onDrag={(_, v: number) => {
                       setReactorHeight('tenths', v);
                     }}
                   />
@@ -141,10 +142,10 @@ export const NuclearReactorConsole = (props, context) => {
                     step={1}
                     suppressFlicker={500}
                     value={hundredths}
-                    onChange={(_, v) => {
+                    onChange={(_, v: number) => {
                       setReactorHeight('hundredths', v);
                     }}
-                    onDrag={(_, v) => {
+                    onDrag={(_, v: number) => {
                       setReactorHeight('hundredths', v);
                     }}
                   />
@@ -247,33 +248,34 @@ const ReactorFuelRods = (props, context) => {
         const bad = Math.floor(fR.melting_point * 1.2);
         return (
           <LabeledList.Item label={`Rod #${index + 1}`} key={index}>
-            <h3>Fissile Material</h3>
-            <ProgressBar
-              value={fR.life}
-              minValue={0}
-              maxValue={100}
-              ranges={{
-                bad: [-Infinity, 25],
-                average: [25, 50],
-                good: [50, 90],
-                teal: [90, Infinity],
-              }}
-            >
-              {toFixed(fR.life, 2) + ' %'}
-            </ProgressBar>
-            <ProgressBar
-              value={logScale(fR.temperature)}
-              minValue={0}
-              maxValue={logScale(bad)}
-              ranges={{
-                bad: [logScale(high), Infinity],
-                average: [logScale(med), logScale(high)],
-                good: [logScale(low), logScale(med)],
-                teal: [-Infinity, logScale(low)],
-              }}
-            >
-              {toFixed(fR.temperature, 2) + ' K'}
-            </ProgressBar>
+            <Section title="Fissile Material">
+              <ProgressBar
+                value={fR.life}
+                minValue={0}
+                maxValue={100}
+                ranges={{
+                  bad: [-Infinity, 25],
+                  average: [25, 50],
+                  good: [50, 90],
+                  teal: [90, Infinity],
+                }}
+              >
+                {toFixed(fR.life, 2) + ' %'}
+              </ProgressBar>
+              <ProgressBar
+                value={logScale(fR.temperature)}
+                minValue={0}
+                maxValue={logScale(bad)}
+                ranges={{
+                  bad: [logScale(high), Infinity],
+                  average: [logScale(med), logScale(high)],
+                  good: [logScale(low), logScale(med)],
+                  teal: [-Infinity, logScale(low)],
+                }}
+              >
+                {toFixed(fR.temperature, 2) + ' K'}
+              </ProgressBar>
+            </Section>
           </LabeledList.Item>
         );
       })}
@@ -285,39 +287,40 @@ const ReactorControlRods = (props, context) => {
   const { data } = useBackend<any>(context);
   const { controlRods }: { controlRods: controlRod[] } = data;
   return (
-    <div>
-      <h3>Moderator Retraction</h3>
-      <LabeledList>
-        {controlRods.map((cR, index) => {
-          return (
-            <LabeledList.Item
-              label={`Rod #${index + 1}`}
-              key={`CR-${index.toString()}`}
-            >
-              <ProgressBar
-                minValue={cR.minHeight}
-                maxValue={cR.maxHeight}
-                value={cR.height}
-                ranges={{
-                  bad: [-Infinity, 25],
-                  average: [25, 50],
-                  good: [50, 90],
-                  teal: [90, Infinity],
-                }}
+    <Box>
+      <Section title="Moderator Retraction">
+        <LabeledList>
+          {controlRods.map((cR, index) => {
+            return (
+              <LabeledList.Item
+                label={`Rod #${index + 1}`}
+                key={`CR-${index.toString()}`}
               >
-                {toFixed(cR.height, 2) + ' %'}
-              </ProgressBar>
-            </LabeledList.Item>
-          );
-        })}
-      </LabeledList>
-    </div>
+                <ProgressBar
+                  minValue={cR.minHeight}
+                  maxValue={cR.maxHeight}
+                  value={cR.height}
+                  ranges={{
+                    bad: [-Infinity, 25],
+                    average: [25, 50],
+                    good: [50, 90],
+                    teal: [90, Infinity],
+                  }}
+                >
+                  {toFixed(cR.height, 2) + ' %'}
+                </ProgressBar>
+              </LabeledList.Item>
+            );
+          })}
+        </LabeledList>
+      </Section>
+    </Box>
   );
 };
 
 type simpleGas = {
-  gas: any;
-  temperature: number; // kelvin
+  temperature: number;
+  gas: Record<string, number>[];
 };
 
 const ReactorFluidDynamics = (props, context) => {
@@ -329,19 +332,19 @@ const ReactorFluidDynamics = (props, context) => {
   }: { gas_input: simpleGas; gas_output: simpleGas; gas_storage: simpleGas } =
     data as any;
   return (
-    <div>
+    <Box>
       <Section title="Input Gas">
-        {gas_input.gas ?? 'unknown'}
-        {gas_input.temperature} K
+        {gas_input.temperature} K<br />
+        {JSON.stringify(gas_input.gas)}
       </Section>
       <Section title="Internal Storage">
-        {gas_storage.gas ?? 'unknown'}
-        {gas_storage.temperature} K
+        {gas_storage.temperature} K<br />
+        {JSON.stringify(gas_storage.gas)}
       </Section>
       <Section title="Output Gas">
-        {gas_output.gas ?? 'unknown'}
-        {gas_output.temperature} K
+        {gas_output.temperature} K<br />
+        {JSON.stringify(gas_output.gas)}
       </Section>
-    </div>
+    </Box>
   );
 };
