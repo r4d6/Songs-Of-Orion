@@ -52,11 +52,11 @@ export const NuclearReactorConsole = (props, context) => {
   const [tab, setTab] = useSharedState(context, 'tab', 1);
 
   const hundredths = control_average
-    ? round((control_average * 100) % 10, 0)
+    ? Math.trunc((control_average * 100) % 10)
     : 0;
-  const tenths = control_average ? round((control_average * 10) % 10, 0) : 0;
-  const ones = control_average ? round(control_average % 10, 0) : 0;
-  const tens = control_average ? round(control_average / 10, 0) : 0;
+  const tenths = control_average ? Math.trunc((control_average * 10) % 10) : 0;
+  const ones = control_average ? Math.trunc(control_average % 10) : 0;
+  const tens = control_average ? Math.trunc(control_average / 10) : 0;
 
   function setReactorHeight(
     source: 'tens' | 'ones' | 'tenths' | 'hundredths',
@@ -64,8 +64,8 @@ export const NuclearReactorConsole = (props, context) => {
   ) {
     const newTens = (source === 'tens' ? value : tens) * 10;
     const newOnes = source === 'ones' ? value : ones;
-    const newTenths = (source === 'tenths' ? value : tenths) / 0.1;
-    const newHundredths = (source === 'hundredths' ? value : hundredths) / 0.01;
+    const newTenths = (source === 'tenths' ? value : tenths) * 0.1;
+    const newHundredths = (source === 'hundredths' ? value : hundredths) * 0.01;
     const new_value: number = newTens + newOnes + newTenths + newHundredths;
     act('set_target_height', { target_height: new_value });
   }
@@ -94,9 +94,9 @@ export const NuclearReactorConsole = (props, context) => {
                     step={1}
                     suppressFlicker={500}
                     value={tens}
-                    // onChange={(_, v) => {
-                    //   setReactorHeight('tens', v);
-                    // }}
+                    onChange={(_, v) => {
+                      setReactorHeight('tens', v);
+                    }}
                     onDrag={(_, v) => {
                       setReactorHeight('tens', v);
                     }}
@@ -109,9 +109,9 @@ export const NuclearReactorConsole = (props, context) => {
                     step={1}
                     suppressFlicker={500}
                     value={ones}
-                    // onChange={(_, v) => {
-                    //   setReactorHeight('ones', v);
-                    // }}
+                    onChange={(_, v) => {
+                      setReactorHeight('ones', v);
+                    }}
                     onDrag={(_, v) => {
                       setReactorHeight('ones', v);
                     }}
@@ -125,9 +125,9 @@ export const NuclearReactorConsole = (props, context) => {
                     step={1}
                     suppressFlicker={500}
                     value={tenths}
-                    // onChange={(_, v) => {
-                    //   setReactorHeight('tenths', v);
-                    // }}
+                    onChange={(_, v) => {
+                      setReactorHeight('tenths', v);
+                    }}
                     onDrag={(_, v) => {
                       setReactorHeight('tenths', v);
                     }}
@@ -140,9 +140,9 @@ export const NuclearReactorConsole = (props, context) => {
                     step={1}
                     suppressFlicker={500}
                     value={hundredths}
-                    // onChange={(_, v) => {
-                    //   setReactorHeight('hundredths', v);
-                    // }}
+                    onChange={(_, v) => {
+                      setReactorHeight('hundredths', v);
+                    }}
                     onDrag={(_, v) => {
                       setReactorHeight('hundredths', v);
                     }}
