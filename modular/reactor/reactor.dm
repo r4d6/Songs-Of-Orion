@@ -201,32 +201,6 @@
 	var/obj/machinery/atmospherics/pipe/P = locate() in orange(1, wall_output)
 	return P?.return_air()
 
-// /datum/multistructure/nuclear_reactor/proc/Get_HTML()
-// 	var/dat = ""
-// 	dat += "Nuclear Reactor Control Panel<BR>"
-// 	dat += "<A href='?src=\ref[src];close=1'>Close</A><BR>"
-// 	dat += "<A href='?src=\ref[src];refresh=1'>Refresh</A><BR>"
-// 	dat += "<A href='?src=\ref[src];scram=1'>SCRAM</A><BR>"
-// 	dat += "Reactor Integrity : [get_integrity()]%<BR>"
-// 	dat += "Control Rods Height: [control_average]% | <A href='?src=\ref[src];set_target_height=1'>Set</A><BR>"
-// 	dat += "Reactor Temperature: [temperature - T0C] C<BR>"
-
-// 	if(!gas_input)
-// 		dat += "WARNING! NO INPUT DETECTED!<BR>"
-
-// 	if(!gas_output)
-// 		dat += "WARNING! NO OUTPUT DETECTED!<BR>"
-
-// 	dat += "Fuel Rods Status: <BR>"
-// 	var/counter = 0
-// 	for(var/obj/item/fuel_rod/FR in Get_Fuel_Rods())
-// 		counter++
-// 		dat += "Fuel Rod [counter] - [FR.life]%<BR>"
-
-// 	return dat
-
-// ----------------
-
 /datum/multistructure/nuclear_reactor/proc/equalize(datum/gas_mixture/env, var/efficiency)
 	var/datum/gas_mixture/sharer = env.remove(efficiency * env.total_moles)
 
