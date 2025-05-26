@@ -1,5 +1,5 @@
 import { useBackend, useSharedState } from '../backend';
-import { toFixed, round } from 'common/math';
+import { toFixed } from 'common/math';
 import {
   Button,
   Knob,
@@ -58,7 +58,7 @@ export const NuclearReactorConsole = (props, context) => {
   const ones = control_average ? Math.trunc(control_average % 10) : 0;
   const tens = control_average ? Math.trunc(control_average / 10) : 0;
 
-  function setReactorHeight(
+  const setReactorHeight = function (
     source: 'tens' | 'ones' | 'tenths' | 'hundredths',
     value: number,
   ) {
@@ -68,7 +68,8 @@ export const NuclearReactorConsole = (props, context) => {
     const newHundredths = (source === 'hundredths' ? value : hundredths) * 0.01;
     const new_value: number = newTens + newOnes + newTenths + newHundredths;
     act('set_target_height', { target_height: new_value });
-  }
+    return;
+  };
 
   return (
     <Window resizable>
