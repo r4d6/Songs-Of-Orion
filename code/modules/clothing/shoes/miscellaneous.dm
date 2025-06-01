@@ -21,9 +21,9 @@
 	icon_state = "mime"
 
 /obj/item/clothing/shoes/sandal
-	desc = "A pair of rather plain, wooden sandals."
+	desc = "A pair of rather plain sandals."
 	name = "sandals"
-	icon_state = "wizard"
+	icon_state = "sandals"
 	species_restricted = null
 	body_parts_covered = 0
 	siemens_coefficient = 0
@@ -40,7 +40,7 @@
 	desc = "The prankster's standard-issue clowning shoes. Damn they're huge!"
 	name = "clown shoes"
 	icon_state = "clown"
-	item_state = "clown_shoes"
+	item_state = "clown"
 	slowdown = SHOES_SLOWDOWN + 0.4
 	force = NONE
 	//	armor = list(melee = 100, bullet = 100, energy = 100, bomb = 100, bio = 100, rad = 100)
@@ -143,7 +143,7 @@
 
 /obj/item/clothing/shoes/jackboots/duty
 	name = "duty jackboots"
-	desc = "A pair of slightly modified standard-issue jackboots. Not exactly more combat-ish, but may look better."
+	desc = "A pair of simple black boots, a staple of spacefaring. Not too comfortable, not too cheap."
 	icon_state = "duty"
 	item_state = "duty"
 

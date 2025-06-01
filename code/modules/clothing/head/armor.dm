@@ -23,19 +23,19 @@
  */
 /obj/item/clothing/head/armor/helmet
 	name = "helmet"
-	desc = "Standard Security gear. Protects the head from impacts."
-	icon_state = "helmet"
+	desc = "An old press helmet used by valiant reporters of Truth. Everyone knows not to question the press."
+	icon_state = "press"
 	armor = list(
-		melee = 7,
+		melee = 10,
 		bullet = 10,
 		energy = 10,
 		bomb = 50,
 		bio = 0,
-		rad = 0
+		rad = 5 //UHMWPE has high hydrogen density and is used for rad shielding in real space application.
 	)
 	matter = list(
-		MATERIAL_STEEL = 5,
-		MATERIAL_PLASTEEL = 1 //a lil bit of plasteel since it's better than handmade shit
+		MATERIAL_plastic = 10, //UHMWPE
+		MATERIAL_PLASTEEL = 2 //a lil bit of plasteel since it's better than handmade shit
 	)
 
 /obj/item/clothing/head/armor/helmet/visor
@@ -312,10 +312,10 @@
 
 /obj/item/clothing/head/armor/faceshield/riot
 	name = "riot helmet"
-	desc = "A helmet specifically designed to protect against close range attacks."
-	icon_state = "riot"
-	armor_up = list(melee = 7, bullet = 5, energy = 5, bomb = 35, bio = 0, rad = 0)
-	armor_down = list(melee = 10, bullet = 8, energy = 7, bomb = 50, bio = 0, rad = 0)
+	desc = "A riot helmet used by station security."
+	icon_state = "security"
+	armor_up = list(melee = 10, bullet = 8, energy = 10, bomb = 35, bio = 0, rad = 0)
+	armor_down = list(melee = 15, bullet = 10, energy = 15, bomb = 50, bio = 15, rad = 0)
 	item_flags = THICKMATERIAL | COVER_PREVENT_MANIPULATION
 	price_tag = 150
 	matter = list(

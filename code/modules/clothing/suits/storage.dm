@@ -189,3 +189,122 @@
 	pockets.max_w_class = ITEM_SIZE_SMALL
 	pockets.max_storage_space = 8
 
+//Deck crew vests
+/obj/item/clothing/suit/storage/vest/deckcrew
+	name = "blue deck vest"
+	desc = "A utility vest used in aerospace logistics which offers very minor protection and storage."
+	description_info = "Deck crew colors represent different roles. \
+	Blue indicates crew responsible for handling craft movement."
+	icon_state = "deckcrew_blue"
+	item_state = "deckcrew_blue"
+	armor = list(
+		melee = 5,
+		bullet = 2,
+		energy = 5,
+		bomb = 5,
+		bio = 5,
+		rad = 0
+	)
+	spawn_blacklisted = FALSE
+
+/obj/item/clothing/suit/storage/vest/deckcrew/New()
+	..()
+	pockets = new/obj/item/storage/internal(src)
+	pockets.storage_slots = 4
+	pockets.max_w_class = ITEM_SIZE_SMALL
+	pockets.max_storage_space = 8
+
+
+/obj/item/clothing/suit/storage/vest/deckcrew/green
+	name = "green deck vest"
+	description_info = "Deck crew colors represent different roles. \
+	Green indicates crew responsible for cargo handling, ground support equipment, launch and arrest systems."
+	icon_state = "deckcrew_green"
+	item_state = "deckcrew_green"
+
+/obj/item/clothing/suit/storage/vest/deckcrew/brown
+	name = "brown deck vest"
+	description_info = "Deck crew colors represent different roles. \
+	Brown indicates deck crew leaders."
+	icon_state = "deckcrew_brown"
+	item_state = "deckcrew_brown"
+
+
+/obj/item/clothing/suit/storage/vest/deckcrew/white
+	name = "white deck vest"
+	description_info = "Deck crew colors represent different roles. \
+	White indicates safety and security personnel."
+	icon_state = "deckcrew_white"
+	item_state = "deckcrew_white"
+
+/obj/item/clothing/suit/storage/vest/deckcrew/red
+	name = "red deck vest"
+	description_info = "Deck crew colors represent different roles. \
+	Red indicates ordinance handling and damage control crews."
+	icon_state = "deckcrew_red"
+	item_state = "deckcrew_red"
+
+
+/obj/item/clothing/suit/storage/vest/deckcrew/yellow
+	name = "yellow deck vest"
+	description_info = "Deck crew colors represent different roles. \
+	Yellow indicates craft handling and loading officers."
+	icon_state = "deckcrew_yellow"
+	item_state = "deckcrew_yellow"
+
+/obj/item/clothing/suit/storage/vest/deckcrew/violet
+	name = "violet deck vest"
+	description_info = "Deck crew colors represent different roles. \
+	Violet indicates fuel and volitiles handling crew."
+	icon_state = "deckcrew_violet"
+	item_state = "deckcrew_violet"
+
+/obj/item/clothing/suit/storage/vest/deckcrew/medical
+	name = "medical deck vest"
+	desc = "A piece of headgear used in aerospace aviation by medical personnel."
+	icon_state = "deckcrew_med"
+	item_state = "deckcrew_med"
+	armor = list(
+		melee = 5,
+		bullet = 2,
+		energy = 5,
+		bomb = 5,
+		bio = 15,
+		rad = 0
+	)
+
+/obj/item/clothing/suit/storage/syndicate
+	name = "Syndicate hacker vest"
+	desc = "A sleek cybernetic enabled vest used by Syndicate hackers for... something."
+	icon_state = "hacker"
+	item_state = "hacker"
+	armor = list(
+		melee = 5,
+		bullet = 2,
+		energy = 5,
+		bomb = 5,
+		bio = 5,
+		rad = 0
+	)
+	spawn_blacklisted = TRUE
+
+/obj/item/clothing/suit/storage/syndicate/New()
+	..()
+	pockets = new/obj/item/storage/internal(src)
+	pockets.storage_slots = 4
+	pockets.max_w_class = ITEM_SIZE_SMALL
+	pockets.max_storage_space = 8
+
+/obj/item/clothing/suit/storage/syndicate/officer
+	name = "Syndicate officer jacket"
+	desc = "A sleek cybernetic enabled jacket used by Syndicate officers for... something."
+	icon_state = "officer"
+	item_state = "officer"
+	armor = list(
+		melee = 8,
+		bullet = 5,
+		energy = 10,
+		bomb = 5,
+		bio = 5,
+		rad = 0
+	)

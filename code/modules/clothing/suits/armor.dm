@@ -23,13 +23,13 @@
  * Vests
  */
 /obj/item/clothing/suit/armor/vest
-	name = "armor"
-	desc = "An armored vest that protects against some damage. Not designed for serious operations."
-	icon_state = "armor"
-	item_state = "armor"
+	name = "armor vest"
+	desc = "A basic vest that provides the minimum amount of protection to count as armor."
+	icon_state = "stab"
+	item_state = "stab"
 	blood_overlay_type = "armor"
 	armor = list(
-		melee = 7,
+		melee = 6,
 		bullet = 10,
 		energy = 10,
 		bomb = 25,
@@ -37,7 +37,8 @@
 		rad = 0
 	)
 	matter = list(
-		MATERIAL_STEEL = 8,
+		MATERIAL_PLASTIC = 4,
+		MATERIAL_STEEL = 4,
 		MATERIAL_PLASTEEL = 1, //Small plasteel cost since it's better than a handmade vest, which only costs steel
 	)
 
@@ -74,10 +75,11 @@
 	style_coverage = COVERS_TORSO|COVERS_UPPER_ARMS|COVERS_UPPER_LEGS
 
 /obj/item/clothing/suit/armor/vest/toggle
-	name = "security armor"
-	icon_state = "armor_security"
-	var/icon_open = "armor_security_open"
-	var/icon_closed = "armor_security"
+	name = "stab vest"
+	desc = "A basic vest with just enough protection to be called armor."
+	icon_state = "stab"
+	var/icon_open = "stab_open"
+	var/icon_closed = "stab"
 
 /obj/item/clothing/suit/armor/vest/toggle/verb/toggle()
 	set name = "Toggle Vest Buttons"
@@ -96,6 +98,11 @@
 		to_chat(usr, "You attempt to button-up the velcro on your [src], before promptly realising how silly you are.")
 		return
 	update_wear_icon()	//so our overlays update
+
+/obj/item/clothing/suit/armor/vest/security
+	name = "security vest"
+	desc = "An armored vest that protects against some damage. This one has been done in PCRC Security colors."
+	icon_state = "security"
 
 
 /obj/item/clothing/suit/armor/vest/detective
@@ -194,7 +201,7 @@
 /obj/item/clothing/suit/armor/flak
 	name = "black flakvest"
 	desc = "An armored vest that protects against high-velocity solid projectiles."
-	icon_state = "flakvest"
+	icon_state = "flak"
 	item_state = "armor"
 	blood_overlay_type = "armor"
 	armor = list(
@@ -208,7 +215,7 @@
 
 /obj/item/clothing/suit/armor/flak/green
 	name = "green flakvest vest"
-	icon_state = "flakvest_green"
+	icon_state = "defender"
 
 /obj/item/clothing/suit/armor/gzhel
 	name = "Excelsior gzhel-m vest"
@@ -531,17 +538,17 @@
  * Storage Types
  */
 /obj/item/clothing/suit/storage/vest
-	name = "webbed armor"
-	desc = "An armored vest used for day-to-day operations. This one has various pouches and straps attached."
+	name = "flak vest"
+	desc = "An heavy set of combat armor, fitted with pouches and additional soft armor panels."
 	icon_state = "webvest"
-	price_tag = 250 //Normal vest is worth 200, this one is worth 250 because it also has storage space
-	armor = list( //Same stats as the standard vest only difference is that this one has storage
-		melee = 7,
-		bullet = 10,
-		energy = 10,
-		bomb = 25,
-		bio = 0,
-		rad = 0
+	price_tag = 500 //Normal vest is worth 200, this one is worth 250 because it also has storage space
+	armor = list( //Copious, full spectrum military armor.
+		melee = 10,
+		bullet = 15,
+		energy = 15,
+		bomb = 50,
+		bio = 10,
+		rad = 10
 	)
 
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
@@ -557,9 +564,9 @@
 	style = STYLE_NEG_HIGH
 
 	matter = list(
-		MATERIAL_STEEL = 8,
-		MATERIAL_PLASTEEL = 1,
-		MATERIAL_PLASTIC = 3, //for webbing
+		MATERIAL_STEEL = 5,
+		MATERIAL_PLASTEEL = 2,
+		MATERIAL_PLASTIC = 5, //for webbing
 	)
 	valid_accessory_slots = list("armband","decor")
 	restricted_accessory_slots = list("armband")
@@ -572,17 +579,48 @@
 
 //Provides the protection of a merc voidsuit, but only covers the chest/groin, and also takes up a suit slot. In exchange it has no slowdown and provides storage.
 /obj/item/clothing/suit/storage/vest/merc
-	name = "mercenary armor vest"
+	name = "IOTV flak vest"
 	desc = "A high-quality armor vest in a fetching tan. It is surprisingly flexible and light, even with the added webbing and armor plating."
-	icon_state = "mercwebvest"
-	item_state = "mercwebvest"
+	description_antag = "Integrated Objective Tactical Vest, once a full-spectrum semi-powered infantry armor with datalink systems. Now? Just lightweight armor."
+	icon_state = "iotv"
+	item_state = "iotv"
 	armor = list(
 		melee = 12,
+		bullet = 15,
+		energy = 15,
+		bomb = 75,
+		bio = 10,
+		rad = 10
+	)
+
+/obj/item/clothing/suit/storage/vest/merc/green
+	name = "Defender vest"
+	desc = "A high-quality armor vest in a drab green. It is surprisingly flexible and light, even with the added webbing and armor plating."
+	description_antag = "The Defender Euruskan assault vest, a relic of the Last War still used for its simplicity and durability by Novorossian Cossaks."
+	icon_state = "defender"
+	item_state = "defender"
+	armor = list(
+		melee = 15,
+		bullet = 20,
+		energy = 20,
+		bomb = 75,
+		bio = 10,
+		rad = 10
+	)
+
+/obj/item/clothing/suit/storage/vest/merc/ultra
+	name = "Offender vest"
+	desc = "A Marx-Kamf Ultra-Unionist combat vest."
+	description_antag = "Communism is the riddle of history solved, and it knows itself to be this solution."
+	icon_state = "offender"
+	item_state = "offender"
+	armor = list(
+		melee = 5,
 		bullet = 12,
 		energy = 12,
 		bomb = 75,
-		bio = 0,
-		rad = 0
+		bio = 10,
+		rad = 10
 	)
 
 /obj/item/clothing/suit/storage/vest/merc/full
@@ -786,3 +824,23 @@
 			speed_boost_ready = TRUE
 			if(user.head && istype(user.head, matching_helmet))
 				to_chat(usr, SPAN_WARNING("[user.head] beeps: 'Capacitors have been recharged.'"))
+
+/obj/item/clothing/suit/armor/vest/cursed
+	name = "cursed armor"
+	desc = "Wait, what?"
+	icon_state = "cursed"
+	item_state = "cursed"
+
+/obj/item/clothing/suit/armor/vest/press
+	name = "press vest"
+	desc = "A basic vest intended for use by reporters."
+	icon_state = "press"
+	item_state = "press"
+	armor = list(
+		melee = 10,
+		bullet = 10,
+		energy = 10,
+		bomb = 30,
+		bio = 15,
+		rad = 10
+	)

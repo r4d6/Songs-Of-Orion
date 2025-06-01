@@ -1,19 +1,19 @@
 // Ship voidsuits
 //Engineering void
 /obj/item/clothing/head/space/void/engineering
-	name = "Technomancer voidsuit helmet"
+	name = "engineer space helmet"
 	desc = "A special helmet designed for work in a hazardous, low-pressure environment. Has radiation shielding."
-	icon_state = "technohelmet_void_old"
-	item_state = "technohelmet_void_old"
-	light_overlay = "technohelmet_light"
+	icon_state = "engineer"
+	item_state = "engineer"
+	light_overlay = "orion_light"
 	item_state_slots = list(
 		slot_l_hand_str = "eng_helm",
 		slot_r_hand_str = "eng_helm",
 		)
 	armor = list(
 		melee = 8,
-		bullet = 7,
-		energy = 7,
+		bullet = 8,
+		energy = 10,
 		bomb = 60,
 		bio = 100,
 		rad = 100
@@ -21,14 +21,14 @@
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/suit/space/void/engineering
-	name = "Technomancer voidsuit"
+	name = "engineer voidsuit"
 	desc = "A special suit that protects against hazardous, low pressure environments. Has radiation shielding and extra plating."
-	icon_state = "technosuit_old"
-	item_state = "technosuit_old"
+	icon_state = "engineer"
+	item_state = "engineer"
 	armor = list(
 		melee = 8,
-		bullet = 7,
-		energy = 7,
+		bullet = 8,
+		energy = 10,
 		bomb = 60,
 		bio = 100,
 		rad = 100

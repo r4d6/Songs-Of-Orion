@@ -40,7 +40,7 @@
 	var/list/camera_networks
 
 	action_button_name = "Toggle Helmet Light"
-	light_overlay = "helmet_light"
+	light_overlay = "orion_light"
 	brightness_on = 4
 	on = FALSE
 
@@ -76,7 +76,7 @@
 	name = "space suit"
 	desc = "A cheap and bulky suit that protects against low pressure environments."
 	icon_state = "space"
-	item_state = "s_suit"
+	item_state = "space"
 	w_class = ITEM_SIZE_BULKY
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.02

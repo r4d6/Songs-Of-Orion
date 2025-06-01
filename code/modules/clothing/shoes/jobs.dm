@@ -11,10 +11,10 @@
 
 /obj/item/clothing/shoes/jackboots
 	name = "jackboots"
-	desc = "Standard-issue Security combat boots for combat scenarios or combat situations. All combat, all the time."
+	desc = "If you want a picture of the future, imagine a boot stomping on a human face- forever."
 	icon_state = "jackboots"
 	item_state = "jackboots"
-	force = WEAPON_FORCE_HARMLESS
+	force = WEAPON_FORCE_WEAK
 	armor = list(
 		melee = 3,
 		bullet = 0,

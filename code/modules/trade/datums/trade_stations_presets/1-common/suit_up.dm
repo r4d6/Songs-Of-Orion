@@ -76,7 +76,7 @@
 		"Jumpsuits" = list(
 			/obj/item/clothing/under/blackskirt,
 			/obj/item/clothing/under/blazer,
-			/obj/item/clothing/under/brown,
+			/obj/item/clothing/under/color/brown,
 			/obj/item/clothing/under/cyber,
 			/obj/item/clothing/under/dress/gray,
 			/obj/item/clothing/under/dress/blue,

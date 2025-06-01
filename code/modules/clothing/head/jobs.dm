@@ -70,14 +70,6 @@
 	spawn_blacklisted = TRUE
 	style_coverage = COVERS_EYES|COVERS_HAIR
 
-/obj/item/clothing/head/beret
-	name = "beret"
-	desc = "A beret, an artists favorite headwear."
-	icon_state = "beret"
-	body_parts_covered = 0
-	spawn_blacklisted = TRUE
-	style_coverage = COVERS_HAIR
-
 //Ironhammer
 /obj/item/clothing/head/beret/sec/navy/officer
 	name = "Operative beret"

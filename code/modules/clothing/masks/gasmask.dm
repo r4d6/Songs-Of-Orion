@@ -3,12 +3,12 @@
 /obj/item/clothing/mask/gas
 	name = "gas mask"
 	desc = "A face-covering mask that can be connected to an air supply. Filters harmful gases and the smell of roaches from the air."
-	icon_state = "gas_alt"
+	icon_state = "gasmask"
 	item_flags = BLOCK_GAS_SMOKE_EFFECT | AIRTIGHT
 	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE
 	body_parts_covered = FACE|EYES
 	w_class = ITEM_SIZE_NORMAL
-	item_state = "gas_alt"
+	item_state = "gasmask"
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
 	siemens_coefficient = 0.9
@@ -63,11 +63,20 @@
 	price_tag = 50
 
 /obj/item/clothing/mask/gas/ihs
-	name = "Ironhammer gasmask"
-	icon_state = "IHSgasmask"
+	name = "tactical gasmask"
+	desc = "A robust gas mask that offers modest protection to the wearer's face."
+	icon_state = "gasmask_alt"
 	siemens_coefficient = 0.7
 	body_parts_covered = FACE|EYES
 	price_tag = 40
+	armor = list(
+		melee = 10,
+		bullet = 5,
+		energy = 10,
+		bomb = 5,
+		bio = 75,
+		rad = 40
+	)
 
 /obj/item/clothing/mask/gas/syndicate
 	name = "tactical mask"
@@ -182,4 +191,12 @@
 	item_state = "joker_19"
 	spawn_frequency = 0
 
-
+/obj/item/clothing/mask/gas/cursed
+	name = "cursed gas mask"
+	desc = "A stain on reality that happens to protect you from chemicals if you can manage to conform it to your anatomy."
+	icon_state = "cursed"
+	item_state = "cursed"
+	body_parts_covered = HEAD|FACE|EYES
+	style = STYLE_LOW
+	spawn_blacklisted = TRUE
+	price_tag = 500
