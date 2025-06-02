@@ -87,7 +87,6 @@
 			/obj/item/clothing/under/jersey,
 			/obj/item/clothing/under/kilt,
 			/obj/item/clothing/under/leisure,
-			/obj/item/clothing/under/leisure/white,
 			/obj/item/clothing/under/leisure/pullover,
 			/obj/item/clothing/under/librarian,
 			/obj/item/clothing/under/overalls,

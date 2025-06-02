@@ -263,11 +263,13 @@
 /datum/gear/uniform/leisure/New()
 	..()
 	var/leisure = list(
-		"Brown Jacket" 			=	 /obj/item/clothing/under/leisure,
-		"White Blazer" 			=	 /obj/item/clothing/under/leisure/white,
-		"Patterned Pullover" 	=	 /obj/item/clothing/under/leisure/pullover,
-		"Business Casual, blue"	=	 /obj/item/clothing/under/leisure/casual/blue,
-		"Business Casual, red"	=	 /obj/item/clothing/under/leisure/joe
+		"White blouse" 			=	 /obj/item/clothing/under/leisure,
+		"Terrible" 				=	 /obj/item/clothing/under/leisure/terrible,
+		"Terrible, teal" 		=	 /obj/item/clothing/under/leisure/terrible,
+		"Questionable, green"	=	 /obj/item/clothing/under/green,
+		"Blue, casual"			=	 /obj/item/clothing/under/leisure/spike,
+		"Mixed, casual"			=	 /obj/item/clothing/under/leisure/faye,
+		"Torn coverals"			=	 /obj/item/clothing/under/jet
 	)
 	gear_tweaks += new /datum/gear_tweak/path(leisure)
 
@@ -337,3 +339,7 @@
 	display_name = "Brotherhood turtleneck"
 	path = /obj/item/clothing/under/rank/volunteer/turtle
 	allowed_roles = list(JOBS_MEDICAL)
+
+/datum/gear/uniform/undersuit
+	display_name = "undersuit"
+	path = /obj/item/clothing/under/undersuit

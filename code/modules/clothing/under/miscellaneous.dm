@@ -200,15 +200,9 @@
 
 obj/item/clothing/under/leisure
 	name = "leisure outfit"
-	desc = "A leisure outfit with brown jacket. Sometimes you just want to wear what is comfortable."
-	icon_state = "leisureoutfit"
-	item_state = "leisureoutfit"
-
-obj/item/clothing/under/leisure/white
-	name = "white blouse"
 	desc = "A white blouse with a red shirt underneath. You look like a hallway ornament with this."
-	icon_state = "shirtsuit"
-	item_state = "shirtsuit"
+	icon_state = "liesure"
+	item_state = "liesure"
 
 obj/item/clothing/under/leisure/pullover
 	name = "patterned pullover"
@@ -222,11 +216,47 @@ obj/item/clothing/under/leisure/pullover
 	icon_state = "joe"
 	item_state = "joe"
 
-/obj/item/clothing/under/leisure/casual/blue
+obj/item/clothing/under/leisure/terrible
+	name = "terrible suit"
+	desc = "A yellow blouse with a reddish silk suit."
+	icon_state = "terrible"
+	item_state = "terrible"
+
+obj/item/clothing/under/leisure/terrible/teal
+	name = "terrible teal suit"
+	desc = "A red blouse with a teal silk suit."
+	icon_state = "terrible_teal"
+	item_state = "terrible_teal"
+
+/obj/item/clothing/under/green
+	name = "questionable outfit"//Riddler reference, you probably knew that
+	desc = "Green leisure suit, green pants and a tie."
+	icon_state = "questionable"
+	item_state = "questionable"
+
+/obj/item/clothing/under/leisure/spike
 	name = "blue casual suit"
-	desc = "An qqua colored casual suit for office workers."
-	icon_state = "business_blue"
-	item_state = "business_blue"
+	desc = "An stylized leisure suit in a washed-out cowboy blue."
+	icon_state = "spike"
+	item_state = "spike"
+
+obj/item/clothing/under/leisure/faye
+	name = "yellow blouse"
+	desc = "A yellow blouse with a red blazer over it."
+	icon_state = "faye"
+	item_state = "faye"
+
+/obj/item/clothing/under/jet
+	name = "torn coveralls"
+	desc = "Mechanic's coveralls, with a bird of some kind on the back."
+	icon_state = "jet"
+	item_state = "jet"
+
+/obj/item/clothing/under/helltaker
+	name = "charming outfit"//Helltaker reference
+	desc = "A red shirt with a black tie and black pants. Stylish enough to impress the devil."
+	icon_state = "helltaker"
+	item_state = "helltaker"
 
 obj/item/clothing/under/neon
 	name = "green neon tracksuit"
@@ -312,11 +342,6 @@ obj/item/clothing/under/genericr
 	icon_state = "suit_red"
 	item_state = "suit_red"
 
-/obj/item/clothing/under/green
-	name = "questionable outfit"//Riddler reference, you probably knew that
-	desc = "Green suit, green pants and a green tie. Quite a riddle to solve."
-	icon_state = "riddler"
-	item_state = "riddler"
 
 /obj/item/clothing/under/grey
 	name = "ash grey outfit"
@@ -341,13 +366,6 @@ obj/item/clothing/under/genericr
 	desc = "A white and yellow dress, quite stylish"
 	icon_state = "white_yellow"
 	item_state = "white_yellow"
-
-
-/obj/item/clothing/under/helltaker
-	name = "charming outfit"//Helltaker reference
-	desc = "A red shirt with a black tie and black pants. Stylish enough to impress the devil."
-	icon_state = "helltaker"
-	item_state = "helltaker"
 
 /obj/item/clothing/under/johnny
 	name = "rockerboy outfit"//Cyberpunk 2077, Johnny Silverhand's outfit
@@ -643,3 +661,46 @@ obj/item/clothing/under/genericr
 	desc = "A common flightsuit, authorized for all EVA activities."
 	icon_state = "flight_green"
 	item_state = "flight_green"
+
+/obj/item/clothing/under/undersuit
+	name = "undersuit"
+	desc = "Skin tight, for better and worse."
+	icon_state = "undersuit"
+	item_state = "undersuit"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	min_cold_protection_temperature = T0C - 30
+	heat_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	max_heat_protection_temperature = 1000
+	siemens_coefficient = 0.5
+	permeability_coefficient = 0.50
+	armor = list(
+		melee = 5,
+		bullet = 5,
+		energy = 5,
+		bomb = 10,
+		bio = 10,
+		rad = 10
+	)
+
+/obj/item/clothing/under/undersuit/trauma
+	name = "advanced truama envelope"
+	desc = "A highly advanced undersuit designed for extreme situations, with a price tag to match."
+	icon_state = "ATE"
+	item_state = "ATE"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	min_cold_protection_temperature = T0C - 40
+	heat_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	max_heat_protection_temperature = 1000
+	siemens_coefficient = 0.1
+	permeability_coefficient = 0.50
+	armor = list(
+		melee = 15,
+		bullet = 15,
+		energy = 15,
+		bomb = 10,
+		bio = 100,
+		rad = 15
+	)
+
