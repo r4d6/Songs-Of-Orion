@@ -141,7 +141,7 @@
 		"Violet"		=	/obj/item/clothing/head/deckcrew/violet,
 	)
 	gear_tweaks += new /datum/gear_tweak/path(deckcrew)
-
+/*
 /datum/gear/head/cyberpunkgoggle
 	display_name = "Type-34C Semi-Enclosed Headwear"
 	path = /obj/item/clothing/head/armor/helmet/visor/cyberpunkgoggle
@@ -176,7 +176,7 @@
         "Black" = /obj/item/clothing/head/ushanka/black
     )
     gear_tweaks += new /datum/gear_tweak/path(ushanka)
-
+*/
 /datum/gear/head/hairflower
 	display_name = "hair flower pin, red"
 	path = /obj/item/clothing/head/hairflower
