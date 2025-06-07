@@ -16,17 +16,14 @@
 /turf/wall/dummy,
 /area/space)
 "ae" = (
-/turf/wall/dummy,
-/area/wizard_station{
-	name = "\improper Test Reactor"
-	})
-"af" = (
-/turf/floor/dummy{
-	icon_state = "dark"
+/obj/structure/bed/chair{
+	dir = 1
 	},
-/area/wizard_station{
-	name = "\improper Test Reactor"
-	})
+/obj/effect/shuttle_landmark/merc/start,
+/turf/shuttle/floor{
+	icon_state = "floor6"
+	},
+/area/shuttle/mercenary)
 "ag" = (
 /obj/structure/window/reinforced/crescent{
 	dir = 4
@@ -40,98 +37,18 @@
 /obj/structure/railing/holorailing,
 /turf/open/holonofloor,
 /area/holodeck/source/industrial_arena)
-"ai" = (
-/obj/machinery/atmospherics/pipe/tank,
-/turf/floor/dummy{
-	icon_state = "dark"
-	},
-/area/wizard_station{
-	name = "\improper Test Reactor"
-	})
-"aj" = (
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 6
-	},
-/obj/machinery/meter,
-/turf/floor/dummy{
-	icon_state = "dark"
-	},
-/area/wizard_station{
-	name = "\improper Test Reactor"
-	})
-"ak" = (
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 4
-	},
-/turf/floor/dummy{
-	icon_state = "dark"
-	},
-/area/wizard_station{
-	name = "\improper Test Reactor"
-	})
-"al" = (
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 10
-	},
-/obj/machinery/meter,
-/turf/floor/dummy{
-	icon_state = "dark"
-	},
-/area/wizard_station{
-	name = "\improper Test Reactor"
-	})
-"am" = (
-/obj/machinery/multistructure/nuclear_reactor_part/console,
-/turf/floor/dummy{
-	icon_state = "dark"
-	},
-/area/wizard_station{
-	name = "\improper Test Reactor"
-	})
 "an" = (
 /obj/structure/railing/holorailing/grey{
 	dir = 4
 	},
 /turf/open/holonofloor,
 /area/holodeck/source/wireframe)
-"ao" = (
-/turf/space,
-/turf/space,
-/area/space)
 "ap" = (
 /obj/structure/table/holosteel_reinforced,
 /obj/structure/catwalk/holo,
 /obj/machinery/floor_light/prebuilt,
 /turf/floor/holofloor/plating/under,
 /area/holodeck/source/industrial)
-"aq" = (
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 5
-	},
-/turf/floor/dummy{
-	icon_state = "dark"
-	},
-/area/wizard_station{
-	name = "\improper Test Reactor"
-	})
-"ar" = (
-/obj/machinery/atmospherics/pipe/manifold/visible{
-	dir = 4
-	},
-/turf/floor/dummy{
-	icon_state = "dark"
-	},
-/area/wizard_station{
-	name = "\improper Test Reactor"
-	})
-"as" = (
-/obj/machinery/multistructure/nuclear_reactor_part/wall,
-/turf/floor/dummy{
-	icon_state = "dark"
-	},
-/area/wizard_station{
-	name = "\improper Test Reactor"
-	})
 "at" = (
 /obj/structure/cryofeed{
 	dir = 4;
@@ -169,56 +86,6 @@
 	icon_state = "floor6"
 	},
 /area/shuttle/pirate)
-"ax" = (
-/obj/machinery/atmospherics/pipe/simple/visible,
-/turf/floor/dummy{
-	icon_state = "dark"
-	},
-/area/wizard_station{
-	name = "\improper Test Reactor"
-	})
-"ay" = (
-/obj/machinery/atmospherics/pipe/tank/plasma{
-	start_pressure = 10000
-	},
-/turf/floor/dummy{
-	icon_state = "dark"
-	},
-/area/wizard_station{
-	name = "\improper Test Reactor"
-	})
-"az" = (
-/obj/machinery/multistructure/nuclear_reactor_part/control_rod,
-/turf/floor/dummy{
-	icon_state = "dark"
-	},
-/area/wizard_station{
-	name = "\improper Test Reactor"
-	})
-"aA" = (
-/obj/machinery/multistructure/nuclear_reactor_part/fuel_rod,
-/turf/floor/dummy{
-	icon_state = "dark"
-	},
-/area/wizard_station{
-	name = "\improper Test Reactor"
-	})
-"aB" = (
-/obj/machinery/multistructure/nuclear_reactor_part/wall_input,
-/turf/floor/dummy{
-	icon_state = "dark"
-	},
-/area/wizard_station{
-	name = "\improper Test Reactor"
-	})
-"aC" = (
-/obj/machinery/multistructure/nuclear_reactor_part/wall_output,
-/turf/floor/dummy{
-	icon_state = "dark"
-	},
-/area/wizard_station{
-	name = "\improper Test Reactor"
-	})
 "aD" = (
 /turf/floor/tiled/dark/gray_perforated,
 /area/centcom/evac)
@@ -229,49 +96,9 @@
 	},
 /turf/floor/tiled/dark/gray_platform,
 /area/centcom/evac)
-"aF" = (
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 9;
-	icon_state = "intact"
-	},
-/turf/floor/dummy{
-	icon_state = "dark"
-	},
-/area/wizard_station{
-	name = "\improper Test Reactor"
-	})
-"aG" = (
-/obj/machinery/atmospherics/binary/pump/high_power/on{
-	target_pressure = 15000
-	},
-/turf/floor/dummy{
-	icon_state = "dark"
-	},
-/area/wizard_station{
-	name = "\improper Test Reactor"
-	})
-"aH" = (
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 5
-	},
-/obj/machinery/meter,
-/turf/floor/dummy{
-	icon_state = "dark"
-	},
-/area/wizard_station{
-	name = "\improper Test Reactor"
-	})
 "aI" = (
 /turf/floor/holofloor/tiled/dark,
 /area/holodeck/source/industrial)
-"aJ" = (
-/obj/machinery/atmospherics/pipe/manifold/visible,
-/turf/floor/dummy{
-	icon_state = "dark"
-	},
-/area/wizard_station{
-	name = "\improper Test Reactor"
-	})
 "aR" = (
 /obj/structure/table/bar_special,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -4852,10 +4679,6 @@
 /obj/structure/table/bar_special,
 /turf/floor/holofloor/tiled/bar_light,
 /area/space)
-"vF" = (
-/obj/effect/shuttle_landmark/merc/start,
-/turf/wall/low/with_glass/reinforced,
-/area/shuttle/mercenary)
 "vG" = (
 /obj/structure/closet/crate/pirate,
 /turf/shuttle/floor{
@@ -7589,17 +7412,6 @@
 	},
 /turf/space/transit/north/shuttlespace_ns10,
 /area/space)
-"YL" = (
-/obj/machinery/atmospherics/binary/pump/high_power/on{
-	dir = 8;
-	target_pressure = 15000
-	},
-/turf/floor/dummy{
-	icon_state = "dark"
-	},
-/area/wizard_station{
-	name = "\improper Test Reactor"
-	})
 "YN" = (
 /obj/structure/table/steel_reinforced,
 /obj/effect/floor_decal/industrial/danger{
@@ -18154,17 +17966,17 @@ aa
 aa
 aa
 aa
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -18356,17 +18168,17 @@ aa
 aa
 aa
 aa
-ae
-af
-af
-af
-af
-af
-af
-af
-af
-af
-ae
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -18558,17 +18370,17 @@ aa
 aa
 aa
 aa
-ae
-af
-am
-af
-af
-af
-af
-af
-af
-af
-ae
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -18760,17 +18572,17 @@ aa
 aa
 aa
 aa
-ae
-af
-af
-af
-af
-af
-af
-af
-af
-af
-ae
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -18962,17 +18774,17 @@ aa
 aa
 aa
 aa
-ae
-ai
-aq
-ay
-aH
-af
-af
-af
-af
-af
-ae
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -19164,17 +18976,17 @@ aa
 aa
 aa
 aa
-ae
-aj
-ar
-aG
-aJ
-af
-af
-af
-af
-af
-ae
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -19366,17 +19178,17 @@ aa
 aa
 aa
 aa
-ae
-ak
-as
-as
-aB
-as
-as
-af
-af
-af
-ae
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -19568,17 +19380,17 @@ aa
 aa
 aa
 aa
-ae
-ak
-as
-az
-aA
-az
-as
-af
-af
-af
-ae
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -19770,19 +19582,19 @@ aa
 aa
 aa
 aa
-ae
-YL
-as
-aA
-az
-aA
-as
-af
-af
-af
-ae
 aa
-ao
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -19972,17 +19784,17 @@ aa
 aa
 aa
 aa
-ae
-ak
-as
-az
-aA
-az
-as
-af
-af
-af
-ae
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -20174,17 +19986,17 @@ aa
 aa
 aa
 aa
-ae
-ak
-as
-as
-aC
-as
-as
-af
-af
-af
-ae
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -20376,17 +20188,17 @@ aa
 aa
 aa
 aa
-ae
-al
-ax
-ax
-aF
-af
-af
-af
-af
-af
-ae
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -20578,17 +20390,17 @@ aa
 aa
 aa
 aa
-ae
-af
-af
-af
-af
-af
-af
-af
-af
-af
-ae
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -20780,17 +20592,17 @@ aa
 aa
 aa
 aa
-ae
-af
-af
-af
-af
-af
-af
-af
-af
-af
-ae
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -20982,17 +20794,17 @@ aa
 aa
 aa
 aa
-ae
-af
-af
-af
-af
-af
-af
-af
-af
-af
-ae
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -21184,17 +20996,17 @@ aa
 aa
 aa
 aa
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -30663,9 +30475,9 @@ aa
 aa
 aa
 aa
-vF
+ll
 iv
-iL
+ae
 iJ
 jk
 iq

@@ -2,6 +2,7 @@
 	icon = 'icons/atmos/volume_pump.dmi'
 	icon_state = "map_off"
 	level = BELOW_PLATING_LEVEL
+	density = TRUE
 
 	name = "high power gas pump"
 	desc = "A pump. Has double the power rating of the standard gas pump."

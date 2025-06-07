@@ -187,7 +187,7 @@ macro "robot"
 		command = ".northeast"
 	elem
 		name = "Y"
-		command = "Activate-Held-Object"
+		command = "Whisper"
 	elem
 		name = "CTRL+Y"
 		command = "Activate-Held-Object"

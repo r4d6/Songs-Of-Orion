@@ -16,7 +16,8 @@ var/global/default_dna_machinery_style
 
 
 /hook/startup/proc/pick_dna_machinery_style()
-	default_dna_machinery_style = pick(GLOB.dna_machinery_styles)
+	default_dna_machinery_style = pick(GLOB.dna_machinery_styles) ||= "cyan"
+	return TRUE
 
 
 /proc/can_get_mutation(mob/user, tier)
