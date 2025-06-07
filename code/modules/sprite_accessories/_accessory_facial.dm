@@ -83,7 +83,7 @@
 /datum/sprite_accessory/facial_hair/jensen
 	name = "Adam Jensen Beard"
 	icon_state = "jensen"
-
+*/
 /datum/sprite_accessory/facial_hair/threeOclock
 	name = "3 O'clock Shadow"
 	icon_state = "3oclock"
@@ -107,7 +107,7 @@
 /datum/sprite_accessory/facial_hair/sevenOclockstache
 	name = "7 O'clock Shadow and Moustache"
 	icon_state = "7oclockmoustache"
-*/
+
 
 /datum/sprite_accessory/facial_hair/mutton
 	name = "Mutton Chops"

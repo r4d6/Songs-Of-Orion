@@ -265,7 +265,7 @@
 	var/leisure = list(
 		"White blouse" 			=	 /obj/item/clothing/under/leisure,
 		"Terrible" 				=	 /obj/item/clothing/under/leisure/terrible,
-		"Terrible, teal" 		=	 /obj/item/clothing/under/leisure/terrible,
+		"Terrible, teal" 		=	 /obj/item/clothing/under/leisure/terrible/teal,
 		"Questionable, green"	=	 /obj/item/clothing/under/green,
 		"Blue, casual"			=	 /obj/item/clothing/under/leisure/spike,
 		"Mixed, casual"			=	 /obj/item/clothing/under/leisure/faye,

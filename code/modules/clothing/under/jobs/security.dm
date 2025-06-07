@@ -226,3 +226,10 @@
 	icon_state = "frog_skirt"
 	item_state = "frog_skirt"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+
+/obj/item/clothing/under/rank/security/bdu
+	name = "Peacekeeper battle dress"
+	desc = "Our will is unbroken, unmatched by design."
+	description_info = "SOLCOM Peacekeeper standard uniform. Recognized by everyone, everywhere."
+	icon_state = "bdu"
+	item_state = "bdu"

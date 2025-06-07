@@ -161,8 +161,8 @@
 	spawn_blacklisted = TRUE
 
 /obj/item/clothing/head/armor/bulletproof
-	name = "bulletproof helmet"
-	desc = "A bulletproof helmet that excels in protecting the wearer against traditional projectile weaponry and explosives to a minor extent."
+	name = "Peacekeeper helm"
+	desc = "For Democracy we will die, speading Freedom across the skies."
 	icon_state = "bulletproof"
 	body_parts_covered = HEAD | EARS | EYES | FACE
 	armor = list(

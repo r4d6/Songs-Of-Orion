@@ -250,10 +250,10 @@
 	icon_state = "flakvest_green_fullbody"
 
 /obj/item/clothing/suit/armor/bulletproof
-	name = "bulletproof vest"
-	desc = "A vest that excels in protecting the wearer against high-velocity solid projectiles."
-	icon_state = "bulletproof"
-	item_state = "armor"
+	name = "Peacekeeper carapace"
+	desc = "With suits made of steel and hearts made of stone, we are the sword of mankind."
+	icon_state = "peace"
+	item_state = "peace"
 	blood_overlay_type = "armor"
 	slowdown = 0.15
 	armor = list(
