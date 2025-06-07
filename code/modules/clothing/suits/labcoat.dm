@@ -51,8 +51,6 @@
 		energy = 2,
 		bomb = 0,
 		bio = 75,
-		bomb = 0,
-		bio = 0,
 		rad = 0
 	)
 
@@ -70,3 +68,35 @@
 	item_state = "labcoat_medspec"
 	icon_open = "labcoat_medspec_open"
 	icon_closed = "labcoat_medspec"
+
+/obj/item/clothing/suit/storage/toggle/labcoat/old
+	name = "old labcoat"
+	desc = "They don't make them like they used to."
+	icon_state = "labcoat_old_open"
+	item_state = "labcoat_old"
+	icon_open = "labcoat_old_open"
+	icon_closed = "labcoat_old"
+
+/obj/item/clothing/suit/storage/toggle/labcoat/syndicate
+	name = "Syndicate labcoat"
+	desc = "Dark and edgy labcoat to hide those oil stains."
+	icon_state = "labcoat_syndicate_open"
+	item_state = "labcoat_syndicate"
+	icon_open = "labcoat_syndicate_open"
+	icon_closed = "labcoat_syndicate"
+
+/obj/item/clothing/suit/storage/toggle/labcoat/hro
+	name = "Human Resource Officer's labcoat"
+	desc = "Better than the standard model."
+	icon_state = "HRO_open"
+	item_state = "HRO"
+	icon_open = "HRO_open"
+	icon_closed = "HRO"
+	armor = list(
+		melee = 2,
+		bullet = 5,
+		energy = 10,
+		bomb = 10,
+		bio = 75,
+		rad = 20
+	)

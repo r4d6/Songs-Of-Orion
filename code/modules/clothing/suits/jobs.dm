@@ -6,8 +6,8 @@
 /obj/item/clothing/suit/storage/ass_jacket
 	name = "assistant jacket"
 	desc = "Practical and comfortable jacket. It seems have a little protection from physical harm."
-	icon_state = "ass_jacket"
-	item_state = "ass_jacket"
+	icon_state = "assistant"
+	item_state = "assistant"
 	blood_overlay_type = "coat"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	style_coverage = COVERS_TORSO|COVERS_UPPER_ARMS
@@ -106,7 +106,7 @@
 //Botanist
 /obj/item/clothing/suit/apron
 	name = "apron"
-	desc = "A basic yellow apron."
+	desc = "A basic apron."
 	icon_state = "apron"
 	item_state = "apron"
 	blood_overlay_type = "armor"
@@ -262,30 +262,30 @@
 
 //Inspector
 /obj/item/clothing/suit/storage/detective
-	name = "inspector's grey armored trenchcoat"
-	desc = "Grey armored trenchcoat, designed and created by Ironhammer Security. The coat is externally impact resistant - perfect for your next act of autodefenestration!"
-	icon_state = "detective_gray"
-	item_state = "detective_gray"
+	name = "Deputy's coat"
+	desc = "Grey armored trenchcoat, worn by Solar Marshal Deputies for sulking around between Voight-Kampff tests."
+	icon_state = "detective"
+	item_state = "detective"
 	blood_overlay_type = "coat"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	style_coverage = COVERS_TORSO|COVERS_UPPER_ARMS|COVERS_UPPER_LEGS
 	armor = list(
 		melee = 7,
-		bullet = 5,
-		energy = 5,
-		bomb = 0,
-		bio = 0,
-		rad = 0
+		bullet = 8,
+		energy = 10,
+		bomb = 5,
+		bio = 5,
+		rad = 5
 	)
 	siemens_coefficient = 0.8
 	price_tag = 250
 	style = STYLE_HIGH
 
 /obj/item/clothing/suit/storage/detective/brown
-	name = "inspector's brown armored trenchcoat"
-	desc = "Brown armored trenchcoat, designed and created by Ironhammer Security. The coat is externally impact resistant - perfect for your next act of autodefenestration!"
-	icon_state = "detective_brown"
-	item_state = "detective_brown"
+	name = "Deputy's"
+	desc = "Brown armored trenchcoat, worn by Solar Marshal Deputies for sulking around between Voight-Kampff tests."
+	icon_state = "deckard"
+	item_state = "deckard"
 
 /obj/item/clothing/suit/storage/detective/black
 	name = "inspector's black armored trenchcoat"

@@ -11,8 +11,8 @@
 /obj/item/clothing/suit/fire
 	name = "firesuit"
 	desc = "A suit that protects against fire and heat."
-	icon_state = "firesuit"
-	item_state = "firefighter"
+	icon_state = "fire"
+	item_state = "fire"
 	w_class = ITEM_SIZE_BULKY
 	gas_transfer_coefficient = 0.9
 	permeability_coefficient = 0.5
@@ -42,7 +42,7 @@
  */
 /obj/item/clothing/head/radiation
 	name = "radiation hood"
-	icon_state = "rad"
+	icon_state = "radiation"
 	desc = "A hood with radiation protective properties."
 	flags_inv = BLOCKHAIR
 	body_parts_covered = HEAD|FACE|EYES
@@ -50,8 +50,8 @@
 	armor = list(
 		melee = 0,
 		bullet = 0,
-		energy = 7,
-		bomb = 0,
+		energy = 10,
+		bomb = 5,
 		bio = 90,
 		rad = 100
 	)
@@ -62,8 +62,8 @@
 /obj/item/clothing/suit/radiation
 	name = "radiation suit"
 	desc = "A suit that protects against radiation."
-	icon_state = "rad"
-	item_state = "rad_suit"
+	icon_state = "radiation"
+	item_state = "radiation"
 	w_class = ITEM_SIZE_BULKY
 	spawn_tags = SPAWN_TAG_HAZMATSUIT
 	gas_transfer_coefficient = 0.9
@@ -76,10 +76,10 @@
 		melee = 0,
 		bullet = 0,
 		energy = 7,
-		bomb = 0,
+		bomb = 5,
 		bio = 90,
 		rad = 100
 	)
 	flags_inv = HIDEJUMPSUIT|HIDETAIL
-	price_tag = 100
+	price_tag = 500
 	style = STYLE_NEG_LOW

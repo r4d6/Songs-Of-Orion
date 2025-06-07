@@ -1,37 +1,23 @@
 // Shoelocker
 /datum/gear/shoes
-	display_name = "workboots"
-	path = /obj/item/clothing/shoes/workboots
+	display_name = "sandals"
+	path = /obj/item/clothing/shoes/sandal
 	slot = slot_shoes
 	sort_category = "Shoes and Footwear"
 
-/datum/gear/shoes/jackboots
-	display_name = "jackboots, selection"
+/datum/gear/shoes/boots
+	display_name = "boot selection"
 	path = /obj/item/clothing/shoes/jackboots
 
-/datum/gear/shoes/jackboots/New()
+/datum/gear/shoes/boots/New()
 	..()
-	var/jackboots = list(
-		"Standard"			=	/obj/item/clothing/shoes/jackboots,
-		"Duty"				=	/obj/item/clothing/shoes/jackboots/duty,
-		"Duty, long"		=	/obj/item/clothing/shoes/jackboots/duty/long,
-		"Service"			= 	/obj/item/clothing/shoes/jackboots/ironhammer,
-		"Oberth"			= 	/obj/item/clothing/shoes/jackboots/german
+	var/boots = list(
+		"Jackboots"			=	/obj/item/clothing/shoes/jackboots,
+		"Duty boots"				=	/obj/item/clothing/shoes/jackboots/duty,
+		"Spurs"				=	/obj/item/clothing/shoes/spurs,
+		"Workboots"			=	/obj/item/clothing/shoes/workboots,
 	)
-	gear_tweaks += new /datum/gear_tweak/path(jackboots)
-
-
-/datum/gear/shoes/workboots
-	display_name = "workboots"
-	path = /obj/item/clothing/shoes/workboots
-
-/datum/gear/shoes/sandals
-	display_name = "sandals"
-	path = /obj/item/clothing/shoes/sandal
-
-/datum/gear/shoes/lacey
-	display_name = "shoes, classy"
-	path = /obj/item/clothing/shoes/reinforced
+	gear_tweaks += new /datum/gear_tweak/path(boots)
 
 /datum/gear/shoes/lacey
 	display_name = "classy shoes, selection"
@@ -40,51 +26,37 @@
 /datum/gear/shoes/lacey/New()
 	..()
 	var/lacey = list(
-		"Standard"			=	/obj/item/clothing/shoes/reinforced,
+		"Reinforced"			=	/obj/item/clothing/shoes/reinforced,
 		"Leather"			=	/obj/item/clothing/shoes/leather,
-		"Service"			=	/obj/item/clothing/shoes/reinforced/ironhammer
 	)
 	gear_tweaks += new /datum/gear_tweak/path(lacey)
 
 
-
-/*//Same with /datum/gear/shoes/lacey
-
-/datum/gear/shoes/dress
-	display_name = "shoes, dress"
-	path = /obj/item/clothing/shoes/reinforced*/
-
-/datum/gear/shoes/rainbow
-	display_name = "shoes, rainbow"
-	path = /obj/item/clothing/shoes/color/rainbow
-
-/datum/gear/shoes/colorable
-	display_name = "shoes, colorable"
-	flags = GEAR_HAS_COLOR_SELECTION
-	path = /obj/item/clothing/shoes/color
-
 /datum/gear/shoes/color_presets
-	display_name = "shoes, color presets"
+	display_name = "shoes color selection"
 	path = /obj/item/clothing/shoes/color/black
 
 /datum/gear/shoes/color_presets/New()
 	..()
 	var/shoes = list(
-		"Black"			=	/obj/item/clothing/shoes/color/black,
-		"White"			=	/obj/item/clothing/shoes/color/white,
-		"Grey"			= 	/obj/item/clothing/shoes/color/grey,
-		"Brown"			=	/obj/item/clothing/shoes/color/brown,
-		"Red"			=	/obj/item/clothing/shoes/color/red,
-		"Orange"		=	/obj/item/clothing/shoes/color/orange,
-		"Yellow"		=	/obj/item/clothing/shoes/color/yellow,
-		"Green"			=	/obj/item/clothing/shoes/color/green,
 		"Blue"			=	/obj/item/clothing/shoes/color/blue,
-		"Purple"		=	/obj/item/clothing/shoes/color/purple
+		"Orange"		=	/obj/item/clothing/shoes/color/orange,
+		"Green"			=	/obj/item/clothing/shoes/color/green,
+		"Brown"			=	/obj/item/clothing/shoes/color/brown,
+		"Slate"			=	/obj/item/clothing/shoes/color/grey,
+		"White"			=	/obj/item/clothing/shoes/color/white,
+		"Red"			=	/obj/item/clothing/shoes/color/red,
+		"Black"			=	/obj/item/clothing/shoes/color/black,
+		"Yellow"		=	/obj/item/clothing/shoes/color/yellow,
+		"Violet"		=	/obj/item/clothing/shoes/color/purple,
+		"Rose"			=	/obj/item/clothing/shoes/color/rose,
+		"Aqua"			=	/obj/item/clothing/shoes/color/aqua,
+		"Rainbow"			=	/obj/item/clothing/shoes/color/rainbow,
 	)
 	gear_tweaks += new /datum/gear_tweak/path(shoes)
 
 /datum/gear/shoes/sneaker_colors
-	display_name = "sneakers, color presets"
+	display_name = "sneaker color selection"
 	path = /obj/item/clothing/shoes/sneakersred
 
 /datum/gear/shoes/sneaker_colors/New()
@@ -96,6 +68,14 @@
 	)
 	gear_tweaks += new /datum/gear_tweak/path(sneaker_colors)
 
-/datum/gear/shoes/spurs
-	display_name = "spurs"
-	path = /obj/item/clothing/shoes/spurs
+/datum/gear/shoes/slippers
+	display_name = "slippers selection"
+	path = /obj/item/clothing/shoes/slippers
+
+/datum/gear/shoes/slippers/New()
+	..()
+	var/slippers = list(
+		"Bunny" 		=	 /obj/item/clothing/shoes/slippers,
+		"Bunny, worn" 		=	 /obj/item/clothing/shoes/slippers_worn
+	)
+	gear_tweaks += new /datum/gear_tweak/path(slippers)

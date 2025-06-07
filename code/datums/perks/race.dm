@@ -1,6 +1,6 @@
 /datum/perk/solar
 	name = "Solar Human"
-	desc = "You are a Solar Human. This come with some benefit, and some drawbacks."
+	desc = "You are the progeny of Sol, the light of humanity in the darkness between the stars. Your education and programming is the product of generations of progress and peak Pavlovian perfection. Soft hands and soft bodies make room for time for the finer points of enlightenment, your physical limitations can be overcome with science, no?"
 	var/stat_increase = 10
 
 /datum/perk/solar/assign(mob/living/carbon/human/H)
@@ -22,8 +22,8 @@
 	..()
 
 /datum/perk/exile
-	name = "Exile Human"
-	desc = "You are an Exile Human. This come with some benefit, and some drawbacks."
+	name = "Human Exile"
+	desc = "You are a lost son of Adam or daughter of Eve. The hard life outside in the cold away from the unholy glow of the United Solar Conglomerate. Hard times and harder men, your physical abilities will have to make up for the years of indoctrination you were spared."
 	var/stat_increase = 10
 
 /datum/perk/exile/assign(mob/living/carbon/human/H)

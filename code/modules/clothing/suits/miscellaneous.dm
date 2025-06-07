@@ -191,7 +191,7 @@
 
 /obj/item/clothing/suit/storage/toggle/bomber
 	name = "bomber jacket"
-	desc = "A thick, well-worn WW2 style leather bomber jacket."
+	desc = "A thick, well-worn leather bomber jacket."
 	icon_state = "bomber"
 	item_state = "bomber"
 	icon_open = "bomber_open"
@@ -202,6 +202,33 @@
 	min_cold_protection_temperature = T0C - 20
 	siemens_coefficient = 0.7
 
+/obj/item/clothing/suit/storage/toggle/leather
+	name = "leather jacket"
+	desc = "A thick leather jacket. A tough individual, you are."
+	icon_state = "leather"
+	item_state = "leather"
+	icon_open = "leather_open"
+	icon_closed = "leather"
+	armor = list(
+		melee = 2,
+		bullet = 2,
+		energy = 2,
+		bomb = 10,
+		bio = 0,
+		rad = 0
+	)
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	min_cold_protection_temperature = T0C - 20
+	siemens_coefficient = 0.7
+
+/obj/item/clothing/suit/storage/toggle/leather/red
+	name = "red bomber jacket"
+	icon_state = "leather_red"
+	item_state = "leather_red"
+	icon_open = "leather_red_open"
+	icon_closed = "leather_red"
+
 /obj/item/clothing/suit/storage/toggle/bomber/furred
 	name = "furred bomber jacket"
 	desc = "A thick, well-worn WW2 style leather bomber jacket, padded with warm fur. It's cold out in space!"
@@ -209,6 +236,7 @@
 	item_state = "fur_bomber"
 	icon_open = "fur_bomber_open"
 	icon_closed = "fur_bomber"
+	spawn_blacklisted = TRUE
 
 /obj/item/clothing/suit/storage/toggle/service
 	name = "Ironhammer service jacket"
@@ -227,6 +255,7 @@
 	style = STYLE_HIGH
 	body_parts_covered = UPPER_TORSO|ARMS
 	siemens_coefficient = 0.7
+	spawn_blacklisted = TRUE
 
 /obj/item/clothing/suit/storage/aerostatic
 	name = "aerostatic bomber jacket"
@@ -236,6 +265,7 @@
 	style = STYLE_HIGH
 	body_parts_covered = UPPER_TORSO|ARMS
 	siemens_coefficient = 0.7
+	spawn_blacklisted = TRUE
 
 /obj/item/clothing/suit/storage/khaki
 	name = "tactful jacket"
@@ -245,8 +275,9 @@
 	style = STYLE_LOW
 	body_parts_covered = UPPER_TORSO|ARMS
 	siemens_coefficient = 0.7
+	spawn_blacklisted = TRUE
 
-/obj/item/clothing/suit/storage/leather_jacket
+/obj/item/clothing/suit/storage/leather_jacket//deferred
 	name = "leather jacket"
 	desc = "A sturdy, synthetic leather jacket with a high collar. It is able to protect you from a knife slice or a bite, but don't expect too much. More importantly, it makes you look like a really bad boy or girl. And remember, Tunnel Snakes rule!"
 	icon_state = "leather_jacket"
@@ -263,6 +294,7 @@
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
 	min_cold_protection_temperature = T0C - 20
 	siemens_coefficient = 0.7
+	spawn_blacklisted = TRUE
 
 /obj/item/clothing/suit/storage/leather_jacket/tunnelsnake
 	name = "sleek leather jacket"
@@ -309,7 +341,7 @@
 		accessories += logo
 		logo.has_suit = src
 		loc = src
-		switch(logo_type) // All of the following names associated with some group of people, thus capitalized 
+		switch(logo_type) // All of the following names associated with some group of people, thus capitalized
 			if("punk_over_valentinos")
 				name = "Valentinos jacket"
 			if("punk_over_samurai")
@@ -331,6 +363,7 @@
 	icon_closed = "grey_hoodie"
 	min_cold_protection_temperature = T0C - 20
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	spawn_blacklisted = TRUE
 
 /obj/item/clothing/suit/storage/toggle/hoodie/black
 	name = "black hoodie"
@@ -354,6 +387,7 @@
 		rad = 0
 	)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	spawn_blacklisted = TRUE
 
 
 /obj/item/clothing/suit/storage/cyberpunksleek/green
@@ -389,6 +423,7 @@
 		rad = 0
 	)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	spawn_blacklisted = TRUE
 
 
 /obj/item/clothing/suit/storage/cyberpunksleek_long/green
@@ -424,6 +459,8 @@
 		rad = 0
 	)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	spawn_blacklisted = TRUE
+
 
 /obj/item/clothing/suit/storage/dante//makes even the devil cry
 	name = "exterminator coat"
@@ -441,6 +478,7 @@
 	style = STYLE_HIGH
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	siemens_coefficient = 0.7
+	spawn_blacklisted = TRUE
 
 /obj/item/clothing/suit/storage/drive_jacket
 	name = "white jacket"
@@ -449,6 +487,7 @@
 	item_state = "drive_jacket"
 	style = STYLE_LOW
 	body_parts_covered = UPPER_TORSO|ARMS
+	spawn_blacklisted = TRUE
 
 /obj/item/clothing/suit/storage/violet_jacket
 	name = "violet jacket"
@@ -621,3 +660,261 @@
 	item_state = "puffycoatred"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	siemens_coefficient = 0.7
+
+/obj/item/clothing/suit/storage/winter
+	name = "grey parka"
+	desc = "A warm winter jacket with pockets."
+	icon_state = "jacket"
+	item_state = "jacket"
+	blood_overlay_type = "coat"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	style_coverage = COVERS_TORSO|COVERS_UPPER_ARMS|COVERS_UPPER_LEGS
+	siemens_coefficient = 0.7
+	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	min_cold_protection_temperature = T0C - 40
+	armor = list(
+		melee = 5,
+		bullet = 5,
+		energy = 5,
+		bomb = 0,
+		bio = 10,
+		rad = 0
+	)
+	price_tag = 250
+
+/obj/item/clothing/suit/storage/winter/cargo
+	name = "old cargo parka"
+	desc = "A warm winter jacket in the old cargo department colors."
+	icon_state = "jacket_cargo"
+	item_state = "jacket_cargo"
+
+/obj/item/clothing/suit/storage/winter/sec
+	name = "old security parka"
+	desc = "A warm winter jacket in the old NT security department colors."
+	icon_state = "jacket_sec"
+	item_state = "jacket_sec"
+	armor = list(
+		melee = 8,
+		bullet = 7,
+		energy = 8,
+		bomb = 8,
+		bio = 10,
+		rad = 0
+	)
+
+/obj/item/clothing/suit/storage/winter/med
+	name = "old medical parka"
+	desc = "A warm winter jacket in the old medical department colors."
+	icon_state = "jacket_med"
+	item_state = "jacket_med"
+	armor = list(
+		melee = 5,
+		bullet = 5,
+		energy = 5,
+		bomb = 0,
+		bio = 20,
+		rad = 0
+	)
+
+/obj/item/clothing/suit/storage/winter/nt
+	name = "NT parka"
+	desc = "A warm winter jacket in the old NanoTrassen colors."
+	icon_state = "jacket_nt"
+	item_state = "jacket_nt"
+
+/obj/item/clothing/suit/storage/winter/sar
+	name = "SAR parka"
+	desc = "A warm winter jacket in PCRC Search And Rescue liverly."
+	icon_state = "jacket_sar"
+	item_state = "jacket_sar"
+	extra_allowed = list(
+	/obj/item/storage/firstaid,
+	/obj/item/roller,
+	/obj/item/device)
+
+	armor = list(
+		melee = 5,
+		bullet = 5,
+		energy = 5,
+		bomb = 0,
+		bio = 20,
+		rad = 0
+	)
+
+/obj/item/clothing/suit/storage/winter/hivis
+	name = "high visibility jacket"
+	desc = "A warm jacket with high visibility tape for construction and utility work."
+	icon_state = "hivis"
+	item_state = "hivis"
+
+//KD6-3.7
+/obj/item/clothing/suit/storage/toggle/kaydee
+	name = "lined trenchcoat"
+	desc = "A thick, well-worn leather coat with a high collar and warm lining."
+	icon_state = "kaydee"
+	item_state = "kaydee"
+	icon_open = "kaydee_open"
+	icon_closed = "kaydee"
+	style = STYLE_HIGH
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	style_coverage = COVERS_TORSO|COVERS_UPPER_ARMS|COVERS_UPPER_LEGS
+	siemens_coefficient = 0.7
+	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	min_cold_protection_temperature = T0C - 40
+	price_tag = 500
+	armor = list(
+		melee = 8,
+		bullet = 5,
+		energy = 10,
+		bomb = 0,
+		bio = 20,
+		rad = 0
+	)
+
+//N6MAA10816
+/obj/item/clothing/suit/storage/toggle/batty
+	name = "leather trenchcoat"
+	desc = "A thick, well-worn leather coat with a generational history. This one seems to be missing armor panels."
+	icon_state = "batty"
+	item_state = "batty"
+	icon_open = "batty_open"
+	icon_closed = "batty"
+	style = STYLE_HIGH
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	style_coverage = COVERS_TORSO|COVERS_UPPER_ARMS|COVERS_UPPER_LEGS
+	siemens_coefficient = 0.7
+	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	min_cold_protection_temperature = T0C - 20
+	price_tag = 500
+	armor = list(
+		melee = 8,
+		bullet = 8,
+		energy = 8,
+		bomb = 0,
+		bio = 8,
+		rad = 8
+	)
+
+/obj/item/clothing/suit/storage/toggle/batty/antag
+	name = "leather trenchcoat"
+	desc = "A thick, well-worn leather coat with a generational history. No Voight-Kampff test for you."
+	icon_state = "batty"
+	item_state = "batty"
+	icon_open = "batty_open"
+	icon_closed = "batty"
+	style = STYLE_HIGH
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	style_coverage = COVERS_TORSO|COVERS_UPPER_ARMS|COVERS_UPPER_LEGS
+	siemens_coefficient = 0.2
+	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	min_cold_protection_temperature = T0C - 40
+	price_tag = 1000
+	armor = list(
+		melee = 15,
+		bullet = 10,
+		energy = 10,
+		bomb = 15,
+		bio = 15,
+		rad = 15
+	)
+
+/obj/item/clothing/suit/storage/harness
+	name = "web harness"
+	desc = "A simple belt and suspender system designed to carry anything you need."
+	icon_state = "harness"
+	item_state = "harness"
+	blood_overlay_type = "armor"
+	body_parts_covered = UPPER_TORSO
+	extra_allowed = list(
+	/obj/item/storage/firstaid,
+	/obj/item/storage/lockbox,
+	/obj/item/storage/part_replacer,
+	/obj/item/storage/secure,
+	/obj/item/storage/toolbox,
+	/obj/item/storage/briefcase,
+	/obj/item/material,
+	/obj/item/roller,
+	/obj/item/device)
+
+/obj/item/clothing/suit/storage/harness/brown
+	name = "web harness"
+	desc = "A simple belt and suspender system designed to carry anything you need."
+	icon_state = "harness_brown"
+	item_state = "harness_brown"
+
+/obj/item/clothing/suit/cloak
+	name = "cloak"
+	desc = "Is that just a blanket?"
+	icon_state = "potato"
+	item_state = "potato"
+	spawn_tags = SPAWN_TAG_CLOTHING_SUIT_PONCHO
+	armor = list(
+		melee = 10,
+		bullet = 0,
+		energy = 10,
+		bomb = 0,
+		bio = 15,
+		rad = 0
+	)
+
+/obj/item/clothing/suit/storage/toggle/hos
+	name = "Head of Security jacket"
+	desc = "A thick, well-worn leather jacket with the badges PCRC Security."
+	icon_state = "hos"
+	item_state = "hos"
+	icon_open = "hos_open"
+	icon_closed = "hos"
+	style = STYLE_LOW
+	body_parts_covered = UPPER_TORSO|ARMS
+	cold_protection = UPPER_TORSO|ARMS
+	min_cold_protection_temperature = T0C - 20
+	siemens_coefficient = 0.7
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	style_coverage = COVERS_TORSO|COVERS_UPPER_ARMS
+	armor = list(
+		melee = 15,
+		bullet = 15,
+		energy = 10,
+		bomb = 35,
+		bio = 15,
+		rad = 0
+	)
+	price_tag = 800
+
+/obj/item/clothing/suit/patient
+	name = "patient robe"
+	desc = "The absolute minimum."
+	icon_state = "patient"
+	item_state = "patient"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	allowed = list(/obj/item/storage/fancy/cigarettes,/obj/item/spacecash)
+	flags_inv = HIDEJUMPSUIT
+	armor = list(
+		melee = 0,
+		bullet = 0,
+		energy = 0,
+		bomb = 0,
+		bio = 10,
+		rad = 0
+	)
+	price_tag = 8
+
+/obj/item/clothing/suit/storage/duster
+	name = "duster coat"
+	desc = "A worn leather long coat that has been ridden hard and put away wet."
+	icon_state = "duster"
+	item_state = "duster"
+	blood_overlay_type = "coat"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	style_coverage = COVERS_TORSO|COVERS_UPPER_ARMS|COVERS_UPPER_LEGS
+	armor = list(
+		melee = 4,
+		bullet = 4,
+		energy = 6,
+		bomb = 4,
+		bio = 4,
+		rad = 4
+	)
+	siemens_coefficient = 0.8
+	price_tag = 250
+	style = STYLE_HIGH

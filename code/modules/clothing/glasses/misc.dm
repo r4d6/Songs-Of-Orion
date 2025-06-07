@@ -42,8 +42,8 @@
 /obj/item/clothing/glasses/regular/goggles/clear
 	name = "Goggles"
 	desc = "Goggles made of plastic."
-	icon_state = "clear_goggles"
-	item_state = "clear_goggles"
+	icon_state = "goggles"
+	item_state = "goggles"
 
 /obj/item/clothing/glasses/regular/hipster
 	name = "Prescription Glasses"

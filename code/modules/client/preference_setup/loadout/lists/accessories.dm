@@ -125,14 +125,31 @@
 	slot = slot_wear_mask
 	flags = GEAR_HAS_TYPE_SELECTION
 
-/datum/gear/accessory/bandana
-	display_name = "bandana selection"
-	path = /obj/item/clothing/mask/bandana
-	slot = slot_wear_mask
-	flags = GEAR_HAS_TYPE_SELECTION
-
 /datum/gear/accessory/cloak
 	display_name = "poncho selection"
 	path = /obj/item/clothing/accessory/cloak
 	slot = slot_accessory_buffer
 	flags = GEAR_HAS_TYPE_SELECTION
+
+//BANDANAS
+/datum/gear/accessory/bandana/color_presets
+	display_name = "bandana, color selection"
+	path = /obj/item/clothing/mask/bandana/blue
+
+/datum/gear/accessory/bandana/color_presets/New()
+	..()
+	var/bandana = list(
+		"Blue"			=	/obj/item/clothing/mask/bandana/blue,
+		"Orange"		=	/obj/item/clothing/mask/bandana/orange,
+		"Green"			=	/obj/item/clothing/mask/bandana/green,
+		"Brown"			=	/obj/item/clothing/mask/bandana/brown,
+		"Slate"			=	/obj/item/clothing/mask/bandana/slate,
+		"White"			=	/obj/item/clothing/mask/bandana/white,
+		"Red"			=	/obj/item/clothing/mask/bandana/red,
+		"Black"			=	/obj/item/clothing/mask/bandana/black,
+		"Yellow"		=	/obj/item/clothing/mask/bandana/gold,
+		"Violet"		=	/obj/item/clothing/mask/bandana/purple,
+		"Rose"			=	/obj/item/clothing/mask/bandana/rose,
+		"Aqua"			=	/obj/item/clothing/mask/bandana/aqua,
+	)
+	gear_tweaks += new /datum/gear_tweak/path(bandana)

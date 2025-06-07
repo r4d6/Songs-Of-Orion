@@ -28,11 +28,11 @@
 		if(2)
 			timer = 3 MINUTES
 	addtimer(CALLBACK(src, PROC_REF(repair_self)), timer)
-	
+
 /obj/item/clothing/glasses/hud/health
 	name = "Health Scanner HUD"
 	desc = "A heads-up display that scans the humans in view and provides accurate data about their health status."
-	icon_state = "healthhud"
+	icon_state = "medhud_med"
 	body_parts_covered = 0
 
 
@@ -42,9 +42,9 @@
 	process_med_hud(M, 1)
 
 /obj/item/clothing/glasses/sunglasses/medhud
-	name = "Ironhammer medical HUD"
+	name = "polarized medical HUD"
 	desc = "Goggles with inbuilt medical information. They provide minor flash resistance."
-	icon_state = "healthhud"
+	icon_state = "sunhud"
 	prescription = TRUE
 
 	New()
@@ -52,10 +52,18 @@
 		src.hud = new/obj/item/clothing/glasses/hud/health(src)
 		return
 
+/obj/item/clothing/glasses/hud/health/prescription
+	name = "perscription medical HUD"
+	desc = "Perscription glasses with smartglass displaying medical information."
+	icon_state = "glasses"
+	prescription = TRUE
+
+
 /obj/item/clothing/glasses/hud/security
 	name = "Security HUD"
 	desc = "A heads-up display that scans the humans in view and provides accurate data about their ID status and security records."
-	icon_state = "securityhud"
+	icon_state = "medhud_sec"
+	item_state = "medhud_sec"
 	body_parts_covered = 0
 	var/global/list/jobs[0]
 
@@ -99,7 +107,8 @@
 /obj/item/clothing/glasses/hud/excelsior
 	name = "Excelsior HUD"
 	desc = "A heads-up display that scans the humans in view and provides accurate data about their opinion on communism."
-	icon_state = "excelhud"
+	icon_state = "medhud_red"
+	item_state = "medhud_red"
 	body_parts_covered = 0
 	spawn_blacklisted = TRUE
 
@@ -118,3 +127,104 @@
 
 	if(!is_excelsior(H))
 		to_chat(H, SPAN_WARNING("The hud fails to activate, a built-in speaker says, \"Failed to locate implant, please contact your nearest Excelsior representative immediately for assistance\"."))
+
+/obj/item/clothing/glasses/hud/excelsior/stealth
+	name = "Prescription Glasses"
+	desc = "Made by Nerd. Co."
+	description_antag = "Advanced smart glasses can detect Marx-Kampf liberated fellow travelers."
+	icon_state = "glasses"
+	prescription = TRUE
+
+//////
+//HUD flavors
+//////
+
+///////////
+///SLIM///
+/////////
+/obj/item/clothing/glasses/hud/health/slim
+	name = "slim medical HUD"
+	desc = "A sleek HUD displaying medical information."
+	icon_state = "hud_med"
+	item_state = "hud_med"
+
+/obj/item/clothing/glasses/hud/security/slim
+	name = "slim security HUD"
+	desc = "A sleek HUD displaying security information."
+	icon_state = "hud_sec"
+	item_state = "hud_sec"
+
+/obj/item/clothing/glasses/hud/excelsior/slim
+	name = "slim commie HUD"
+	desc = "A heads-up display that scans the humans in view and provides accurate data about their opinion on communism."
+	icon_state = "hud_red"
+	item_state = "hud_red"
+
+///////////
+///FAT////
+/////////
+/obj/item/clothing/glasses/hud/health/big
+	name = "advanced medical HUD"
+	desc = "A sleek HUD displaying medical information. Corrects for vision impairments."
+	icon_state = "bighud_med"
+	item_state = "bighud_med"
+	prescription = TRUE
+
+/obj/item/clothing/glasses/hud/security/big
+	name = "advanced security HUD"
+	desc = "A sleek HUD displaying security information. Corrects for vision impairments."
+	icon_state = "bighud_sec"
+	item_state = "bighud_sec"
+	prescription = TRUE
+
+/obj/item/clothing/glasses/hud/excelsior/big
+	name = "advanced commie HUD"
+	desc = "A heads-up display that scans the humans in view and provides accurate data about their opinion on communism."
+	icon_state = "bighud_red"
+	item_state = "bighud_red"
+	prescription = TRUE
+
+///////////
+///TAC////
+/////////
+
+/obj/item/clothing/glasses/hud/health/tac
+	name = "tactical medical HUD"
+	desc = "A robust HUD displaying medical information."
+	icon_state = "slim_med"
+	item_state = "slim_med"
+
+/obj/item/clothing/glasses/hud/security/tac
+	name = "tactical security HUD"
+	desc = "A robust HUD displaying security information."
+	icon_state = "slim_sec"
+	item_state = "slim_sec"
+
+/obj/item/clothing/glasses/hud/excelsior/tac
+	name = "tactical commie HUD"
+	desc = "A heads-up display that scans the humans in view and provides accurate data about their opinion on communism."
+	icon_state = "slim_red"
+	item_state = "slim_red"
+
+///////////
+///FAT-TAC
+/////////
+
+/obj/item/clothing/glasses/hud/health/tacfat
+	name = "battlefield medical HUD"
+	desc = "A robust HUD displaying medical information."
+	icon_state = "tachud_med"
+	item_state = "tachud_med"
+
+/obj/item/clothing/glasses/hud/security/tacfat
+	name = "battlefield security HUD"
+	desc = "A robust HUD displaying security information."
+	icon_state = "tachud_sec"
+	item_state = "tachud_sec"
+
+/obj/item/clothing/glasses/hud/excelsior/tacfat
+	name = "battlefield commie HUD"
+	desc = "A heads-up display that scans the humans in view and provides accurate data about their opinion on communism."
+	icon_state = "tachud_red"
+	item_state = "tachud_red"
+

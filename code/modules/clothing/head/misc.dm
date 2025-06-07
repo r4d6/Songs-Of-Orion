@@ -256,6 +256,7 @@
 	icon_state = "orange_bandana"
 	body_parts_covered = 0
 	style_coverage = COVERS_HAIR
+
 /obj/item/clothing/head/gladiator
 	name = "gladiator helmet"
 	desc = "Ave, Imperator, morituri te salutant."
@@ -419,3 +420,54 @@
 	name = "wide black cowboy hat"
 	icon_state = "cowboy_black_wide"
 	item_state = "cowboy_black_wide"
+
+/obj/item/clothing/head/beret
+	name = "blue beret"
+	desc = "A beret, for some reason."
+	icon_state = "beret_bl"
+	body_parts_covered = 0
+	style_coverage = COVERS_HAIR
+
+/obj/item/clothing/head/beret/orange
+	name = "orange beret"
+	icon_state = "beret_or"
+
+/obj/item/clothing/head/beret/green
+	name = "green beret"
+	icon_state = "beret_gr"
+
+/obj/item/clothing/head/beret/brown
+	name = "brown beret"
+	icon_state = "beret_br"
+
+/obj/item/clothing/head/beret/slate
+	name = "slate beret"
+	icon_state = "beret_sl"
+
+/obj/item/clothing/head/beret/white
+	name = "white beret"
+	icon_state = "beret_wh"
+
+/obj/item/clothing/head/beret/red
+	name = "red beret"
+	icon_state = "beret_rd"
+
+/obj/item/clothing/head/beret/black
+	name = "black beret"
+	icon_state = "beret_bk"
+
+/obj/item/clothing/head/beret/yellow
+	name = "yellow beret"
+	icon_state = "beret_yl"
+
+/obj/item/clothing/head/beret/violet
+	name = "violet beret"
+	icon_state = "beret_vi"
+
+/obj/item/clothing/head/beret/rose
+	name = "rose beret"
+	icon_state = "beret_rs"
+
+/obj/item/clothing/head/beret/aqua
+	name = "teal beret"
+	icon_state = "beret_aq"
