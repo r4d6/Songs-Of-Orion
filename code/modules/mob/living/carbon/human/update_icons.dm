@@ -479,14 +479,14 @@ var/global/list/damage_icon_parts = list()
 
 /mob/living/carbon/human/proc/get_uniform_icon(var/g = MALE)
 	if(g == FEMALE)
-		. = 'icons/inventory/uniform/mob_f.dmi'
+		. = 'icons/inventory/uniform/mob_s_f.dmi'
 		if(species.name == SPECIES_HUMAN_SOLAR)
 			. = 'icons/inventory/uniform/mob_s_f.dmi'
 		if(species.name == SPECIES_HUMAN_EXILE)
 			. = 'icons/inventory/uniform/mob_e_f.dmi'
 		return
 	else
-		. = 'icons/inventory/uniform/mob.dmi'
+		. = 'icons/inventory/uniform/mob_s.dmi'
 		if(species.name == SPECIES_HUMAN_SOLAR)
 			. = 'icons/inventory/uniform/mob_s.dmi'
 		if(species.name == SPECIES_HUMAN_EXILE)
@@ -494,14 +494,14 @@ var/global/list/damage_icon_parts = list()
 
 /mob/living/carbon/human/proc/get_suit_icon(var/g = MALE)
 	if(g == FEMALE)
-		. = 'icons/inventory/suit/mob_f.dmi'
+		. = 'icons/inventory/suit/mob_s_f.dmi'
 		if(species.name == SPECIES_HUMAN_SOLAR)
 			. = 'icons/inventory/suit/mob_s_f.dmi'
 		if(species.name == SPECIES_HUMAN_EXILE)
 			. = 'icons/inventory/suit/mob_e_f.dmi'
 		return
 	else
-		. = 'icons/inventory/suit/mob.dmi'
+		. = 'icons/inventory/suit/mob_s.dmi'
 		if(species.name == SPECIES_HUMAN_SOLAR)
 			. = 'icons/inventory/suit/mob_s.dmi'
 		if(species.name == SPECIES_HUMAN_EXILE)
