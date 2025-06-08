@@ -64,6 +64,15 @@
 			return ..(freq, level)
 	return -1
 
+/obj/item/device/radio/headset/taccom
+	name = "TacCom headset"
+	desc = "An rugged communications headset. Takes encryption keys"
+	icon_state = "taccom"
+	item_state = "taccom"
+	matter = list(MATERIAL_PLASTIC = 1)
+	subspace_transmission = 1
+	canhear_range = 0 // can't hear headsets from very far away
+
 /obj/item/device/radio/headset/syndicate
 	origin_tech = list(TECH_COVERT = 3)
 	syndie = TRUE
@@ -72,6 +81,8 @@
 
 /obj/item/device/radio/headset/mercenaries
 	origin_tech = list(TECH_COVERT = 3)
+	icon_state = "taccom"
+	item_state = "taccom"
 	ks1type = /obj/item/device/encryptionkey/mercenaries
 	spawn_blacklisted = TRUE
 
@@ -85,17 +96,36 @@
 	ks1type = /obj/item/device/encryptionkey/binary
 
 /obj/item/device/radio/headset/headset_sec
-	name = "security radio headset"
+	name = "security TacCom headset"
 	desc = "This is used by your elite security force."
 	icon_state = "sec_headset"
-	item_state = "headset"
+	item_state = "taccom"
 	ks2type = /obj/item/device/encryptionkey/headset_sec
+
+/obj/item/device/radio/headset/headset_sar
+	name = "SAR TacCom headset"
+	desc = "This is used by your elite Search And Rescue Specialists."
+	icon_state = "sec_headset"
+	item_state = "taccom"
+	ks2type = /obj/item/device/encryptionkey/headset_sec
+
+/obj/item/device/radio/headset/headset_sec/alt
+	name = "security radio headset"
+	desc = "This is used by your elite security force."
+	icon_state = "headset"
+	item_state = "headset"
+
+/obj/item/device/radio/headset/headset_sar/alt
+	name = "SAR radio headset"
+	desc = "This is used by your elite Search And Rescue Specialists."
+	icon_state = "headset"
+	item_state = "headset"
 
 /obj/item/device/radio/headset/headset_eng
 	name = "engineering radio headset"
 	desc = "When the engineers wish to chat like girls."
 	icon_state = "eng_headset"
-	item_state = "headset"
+	item_state = "taccom_eng"
 	ks2type = /obj/item/device/encryptionkey/headset_eng
 
 /obj/item/device/radio/headset/headset_rob
@@ -153,29 +183,29 @@
 	return ..(freq, level, 1)
 
 /obj/item/device/radio/headset/heads/rd
-	name = "expedition overseer's headset"
-	desc = "Headset of the researching God."
+	name = "HRO's headset"
+	desc = "The headset of the Human Resources Officer."
 	icon_state = "com_headset"
 	item_state = "headset"
 	ks2type = /obj/item/device/encryptionkey/heads/moebius
 
 /obj/item/device/radio/headset/heads/hos
-	name = "ironhammer commander headset"
+	name = "HoS' headset"
 	desc = "The headset of the man who protects your worthless lifes."
 	icon_state = "com_headset"
 	item_state = "headset"
 	ks2type = /obj/item/device/encryptionkey/heads/hos
 
 /obj/item/device/radio/headset/heads/ce
-	name = "exultant's headset"
+	name = "CE's headset"
 	desc = "The headset of the guy who is in charge of morons"
 	icon_state = "com_headset"
 	item_state = "headset"
 	ks2type = /obj/item/device/encryptionkey/heads/ce
 
 /obj/item/device/radio/headset/heads/cmo
-	name = "biolab officer's headset"
-	desc = "The headset of the highly trained medical chief."
+	name = "Coordinator's headset"
+	desc = "The headset of the Brotherhood's Coordinator."
 	icon_state = "com_headset"
 	item_state = "headset"
 	ks2type = /obj/item/device/encryptionkey/heads/moebius
@@ -188,7 +218,7 @@
 	ks2type = /obj/item/device/encryptionkey/heads/hop
 
 /obj/item/device/radio/headset/heads/merchant
-	name = "guild merchant's headset"
+	name = "Syndicate Officer's headset"
 	desc = "The headset of the guy who know price for everything."
 	icon_state = "com_headset"
 	item_state = "headset"
@@ -202,10 +232,10 @@
 	ks2type = /obj/item/device/encryptionkey/heads/preacher
 
 /obj/item/device/radio/headset/headset_cargo
-	name = "supply radio headset"
-	desc = "A headset used by Merchant slaves."
+	name = "Syndicate radio headset"
+	desc = "A headset used by Syndicate slaves."
 	icon_state = "cargo_headset"
-	item_state = "headset"
+	item_state = "taccom_dark"
 	ks2type = /obj/item/device/encryptionkey/headset_cargo
 
 /obj/item/device/radio/headset/headset_service
