@@ -129,6 +129,12 @@
 	desc = "An old cap for station security forces. Popular fashion statement recently."
 	icon_state = "cap_seccorp"
 
+/obj/item/clothing/head/soft/sec/sol
+	name = "SOLCOM cap"
+	initial_name = "SOLCOM cap"
+	desc = "A simple ballcap with the insignia of the United Solar Conglomerate Combined Operations Mandate."
+	icon_state = "cap_seccorp"
+
 /obj/item/clothing/head/soft/green2soft
 	name = "green military cap"
 	initial_name = "green military cap"
@@ -205,11 +211,27 @@
 	desc = "A washed out patrol cap bearing logo of NanoTrassen internal security."
 	icon_state = "patrol_secred"
 
+/obj/item/clothing/head/patrol/sec/hos
+	name = "Director patrol cap"
+	initial_name = "Director patrol cap"
+	desc = "An old patrol cap for the Director of Asset Denial. Has soft armor reinforcement."
+	icon_state = "patrol_seccorp"
+	body_parts_covered = HEAD
+	armor = list(
+		melee = 10,
+		bullet = 5,
+		energy = 10,
+		bomb = 5,
+		bio = 5,
+		rad = 0
+	)
+
 /obj/item/clothing/head/patrol/sec/corp
 	name = "corporate security patrol cap"
 	initial_name = "corporate security patrol cap"
 	desc = "An old patrol cap for station security forces. Popular fashion statement recently."
 	icon_state = "patrol_seccorp"
+
 
 /obj/item/clothing/head/patrol/nt
 	name = "NT patrol cap"

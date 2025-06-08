@@ -34,7 +34,7 @@
 		rad = 5 //UHMWPE has high hydrogen density and is used for rad shielding in real space application.
 	)
 	matter = list(
-		MATERIAL_plastic = 10, //UHMWPE
+		MATERIAL_PLASTIC = 10, //UHMWPE
 		MATERIAL_PLASTEEL = 2 //a lil bit of plasteel since it's better than handmade shit
 	)
 
