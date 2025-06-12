@@ -234,6 +234,7 @@ SUBSYSTEM_DEF(job)
 	// This is a file used for generating a template of all the current jobs..
 	// Create it in the config and then just call this proc, it will add in a pre-set config for all jobs with
 	// the required playtime at 0
+	// Go to MC tab > VV the jobs subystem and call the CreateConfigFile. (Advanced ProCall does not work for this.)
 	var/file = file("config/job_playtimes_template.txt")
 	for(var/datum/job/occupation in occupations)
 		file << "[occupation.title]=0"
