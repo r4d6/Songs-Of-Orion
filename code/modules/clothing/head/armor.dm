@@ -163,7 +163,7 @@
 /obj/item/clothing/head/armor/bulletproof
 	name = "Peacekeeper helm"
 	desc = "For Democracy we will die, speading Freedom across the skies."
-	icon_state = "bulletproof"
+	icon_state = "peace"
 	body_parts_covered = HEAD | EARS | EYES | FACE
 	armor = list(
 		melee = 7,
@@ -175,7 +175,7 @@
 	)
 	price_tag = 400
 	flags_inv = BLOCKHEADHAIR|HIDEEARS|HIDEEYES|HIDEFACE
-	flash_protection = FLASH_PROTECTION_MINOR
+	flash_protection = FLASH_PROTECTION_MAJOR
 	matter = list(
 		MATERIAL_STEEL = 8,
 		MATERIAL_PLASTEEL = 2, //Higher plasteel cost since it's booletproof

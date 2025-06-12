@@ -41,6 +41,19 @@
 	spawn_blacklisted = TRUE
 	slowdown = MEDIUM_SLOWDOWN * 1.5
 
+//SOLCOM Marine Corp armor, military ERT
+/obj/item/clothing/head/space/void/SCAF/VBSS
+	name = "VBSS helmet"
+	desc = "Modern space capable combat armor used by the Solar Marines. Not quite a space suit, but capable of keeping up the fight in low pressure and vacuum areas."
+	icon_state = "scaf"
+	item_state = "scaf"
+
+/obj/item/clothing/suit/space/void/SCAF/VBSS
+	name = "VBSS suit"
+	desc = "A bulky antique suit of refurbished infantry armour, retrofitted with seals and coatings to make it EVA capable but also reducing mobility."
+	icon_state = "odst"
+	item_state = "odst"
+	helmet = /obj/item/clothing/head/space/void/SCAF/VBSS
 
 //Voidsuit for contractors
 /obj/item/clothing/head/space/void/merc
