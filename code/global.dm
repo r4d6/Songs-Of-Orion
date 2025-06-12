@@ -26,16 +26,16 @@ var/runtime_diary
 var/diary
 var/world_qdel_log
 var/href_logfile
-var/station_name        = "CEV Eris"
-var/station_short       = "Eris"
-var/const/dock_name     = "NTV Faith"
-var/const/boss_name     = "Hansa Trade Union"
-var/const/boss_short    = "Hansa"
-var/const/company_name  = "CEV Eris"
-var/const/company_short = "Eris"
-var/game_version        = "Discordia"
+var/station_name        = "NTS-13"
+var/station_short       = "SS13"
+var/const/dock_name     = "Midway Station"
+var/const/boss_name     = "NanoTrassen CENTCOM"
+var/const/boss_short    = "CENTCOM"
+var/const/company_name  = "NanoTrassen"
+var/const/company_short = "NT"
+var/game_version        = "Alpha Testing"
 var/changelog_hash      = ""
-var/game_year           = (text2num(time2text(world.realtime, "YYYY")) + 319)
+var/game_year           = "325"//(text2num(time2text(world.realtime, "YYYY")) - 1700)
 
 var/round_progressing = 1
 var/master_storyteller       = "shitgenerator"
