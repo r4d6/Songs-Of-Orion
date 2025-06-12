@@ -20,6 +20,12 @@
 	has_sensor = 1
 	sensor_mode = 3
 
+/obj/item/clothing/under/rank/hacker
+	name = "Syndicate Hacker uniform"
+	desc = "A set of overalls issued to mid-level Syndicate agents."
+	icon_state = "hacker"
+	item_state = "lb_suit"
+
 /obj/item/clothing/under/syndicate/skirt
 	name = "Syndicate turtleneck"
 	desc = "The leader of hackers and theives, with the crisp facade of an officer, now without pants."

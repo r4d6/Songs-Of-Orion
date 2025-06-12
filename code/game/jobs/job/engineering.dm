@@ -1,5 +1,5 @@
 /datum/job/chief_engineer
-	title = "Technomancer Exultant"
+	title = "Chief Engineer"
 	flag = EXULTANT
 	head_position = 1
 	department = DEPARTMENT_ENGINEERING
@@ -19,7 +19,7 @@
 	access = list(
 		access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels,
 		access_teleporter, access_network, access_external_airlocks, access_atmospherics, access_emergency_storage, access_eva,
-		access_heads, access_construction, access_sec_doors,
+		access_heads, access_construction, access_sec_doors,, access_mining, access_mining_station,
 		access_ce, access_RC_announce, access_keycard_auth, access_tcomsat, access_ai_upload, access_change_engineering
 	)
 
@@ -40,39 +40,40 @@
 							 /datum/computer_file/program/shield_control,
 							 /datum/computer_file/program/reports)
 
-	description = "You are an exultant, the head of a technomancer clan, nomadic spacefaring engineers. You and your clan have taken up residence on Eris, it is your work, your home, and your pride. <br>\
-You are to keep the ship running and constantly improve it as much as you are able. Let none question the efficacy of your labours."
+	description = "You are a distinguished middle manager, the station's Chief Engineer and representative of Astra Starworks. <br>\
+You are to keep the station running and constantly improve it as much as you are able. Let none question the efficacy of your labours. The Dive Boss should be your right hand, keeping the ship supplied with materials and new components."
 
-	loyalties = "Your first loyalty is to your pride. The engineering department is your territory, and machinery across the ship are your responsibility. Do not tolerate others interfering with them, intruding on your space, or questioning your competence. You don't need inspections, oversight or micromanagement. Outsiders should only enter your spaces by invitation, or out of necessity. Even the captain and other command staff are no exception.<br>\
-
-Your second loyalty is to your clan. Ensure they are paid, fed and safe. Don't risk their lives unnecessarily. If an area is infested with monsters, there's no reason to risk lives trying to repair anything inside there. If one of your people is imprisoned, endangered or accused, you should fight for them. Treat every technomancer like your family"
+	loyalties = "Your first loyalty is the station. Not the concept, but the actual facilities. The engineering department is your territory, and machinery across the station are your responsibility. <br>\
+	Your Engineers are equally as important, as they are your comrades and some of the only competent people in the void. Take care of them, stick up for them, and don't let their lives be spent in vain."
 
 	perks = list(/datum/perk/inspiration)
 
 /obj/landmark/join/start/chief_engineer
-	name = "Technomancer Exultant"
+	name = "Chief Engineer"
 	icon_state = "player-orange-officer"
 	join_tag = /datum/job/chief_engineer
 
 
 /datum/job/technomancer
-	title = "Technomancer"
+	title = "Space Engineer"
 	flag = TECHNOMANCER
 	department = DEPARTMENT_ENGINEERING
 	department_flag = ENGINEERING
 	faction = "CEV Eris"
 	total_positions = 3
 	spawn_positions = 3
-	supervisors = "the Technomancer Exultant"
+	supervisors = "the Chief Engineer"
 	selection_color = "#d5c88f"
-	also_known_languages = list(LANGUAGE_CYRILLIC = 100)
+	also_known_languages = list(LANGUAGE_CYRILLIC = 50)
 	wage = WAGE_PROFESSIONAL
+	alt_titles = list("Mechanical Engineer","Nuclear Engineer","Field Engineer","Damage Control Specialist", "Engineer")
 
 	outfit_type = /decl/hierarchy/outfit/job/engineering/engineer
 
 	access = list(
 		access_eva, access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels,
-		access_external_airlocks, access_construction, access_atmospherics
+		access_external_airlocks, access_construction, access_atmospherics, access_mining,
+		access_mining_station
 	)
 
 	stat_modifiers = list(
@@ -89,35 +90,136 @@ Your second loyalty is to your clan. Ensure they are paid, fed and safe. Don't r
 							 /datum/computer_file/program/camera_monitor,
 							 /datum/computer_file/program/shield_control)
 
-	description = "You are a technomancer, member of a nomadic tribe of spacefaring engineers. Your people make their living by offering their services to starships, like Eris, and you have thusly taken up residence here. Maintaining the ship is your responsibility, ensure the engine is running, the lights are on, the thrusters are fueled, and the air is breathable<br>\
-<br>\
-Your duties aboard the ship are many and varied. For a start, at the beginning of a shift, you should make sure the Pulsar engine is set up. This is a complex task, and you should learn from others in your group rather than attempting it yourself. Fueling up the thrusters is next to allow the ship to get anywhere, and again you should learn from others<br>\
-<br>\
-Once these core systems are setup, you may relax a bit, but you should also devote time to learning and configuring. The power distribution systems can be made more robust. Technomancers are typically responsible for configuring the shield generators too. Shut it down to save power when not needed, make sure its online before the ship travels anywhere.<br>\
-<br>\
-With the power of construction, you are free to customise the ship to your own uses. Build and remove walls to make things more efficient, or more secure. Construct new machines to extend capabilities and make everyone's lives easier. You can even place traps or construct turrets to keep nosy outsiders out of sensitive areas. The ship is yours to improve and build upon<br>\
-<br>\
-Make sure your EVA gear is prepared, and you're fully equipped with tools. Modding and upgrading your tools is strongly advised for optimal performance. Toolmods can be found while scavenging maintenance, or purchased from the guild. And always, always carry duct tape.<br>\
-You should carry materials too for field repair work, but don't steal entire stacks for yourself - the other technomancers are your brothers and you should share evenly, take only what you need.<br>\
- <br>\
-Most importantly, be ready to respond to emergency calls at any time. Parts of the ship may be breached or explode, and its your job to fix it. No matter the cost, no matter the danger, you have the equipment and skills to march into places that would be death to most mortals. It is your responsibility to keep the ship more-or-less in one piece and still able to fly.<br>\
-<br>\
-Eris is your home, your life, and your livelihood. Take pride in it, and in your responsibilities. You should be hesitant to abandon ship, and try your hardest to prevent that becoming necessary. The engineering department is your sovereign territory, and you should be very wary of outsiders entering uninvited. Your fellow technomancers are your family. Take care of them, treat them well, share everything with them, and solve your problems internally."
+	description = "You are one of the few brave individuals willing and capable to crawl out of the wreckage of humanity to keep what's left running."
 
-	duties = "	-Set up the Pulsar Engine<br>\
-	-Fuel the thrusters<br>\
-	-Manage the shield generator<br>\
-	-Repair anything and anyone that needs repaired<br>\
-	-Respond to distress calls and patch breaches in the hull.<br>\
-	-Keep every part of the ship powered, oxygenated, and ready to use"
+	duties = "	-Setup and maintain the Fission Reactor Complex.<br>\
+	-Maintain logistics and power systems, keeping the lights on and the air breathable.<br>\
+	-Repair anything and anyone that needs repaired.<br>\
+	-Process materials and nuclear fuel to keep the ship stocked and running.<br>\
+	-Conduct Damage Control and Fire Suppression operations to keep the station habitable in event of emergencies."
 
-	loyalties = "	As a technomancer, your first loyalty is to your fellow technomancers. Ensure they are safe and well supplied, defend them, assist them, and share everything with them. If problems arise between you, ask the Exultant to rule on it. Don't snitch on your fellow clanmates by calling ironhammer. The Technomancer Exultant is the chief of your clan, and in many ways a father figure. Trust in their wisdom and follow their instructions above anyone else's.<br>\
-	<br>\
-	Your second loyalty is to your ship. Unlike most of your crew, who would simply go home, Eris IS your home. Avoid abandoning ship at all costs. This is where you live and it's worth sacrificing for. Take pride in your work, and make eris something to be cherished."
+	loyalties = "	As an Engineer of the Starworks, your loyalty is to the Chief Engineer and the other cave-beasts of your department. <br>\
+	Your second loyaty is to the station itself. She's an old bucket of bolts, but she's yours- and the literal fallout of losing her would leave you dead or worse. Avoid abandoning ship at all costs."
 
 	perks = list(/datum/perk/inspiration)
 
 /obj/landmark/join/start/technomancer
-	name = "Technomancer"
+	name = "Engineer"
 	icon_state = "player-orange"
 	join_tag = /datum/job/technomancer
+
+/datum/job/mining
+	title = "EVA Reclaimation Personnel"
+	flag = MINER
+	department = DEPARTMENT_ENGINEERING
+	department_flag = ENGINEERING
+	faction = "CEV Eris"
+	total_positions = 6
+	spawn_positions = 6
+	supervisors = "the Dive Boss, the Engies, and the Chief"
+	selection_color = "#c3b9a6"
+	wage = WAGE_LABOUR_DUMB //RIP
+	alt_titles = list("Diver","Shipbreaker","Surveyor")
+	also_known_languages = list(LANGUAGE_JIVE = 100, LANGUAGE_CYRILLIC = 50)
+
+	outfit_type = /decl/hierarchy/outfit/job/cargo/mining
+
+	description = "You are a laborer, by choice or by force, on contract with the Astra Starworks corporation to reclaim the resouces of the local solar system.<br>\
+	<br>\
+	The working class of space. ERPs- more commonly known as 'Divers'- are anywhere from the so-called middle-class of spacefarer to mass-indentured debt-slaves<br>\
+	Miners should be tough and physically strong, trying to turn 'disposable worker' into 'invaluable asset.'<br>\
+	You should be competent in an EVA suit and in operating heavy machinery. You'll want to find some better gear if you live long enough."
+
+
+	duties = "Dig up ores and minerals, process them into useable material.<br>\
+	Go on away-missions to salvage and recover materials and equipment that can no longer be produced.<br>\
+	Collapse burrows around the station to help fight off the roach infestation<br>\
+	Protect the Engineering department and each other. "
+
+	loyalties = "	Your first loyalty is to yourself and survival. This station is mostly just a paycheck to you<br>\
+	Your second loyalty is to the Dive Boss, the EVA Foreman. You owe them something, at least."
+
+	access = list(
+		access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining,
+		access_mining_station, access_eva
+	)
+
+
+	stat_modifiers = list(
+		STAT_ROB = 15,
+		STAT_TGH = 15,
+		STAT_VIG = 15,
+		STAT_MEC = 15
+	)
+
+	perks = list(/datum/perk/deep_connection)
+
+	software_on_spawn = list(///datum/computer_file/program/supply,
+							 ///datum/computer_file/program/deck_management,
+							 /datum/computer_file/program/wordprocessor,
+							 /datum/computer_file/program/reports)
+
+/obj/landmark/join/start/mining
+	name = "ERP"
+	icon_state = "player-beige"
+	join_tag = /datum/job/mining
+
+/datum/job/dive_boss
+	title = "EVA Foremxn"
+	flag = MINER
+	department = DEPARTMENT_ENGINEERING
+	department_flag = ENGINEERING
+	faction = "CEV Eris"
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = "the Chief Engineer"
+	selection_color = "#c3b9a6"
+	wage = WAGE_PROFESSIONAL
+	alt_titles = list("Dive Boss","Foreman","Dive Foreman","Pathfinder")
+	also_known_languages = list(LANGUAGE_JIVE = 100, LANGUAGE_CYRILLIC = 50)
+
+	outfit_type = /decl/hierarchy/outfit/job/engineering/foreman
+
+	description = "You are a leader of apes, the 'Dive Boss' as you are more commonly known. Officially an Astra Starworks EVA Foremxn, you are in charge of all Extravehicular Activities.<br>\
+	<br>\
+	EVA is a long tradition. Expeditions to and from vacuum environments are typically called 'dives' and those who work outside the hull, 'Divers.'<br>\
+	The ones who don't come back? 'Drowned.'<br>\
+	Your job is to ensure that doesn't happen."
+
+
+	duties = "You oversee all EVA and depressurized activities.<br>\
+	Keep the Divers alive.<br>\
+	Train the crew on EVA activities, micro-gravity operations, and survival in depressurized spaces.<br>\
+	Lead and organize the dive team towards profit and maybe home someday."
+
+	loyalties = "	Your first loyalty is to your team. <br>\
+	Your second loyalty is to the Chief Engineer, you're supposed to be there for the Chief and his Engineers.<br>\
+	Your third loyalty are to all the poor spacer fools who came up from ground-pounding to drink vacuum and drift in micro-G, you should make some attempt to train or save them when some idiot cracks a seal."
+
+	access = list(
+		access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining,
+		access_mining_station, access_eva, access_external_airlocks, access_construction, access_atmospherics, access_emergency_storage,
+		access_heads, access_construction
+	)
+
+
+	stat_modifiers = list(
+		STAT_ROB = 15,
+		STAT_TGH = 15,
+		STAT_VIG = 15,
+		STAT_MEC = 15
+	)
+
+	perks = list(/datum/perk/deep_connection)
+
+	software_on_spawn = list(///datum/computer_file/program/supply,
+							 ///datum/computer_file/program/deck_management,
+							 /datum/computer_file/program/wordprocessor,
+							 /datum/computer_file/program/reports,
+							 /datum/computer_file/program/suit_sensors,
+							 /datum/computer_file/program/camera_monitor)
+
+/obj/landmark/join/start/mining
+	name = "Dive Boss"
+	icon_state = "player-beige"
+	join_tag = /datum/job/mining

@@ -1,5 +1,5 @@
 /datum/job/rd
-	title = "Moebius Expedition Overseer"
+	title = "Human Resources Officer"
 	flag = MEO
 	head_position = 1
 	department = DEPARTMENT_SCIENCE
@@ -7,11 +7,10 @@
 	faction = "CEV Eris"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "Moebius Corporation"
+	supervisors = "Human Resources, Inc"
 	selection_color = "#b39aaf"
 	req_admin_notify = 1
 	wage = WAGE_COMMAND
-	also_known_languages = list(LANGUAGE_CYRILLIC = 25, LANGUAGE_SERBIAN = 25)
 
 	outfit_type = /decl/hierarchy/outfit/job/science/rd
 
@@ -42,35 +41,35 @@
 							/datum/computer_file/program/chem_catalog,
 							/datum/computer_file/program/reports)
 
-	description = "You are the head of the moebius research branch, tasked with directing shipboard research to new and profitable discoveries."
+	description = "You are the representative officer of the station's branch of Human Resources, Inc."
 
-	duties = "Direct the scientists under your command, ensure they work efficiently towards the bettering of all mankind.<br>\
-Use department funds to purchase scientific curios, artefacts, and anything of interesting research value. As well as any equipment and supplies that would be useful for these ends<br>\
-Organise away missions to gather artefacts and research interesting environments. You have the right to request support from other factions as required"
+	duties = "Direct the betterment of humanity through Science!<br>\
+	Use the biotechnologies available to achieve the very best for your customers- and profit for the company.<br>\
+	As HR's mission to improve upon all forms of biology, your team will strive to study and manufacture the bio-goods people crave.<br>\
+	Keep the WAGIEs busy maintaining the Life-Loop of the station, keeping the ship clean and fed."
 
-	loyalties = "As a scientist, your first loyalty is to knowledge, the ultimate good in the universe. Learning and developing new technologies is the greatest goal humanity can pursue, and no sacrifice is too great to achieve that end. Even the lives of others or yourself.<br>\
+	loyalties = "As a scientist, your first loyalty is to Science(TM), the ultimate good in the universe. Learning and consuming the newest biotech is the greatest goal humanity can pursue, and no sacrifice is too great to achieve that end. Even the lives of others or yourself.<br>\
 <br>\
-Your second loyalty is to moebius corp. In order to ensure it can continue its mission of research, it must remain profitable. Ensure its interests are farthered, and take care of your colleagues in both research and medical wings"
+Your second loyalty is to Human Resources, Inc. In order to ensure it can continue its mission of research, it must remain profitable. Ensure its interests are farthered, and take care of your colleagues in both research and medical wings"
 
 /obj/landmark/join/start/rd
-	name = "Moebius Expedition Overseer"
+	name = "Human Resources Officer"
 	icon_state = "player-purple-officer"
 	join_tag = /datum/job/rd
 
-
+access_kitchen
 
 /datum/job/scientist
-	title = "Moebius Scientist"
+	title = "HR Biotechnician"
 	flag = SCIENTIST
 	department = DEPARTMENT_SCIENCE
 	department_flag = SCIENCE
 	faction = "CEV Eris"
-	total_positions = 2
-	spawn_positions = 2
-	supervisors = "the Moebius Expedition Overseer"
+	total_positions = 3
+	spawn_positions = 3
+	supervisors = "the Human Resources Officer"
 	selection_color = "#bdb1bb"
 	wage = WAGE_PROFESSIONAL
-	also_known_languages = list(LANGUAGE_CYRILLIC = 10)
 
 	//alt_titles = list("Moebius Xenobiologist")
 	outfit_type = /decl/hierarchy/outfit/job/science/scientist
@@ -78,95 +77,82 @@ Your second loyalty is to moebius corp. In order to ensure it can continue its m
 	software_on_spawn = list(/datum/computer_file/program/signaller, /datum/computer_file/program/chem_catalog)
 
 	access = list(
-		access_robotics, access_tox, access_tox_storage, access_moebius, access_maint_tunnels, access_xenobiology, access_xenoarch, access_research_equipment
+		access_tox, access_tox_storage, access_moebius, access_maint_tunnels, access_xenobiology, access_xenoarch, access_research_equipment
 	)
 
 	stat_modifiers = list(
 		STAT_MEC = 20,
 		STAT_COG = 30,
-		STAT_BIO = 20,
+		STAT_BIO = 15,
 	)
 
 	perks = list(/datum/perk/selfmedicated)
 
-	description = "You are a scientist, standing at the frontier of human advancement. Here representing Moebius corp, to find new research opportunities in deep space. The science wing is located in the second section, starboard side, opposite medical, and your medical colleagues should be fast friends. The medical wing is part of Moebius too, and so you fully share access with each other, and are free to use each others' supplies.<br>\
-<br>\
-As a scientist, your primary purpose is research, testing, and the advancement of knowledge. You can justify almost anything if its done for the purpose of science, and people have no reason to be suspicious if you stomp around wearing strange devices and carrying stranger weapons still. You should craft, lathe and print anything you can, toy around with it, and figure out how it works in detail. Deeply explore everything you can.<br>\
-<br>\
-There are a few specialist branches within the research wing that you may delve deeper into:<br>\
+	description = "You are an (individual) of Science!(TM), a Biotechnician of the Human Resources corporation. <br>\
 	<br>\
-	R&D: The manufacture and testing of high tech weapons and devices. This branch shares a lab with robotics, and often works closely together to produce vast machines.<br>\
-	Xenoflora: A lab dedicated to experimenting and modifying plant DNA, creating interesting mutated plants that may help the crew<br>\
-	Xenobiology: A wing full of cells, for the study of alien life forms. Primarily slimes<br>\
-	Xenoarchaeology: A facility for analysing artefacts and finds brought back from expeditions.<br>\
-	<br>\
-	The Vasily Dokuchaev is the Expedition shuttle, and is intended for going on adventures down to strange sites, and recovering items of value. <br>\
-	<br>\
-	<br>\[Note: Research content on Eris is still in its infancy, and is mostly just baystation content at the moment. We have major plans for redesigning it in the future\]"
+	As a scientist, your primary purpose is research, testing, and the advancement of knowledge. You can justify almost anything if its done for the purpose of Science! You should craft, lathe and print anything you can, toy around with it, and figure out how it works in detail. Deeply explore everything you can."
 
-	duties = "	Create unusual things and experiment with them<br>\
-	Explore, learn and adventure, do anything to advance the cause of knowledge"
+	duties = "	Create unusual things and experiment with them.<br>\
+	Explore, learn and adventure, do anything to advance the cause of Science!<br>\
+	Use the new technologies and skills at your disposal to enhance the crew, or at least put the insured back together if need be.<br>\
+	Maintain the station's stock of bio-products for sale and export. This varies from advanced organoids and xenobiology, to growing food for the station."
 
-	loyalties = "As a scientist, your first loyalty is to knowledge, the ultimate good in the universe. Learning and developing new technologies is the greatest goal humanity can pursue, and no sacrifice is too great to achieve that end. Even the lives of others or yourself.<br>\
-
-Your second loyalty is to moebius corp. In order to ensure it can continue its mission of research, it must remain profitable. Ensure its interests are farthered, and take care of your colleagues in both research and medical wings"
+	loyalties = "As a scientist, your first loyalty is to Science!- the ultimate good in the universe. Learning and consuming the newest biotech is the greatest goal humanity can pursue, and no sacrifice is too great to achieve that end. Even the lives of others or yourself.<br>\
+	Your second loyalty is to Human Resources, Inc. In order to ensure it can continue its mission of research, it must remain profitable. Ensure its interests are farthered, and take care of your colleagues in both research and medical wings"
 
 
 /obj/landmark/join/start/scientist
-	name = "Moebius Scientist"
+	name = "Biotechnician"
 	icon_state = "player-purple"
 	join_tag = /datum/job/scientist
 
-
-/datum/job/roboticist
-	title = "Moebius Roboticist"
-	flag = ROBOTICIST
+/datum/job/wagie
+	title = "HR WAGIE"
+	flag = ASSISTANT
+	flag = SCIENTIST
 	department = DEPARTMENT_SCIENCE
 	department_flag = SCIENCE
 	faction = "CEV Eris"
-	total_positions = 1
-	spawn_positions = 1
-	supervisors = "the Moebius Expedition Overseer"
-	selection_color = "#bdb1bb"
-	wage = WAGE_PROFESSIONAL
-	also_known_languages = list(LANGUAGE_CYRILLIC = 10)
+	total_positions = -1
+	spawn_positions = -1
+	supervisors = "Human Resources personnel, the First Officer, and anyone you're put under by them"
+	selection_color = "#dddddd"
+	initial_balance	= 0 // This is now defined in code\modules\economy\cash.dm under spacecash/bundle/Vagabond as they carry cash on them.
+	wage = WAGE_LABOUR_DUMB
+	//alt_titles = list("Technomancer Assistant","Moebius Medical Intern","Moebius Research Assistant")
+	also_known_languages = list(LANGUAGE_CYRILLIC = 15, LANGUAGE_SERBIAN = 5)
 
-	outfit_type = /decl/hierarchy/outfit/job/science/roboticist
-
-	access = list(
-		access_robotics, access_tox, access_maint_tunnels, access_tox_storage, access_morgue, access_moebius, access_research_equipment
-	) //As a job that handles so many corpses, it makes sense for them to have morgue access.
-
-	software_on_spawn = list(/datum/computer_file/program/chem_catalog)
+	access = list(access_maint_tunnels, access_moebius)
+	outfit_type = /decl/hierarchy/outfit/job/science/wagie
 
 	stat_modifiers = list(
-		STAT_MEC = 30,
-		STAT_COG = 20,
-		STAT_BIO = 25,
+		STAT_ROB = 8,
+		STAT_TGH = 8,
+		STAT_BIO = 8,
+		STAT_MEC = 8,
+		STAT_VIG = 8,
+		STAT_COG = 8
 	)
 
-	perks = list(/datum/perk/selfmedicated)
+	perks = list(/datum/perk/vagabond)
 
-	description = "As a roboticist, you are probably the busiest person in the research wing. For it is the only area of the department that focuses on providing services to others.<br>\
-<br>\
-You have a broad range of tools and machinery at your disposal, and a similarly broad range of responsibilities. You will also have a constant stream of visitors, and rarely a moment to yourself<br>\
-<br>\
-The duties of robotics are many, and the lab often benefits from having multiple staff.<br>\
-You must maintain, tend to, and upgrade the fleet of synthetics that help keep the ship running. Farther to that, the duty of constructing new robots falls to you too. With the aid of your fabricators, you may turn a pile of sheet metal and wires into sentient life. The robots of the ship are operated by moebius, and its not unknown for roboticists to develop a parental attachment to them.<br>\
-<br>\
-In addition, your department contains the manufacturing facilities for prosthetic limbs and enhancements. It typically also falls to you to install them too, and thus it is common for biomechanical engineers to work in the robotics lab. This may or may not be in your character's skillset. If surgery isn't your specialty, you may defer the implementation to your colleagues over in Moebius Medical instead, and simply supply the parts for them to install.<br>\
-<br>\
-Lastly, though they're not commonly used, you have the facilities to construct massive and powerful mechanised vehicles. These have powerful capabilities in mining and rescue, as well as obvious military applications"
+	description = "Worker Assistant, Generalized Indentured Employee<br>\
+	You are the backbone of all services in the galaxy, the Human Resources WAGIE. If it needs done, you're probably going to be the one sent to do it.<br>\
+	As a low level worker- or indentured employee, you do whatever is needed. Your job is to keep things moving and to keep up with the constant maintainance of the station.<br>\
+	From processing biomass and cleaning up around the station, to recycling materials, to preparing and serving food for the crew, you work for whoever you're ordered to work for."
 
-	duties = "	Repair, maintain and upgrade robots aboard Eris<br>\
-	Maintain and implant new bionics in crewmembers<br>\
-	Advertise bionics for sale and run a commercial cybernetic clinic<br>\
-	Construct large mechas for specialised use in departments"
+	duties = "	- Follow orders and assist HR in its operations<br>\
+	- Operate the kitchen<br>\
+	- Clean the station<br>\
+	- Recycle materials and biomass"
 
-/obj/landmark/join/start/roboticist
-	name = "Moebius Roboticist"
-	icon_state = "player-purple"
-	join_tag = /datum/job/roboticist
+	loyalties = "Your loyalty isn't yours to decide. The HRO may assign you to virtually any task, or even other departments if they pay for your service."
+
+/obj/landmark/join/start/wagie
+	name = "WAGIE"
+	icon_state = "player-grey"
+	join_tag = /datum/job/wagie
+
 
 /datum/job/psychiatrist
 	title = "Moebius Psychiatrist"
@@ -174,8 +160,8 @@ Lastly, though they're not commonly used, you have the facilities to construct m
 	department = DEPARTMENT_SCIENCE
 	department_flag = SCIENCE
 	faction = "CEV Eris"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	wage = WAGE_PROFESSIONAL
 	supervisors = "the Moebius Expedition Overseer"
 	selection_color = "#bdb1bb"

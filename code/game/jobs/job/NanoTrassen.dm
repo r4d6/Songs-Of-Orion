@@ -120,7 +120,7 @@
 	supervisors = "the chain of command"
 	selection_color = "#dddddd"
 	also_known_languages = list(LANGUAGE_CYRILLIC = 25, LANGUAGE_SERBIAN = 15, LANGUAGE_JIVE = 80)
-	access = list(access_bar, access_kitchen, access_maint_tunnels, access_change_club, access_artist)
+	access = list(access_bar, access_kitchen, access_maint_tunnels, access_change_club, access_artist, access_hydroponics)
 	initial_balance = 3000
 	perks = list(PERK_CLUB)
 	wage = WAGE_LABOUR_DUMB
@@ -149,7 +149,7 @@
 	supervisors = "the chain of command, and the Cook"
 	selection_color = "#dddddd"
 	also_known_languages = list(LANGUAGE_CYRILLIC = 25, LANGUAGE_SERBIAN = 15, LANGUAGE_JIVE = 80)
-	access = list(access_bar, access_kitchen, access_maint_tunnels)
+	access = list(access_bar, access_kitchen, access_maint_tunnels, access_hydroponics)
 	perks = list(PERK_CLUB)
 	wage = WAGE_LABOUR_DUMB
 	stat_modifiers = list(
@@ -168,7 +168,7 @@
 
 
 /datum/job/doctor_nt
-	title = "Botanist"
+	title = "Doctor"
 	flag = DOCTOR
 	department = DEPARTMENT_MEDICAL
 	department_flag = MEDICAL
@@ -205,7 +205,7 @@
 
 
 /datum/job/security_nt
-	title = "Security Officer"
+	title = "Security"
 	flag = IHOPER
 	department = DEPARTMENT_SECURITY
 	department_flag = IRONHAMMER
@@ -331,7 +331,7 @@
 	join_tag = /datum/job/engineer_nt
 
 /datum/job/scientist_nt
-	title = "Sciencetist"
+	title = "Scientist"
 	flag = SCIENTIST
 	department = DEPARTMENT_SCIENCE
 	department_flag = SCIENCE

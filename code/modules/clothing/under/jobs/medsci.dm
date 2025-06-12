@@ -15,6 +15,7 @@
 		rad = 0
 	)
 
+
 /obj/item/clothing/under/rank/scientist
 	name = "Bioscience uniform"
 	desc = "It's made of a special fiber that provides minor protection against biohazards. It has markings that denote the wearer as HR Bioscience Technician."
@@ -29,7 +30,23 @@
 		bio = 10,
 		rad = 0
 	)
-	spawn_blacklisted = TRUE //no sprite
+
+/obj/item/clothing/under/rank/wagie
+	name = "WAGIE uniform"
+	desc = "Worker Assistant, Generalized Indentured Employee. Suit sensors cannot be disabled."
+	icon_state = "wagie"
+	item_state = "lb_suit"
+	has_sensor = 2
+	sensor_mode = 3
+	permeability_coefficient = 0.50
+	armor = list(
+		melee = 4,
+		bullet = 0,
+		energy = 0,
+		bomb = 0,
+		bio = 10,
+		rad = 10
+	)
 
 
 /obj/item/clothing/under/rank/chemist

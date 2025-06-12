@@ -60,7 +60,7 @@
 /decl/hierarchy/outfit/job/nt/medical/doctor
 	name = OUTFIT_JOB_NAME("Medical Doctor")
 	uniform = /obj/item/clothing/under/legacy/medical
-	suit = /obj/item/clothing/suit/storage/toggle/labcoat
+	suit = /obj/item/clothing/suit/storage/toggle/labcoat/alt
 	l_hand = /obj/item/storage/firstaid
 	r_pocket = /obj/item/device/lighting/toggleable/flashlight/pen
 	belt = /obj/item/storage/belt/medical
@@ -116,7 +116,7 @@
 /decl/hierarchy/outfit/job/nt/scientist
 	name = OUTFIT_JOB_NAME("Scientist")
 	uniform = /obj/item/clothing/under/legacy/science
-	suit = /obj/item/clothing/suit/storage/toggle/labcoat
+	suit = /obj/item/clothing/suit/storage/toggle/labcoat/alt
 	pda_type = /obj/item/modular_computer/pda/moebius/science
 	id_type = /obj/item/card/id/sci
 	pda_slot = slot_l_store

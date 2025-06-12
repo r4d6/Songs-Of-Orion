@@ -16,7 +16,6 @@
 	pda_type = /obj/item/modular_computer/pda/club_worker
 	backpack_contents = list(/obj/item/ammo_casing/shotgun/beanbag = 4)
 
-
 /decl/hierarchy/outfit/job/service/waiter
 	name = OUTFIT_JOB_NAME("Waiter")
 	uniform = /obj/item/clothing/under/waiter

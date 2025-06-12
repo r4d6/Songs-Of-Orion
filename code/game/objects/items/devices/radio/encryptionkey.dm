@@ -151,3 +151,13 @@
 	desc = "Full powers encryption key"
 	icon_state = "cap_cypherkey"
 	channels = list("Command" = 1, "Security" = 1, "Engineering" = 1, "NT Voice" = 1, "Science" = 1, "Medical" = 1, "Supply" = 1, "Service" = 1, "AI Private" = 1, "Mercenary" = 1)
+
+/obj/item/device/encryptionkey/heads/military
+	name = "Military command encryption key"
+	icon_state = "cap_cypherkey"
+	channels = list("Special Ops" = 1, "Command" = 1, "Security" = 1, "Engineering" = 1, "NT Voice" = 1, "Science" = 1, "Medical" = 1, "Supply" = 1, "Service" = 1)
+
+/obj/item/device/encryptionkey/military
+	name = "Military encryption key"
+	icon_state = "cap_cypherkey"
+	channels = list("Special Ops" = 1, "Security" = 1, "Engineering" = 1, "Medical" = 1)
