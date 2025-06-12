@@ -1,6 +1,6 @@
 var/list/obj/machinery/photocopier/faxmachine/allfaxes = list()
-var/list/admin_departments = list("[boss_name]", "Sol Government", "Supply")
-var/list/alldepartments = list()
+var/list/admin_departments = list("[boss_name]", "SolCom Consulate", "Midway Station Supply")
+var/list/alldepartments = list("Brotherhood", "PCRC", "Human Resources", "Syndicate", "Astra Starworks", "Bridge", "Captain", "First Officer")
 
 var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 
@@ -11,7 +11,7 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	insert_anim = "faxsend"
 	req_one_access = list(access_heads, access_armory, access_merchant)
 
-	density = FALSE//It's a small machine that sits on a table, this allows small things to walk under that table
+	density = TRUE
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 30
 	active_power_usage = 200
@@ -50,7 +50,7 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	dat += "<hr>"
 
 	if(authenticated)
-		dat += "<b>Logged in to:</b> [boss_name] Quantum Entanglement Network<br><br>"
+		dat += "<b>Logged in to long range communication uplink.</b><br><br>"
 
 		if(copyitem)
 			dat += "<a href='byond://?src=\ref[src];remove=1'>Remove Item</a><br><br>"
@@ -146,7 +146,7 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 
 	if (success)
 		visible_message("[src] beeps, \"Message transmitted successfully.\"")
-		//sendcooldown = 600
+		sendcooldown = 120
 	else
 		visible_message("[src] beeps, \"Error transmitting message.\"")
 
@@ -154,8 +154,8 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	if(stat & (BROKEN|NOPOWER))
 		return 0
 
-	if(department == "Unknown")
-		return 0	//You can't send faxes to "Unknown"
+	//if(department == "Unknown")
+	//	return 0	//You can't send faxes to "Unknown" - Think again, chucklenuts.
 
 	flick("faxreceive", src)
 	playsound(loc, "sound/items/polaroid1.ogg", 50, 1)
@@ -192,8 +192,9 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 		visible_message("[src] beeps, \"Error transmitting message.\"")
 		return
 
-	rcvdcopy.loc = null //hopefully this shouldn't cause trouble
+	rcvdcopy.loc = locate("Admin Fax"):loc // We use tags so that admins can move the destination around -R4d6
 	adminfaxes += rcvdcopy
+
 
 	//message badmins that a fax has arrived
 	switch(destination)
@@ -266,3 +267,38 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 //
 /datum/configuration
 	var/fax_export_dir = "data/faxes"	// Directory in which to write exported fax HTML files.
+
+
+/obj/machinery/photocopier/faxmachine/centcom
+	name = "CENTCOM fax"
+	department = "NanoTrassen CENTCOM"
+
+/obj/machinery/photocopier/faxmachine/centcom/gov
+	name = "SolCom Consulate fax"
+	department = "SolCom Consulate"
+
+/obj/machinery/photocopier/faxmachine/centcom/midway
+	name = "Midway Station Supply fax"
+	department = "Midway Station Supply"
+
+obj/machinery/photocopier/faxmachine/security
+	name = "fax machine"
+	department = "PCRC"
+
+obj/machinery/photocopier/faxmachine/cargo
+	name = "fax machine"
+	department = "Syndicate"
+
+obj/machinery/photocopier/faxmachine/hr
+	name = "fax machine"
+	department = "Human Resources"
+
+obj/machinery/photocopier/faxmachine/brotherhood
+	name = "fax machine"
+	department = "Brotherhood"
+
+obj/machinery/photocopier/faxmachine/engineering
+	name = "fax machine"
+	department = "Astra Starworks"
+
+
