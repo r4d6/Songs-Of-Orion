@@ -68,6 +68,13 @@ GLOBAL_LIST_EMPTY(wedge_icon_cache)
 		return get_material_by_name(mineral)
 	return get_material_by_name(MATERIAL_STEEL)
 
+/obj/machinery/door/airlock/orion
+	name = "Airlock"
+	icon = 'icons/obj/doors/orion.dmi'
+	assembly_type = /obj/structure/door_assembly
+	resistance = RESISTANCE_ARMOURED
+	opacity = 0
+
 /obj/machinery/door/airlock/command
 	name = "Airlock"
 	icon = 'icons/obj/doors/Doorcom.dmi'

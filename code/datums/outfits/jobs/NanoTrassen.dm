@@ -19,6 +19,7 @@
 	head = /obj/item/clothing/head/soft/yellow
 	pda_type = /obj/item/modular_computer/pda/cargo
 	gloves = /obj/item/clothing/gloves/fingerless
+	l_ear  = /obj/item/pen/pencil
 
 /decl/hierarchy/outfit/job/nt/janitor
 	name = OUTFIT_JOB_NAME("Janitor")
@@ -33,6 +34,7 @@
 	head = /obj/item/clothing/head/soft/grey
 	id_type = /obj/item/card/id/ltgrey
 	pda_type = /obj/item/modular_computer/pda
+	l_ear  = /obj/item/pen/pencil
 
 /decl/hierarchy/outfit/job/nt/botanist
 	name = OUTFIT_JOB_NAME("Botanist")
