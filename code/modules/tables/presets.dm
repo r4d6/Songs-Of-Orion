@@ -110,3 +110,19 @@
 		reinforced = get_material_by_name(MATERIAL_STEEL)
 		name = "one star table"
 		..()
+
+/obj/structure/table/orion/
+	icon_state = "orion_preview"
+	New()
+		material = get_material_by_name(MATERIAL_PLASTIC)
+		custom_appearance = custom_table_appearance["Orion"]//Astra style
+		name = "table"
+		..()
+
+/obj/structure/table/orion/reinforced
+	icon_state = "orion_reinf_preview"
+	New()
+		material = get_material_by_name(MATERIAL_PLASTIC)
+		reinforced = get_material_by_name(MATERIAL_STEEL)
+		custom_appearance = custom_table_appearance["Orion - rein"] //bar table
+		..()
