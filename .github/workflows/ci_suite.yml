@@ -9,7 +9,7 @@ on:
 jobs:
   run_linters:
     name: Run Linters
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     concurrency:
       group: run_linters-${{ github.ref }}
       cancel-in-progress: true
@@ -54,7 +54,7 @@ jobs:
 
   compile_all_maps:
     name: Compile Maps
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     concurrency:
       group: compile_all_maps-${{ github.ref }}
       cancel-in-progress: true
@@ -73,7 +73,7 @@ jobs:
 
   run_all_tests:
     name: Integration Tests
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     services:
       mysql:
         image: mysql:latest
@@ -124,7 +124,7 @@ jobs:
   compare_screenshots:
     needs: [run_all_tests]
     name: Compare Screenshot Tests
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       # If we ever add more artifacts, this is going to break, but it'll be obvious.
