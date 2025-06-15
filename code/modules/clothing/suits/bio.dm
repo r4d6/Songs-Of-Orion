@@ -24,10 +24,10 @@
 	style = STYLE_NONE
 
 /obj/item/clothing/suit/bio_suit
-	name = "bio suit"
+	name = "chemical cloak"
 	desc = "A suit that protects against biological contamination."
-	icon_state = "bio"
-	item_state = "bio_suit"
+	icon_state = "chemical"
+	item_state = "chemical"
 	w_class = ITEM_SIZE_BULKY//bulky item3
 	spawn_blacklisted = FALSE
 	spawn_frequency = 10
@@ -38,16 +38,16 @@
 	item_flags = COVER_PREVENT_MANIPULATION
 	slowdown = 0.2
 	armor = list(
-		melee = 0,
+		melee = 5,
 		bullet = 0,
-		energy = 0,
+		energy = 5,
 		bomb = 0,
 		bio = 100,
 		rad = 25
 	)
 	flags_inv = HIDEGLOVES|HIDEJUMPSUIT|HIDETAIL
 	siemens_coefficient = 0.9
-	price_tag = 100
+	price_tag = 300
 	style = STYLE_NONE
 
 //Plague Dr mask can be found in clothing/masks/gasmask.dm

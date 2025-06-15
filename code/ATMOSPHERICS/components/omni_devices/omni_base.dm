@@ -7,6 +7,7 @@
 	icon_state = "base"
 	use_power = IDLE_POWER_USE
 	initialize_directions = 0
+	density = TRUE
 	level = BELOW_PLATING_LEVEL
 
 	var/configuring = 0

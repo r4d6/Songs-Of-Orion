@@ -461,8 +461,8 @@ var/global/list/damage_icon_parts = list()
 //gender icons
 /mob/living/carbon/human/proc/get_gender_icon(var/g = MALE, var/slot)
 	var/list/icons = list(
-		"uniform"		= (g == MALE) ? 'icons/inventory/uniform/mob.dmi' : 'icons/inventory/uniform/mob_fem.dmi',
-		"suit"			= (g == MALE) ? 'icons/inventory/suit/mob.dmi' : 'icons/inventory/suit/mob_fem.dmi',
+		"uniform"		= get_uniform_icon(g),
+		"suit"			= get_suit_icon(g),
 		"gloves"		= 'icons/inventory/hands/mob.dmi',
 		"glasses"		= 'icons/inventory/eyes/mob.dmi',
 		"ears"			= 'icons/inventory/ears/mob.dmi',
@@ -477,12 +477,42 @@ var/global/list/damage_icon_parts = list()
 		)
 	return icons[slot]
 
+/mob/living/carbon/human/proc/get_uniform_icon(var/g = MALE)
+	if(g == FEMALE)
+		. = 'icons/inventory/uniform/mob_f.dmi'
+		if(species.name == SPECIES_HUMAN_SOLAR)
+			. = 'icons/inventory/uniform/mob_s_f.dmi'
+		if(species.name == SPECIES_HUMAN_EXILE)
+			. = 'icons/inventory/uniform/mob_e_f.dmi'
+		return
+	else
+		. = 'icons/inventory/uniform/mob.dmi'
+		if(species.name == SPECIES_HUMAN_SOLAR)
+			. = 'icons/inventory/uniform/mob_s.dmi'
+		if(species.name == SPECIES_HUMAN_EXILE)
+			. = 'icons/inventory/uniform/mob_e.dmi'
+
+/mob/living/carbon/human/proc/get_suit_icon(var/g = MALE)
+	if(g == FEMALE)
+		. = 'icons/inventory/suit/mob_f.dmi'
+		if(species.name == SPECIES_HUMAN_SOLAR)
+			. = 'icons/inventory/suit/mob_s_f.dmi'
+		if(species.name == SPECIES_HUMAN_EXILE)
+			. = 'icons/inventory/suit/mob_e_f.dmi'
+		return
+	else
+		. = 'icons/inventory/suit/mob.dmi'
+		if(species.name == SPECIES_HUMAN_SOLAR)
+			. = 'icons/inventory/suit/mob_s.dmi'
+		if(species.name == SPECIES_HUMAN_EXILE)
+			. = 'icons/inventory/suit/mob_e.dmi'
+
 //contained sprite gender icons
 /mob/living/carbon/human/proc/get_gender_icon_contained(var/g = MALE)
 	if (g == FEMALE)
 		return "_f"
 	else
-		return
+		return ""
 
 //vvvvvv UPDATE_INV PROCS vvvvvv
 

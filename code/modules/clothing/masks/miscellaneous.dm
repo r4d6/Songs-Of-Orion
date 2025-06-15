@@ -4,8 +4,8 @@
 /obj/item/clothing/mask/muzzle
 	name = "muzzle"
 	desc = "To stop that awful noise."
-	icon_state = "muzzle"
-	item_state = "muzzle"
+	icon_state = "gag"
+	item_state = "gag"
 	body_parts_covered = FACE
 	style_coverage = COVERS_MOUTH
 	w_class = ITEM_SIZE_SMALL
@@ -289,13 +289,13 @@
 
 // Bandanas below
 /obj/item/clothing/mask/bandana
-	name = "black bandana"
+	name = "olive bandana"
 	desc = "A fine bandana with nanotech lining. Can be worn on the head or face."
 	flags_inv = HIDEFACE
 	slot_flags = SLOT_MASK|SLOT_HEAD
 	body_parts_covered = FACE
-	icon_state = "bandblack"
-	item_state = "bandblack"
+	icon_state = "bandana"
+	item_state = "bandana"
 	item_flags = FLEXIBLEMATERIAL
 	w_class = ITEM_SIZE_SMALL
 	price_tag = 20
@@ -319,35 +319,66 @@
 
 	return ..()
 
-/obj/item/clothing/mask/bandana/red
-	name = "red bandana"
-	icon_state = "bandred"
-	item_state = "bandred"
 
 /obj/item/clothing/mask/bandana/blue
 	name = "blue bandana"
-	icon_state = "bandblue"
-	item_state = "bandblue"
-
-/obj/item/clothing/mask/bandana/green
-	name = "green bandana"
-	icon_state = "bandgreen"
-	item_state = "bandgreen"
-
-/obj/item/clothing/mask/bandana/gold
-	name = "gold bandana"
-	icon_state = "bandgold"
-	item_state = "bandgold"
+	icon_state = "bandana_bl"
+	item_state = "bandana_bl"
 
 /obj/item/clothing/mask/bandana/orange
 	name = "orange bandana"
-	icon_state = "bandorange"
-	item_state = "bandorange"
+	icon_state = "bandana_or"
+	item_state = "bandana_or"
+
+/obj/item/clothing/mask/bandana/green
+	name = "green bandana"
+	icon_state = "bandana_gr"
+	item_state = "bandana_gr"
+
+/obj/item/clothing/mask/bandana/brown
+	name = "brown bandana"
+	icon_state = "bandana_br"
+	item_state = "bandana_br"
+
+/obj/item/clothing/mask/bandana/slate
+	name = "slate bandana"
+	icon_state = "bandana_sl"
+	item_state = "bandana_sl"
+
+/obj/item/clothing/mask/bandana/white
+	name = "white bandana"
+	icon_state = "bandana_wh"
+	item_state = "bandana_wh"
+
+/obj/item/clothing/mask/bandana/red
+	name = "red bandana"
+	icon_state = "bandana_rd"
+	item_state = "bandana_rd"
+
+/obj/item/clothing/mask/bandana/black
+	name = "black bandana"
+	icon_state = "bandana_bk"
+	item_state = "bandana_bk"
+
+/obj/item/clothing/mask/bandana/gold
+	name = "gold bandana"
+	icon_state = "bandana_yl"
+	item_state = "bandana_yl"
 
 /obj/item/clothing/mask/bandana/purple
 	name = "purple bandana"
-	icon_state = "bandpurple"
-	item_state = "bandpurple"
+	icon_state = "bandana_vi"
+	item_state = "bandana_vi"
+
+/obj/item/clothing/mask/bandana/rose
+	name = "rose bandana"
+	icon_state = "bandana_rs"
+	item_state = "bandana_rs"
+
+/obj/item/clothing/mask/bandana/aqua
+	name = "aqua bandana"
+	icon_state = "bandana_aq"
+	item_state = "bandana_aq"
 
 /obj/item/clothing/mask/bandana/botany
 	name = "botany bandana"
