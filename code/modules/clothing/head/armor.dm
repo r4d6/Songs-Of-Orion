@@ -164,7 +164,7 @@
 	name = "Peacekeeper helm"
 	desc = "For Democracy we will die, speading Freedom across the skies."
 	icon_state = "peace"
-	body_parts_covered = HEAD | EARS | EYES | FACE
+	body_parts_covered = HEAD | EARS | EYES
 	armor = list(
 		melee = 7,
 		bullet = 15,

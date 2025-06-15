@@ -22,7 +22,6 @@
 	backpack_contents = list(/obj/item/ammo_magazine/magnum/rubber = 1,/obj/item/device/lighting/toggleable/flashlight/seclite = 1, /obj/item/clothing/mask/balaclava = 1, /obj/item/clothing/accessory/armband = 1)
 	id = /obj/item/card/id/solcom/peace/sarge
 
-
 /decl/hierarchy/outfit/job/ert/peacetrooper
 	name = "Peacekeeper"
 	head = /obj/item/clothing/head/beret
@@ -35,7 +34,7 @@
 	head = /obj/item/clothing/head/beret/white
 	glasses = /obj/item/clothing/glasses/hud/health/tacfat
 	belt = /obj/item/storage/belt/medical/emt
-	backpack_contents = list(/obj/item/device/lighting/toggleable/flashlight/seclite = 1, /obj/item/storage/firstaid/adv = 1, /obj/item/clothing/accessory/armband/med = 1, /obj/item/clothing/head/deckcrew/white = 1, /obj/item/clothing/mask/balaclava = 1)
+	backpack_contents = list(/obj/item/device/lighting/toggleable/flashlight/seclite = 1, /obj/item/storage/firstaid/adv = 1, /obj/item/clothing/mask/balaclava = 1, /obj/item/clothing/accessory/armband/med = 1)
 	id = /obj/item/card/id/solcom/peace/medic
 
 /decl/hierarchy/outfit/job/ert/peacelogi
@@ -50,7 +49,6 @@
 
 /decl/hierarchy/outfit/job/ert/peacetrooper/combat
 	name = "Combat - Peacekeeper Trooper"
-	head = /obj/item/clothing/head/armor/bulletproof
 	mask = /obj/item/clothing/mask/balaclava
 	glasses = /obj/item/clothing/glasses/hud/security/tacfat
 	l_hand = /obj/item/ammo_magazine/ihclrifle/hv
@@ -60,10 +58,10 @@
 	id = /obj/item/card/id/solcom/peace
 	r_pocket = /obj/item/storage/pouch/ammo/cl
 	suit = /obj/item/clothing/suit/armor/bulletproof
+	head = /obj/item/clothing/head/armor/bulletproof
 
 /decl/hierarchy/outfit/job/ert/peacemedic/combat
 	name = "Combat - Peacekeeper Medic"
-	head = /obj/item/clothing/head/deckcrew/white
 	glasses = /obj/item/clothing/glasses/hud/health/tacfat
 	belt = /obj/item/storage/belt/medical/emt/combat
 	mask = /obj/item/clothing/mask/balaclava
@@ -74,10 +72,10 @@
 	id = /obj/item/card/id/solcom/peace/medic
 	r_pocket = /obj/item/storage/pouch/ammo/cl
 	suit = /obj/item/clothing/suit/armor/bulletproof
+	head = /obj/item/clothing/head/deckcrew/white
 
 /decl/hierarchy/outfit/job/ert/peacecommander/combat
 	name = "Combat - Peacekeeper Sargeant"
-	head = /obj/item/clothing/head/beret
 	r_ear = /obj/item/device/radio/headset/military/commander
 	glasses = /obj/item/clothing/glasses/hud/security/tac
 	l_hand = /obj/item/ammo_magazine/ihclrifle/hv
@@ -87,9 +85,10 @@
 	id = /obj/item/card/id/solcom/peace/sarge
 	r_pocket = /obj/item/storage/pouch/ammo/cl
 	suit = /obj/item/clothing/suit/armor/bulletproof
+	head = /obj/item/clothing/head/beret
 
 //Funni halfe lymf
-/decl/hierarchy/outfit/job/ert/hecu
+/decl/hierarchy/outfit/job/ert/peacetrooper/hecu
 	name = "HECU Trooper"
 	head = /obj/item/clothing/head/beret
 	mask = /obj/item/clothing/mask/gas/ihs
@@ -102,7 +101,7 @@
 	id = /obj/item/card/id/solcom/peace
 	r_pocket = /obj/item/storage/pouch/ammo/cl
 
-/decl/hierarchy/outfit/job/ert/hecu/medic
+/decl/hierarchy/outfit/job/ert/peacemedic/hecu
 	name = "HECU Combat Medic"
 	head = /obj/item/clothing/head/beret/white
 	glasses = /obj/item/clothing/glasses/hud/health/tacfat
@@ -116,7 +115,7 @@
 	backpack_contents = list(/obj/item/device/lighting/toggleable/flashlight/seclite = 1, /obj/item/storage/firstaid/adv = 1, /obj/item/storage/firstaid/combat = 1, /obj/item/clothing/accessory/armband/med = 1, /obj/item/grenade/smokebomb = 2, /obj/item/storage/ration_pack = 1)
 	id = /obj/item/card/id/solcom/peace/medic
 
-/decl/hierarchy/outfit/job/ert/hecu/sarge
+/decl/hierarchy/outfit/job/ert/peacecommander/hecu
 	name = "HECU Fire Team Lead"
 	head = /obj/item/clothing/head/beret/red
 	r_ear = /obj/item/device/radio/headset/military/commander
