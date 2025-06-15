@@ -352,8 +352,9 @@ var/const/NO_EMAG_ACT = -50
 	icon_state = "centcom"
 	registered_name = "SOLCOM Officer"
 	assignment = "Colonel"
-	New()
-		access = get_all_station_access() + access_synth + get_all_centcom_access()
+
+/obj/item/card/id/solcom/New()
+	access = get_all_station_access() + access_synth + get_all_centcom_access()
 	..()
 
 /obj/item/card/id/solcom/marine
