@@ -93,9 +93,9 @@
 		return
 
 /obj/item/clothing/glasses/sunglasses/sechud/tactical
-	name = "Ironhammer tactical HUD"
+	name = "tactical HUD"
 	desc = "Goggles with inbuilt combat and security information. They provide minor flash resistance."
-	icon_state = "swatgoggles"
+	icon_state = "goggles"
 
 /obj/item/clothing/glasses/hud/broken
 	spawn_blacklisted = TRUE //To stop the broken huds form spawning i.g - Messes with loot spawns for a broken item

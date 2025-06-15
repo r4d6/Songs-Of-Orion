@@ -8,9 +8,10 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the Captain"
-	selection_color = "#97b0be"
+	selection_color = "#4e729e"
 	req_admin_notify = 1
 	wage = WAGE_COMMAND
+	alt_titles = list("Head of Security", "Asset Protection Director")
 
 	outfit_type = /decl/hierarchy/outfit/job/security/ihc
 
@@ -60,7 +61,7 @@
 	join_tag = /datum/job/ihc
 
 
-/datum/job/gunserg
+/*datum/job/gunserg
 	title = "DEFUNCT ROLE"
 	flag = GUNSERG
 	department = DEPARTMENT_SECURITY
@@ -107,11 +108,11 @@
 		4. In times of peace, prepare for war. To this end, you are also the onsite military instructor. If the station is in a lull and there are no outstanding threats, you should take the initiative to order training drills. Allow junior operatives to train and learn with less conventional weapons and tactics, give lessons on aiming, trigger discipline, hand to hand combat. Conduct drills on threat response, squad tactics, and EVA manoeuvres.<br>\ "
 
 	loyalties = "You're a military man through and through. As such, your first loyalty is to the Commander, and thusly to the chain of command"
-
+*/
 /obj/landmark/join/start/gunserg
 	name = "Ironhammer Gunnery Sergeant"
 	icon_state = "player-blue"
-	join_tag = /datum/job/gunserg
+	join_tag = /datum/job/assistant
 
 
 /datum/job/inspector
@@ -123,7 +124,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the Head of Security, regional Sky Marshal, and SOLCOM high command"
-	selection_color = "#a7bbc6"
+	selection_color = "#60616a"
 	wage = WAGE_PROFESSIONAL
 
 	outfit_type = /decl/hierarchy/outfit/job/security/inspector
@@ -171,6 +172,63 @@
 	icon_state = "player-blue"
 	join_tag = /datum/job/inspector
 
+/datum/job/ihoper
+	title = "Security Officer"
+	flag = IHOPER
+	department = DEPARTMENT_SECURITY
+	department_flag = IRONHAMMER
+	faction = "CEV Eris"
+	total_positions = 2
+	spawn_positions = 2
+	supervisors = "the Director of Asset Denial, Solar Marshals"
+	alt_titles = list("Asset Protection Specialist")
+	selection_color = "#3c5485"
+	wage = WAGE_LABOUR_HAZARD
+
+	outfit_type = /decl/hierarchy/outfit/job/security/ihoper
+
+	access = list(
+		access_security, access_moebius, access_engine, access_mailsorting,access_eva,
+		access_sec_doors, access_brig, access_maint_tunnels, access_morgue, access_external_airlocks
+	)
+
+	stat_modifiers = list(
+		STAT_ROB = 25,
+		STAT_TGH = 20,
+		STAT_VIG = 25,
+	)
+
+	perks = list(PERK_SURVIVOR,
+				 PERK_CODESPEAK_COP)
+
+	software_on_spawn = list(/datum/computer_file/program/digitalwarrant,
+							 /datum/computer_file/program/camera_monitor)
+
+	description = "You are the long arm of the law and the short end of the stick. Formally, a Risk Controller. <br>\
+	<br>\
+	You are a consummate professional, you're often expected to put your pride aside, and work with others. Tactics and teamwork are vital.<br>\
+	<br>\
+	You are paid to act, not to think. When in doubt, follow orders, and leave the hard choices to someone else. Trust in your chain of command.<br>\
+	<br>\
+	When there are no standing orders, your ongoing task is to patrol the station and be on the lookout for trouble. Check in at departments, ask if there are any concerns, break up fights and do your best to prevent issues before they spirals out of control.<br>\
+	<br>\
+	You have almost-total access to the station in order to carry out your duties and reach threats quickly. Do not abuse this. It does not mean you can walk into anywhere you like, many areas are full of sensitive machinery and entering unnanounced can be harmful to your health. Do not steal from departments either. If it's not in your department, it doesn't belong to you."
+
+	duties = "		Patrol the station, provide a security presence, and look for trouble<br>\
+		Subdue and arrest criminals, terrorists, and other threats<br>\
+		Follow orders from the chain of command<br>\
+		Obey the law. You are not above it"
+
+	loyalties = "		As an officer, your first loyalty is to the chain of command, which ends with the Director of Asset Denial. Their orders are supreme over all, even if they're currently leading a mutiny against the captain.<br>\
+		<br>\
+		Your second loyalty is to your fellow Risk Controllers and Specialists. As long as the company takes care of you, you should follow orders. But if you start being sent on suicide missions and treated as expendable fodder, that should change.<br>\
+		<br>\
+		Your third loyalty is to humanity. You are still human under all that armour. If you're being ordered to slaughter civilians en masse, it may be time to start thinking for yourself."
+
+/obj/landmark/join/start/ihoper
+	name = "Security Officer"
+	icon_state = "player-blue"
+	join_tag = /datum/job/ihoper
 
 /datum/job/medspec
 	title = "Search And Rescue Specialist"
@@ -181,7 +239,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the Director of Asset Denial"
-	selection_color = "#a7bbc6"
+	selection_color = "#66788f"
 	wage = WAGE_PROFESSIONAL
 
 	outfit_type = /decl/hierarchy/outfit/job/security/medspec
@@ -232,63 +290,3 @@
 	name = "SARS"
 	icon_state = "player-blue"
 	join_tag = /datum/job/medspec
-
-
-/datum/job/ihoper
-	title = "Security Officer"
-	flag = IHOPER
-	department = DEPARTMENT_SECURITY
-	department_flag = IRONHAMMER
-	faction = "CEV Eris"
-	total_positions = 2
-	spawn_positions = 2
-	supervisors = "the Director of Asset Denial, Solar Marshals"
-	//alt_titles = list("Ironhammer Junior Operative")
-	selection_color = "#a7bbc6"
-	wage = WAGE_LABOUR_HAZARD
-
-	outfit_type = /decl/hierarchy/outfit/job/security/ihoper
-
-	access = list(
-		access_security, access_moebius, access_engine, access_mailsorting,access_eva,
-		access_sec_doors, access_brig, access_maint_tunnels, access_morgue, access_external_airlocks
-	)
-
-	stat_modifiers = list(
-		STAT_ROB = 25,
-		STAT_TGH = 20,
-		STAT_VIG = 25,
-	)
-
-	perks = list(PERK_SURVIVOR,
-				 PERK_CODESPEAK_COP)
-
-	software_on_spawn = list(/datum/computer_file/program/digitalwarrant,
-							 /datum/computer_file/program/camera_monitor)
-
-	description = "You are the long arm of the law and the short end of the stick. Formally, a Risk Controller. <br>\
-	<br>\
-	You are a consummate professional, you're often expected to put your pride aside, and work with others. Tactics and teamwork are vital.<br>\
-	<br>\
-	You are paid to act, not to think. When in doubt, follow orders, and leave the hard choices to someone else. Trust in your chain of command.<br>\
-	<br>\
-	When there are no standing orders, your ongoing task is to patrol the station and be on the lookout for trouble. Check in at departments, ask if there are any concerns, break up fights and do your best to prevent issues before they spirals out of control.<br>\
-	<br>\
-	You have almost-total access to the station in order to carry out your duties and reach threats quickly. Do not abuse this. It does not mean you can walk into anywhere you like, many areas are full of sensitive machinery and entering unnanounced can be harmful to your health. Do not steal from departments either. If it's not in your department, it doesn't belong to you."
-
-	duties = "		Patrol the station, provide a security presence, and look for trouble<br>\
-		Subdue and arrest criminals, terrorists, and other threats<br>\
-		Follow orders from the chain of command<br>\
-		Obey the law. You are not above it"
-
-	loyalties = "		As an officer, your first loyalty is to the chain of command, which ends with the Director of Asset Denial. Their orders are supreme over all, even if they're currently leading a mutiny against the captain.<br>\
-		<br>\
-		Your second loyalty is to your fellow Risk Controllers and Specialists. As long as the company takes care of you, you should follow orders. But if you start being sent on suicide missions and treated as expendable fodder, that should change.<br>\
-		<br>\
-		Your third loyalty is to humanity. You are still human under all that armour. If you're being ordered to slaughter civilians en masse, it may be time to start thinking for yourself."
-
-/obj/landmark/join/start/ihoper
-	name = "Security Officer"
-	icon_state = "player-blue"
-	join_tag = /datum/job/ihoper
-

@@ -7,10 +7,10 @@
     jobs_list = list(/datum/job/captain)
     tipText = "As the Captain, you own this ship. You set the rules."
 
-/tipsAndTricks/jobs/ironhammer_theft
+/*tipsAndTricks/jobs/ironhammer_theft
     jobs_list = list(/datum/job/ihc, /datum/job/gunserg, /datum/job/inspector, /datum/job/medspec, /datum/job/ihoper)
     tipText = "As an Ironhammer Operative, you have broad access to chase criminals. This does not mean you can take anything you have access to. Taking things from other departments is theft!"
-
+*/
 /tipsAndTricks/jobs/guild_resale_profit
     jobs_list = list(/datum/job/merchant, /datum/job/cargo_tech)
     tipText = "As a Guild Merchant, you should be buying up valuable things from scavengers and reselling them for a profit. Buy anything of value that's brought to you."
@@ -80,15 +80,15 @@
     tipText = "No Technomancer lives long without learning that firesuits are not space suits, and vice versa."
 
 /tipsAndTricks/jobs/tric
-    jobs_list = list(/datum/job/cmo, /datum/job/doctor, /datum/job/chemist, /datum/job/psychiatrist, /datum/job/paramedic)
+    jobs_list = list(/datum/job/cmo, /datum/job/doctor) //datum/job/chemist, /datum/job/psychiatrist, /datum/job/paramedic
     tipText = "Inaprovaline and dylovene can be mixed together in a container to produce tricordazine - a mild regenerative compound that can treat brute/burns/toxin damage and even suffocation. Best of all, it has no overdose risk."
 
 /tipsAndTricks/jobs/reagent_scanner_pda
-    jobs_list = list(/datum/job/cmo, /datum/job/doctor, /datum/job/chemist, /datum/job/psychiatrist, /datum/job/paramedic)
+    jobs_list = list(/datum/job/cmo, /datum/job/doctor) //datum/job/chemist, /datum/job/psychiatrist, /datum/job/paramedic
     tipText = "There is a reagent scanner integrated in your PDA."
 
 /tipsAndTricks/jobs/medical_scanner_pda
-    jobs_list = list(/datum/job/cmo, /datum/job/doctor, /datum/job/psychiatrist, /datum/job/paramedic)
+    jobs_list = list(/datum/job/cmo, /datum/job/doctor) //datum/job/psychiatrist, /datum/job/paramedic
     tipText = "Your PDA has an integrated medical scanner."
 
 /tipsAndTricks/jobs/gas_scanner_pda
@@ -96,33 +96,33 @@
     tipText = "Inside of your PDA is a installed gas scanner."
 
 /tipsAndTricks/jobs/carbonPills
-    jobs_list = list(/datum/job/cmo, /datum/job/doctor, /datum/job/chemist, /datum/job/psychiatrist, /datum/job/paramedic)
+    jobs_list = list(/datum/job/cmo, /datum/job/doctor) //datum/job/chemist, /datum/job/psychiatrist, /datum/job/paramedic)
     tipText = "Pills containing pure carbon can be ingested to treat cases of poisoning and accidental overdoes. 1u of carbon will remove 1u of anything in the stomach. This will not, however, purge chemicals in the bloodstream, nor will injecting carbon have the same effect."
 
 /tipsAndTricks/jobs/inaprov
-    jobs_list = list(/datum/job/cmo, /datum/job/doctor, /datum/job/chemist, /datum/job/psychiatrist, /datum/job/paramedic)
+    jobs_list = list(/datum/job/cmo, /datum/job/doctor) //datum/job/chemist, /datum/job/psychiatrist, /datum/job/paramedic)
     tipText = "Inaprovaline stabilize a patient in many ways and a must to chemical for critical patients."
 
 /tipsAndTricks/jobs/lid_draw
-    jobs_list = list(/datum/job/cmo, /datum/job/doctor, /datum/job/chemist, /datum/job/psychiatrist, /datum/job/paramedic)
+    jobs_list = list(/datum/job/cmo, /datum/job/doctor) //datum/job/chemist, /datum/job/psychiatrist, /datum/job/paramedic)
     tipText = "You can draw a reagents from bottles with syringe through the lid."
 
 /tipsAndTricks/jobs/quick_clot_internal
-    jobs_list = list(/datum/job/cmo, /datum/job/doctor, /datum/job/chemist, /datum/job/psychiatrist, /datum/job/paramedic)
+    jobs_list = list(/datum/job/cmo, /datum/job/doctor) //datum/job/chemist, /datum/job/psychiatrist, /datum/job/paramedic)
     tipText = "Quickclot and some other chemicals can heal internal bleeding."
 
 /tipsAndTricks/jobs/crewMonitorHelp
     jobs_list = list(/datum/job/cmo, /datum/job/doctor, /datum/job/paramedic)
     tipText = "You can use the crew monitoring program on computers to locate injured crew members. It can be downloaded on tablets or laptops for a portable solution. Medical storage always has one tablet for this purpose on roundstart."
 
-/tipsAndTricks/jobs/thermite
+/*tipsAndTricks/jobs/thermite
     jobs_list = list(/datum/job/chemist)
     tipText = "Thermite is a great way to take down walls."
 
 /tipsAndTricks/jobs/grenades
     jobs_list = list(/datum/job/chemist)
     tipText = "You can make grenades for various purposes, from harmful (like explosion or EMPs) to helpful (like cleaning and weed killing)."
-
+*/
 /tipsAndTricks/jobs/cyborgsDontBreathe
     jobs_list = list(/datum/job/cyborg)
     tipText = "As a cyborg, you don't need oxygen/pressure to survive. You're also quite resistant to heat. Use it to your advantage."
@@ -160,13 +160,13 @@
     tipText = "You can enhance the human body by installing prosthetics and modifications."
 
 /tipsAndTricks/jobs/chem_app
-    jobs_list = list(/datum/job/rd, /datum/job/scientist, /datum/job/roboticist, /datum/job/cmo, /datum/job/doctor, /datum/job/paramedic)
+    jobs_list = list(/datum/job/cmo, /datum/job/doctor)
     tipText = "There is a program in your PDA called MIRC (Moebius Internal Reagent Catalogue) that can help you with chemistry."
 
-/tipsAndTricks/jobs/drink_app
+/*tipsAndTricks/jobs/drink_app
     jobs_list = list(/datum/job/clubworker, /datum/job/clubmanager)
     tipText = "There is a program in your PDA called Neon Cocktails that can help you with making drinks."
-
+*/
 /tipsAndTricks/jobs/bots
     jobs_list = list(/datum/job/rd, /datum/job/scientist, /datum/job/roboticist)
     tipText = "Bots are tireless servants that you can create. No janitor? CleanBot to the rescue! Not enough medical staff? MedBot will solve that."

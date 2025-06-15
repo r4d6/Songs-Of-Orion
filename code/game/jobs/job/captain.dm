@@ -11,10 +11,11 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "your heart and wisdom... and the company."
-	selection_color = "#ccccff"
+	selection_color = "#0c9d98"
 	req_admin_notify = 1
 	wage = WAGE_NONE //The captain doesn't get paid, he's the one who does the paying
 	//The ship account is his, and he's free to draw as much salary as he likes
+	alt_titles = list("Site Manager", "Corporate Rep")
 
 	also_known_languages = list(LANGUAGE_CYRILLIC = 20, LANGUAGE_SERBIAN = 20)
 
@@ -59,8 +60,6 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	icon_state = "player-gold-officer"
 	join_tag = /datum/job/captain
 
-
-
 /datum/job/hop
 	title = "First Officer"
 	flag = FIRSTOFFICER
@@ -72,12 +71,13 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the Captain, and the Company"
-	selection_color = "#ddddff"
+	selection_color = "#5c0e34"
 	req_admin_notify = 1
 	wage = WAGE_COMMAND
 	also_known_languages = list(LANGUAGE_CYRILLIC = 20, LANGUAGE_SERBIAN = 15)
 	perks = list(/datum/perk/sommelier)
 	ideal_character_age = 50
+	alt_titles = list("Head of Personnel")
 
 	description = "You are the captain's right hand. Their second in command. Where they go, you follow. Where they lead, you drag everyone else along. You make sure their will is done, their orders obeyed, and their rules enforced.<br>\
 	If they makes mistakes, discreetly inform them. Help to cover up their indiscretions and smooth relations with the crew, especially other command staff. Keep the captain safe, by endangering yourself in their stead if necessary.<br>\

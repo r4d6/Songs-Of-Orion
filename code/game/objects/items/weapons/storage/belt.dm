@@ -160,7 +160,7 @@
 
 /obj/item/storage/belt/medical/emt
 	name = "EMS utility belt"
-	desc = "A sturdy black webbing belt with attached pouches."
+	desc = "A sturdy webbing belt with attached pouches."
 	icon_state = "ems"
 	item_state = "ems"
 	can_hold_extra = list(
@@ -173,6 +173,19 @@
 		/obj/item/gun/projectile/selfload,
 		/obj/item/modular_computer/tablet/moebius/preset
 	)
+
+/obj/item/storage/belt/medical/emt/combat
+	name = "medic utility belt"
+	spawn_blacklisted = TRUE
+
+/obj/item/storage/belt/medical/emt/combat/populate_contents()
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/tool/crowbar/pneumatic(src)
+	new /obj/item/storage/pill_bottle/meralyne(src)
+	new /obj/item/storage/pill_bottle/tramadol(src)
+	new /obj/item/storage/pill_bottle/dermaline(src)
 
 /obj/item/storage/belt/tactical
 	name = "tactical belt"
@@ -210,6 +223,17 @@
 	name = "tactical belt"
 	icon_state = "tactical"
 	spawn_blacklisted = TRUE
+	prespawned_content_amount = 2
+	prespawned_content_type = /obj/item/grenade/frag
+
+/obj/item/storage/belt/tactical/ironhammer/populate_contents()
+	for(var/i in 1 to prespawned_content_amount)
+		new prespawned_content_type(src)
+	new /obj/item/tool/knife/tacknife(src)
+	new /obj/item/tool/crowbar/pneumatic(src)
+	new /obj/item/device/lighting/toggleable/flashlight/seclite(src)
+	new /obj/item/handcuffs(src)
+
 
 /obj/item/storage/belt/tactical/neotheology
 	name = "neotheology tactical belt"

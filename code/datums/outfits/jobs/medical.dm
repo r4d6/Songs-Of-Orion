@@ -1,35 +1,42 @@
 /decl/hierarchy/outfit/job/medical
 	hierarchy_type = /decl/hierarchy/outfit/job/medical
-	l_ear = /obj/item/device/radio/headset/headset_med
-	shoes = /obj/item/clothing/shoes/reinforced/medical
+	shoes = /obj/item/clothing/shoes/color/black
 	id_type = /obj/item/card/id/med
 	pda_type = /obj/item/modular_computer/pda/moebius/medical
 	pda_slot = slot_l_store
-	r_ear  = /obj/item/reagent_containers/syringe/large
+
 
 /decl/hierarchy/outfit/job/medical/New()
 	..()
 	BACKPACK_OVERRIDE_MEDICAL
 
 /decl/hierarchy/outfit/job/medical/cmo
-	name = OUTFIT_JOB_NAME("Moebius Biolab Officer")
+	name = OUTFIT_JOB_NAME("Brotherhood coordinator")
 	l_ear  =/obj/item/device/radio/headset/heads/cmo
-	uniform = /obj/item/clothing/under/rank/moebius_biolab_officer
-	suit = /obj/item/clothing/suit/storage/toggle/labcoat/cmo
+	uniform = /obj/item/clothing/under/rank/coordinator
+	suit = /obj/item/clothing/suit/storage/toggle/labcoat/old
 	l_hand = /obj/item/storage/firstaid/adv
 	r_pocket = /obj/item/device/lighting/toggleable/flashlight/pen
 	id_type = /obj/item/card/id/cmo
 	pda_type = /obj/item/modular_computer/pda/heads/cmo
-	belt = /obj/item/storage/belt/medical/
-	backpack_contents = list(/obj/item/gun/projectile/selfload/moebius = 1, /obj/item/ammo_magazine/pistol/rubber = 2)
+	belt = /obj/item/storage/belt/medical
+	backpack_contents = list(/obj/item/gun/projectile/selfload/moebius = 1, /obj/item/ammo_magazine/pistol/rubber = 2, /obj/item/spacecash/bundle/vagabond =1)
 
 /decl/hierarchy/outfit/job/medical/doctor
-	name = OUTFIT_JOB_NAME("Moebius Doctor")
+	name = OUTFIT_JOB_NAME("Brotherhood Doctor")
 	uniform = /obj/item/clothing/under/rank/medical
-	suit = /obj/item/clothing/suit/storage/toggle/labcoat
-	l_hand = /obj/item/storage/firstaid/adv
+	suit = /obj/item/clothing/suit/storage/toggle/labcoat/old
+	l_hand = /obj/item/storage/firstaid
 	r_pocket = /obj/item/device/lighting/toggleable/flashlight/pen
-	belt = /obj/item/storage/belt/medical/
+	belt = /obj/item/storage/belt/medical
+	r_pocket = /obj/item/device/radio/alt2
+
+/decl/hierarchy/outfit/job/medical/volunteer
+	name = OUTFIT_JOB_NAME("Brotherhood Volunteer")
+	uniform = /obj/item/clothing/under/rank/volunteer
+	r_ear  = /obj/item/pen/pencil
+	belt = /obj/item/device/radio
+	l_pocket = /obj/item/spacecash/bundle/vagabond
 
 /decl/hierarchy/outfit/job/medical/chemist
 	name = OUTFIT_JOB_NAME("Moebius Chemist")
@@ -38,6 +45,7 @@
 	id_type = /obj/item/card/id/chem
 	pda_type = /obj/item/modular_computer/pda/moebius/chemistry
 	belt = /obj/item/storage/belt/medical/
+
 
 /decl/hierarchy/outfit/job/medical/chemist/New()
 	..()

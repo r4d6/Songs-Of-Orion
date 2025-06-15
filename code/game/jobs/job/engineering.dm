@@ -8,7 +8,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the Captain"
-	selection_color = "#c7b97b"
+	selection_color = "#d0b04e"
 	req_admin_notify = 1
 	also_known_languages = list(LANGUAGE_CYRILLIC = 100)
 	wage = WAGE_COMMAND
@@ -63,7 +63,7 @@ You are to keep the station running and constantly improve it as much as you are
 	total_positions = 3
 	spawn_positions = 3
 	supervisors = "the Chief Engineer"
-	selection_color = "#d5c88f"
+	selection_color = "#b18643"
 	also_known_languages = list(LANGUAGE_CYRILLIC = 50)
 	wage = WAGE_PROFESSIONAL
 	alt_titles = list("Mechanical Engineer","Nuclear Engineer","Field Engineer","Damage Control Specialist", "Engineer")
@@ -108,6 +108,65 @@ You are to keep the station running and constantly improve it as much as you are
 	icon_state = "player-orange"
 	join_tag = /datum/job/technomancer
 
+/datum/job/dive_boss
+	title = "EVA Foremxn"
+	flag = MINER
+	department = DEPARTMENT_ENGINEERING
+	department_flag = ENGINEERING
+	faction = "CEV Eris"
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = "the Chief Engineer"
+	selection_color = "#829d72"
+	wage = WAGE_PROFESSIONAL
+	alt_titles = list("Dive Boss","Foreman","Dive Foreman","Pathfinder")
+	also_known_languages = list(LANGUAGE_JIVE = 100, LANGUAGE_CYRILLIC = 50)
+
+	outfit_type = /decl/hierarchy/outfit/job/engineering/foreman
+
+	description = "You are a leader of apes, the 'Dive Boss' as you are more commonly known. Officially an Astra Starworks EVA Foremxn, you are in charge of all Extravehicular Activities.<br>\
+	<br>\
+	EVA is a long tradition. Expeditions to and from vacuum environments are typically called 'dives' and those who work outside the hull, 'Divers.'<br>\
+	The ones who don't come back? 'Drowned.'<br>\
+	Your job is to ensure that doesn't happen."
+
+	duties = "Oversee all EVA and depressurized activities.<br>\
+	Keep the Divers alive.<br>\
+	Train the crew on EVA activities, micro-gravity operations, and survival in depressurized spaces.<br>\
+	Lead and organize the dive team towards profit and maybe home someday."
+
+	loyalties = "	Your first loyalty is to your team. <br>\
+	Your second loyalty is to the Chief Engineer, you're supposed to be there for the Chief and his Engineers.<br>\
+	Your third loyalty are to all the poor spacer fools who came up from ground-pounding to drink vacuum and drift in micro-G, you should make some attempt to train or save them when some idiot cracks a seal."
+
+	access = list(
+		access_maint_tunnels, access_mailsorting, access_mining,
+		access_mining_station, access_eva, access_external_airlocks, access_construction, access_atmospherics, access_emergency_storage,
+		access_heads, access_construction
+	)
+
+	stat_modifiers = list(
+		STAT_ROB = 20,
+		STAT_TGH = 20,
+		STAT_VIG = 25,
+		STAT_MEC = 15
+	)
+
+	perks = list(/datum/perk/survivor, /datum/perk/oddity/lungs_of_iron)
+
+	software_on_spawn = list(///datum/computer_file/program/supply,
+							 ///datum/computer_file/program/deck_management,
+							 /datum/computer_file/program/wordprocessor,
+							 /datum/computer_file/program/reports,
+							 /datum/computer_file/program/suit_sensors,
+							 /datum/computer_file/program/camera_monitor)
+
+/obj/landmark/join/start/mining
+	name = "Dive Boss"
+	icon_state = "player-beige"
+	join_tag = /datum/job/mining
+
+
 /datum/job/mining
 	title = "EVA Reclaimation Personnel"
 	flag = MINER
@@ -117,9 +176,9 @@ You are to keep the station running and constantly improve it as much as you are
 	total_positions = 6
 	spawn_positions = 6
 	supervisors = "the Dive Boss, the Engies, and the Chief"
-	selection_color = "#c3b9a6"
+	selection_color = "#617953"
 	wage = WAGE_LABOUR_DUMB //RIP
-	alt_titles = list("Diver","Shipbreaker","Surveyor")
+	alt_titles = list("Diver","Shipbreaker","Surveyor", "EVA Laborer")
 	also_known_languages = list(LANGUAGE_JIVE = 100, LANGUAGE_CYRILLIC = 50)
 
 	outfit_type = /decl/hierarchy/outfit/job/cargo/mining
@@ -140,8 +199,8 @@ You are to keep the station running and constantly improve it as much as you are
 	Your second loyalty is to the Dive Boss, the EVA Foreman. You owe them something, at least."
 
 	access = list(
-		access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining,
-		access_mining_station, access_eva
+		access_maint_tunnels, access_mining,
+		access_mining_station, access_eva, access_construction
 	)
 
 
@@ -161,65 +220,5 @@ You are to keep the station running and constantly improve it as much as you are
 
 /obj/landmark/join/start/mining
 	name = "ERP"
-	icon_state = "player-beige"
-	join_tag = /datum/job/mining
-
-/datum/job/dive_boss
-	title = "EVA Foremxn"
-	flag = MINER
-	department = DEPARTMENT_ENGINEERING
-	department_flag = ENGINEERING
-	faction = "CEV Eris"
-	total_positions = 1
-	spawn_positions = 1
-	supervisors = "the Chief Engineer"
-	selection_color = "#c3b9a6"
-	wage = WAGE_PROFESSIONAL
-	alt_titles = list("Dive Boss","Foreman","Dive Foreman","Pathfinder")
-	also_known_languages = list(LANGUAGE_JIVE = 100, LANGUAGE_CYRILLIC = 50)
-
-	outfit_type = /decl/hierarchy/outfit/job/engineering/foreman
-
-	description = "You are a leader of apes, the 'Dive Boss' as you are more commonly known. Officially an Astra Starworks EVA Foremxn, you are in charge of all Extravehicular Activities.<br>\
-	<br>\
-	EVA is a long tradition. Expeditions to and from vacuum environments are typically called 'dives' and those who work outside the hull, 'Divers.'<br>\
-	The ones who don't come back? 'Drowned.'<br>\
-	Your job is to ensure that doesn't happen."
-
-
-	duties = "You oversee all EVA and depressurized activities.<br>\
-	Keep the Divers alive.<br>\
-	Train the crew on EVA activities, micro-gravity operations, and survival in depressurized spaces.<br>\
-	Lead and organize the dive team towards profit and maybe home someday."
-
-	loyalties = "	Your first loyalty is to your team. <br>\
-	Your second loyalty is to the Chief Engineer, you're supposed to be there for the Chief and his Engineers.<br>\
-	Your third loyalty are to all the poor spacer fools who came up from ground-pounding to drink vacuum and drift in micro-G, you should make some attempt to train or save them when some idiot cracks a seal."
-
-	access = list(
-		access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining,
-		access_mining_station, access_eva, access_external_airlocks, access_construction, access_atmospherics, access_emergency_storage,
-		access_heads, access_construction
-	)
-
-
-	stat_modifiers = list(
-		STAT_ROB = 15,
-		STAT_TGH = 15,
-		STAT_VIG = 15,
-		STAT_MEC = 15
-	)
-
-	perks = list(/datum/perk/deep_connection)
-
-	software_on_spawn = list(///datum/computer_file/program/supply,
-							 ///datum/computer_file/program/deck_management,
-							 /datum/computer_file/program/wordprocessor,
-							 /datum/computer_file/program/reports,
-							 /datum/computer_file/program/suit_sensors,
-							 /datum/computer_file/program/camera_monitor)
-
-/obj/landmark/join/start/mining
-	name = "Dive Boss"
 	icon_state = "player-beige"
 	join_tag = /datum/job/mining

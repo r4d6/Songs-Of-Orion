@@ -74,7 +74,7 @@
 	..()
 
 /datum/perk/vagabond
-	name = "Vagabond"
+	name = "Lowly"
 	desc = "You're used to see the worst sight the world has to offer. Your mind feels more resistant. \
 			This perk reduces the total sanity damage you can take from what is happening around you."
 	icon_state = "vagabond" // https://game-icons.net/1x1/lorc/eye-shield.html

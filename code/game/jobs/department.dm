@@ -34,7 +34,7 @@
 	Command
 **************/
 /datum/department/command
-	name = "CEV Eris Command"
+	name = "Keystone Securities"
 	id = DEPARTMENT_COMMAND
 	/*
 	The command account is the ship account. It is the master account that retainer departments are paid from,
@@ -52,17 +52,17 @@
 **************/
 //These departments are paid out of ship funding
 /datum/department/ironhammer
-	name = "Ironhammer Mercenary Company"
+	name = "Proxima Centauri Risk Control"
 	id = DEPARTMENT_SECURITY
 	funding_source = DEPARTMENT_COMMAND
 
 /datum/department/technomancers
-	name = "Technomancer League"
+	name = "Astra Starworks"
 	id = DEPARTMENT_ENGINEERING
 	funding_source = DEPARTMENT_COMMAND
 
 /datum/department/civilian
-	name = "CEV Eris Civilian"
+	name = "Civilian"
 	id = DEPARTMENT_CIVILIAN
 	funding_source = DEPARTMENT_COMMAND
 
@@ -72,14 +72,14 @@
 *******************/
 //Departments subsidised by an external organisation. These pay their own employees
 /datum/department/moebius_medical
-	name = "Moebius Labs: Medical Division"
+	name = "Working Brotherhood"
 	id = DEPARTMENT_MEDICAL
-	funding_source = "Moebius Labs."
+	funding_source = "The Patrons"
 
 /datum/department/moebius_research
-	name = "Moebius Labs: Research Division"
+	name = "Human Resources"
 	id = DEPARTMENT_SCIENCE
-	funding_source = "Moebius Labs."
+	funding_source = "Human Resources, Inc."
 
 /datum/department/church
 	name = "Church of NeoTheology"
@@ -92,7 +92,7 @@
 *******************/
 //Self funds and pays wages out of its earnings
 /datum/department/guild
-	name = "Asters Merchant Guild"
+	name = "Starboard Freight Syndicate"
 	id = DEPARTMENT_GUILD
 
 	/*

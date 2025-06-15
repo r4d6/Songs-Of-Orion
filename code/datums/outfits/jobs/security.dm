@@ -23,7 +23,7 @@
 	pda_type = /obj/item/modular_computer/pda/heads/hos
 	backpack_contents = list(/obj/item/handcuffs = 1,/obj/item/ammo_magazine/magnum/rubber = 1,/obj/item/device/lighting/toggleable/flashlight/seclite = 1, /obj/item/cell/small/high = 2, /obj/item/gun/energy/gun/martin = 1, /obj/item/flame/lighter/zippo/syndicate = 1, /obj/item/storage/fancy/cigarettes/lucky = 1, /obj/item/clothing/accessory/cross = 1)
 
-/decl/hierarchy/outfit/job/security/gunserg
+/*decl/hierarchy/outfit/job/security/gunserg
 	name = OUTFIT_JOB_NAME("Defunct")
 	uniform = /obj/item/clothing/under/rank/warden
 	suit = /obj/item/clothing/suit/armor/vest/ironhammer
@@ -32,6 +32,7 @@
 	l_pocket = /obj/item/device/flash
 	gloves = /obj/item/clothing/gloves/stungloves
 	backpack_contents = list(/obj/item/handcuffs = 1, /obj/item/device/lighting/toggleable/flashlight/seclite = 1, /obj/item/cell/small/high = 2, /obj/item/gun/energy/gun/martin = 1)
+*/
 
 /decl/hierarchy/outfit/job/security/inspector
 	name = OUTFIT_JOB_NAME("Solar Marshal Deputy")
@@ -63,7 +64,7 @@
 	backpack_contents = list(/obj/item/gun/energy/gun/martin = 1, /obj/item/cell/small/high = 1)
 
 /decl/hierarchy/outfit/job/security/ihoper
-	name = OUTFIT_JOB_NAME("Ironhammer Operative")
+	name = OUTFIT_JOB_NAME("Security Officer")
 	l_pocket = /obj/item/device/flash
 	uniform = /obj/item/clothing/under/rank/security
 	head = /obj/item/clothing/head/soft/sec

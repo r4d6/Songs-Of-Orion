@@ -84,7 +84,7 @@ var/list/shelter_blacklist = list(
 		if(alert)
 			var/preacher
 			for(var/mob/living/carbon/human/H in disciples)
-				if(H.mind && istype(H.mind.assigned_job, /datum/job/chaplain))
+				if(H.mind && istype(H.mind.assigned_job, /datum/job/cmo))
 					preacher = H
 
 			if(!preacher && length(disciples))

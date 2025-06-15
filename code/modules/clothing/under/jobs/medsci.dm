@@ -83,7 +83,7 @@
 /*
  * Medical
  */
-/obj/item/clothing/under/rank/moebius_biolab_officer
+/obj/item/clothing/under/rank/coordinator
 	name = "Brotherhood Coordinator uniform"
 	desc = "The supposedly classy outfit worn by the Brotherhood Coordinator."
 	icon_state = "coord"

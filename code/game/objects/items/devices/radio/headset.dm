@@ -107,7 +107,7 @@
 	desc = "This is used by your elite Search And Rescue Specialists."
 	icon_state = "sec_headset"
 	item_state = "sec_headset"
-	ks2type = /obj/item/device/encryptionkey/headset_sec
+	ks2type = /obj/item/device/encryptionkey/headset_sar
 
 /obj/item/device/radio/headset/headset_sec/alt
 	name = "security radio headset"

@@ -8,7 +8,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "Human Resources, Inc"
-	selection_color = "#b39aaf"
+	selection_color = "#27cab3"
 	req_admin_notify = 1
 	wage = WAGE_COMMAND
 
@@ -68,7 +68,7 @@ access_kitchen
 	total_positions = 3
 	spawn_positions = 3
 	supervisors = "the Human Resources Officer"
-	selection_color = "#bdb1bb"
+	selection_color = "#0c9d98"
 	wage = WAGE_PROFESSIONAL
 
 	//alt_titles = list("Moebius Xenobiologist")
@@ -116,10 +116,10 @@ access_kitchen
 	total_positions = -1
 	spawn_positions = -1
 	supervisors = "Human Resources personnel, the First Officer, and anyone you're put under by them"
-	selection_color = "#dddddd"
+	selection_color = "#246775"
 	initial_balance	= 0 // This is now defined in code\modules\economy\cash.dm under spacecash/bundle/Vagabond as they carry cash on them.
 	wage = WAGE_LABOUR_DUMB
-	//alt_titles = list("Technomancer Assistant","Moebius Medical Intern","Moebius Research Assistant")
+	alt_titles = list("HR Assistant","HR custodian","HR biolab assistant", "HR laborer", "HR debt slave", "Human Resource", "HR nutrition technician")
 	also_known_languages = list(LANGUAGE_CYRILLIC = 15, LANGUAGE_SERBIAN = 5)
 
 	access = list(access_maint_tunnels, access_moebius)
@@ -154,7 +154,7 @@ access_kitchen
 	join_tag = /datum/job/wagie
 
 
-/datum/job/psychiatrist
+/*datum/job/psychiatrist
 	title = "Moebius Psychiatrist"
 	flag = PSYCHIATRIST
 	department = DEPARTMENT_SCIENCE
@@ -185,8 +185,8 @@ access_kitchen
 							/datum/computer_file/program/chem_catalog,
 							/datum/computer_file/program/camera_monitor)
 
-
+*/
 /obj/landmark/join/start/psychiatrist
 	name = "Moebius Psychiatrist"
 	icon_state = "player-purple"
-	join_tag = /datum/job/psychiatrist
+	join_tag = /datum/job/assistant

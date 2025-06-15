@@ -2,7 +2,7 @@
 		You just want to survive, make a living, and get through the day. You shouldn't try to be a hero, or throw your life away for a cause. Nor should you hold any loyalties. Civilians should be easily corruptible, willing to take bribes to do anything someone wants and stay quiet about it."
 
 
-/datum/job/clubmanager
+/*datum/job/clubmanager
 	title = "Club Manager"
 	flag = CLUBMANAGER
 	department = DEPARTMENT_CIVILIAN
@@ -33,13 +33,13 @@
 		Keep the bar safe, clean, and free of fights."
 
 	loyalties = LOYALTY_CIVILIAN
-
+*/
 /obj/landmark/join/start/clubmanager
 	name = "Club Manager"
 	icon_state = "player-grey"
-	join_tag = /datum/job/clubmanager
+	join_tag = /datum/job/assistant
 
-/datum/job/clubworker
+/*datum/job/clubworker
 	title = "Club Worker"
 	flag = CLUBWORKER
 	department = DEPARTMENT_CIVILIAN
@@ -73,13 +73,13 @@
 		Make enough money to stay alive aboard CEV Eris."
 
 	loyalties = LOYALTY_CIVILIAN
-
+*/
 /obj/landmark/join/start/clubworker
 	name = "Club Worker"
 	icon_state = "player-grey"
-	join_tag = /datum/job/clubworker
+	join_tag = /datum/job/assistant
 
-/datum/job/artist
+/*datum/job/artist
 	title = "Club Artist"
 	flag = ARTIST
 	department = DEPARTMENT_CIVILIAN
@@ -110,8 +110,8 @@
 
 	loyalties = "You are loyal to your soul, first and foremost. You are fascinated by this cursed ship, and want to mold this interest into your works of art.<br>\
 	Your second loyalty is to the manager and the Club as a whole. After all, they're the ones giving you housing, payment, and materials to create your art."
-
+*/
 /obj/landmark/join/start/artist
 	name = "Club Artist"
 	icon_state = "player-grey"
-	join_tag = /datum/job/artist
+	join_tag = /datum/job/assistant

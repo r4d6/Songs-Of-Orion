@@ -608,6 +608,21 @@
 		rad = 10
 	)
 
+/obj/item/clothing/suit/storage/vest/merc/black
+	name = "flak vest"
+	desc = "A high-quality armor vest in a fetching black. It is surprisingly flexible and light, even with the added webbing and armor plating."
+	description_antag = "Integrated Objective Tactical Vest, once a full-spectrum semi-powered infantry armor with datalink systems. Now? Just lightweight armor."
+	icon_state = "flak"
+	item_state = "flak"
+	armor = list(
+		melee = 12,
+		bullet = 15,
+		energy = 15,
+		bomb = 75,
+		bio = 10,
+		rad = 10
+	)
+
 /obj/item/clothing/suit/storage/vest/merc/ultra
 	name = "Offender vest"
 	desc = "A Marx-Kamf Ultra-Unionist combat vest."

@@ -492,18 +492,31 @@
 	return sanitize(jointext(split_phrase," "))
 
 /datum/perk/njoy
-	name = "Njoy (Active)"
+	name = "Soma Smile (Active)"
 	desc = "Your mind can focus on what is real, just like when you get rid of a painful earring."
 	icon_state = "cheerful"  //https://game-icons.net/1x1/lorc/cheerful.html
 
 	gain_text = "Your mind feels much clearer now."
 	lose_text = "You feel the shadows once more."
+	var/stat_increase = 10
 
 /datum/perk/njoy/assign(mob/living/carbon/human/H)
 	if(..())
 		holder.sanity.insight_gain_multiplier *= 0.5
+		holder.stats.changeStat(STAT_MEC, -stat_increase)
+		holder.stats.changeStat(STAT_COG, -stat_increase)
+		holder.stats.changeStat(STAT_BIO, -stat_increase)
+		holder.stats.changeStat(STAT_ROB, -stat_increase)
+		holder.stats.changeStat(STAT_TGH, -stat_increase)
+		holder.stats.changeStat(STAT_VIG, -stat_increase)
 
 /datum/perk/njoy/remove()
 	if(holder)
 		holder.sanity.insight_gain_multiplier *= 2
+		holder.stats.changeStat(STAT_MEC, stat_increase)
+		holder.stats.changeStat(STAT_COG, stat_increase)
+		holder.stats.changeStat(STAT_BIO, stat_increase)
+		holder.stats.changeStat(STAT_ROB, stat_increase)
+		holder.stats.changeStat(STAT_TGH, stat_increase)
+		holder.stats.changeStat(STAT_VIG, stat_increase)
 	..()

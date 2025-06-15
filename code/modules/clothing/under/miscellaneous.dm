@@ -686,8 +686,8 @@ obj/item/clothing/under/genericr
 /obj/item/clothing/under/undersuit/trauma
 	name = "advanced truama envelope"
 	desc = "A highly advanced undersuit designed for extreme situations, with a price tag to match."
-	icon_state = "ATE"
-	item_state = "ATE"
+	icon_state = "ate"
+	item_state = "ate"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	min_cold_protection_temperature = T0C - 40

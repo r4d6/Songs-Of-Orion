@@ -10,9 +10,10 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the Syndicate"
-	selection_color = "#b3a68c"
+	selection_color = "#b74938"
 	wage = WAGE_NONE	//Guild merchant draws a salary from the guild account
 	also_known_languages = list(LANGUAGE_JIVE = 100)
+	alt_titles = list("Syndicate Quartermaster")
 	access = list(
 		access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_merchant, access_mining,
 		access_heads, access_mining_station, access_RC_announce, access_keycard_auth, access_sec_doors,
@@ -62,6 +63,47 @@
 	icon_state = "player-beige-officer"
 	join_tag = /datum/job/merchant
 
+/datum/job/roboticist
+	title = "Syndicate Hacker"
+	flag = ROBOTICIST
+	department = DEPARTMENT_GUILD
+	department_flag = GUILD
+	faction = "CEV Eris"
+	total_positions = 2
+	spawn_positions = 2
+	supervisors = "the Logistics Officer"
+	selection_color = "#60616a"
+	wage = WAGE_PROFESSIONAL
+	alt_titles = list("Syndicate Cybernetics Technician", "Syndicate Technical Specialist", "Syndicate Cryptography Analyst", "Syndicate Research Specialist", "Syndicate Technical Analyst")
+	also_known_languages = list(LANGUAGE_CYRILLIC = 10)
+
+	outfit_type = /decl/hierarchy/outfit/job/cargo/hacker
+
+	access = list(
+		access_robotics, access_tox, access_maint_tunnels, access_tox_storage, access_morgue, , access_research_equipment, access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot
+	)
+	software_on_spawn = list(/datum/computer_file/program/chem_catalog)
+
+	stat_modifiers = list(
+		STAT_MEC = 30,
+		STAT_COG = 20,
+		STAT_BIO = 25,
+	)
+
+	perks = list(/datum/perk/selfmedicated, PERK_ARTIST)
+
+	description = "As Hacker, you job is to take things apart and put them together better. And nothing else.<br>\
+	As the brains behind the production and procurement of new products, Hackers are skilled at unorthodox applications of technology."
+
+	duties = "	'Research' technologies to create new and absolutely legally distinct versions of common items.<br>\
+	Maintain and implant new bionics in crewmembers.<br>\
+	Advertise bionics for sale and run a commercial cybernetic clinic<br>\
+	Construct or reactivate various forms of machinery, from computers to cyborgs and drones."
+
+/obj/landmark/join/start/roboticist
+	name = "Hacker"
+	icon_state = "player-purple"
+	join_tag = /datum/job/roboticist
 
 /datum/job/cargo_tech
 	title = "Syndicate Agent"
@@ -72,11 +114,12 @@
 	total_positions = 4
 	spawn_positions = 4
 	supervisors = "the Logistics Officer"
-	selection_color = "#c3b9a6"
+	selection_color = "#60616a"
 	also_known_languages = list(LANGUAGE_JIVE = 100)
 	wage = WAGE_LABOUR_DUMB
 	department_account_access = TRUE
 	outfit_type = /decl/hierarchy/outfit/job/cargo/cargo_tech
+	alt_titles = list("Cargo Technician", "Syndicate Supply Specialist")
 
 	access = list(
 		access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining,
@@ -116,44 +159,3 @@ Your main duties are to keep the local Syndicate branch operational and profitab
 	name = "Syndicate Agent"
 	icon_state = "player-beige"
 	join_tag = /datum/job/cargo_tech
-
-/datum/job/roboticist
-	title = "Syndicate Hacker"
-	flag = ROBOTICIST
-	department = DEPARTMENT_GUILD
-	department_flag = GUILD
-	faction = "CEV Eris"
-	total_positions = 2
-	spawn_positions = 2
-	supervisors = "the Logistics Officer"
-	selection_color = "#c3b9a6"
-	wage = WAGE_PROFESSIONAL
-	also_known_languages = list(LANGUAGE_CYRILLIC = 10)
-
-	outfit_type = /decl/hierarchy/outfit/job/cargo/hacker
-
-	access = list(
-		access_robotics, access_tox, access_maint_tunnels, access_tox_storage, access_morgue, , access_research_equipment, access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot
-	)
-	software_on_spawn = list(/datum/computer_file/program/chem_catalog)
-
-	stat_modifiers = list(
-		STAT_MEC = 30,
-		STAT_COG = 20,
-		STAT_BIO = 25,
-	)
-
-	perks = list(/datum/perk/selfmedicated, PERK_ARTIST)
-
-	description = "As Hacker, you job is to take things apart and put them together better. And nothing else.<br>\
-	As the brains behind the production and procurement of new products, Hackers are skilled at unorthodox applications of technology."
-
-	duties = "	'Research' technologies to create new and absolutely legally distinct versions of common items.<br>\
-	Maintain and implant new bionics in crewmembers.<br>\
-	Advertise bionics for sale and run a commercial cybernetic clinic<br>\
-	Construct or reactivate various forms of machinery, from computers to cyborgs and drones."
-
-/obj/landmark/join/start/roboticist
-	name = "Hacker"
-	icon_state = "player-purple"
-	join_tag = /datum/job/roboticist

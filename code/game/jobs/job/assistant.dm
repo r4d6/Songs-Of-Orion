@@ -10,7 +10,7 @@
 	selection_color = "#dddddd"
 	initial_balance	= 0 // This is now defined in code\modules\economy\cash.dm under spacecash/bundle/Vagabond as they carry cash on them.
 	wage = WAGE_NONE //Get a job ya lazy bum
-	//alt_titles = list("Technomancer Assistant","Moebius Medical Intern","Moebius Research Assistant")
+	alt_titles = list("Vagrant","Stowaway","Scavenger", "Refugee", "Looter", "Outlaw")
 	also_known_languages = list(LANGUAGE_CYRILLIC = 15, LANGUAGE_SERBIAN = 5)
 
 	access = list(access_maint_tunnels)

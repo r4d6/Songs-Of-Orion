@@ -226,6 +226,22 @@
 		rad = 0
 	)
 
+/obj/item/clothing/head/patrol/marine
+	name = "Marine patrol cap"
+	initial_name = "Director patrol cap"
+	desc = "A Solar Marine five-pointed cap. Has soft armor reinforcement."
+	icon_state = "marine"
+	body_parts_covered = HEAD
+	armor = list(
+		melee = 10,
+		bullet = 5,
+		energy = 10,
+		bomb = 5,
+		bio = 5,
+		rad = 0
+	)
+
+
 /obj/item/clothing/head/patrol/sec/corp
 	name = "corporate security patrol cap"
 	initial_name = "corporate security patrol cap"

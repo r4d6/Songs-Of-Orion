@@ -27,7 +27,7 @@
 	init_firemodes = list(
 		FULL_AUTO_300,
 		SEMI_AUTO_300,
-		list(mode_name="pulse", mode_desc = "3-round pulse", burst=3,    burst_delay=0.2, move_delay=1,  icon="burst"),
+		list(mode_name="pulse", mode_desc = "3-round pulse", burst=3,    burst_delay=0.3, move_delay=1,  icon="burst"),
 		)
 
 	spawn_tags = SPAWN_TAG_FS_PROJECTILE
