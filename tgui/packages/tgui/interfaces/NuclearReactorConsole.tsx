@@ -336,7 +336,7 @@ const ReactorFluidDynamics = (props, context) => {
       <Section title="Input Gas">
         {gas_input.temperature} K<br />
         {Object.entries(gas_input.gas).map(([key, value]) => (
-          <p>
+          <p key={String(key).concat('input')}>
             <strong>{key}</strong>: {value}
           </p>
         ))}
@@ -344,7 +344,7 @@ const ReactorFluidDynamics = (props, context) => {
       <Section title="Internal Storage">
         {gas_storage.temperature} K<br />
         {Object.entries(gas_storage.gas).map(([key, value]) => (
-          <p>
+          <p key={String(key).concat('storage')}>
             <strong>{key}</strong>: {value}
           </p>
         ))}
@@ -352,7 +352,7 @@ const ReactorFluidDynamics = (props, context) => {
       <Section title="Output Gas">
         {gas_output.temperature} K<br />
         {Object.entries(gas_output.gas).map(([key, value]) => (
-          <p>
+          <p key={String(key).concat('output')}>
             <strong>{key}</strong>: {value}
           </p>
         ))}
