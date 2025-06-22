@@ -335,15 +335,27 @@ const ReactorFluidDynamics = (props, context) => {
     <Box>
       <Section title="Input Gas">
         {gas_input.temperature} K<br />
-        {JSON.stringify(gas_input.gas)}
+        {Object.entries(gas_input.gas).map(([key, value]) => (
+          <p>
+            <strong>{key}</strong>: {value}
+          </p>
+        ))}
       </Section>
       <Section title="Internal Storage">
         {gas_storage.temperature} K<br />
-        {JSON.stringify(gas_storage.gas)}
+        {Object.entries(gas_storage.gas).map(([key, value]) => (
+          <p>
+            <strong>{key}</strong>: {value}
+          </p>
+        ))}
       </Section>
       <Section title="Output Gas">
         {gas_output.temperature} K<br />
-        {JSON.stringify(gas_output.gas)}
+        {Object.entries(gas_output.gas).map(([key, value]) => (
+          <p>
+            <strong>{key}</strong>: {value}
+          </p>
+        ))}
       </Section>
     </Box>
   );
