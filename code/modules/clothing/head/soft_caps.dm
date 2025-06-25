@@ -150,7 +150,7 @@
 /obj/item/clothing/head/soft/sec2soft
 	name = "NT security cap"
 	initial_name = "NT security cap"
-	desc = "An old, washed out ballcap with the logo of NanoTrassen internal security on its front."
+	desc = "An old, washed out ballcap with the logo of NanoTrasen internal security on its front."
 	icon_state = "cap_secred"
 
 /obj/item/clothing/head/soft/sarge2soft //unused
