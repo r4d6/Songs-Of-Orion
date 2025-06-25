@@ -271,7 +271,7 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 
 /obj/machinery/photocopier/faxmachine/centcom
 	name = "CENTCOM fax"
-	department = "NanoTrassen CENTCOM"
+	department = "NanoTrasen CENTCOM"
 
 /obj/machinery/photocopier/faxmachine/centcom/gov
 	name = "SolCom Consulate fax"
