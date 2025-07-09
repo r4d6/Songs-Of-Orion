@@ -149,34 +149,44 @@
 		pump_gas_passive(src, gas_storage, gas_output)
 
 
-/datum/multistructure/nuclear_reactor/Topic(href, href_list)
-	..()
+// /datum/multistructure/nuclear_reactor/Topic(href, href_list)
+// 	..()
 
-	if(href_list["close"])
-		usr << browse(null, "window=NRcontrol")
-		usr.unset_machine()
-		return
+// 	if(href_list["close"])
+// 		usr << browse(null, "window=NRcontrol")
+// 		usr.unset_machine()
+// 		return
 
-	if(href_list["scram"])
-		scram()
-		Console?.updateDialog()
-		return
+// 	if(href_list["scram"])
+// 		scram()
+// 		Console?.updateDialog()
+// 		return
 
-	if(href_list["set_target_height"])
-		var/new_height = input(usr, "What height should the control rods be at?", "Control Rods", 0) as null|num
-		for(var/obj/machinery/multistructure/nuclear_reactor_part/control_rod/CR in control_spots)
-			CR.height = clamp(new_height, 0, 100)
-			CR.update_icon()
-		control_average = Get_Average_Control_Height()
-		Console?.updateDialog()
-		return
+// 	if(href_list["set_target_height"])
+// 		var/new_height = input(usr, "What height should the control rods be at?", "Control Rods", 0) as null|num
+// 		for(var/obj/machinery/multistructure/nuclear_reactor_part/control_rod/CR in control_spots)
+// 			CR.height = clamp(new_height, 0, 100)
+// 			CR.update_icon()
+// 		control_average = Get_Average_Control_Height()
+// 		Console?.updateDialog()
+// 		return
 
-	Console?.updateDialog()
-	return
+// 	Console?.updateDialog()
+// 	return
 
 /datum/multistructure/nuclear_reactor/proc/scram()
 	for(var/obj/machinery/multistructure/nuclear_reactor_part/control_rod/CR in control_spots)
 		CR.height = 0
+		CR.update_icon()
+	var/location = sanitize((get_area(wall_input))?.name)
+	radio.autosay("WARNING! Reactor at [location] has initiated SCRAM!", "Nuclear Monitor")
+	return
+
+/datum/multistructure/nuclear_reactor/proc/Set_Control_Rod_Height(var/target_height)
+	for(var/obj/machinery/multistructure/nuclear_reactor_part/control_rod/CR in control_spots)
+		CR.height = clamp(target_height, 0, 100)
+		CR.update_icon()
+	return
 
 /datum/multistructure/nuclear_reactor/proc/Get_Average_Control_Height()
 	var/sum_rod = 0
@@ -201,32 +211,6 @@
 /datum/multistructure/nuclear_reactor/proc/Get_Pipe_Output()
 	var/obj/machinery/atmospherics/pipe/P = locate() in orange(1, wall_output)
 	return P?.return_air()
-
-/datum/multistructure/nuclear_reactor/proc/Get_HTML()
-	var/dat = ""
-	dat += "Nuclear Reactor Control Panel<BR>"
-	dat += "<A href='?src=\ref[src];close=1'>Close</A><BR>"
-	dat += "<A href='?src=\ref[src];refresh=1'>Refresh</A><BR>"
-	dat += "<A href='?src=\ref[src];scram=1'>SCRAM</A><BR>"
-	dat += "Reactor Integrity : [get_integrity()]%<BR>"
-	dat += "Control Rods Height: [control_average]% | <A href='?src=\ref[src];set_target_height=1'>Set</A><BR>"
-	dat += "Reactor Temperature: [temperature - T0C] C<BR>"
-
-	if(!gas_input)
-		dat += "WARNING! NO INPUT DETECTED!<BR>"
-
-	if(!gas_output)
-		dat += "WARNING! NO OUTPUT DETECTED!<BR>"
-
-	dat += "Fuel Rods Status: <BR>"
-	var/counter = 0
-	for(var/obj/item/fuel_rod/FR in Get_Fuel_Rods())
-		counter++
-		dat += "Fuel Rod [counter] - [FR.life]%<BR>"
-
-	return dat
-
-// ----------------
 
 /datum/multistructure/nuclear_reactor/proc/equalize(datum/gas_mixture/env, var/efficiency)
 	var/datum/gas_mixture/sharer = env.remove(efficiency * env.total_moles)
