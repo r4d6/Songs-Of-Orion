@@ -42,6 +42,7 @@
 	var/temperature = T20C
 	var/list/obj/item/fuel_rod/rods
 	var/obj/item/device/radio/radio
+	var/obj/structure/reactor_core/Core
 
 /datum/multistructure/nuclear_reactor/connect_elements()
 	..()
@@ -74,6 +75,7 @@
 	control_average = Get_Average_Control_Height()
 	Console = locate() in get_area(wall_input)
 	Console?.Reactor = src
+	Core = locate()
 	radio = new()
 	START_PROCESSING(SSprocessing, src)
 
@@ -84,6 +86,9 @@
 	if(!Console)
 		Console = locate() in get_area(wall_input)
 		Console?.Reactor = src
+
+	if(!Core)
+		Core = locate()
 
 	gas_input = Get_Pipe_Input()
 	gas_output = Get_Pipe_Output()
@@ -118,6 +123,12 @@
 
 	decay_archived = decay_heat
 	adjust_thermal_energy(decay_heat * activerods * (control_average/100))
+
+	if(Core)
+		if(control_average > 0)
+			Core.icon_state = "active"
+		else
+			Core.icon_state = "idle"
 
 	for(var/obj/item/fuel_rod/rod in rods)
 		rod.equalize(src, gasefficiency)
