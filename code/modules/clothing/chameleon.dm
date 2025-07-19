@@ -1,12 +1,13 @@
 // Stuff that shouldn't be faked by chameleons, mostly bad_type's and bst gear
 GLOBAL_LIST_INIT(chameleon_blacklist, list(
-	/obj/item/clothing/under/assistantformal/bst,
+	/obj/item/clothing/under/bst,
 	/obj/item/device/radio/headset/ert/bst,
 	/obj/item/storage/backpack/holding/bst,
 	/obj/item/clothing/shoes/color/black/bst,
 	/obj/item/clothing/glasses/sunglasses/bst,
 	/obj/item/storage/belt/utility/full/bst,
-	/obj/item/clothing/gloves/color/white/bst,
+	/obj/item/clothing/gloves/bst,
+	/obj/item/clothing/head/soft/yellow/bst,
 	/obj/item/gun,
 	/obj/item/gun/projectile,
 	/obj/item/gun/energy,

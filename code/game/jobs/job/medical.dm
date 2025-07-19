@@ -1,5 +1,5 @@
 /datum/job/cmo
-	title = "Moebius Biolab Officer"
+	title = "Brotherhood Coordinator"
 	flag = MBO
 	head_position = 1
 	department = DEPARTMENT_MEDICAL
@@ -7,12 +7,13 @@
 	faction = "CEV Eris"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Moebius Expedition Overseer"
-	selection_color = "#94a87f"
+	supervisors = "The Brotherhood and God"
+	selection_color = "#424b4d"
 	req_admin_notify = 1
 	also_known_languages = list(LANGUAGE_CYRILLIC = 10, LANGUAGE_SERBIAN = 5)
 	wage = WAGE_COMMAND
 	outfit_type = /decl/hierarchy/outfit/job/medical/cmo
+	alt_titles = list("Chief Hospitalier", "Brotherhood Medical Officer", "Head Surgeon", "Attending Physician", "Brotherhood Shepherd")
 
 	access = list(
 		access_moebius, access_medical_equip, access_morgue, access_genetics, access_heads,
@@ -24,12 +25,13 @@
 	ideal_character_age = 50
 
 	stat_modifiers = list(
-		STAT_BIO = 50,
+		STAT_BIO = 35,
 		STAT_MEC = 10,
-		STAT_COG = 25
+		STAT_COG = 20,
+		STAT_VIG = 40
 	)
 
-	perks = list(/datum/perk/selfmedicated)
+	perks = list(/datum/perk/oddity/gunslinger,/datum/perk/oddity/charming_personality)
 
 	software_on_spawn = list(/datum/computer_file/program/comm,
 							 /datum/computer_file/program/suit_sensors,
@@ -37,40 +39,40 @@
 							 /datum/computer_file/program/chem_catalog,
 							 /datum/computer_file/program/reports)
 
-	description = "You are the head of the Moebius Medical branch, contracted by the captain to provide medical services to the crew.<br>\
-You are here to keep everyone alive and ideally, at work. You should make choices that preserve life as much as possible.<br>\
-
-The handling of the medbay is your domain, although remember that both medical and science are branches of Moebius corp, so your colleagues have free access to your resources, and vice versa"
+	description = "You are the rock in the storm, the Coodinator of activities and volunteers of the Worker's Brotherhood aboard the station.<br>\
+	You are here to keep everyone alive and ideally, at work. You should make choices that preserve life as much as possible.<br>\
+	As the leader of the local branch of the Brotherhood, you are the ethical and spiritual leader of those not lost in the depravity of these dark times.<br>\
+	Keep the Brotherhood alive, the carry the torch of humanity through the storm of inhuman abomination."
 
 	duties = "Organise the doctors under your command to help save lives. Assign patients, and check on their progress periodically<br>\
-Dispatch your paramedics to distress calls, and corpse recoveries as needed<br>\
-Use department funds to purchase medical supplies and equipment as needed<br>\
-Advise the captain on medical issues that concern the crew<br>\
-Advise the crew on ethical issues<br>\
-In times of crisis, lock down the medbay to protect those within, from outside threats."
+	Advise the captain on medical issues that concern the crew<br>\
+	Advise the crew on ethical issues<br>\
+	In times of crisis, lock down the clinic to protect those within from outside threats.<br>\
+	Keep the peace within the Brotherhood, mediate issues, and keep the faith and fire alive, even if in shadow."
 
-	loyalties = "As a doctor, your first loyalty is to your conscience. You swore an oath to save lives and do no harm. It falls on you to be the ethical and moral core of the crew. You should speak up for prisoners, captured lifeforms, and test subjects. Nobody else will.<br>\
+	loyalties = "As the head of the medical clinic, your loyalty is to God and those in your care. It falls on you to be the ethical and moral core of the crew. You should speak up for prisoners, captured lifeforms, and test subjects. Nobody else will.<br>\
 
-Your second loyalty is to your career with Moebius corp, and to your coworkers in both branches of moebius. Help out your scientific colleagues, and aid in their pursuit of knowledge."
+	Your second loyalty is to the Brotherhood as an organization. Keep its secrets, keep its standing. Many seek to bring ruin to your flock, don't let them."
 
 /obj/landmark/join/start/cmo
-	name = "Moebius Biolab Officer"
+	name = "Brotherhood Coordinator"
 	icon_state = "player-green-officer"
 	join_tag = /datum/job/cmo
 
 
 /datum/job/doctor
-	title = "Moebius Doctor"
+	title = "Brotherhood Doctor"
 	flag = DOCTOR
 	department = DEPARTMENT_MEDICAL
 	department_flag = MEDICAL
 	faction = "CEV Eris"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the Moebius Biolab Officer"
-	selection_color = "#a8b69a"
-	wage = WAGE_PROFESSIONAL
+	supervisors = "the Brotherhood Coordinator"
+	selection_color = "#6a817a"
+	wage = WAGE_LABOUR_DUMB //RIP
 	also_known_languages = list(LANGUAGE_CYRILLIC = 10)
+	alt_titles = list("Hospitalier", "Nurse", "Hospitalier Surgeon", "Brotherhood Clinician")
 
 	outfit_type = /decl/hierarchy/outfit/job/medical/doctor
 
@@ -84,43 +86,34 @@ Your second loyalty is to your career with Moebius corp, and to your coworkers i
 		STAT_COG = 10
 	)
 
-	perks = list(/datum/perk/selfmedicated)
+	perks = list(/datum/perk/selfmedicated, /datum/perk/oddity/charming_personality)
 
 	software_on_spawn = list(/datum/computer_file/program/suit_sensors,
 							/datum/computer_file/program/chem_catalog,
 							/datum/computer_file/program/camera_monitor)
 
 
-	description = "You are a highly educated professional doctor, working a placement aboard Eris to treat the injured.<br>\
-Your tasks will primarily keep you inside medbay, the place needs to have a doctor onsite at all times to treat incoming wounded. As a general rule, you should not leave medbay if you're the only one in it, make sure someone is covering for you if you go elsewhere.<br>\
+	description = "You are a doctor with a cause. Working with the Brotherhood, you dedicate your time to a meager stipend and to the good of your fellow worker. <br>\
+	Volunteering or directly employed by the Brotherhood, you keep the sacred fire of life from being snuffed out in the void.<br>\
+	Working the Clinic, your duties are to see to the medical needs of those in need to the best of your abilities and resources.<br>\
+	Your background in medicine could be almost anything, from a backwater tent to the mega-city high life, you've found yourself here by choice or desperation."
 
-As a doctor, a broad range of medical procedures fall under your potential purview. You are not expected to be able to perform all of these yourself, being a specialist is fine. <br>\
-<br>\
-	-Diagnostics: Figuring out what's wrong and how to fix it as quickly as possible. <br>\
-	-General Treatment: Administering bandages, medicine, casts and placing people in a cryocell as necessary<br>\
-	-Surgery: Opening the body under general anaesthetic to treat broken bones, organ damage and internal bleeding<br>\
-	-Virology: The study and manipulation of viruses<br>\
-	<br>\
-Divide responsibilities among your colleagues to ensure each patient gets the treatment they need<br>\
-You also have full access to chemistry, and can utilize  it if medical is short staffed. But if there is a dedicated chemist on staff, they take priority and the lab belongs to them<br>\
-<br>\
-Character Expectations:<br>\
-You are a real doctor, and as such you are expected to hold a lot of qualifications. You've most likely completed many years of medical study, and hold a PHD in one or more medical fields.<br>\
-You are expected to be knowledgeable and competent in at least basic treatment, you may have a specialty though."
-
+	duties = "Staff and operate the Clinic<br>\
+	Provide medical care to the injured or sick<br>\
+	Advise and assist those in need with ethical or psychological issues<br>\
+	Keep the peace within the Brotherhood, mediate issues, and keep the faith and fire alive, even if in shadow."
 
 	loyalties = "As a doctor, your first loyalty is to your conscience. You swore an oath to save lives and do no harm. It falls on you to be the ethical and moral core of the crew. You should speak up for prisoners, captured lifeforms, and test subjects. Nobody else will.<br>\
-
-Your second loyalty is to your career with Moebius corp, and to your coworkers in both branches of moebius. Help out your scientific colleagues, and aid in their pursuit of knowledge."
+	Your second loyalty is to the Brotherhood and to your coworkers, they are your brothers, in arms and in the faith, if you have any."
 
 /obj/landmark/join/start/doctor
-	name = "Moebius Doctor"
+	name = "Brotherhood Doctor"
 	icon_state = "player-green"
 	join_tag = /datum/job/doctor
 
 
 
-/datum/job/chemist
+/*datum/job/chemist
 	title = "Moebius Chemist"
 	flag = CHEMIST
 	department = DEPARTMENT_MEDICAL
@@ -165,34 +158,35 @@ Your second loyalty is to your career with Moebius corp, and to your coworkers i
 		Sell chemicals and chem grenades to outsiders"
 
 	loyalties = "Your loyalty is to your career with Moebius corp, and to your coworkers in both branches of moebius. Help out your scientific colleagues, and aid in their pursuit of knowledge."
-
+*/
 
 /obj/landmark/join/start/chemist
 	name = "Moebius Chemist"
 	icon_state = "player-green"
-	join_tag = /datum/job/chemist
+	join_tag = /datum/job/doctor
 
 /datum/job/paramedic
-	title = "Moebius Paramedic"
+	title = "Brotherhood Volunteer"
 	flag = PARAMEDIC
 	department = DEPARTMENT_MEDICAL
 	department_flag = MEDICAL
 	faction = "CEV Eris"
-	total_positions = 1
-	spawn_positions = 1
-	supervisors = "the Moebius Biolab Officer"
-	selection_color = "#a8b69a"
-	wage = WAGE_LABOUR_HAZARD
+	total_positions = -1
+	spawn_positions = -1
+	supervisors = "the Coordinator and Brotherhood doctors"
+	selection_color = "#6a817a"
+	wage = WAGE_LABOUR_DUMB //RIP
 	also_known_languages = list(LANGUAGE_CYRILLIC = 20, LANGUAGE_SERBIAN = 15)
+	alt_titles = list("Brother", "Brotherhood Worker", "Brotherhood Orderly", "Nursing Assistant", "Clinic Volunteer")
 
-	outfit_type = /decl/hierarchy/outfit/job/medical/paramedic
+	outfit_type = /decl/hierarchy/outfit/job/medical/volunteer
 	access = list(
 		access_moebius, access_medical_equip, access_morgue, access_surgery, access_paramedic,
 		access_eva, access_maint_tunnels, access_external_airlocks
 	)
 
 	stat_modifiers = list(
-		STAT_BIO = 20,
+		STAT_BIO = 15,
 		STAT_ROB = 10,
 		STAT_TGH = 10,
 		STAT_VIG = 10,
@@ -201,47 +195,28 @@ Your second loyalty is to your career with Moebius corp, and to your coworkers i
 	perks = list(/datum/perk/selfmedicated)
 
 	software_on_spawn = list(/datum/computer_file/program/suit_sensors,
-							/datum/computer_file/program/chem_catalog,
+							//datum/computer_file/program/chem_catalog,
 							 /datum/computer_file/program/camera_monitor)
 
-	description = "You are a Moebius Paramedic, The hero of the hour! While doctors largely spend their time cloistered away in medbay, your job is to be out there on the frontlines. You work in the field, sometimes treating people on the spot, sometimes bringing them back to medical for specialist treatment. <br>\
+	description = "You have volunteered your time or your life for the good of the Brotherhood.<br>\
+	As a volunteer, you have sacrificed your titles and time to do the hard work for the sake of your people.<br>\
+	Volunteering may be to climb out from the depths of despair, or to lower yourself to the needs of the many, <br>\
+	but you're all equals trying to make a better world, some day."
 
-You have significant medical training, but typically you are not a doctor, and will lack a medical degree. The actual doctors have seniority, and you should follow their orders, especially concerning treatment and diagnosis of a patient<br>\
-<br>\
-You need to be ready to run at a moment's notice, and as such you should take careful care of your gear. Pack as many medicines, treatments, rollerbeds and other equipment as you can. Be sure to bring along some kind of heavy tool for breaching sealed areas.<br>\
-<br>\
-When the wounded are inside medbay, you will often act as a porter, transporting patients to and from various specialist treatment rooms. If your labour can save time for a doctor, get to it.<br>\
-<br>\
-Once your duty to the living is dispensed, your secondary duty is to the dead. You are the designated corpse recovery staff, and you will often need to retrieve bodies from where they died, bring them back and store them in the morgue. This gives a reduction in that player's respawn time.<br>\
-<br>\
-This is the most dangerous part of your job, and recovery should only be attempted if you can reasonably do so without endangering yourself. If there are hostile creatures preventing recovery, call ironhammer to deal with them.<br>\
-<br>\
-On a lighter note, since you're so fit and agile, you will often be called upon to run errands. When there's no wounded or dead, a paramedic's duties often involve fetching lunch and coffee for the rest of the medical staff.<br>\
-<br>\
-Character Expectations:<br>\
-Paramedic is a physically demanding job, your character must be fit and strong. No fat bodies allowed<br>\
-EVA training is expected, you should be confident in a medical Voidsuit, and optionally in driving an odysseus mech<br>\
+	duties = "	Help keep the Clinic clean, safe, stocked, and orderly.<br>\
+	Go out and be the hands of the Brotherhood, run errands and tasks for the Doctors so they can stop the bleeding.<br>\
+	Maintain and operate the garden, keeping some kind of real food available for your brothers.<br>\
+	Trade and collect items for use or resale by the Brotherhood to keep the Clinic running and to help those with nothing."
 
-Remember that you are a noncombatant. Any weapons you carry should be used for breaching and rescue, not for killing. Use violence only as a last resort to defend yourself or your patient"
-
-	duties = "	Respond to distress calls, extract wounded people from dangerous situations, stabilize them at the scene, and take them to medbay for farther treatment as necessary<br>\
-	Watch the crew monitor for signs of injuries or deaths and respond accordingly.<br>\
-	Tour around departments checking up on the health of the crew. Administer first aid on scene as required<br>\
-	During quieter times, retrieve the corpses of the dead from around the ship<br>\
-	Run errands for the medbay staff, act as their hands outside of the medbay"
-
-	loyalties = "	As a medical specialist, your first loyalty is to save lives, you swore an oath to do no harm. When in any dangerous situation, do your best to ensure as many as possible come out of it alive. A martyr complex is not uncommon in paramedics<br>\
-	<br>\
-	Your second loyalty is to your immediate superior, the Moebius Biolab Officer. Follow their instructions and policies.<br>\
-	<br>\
-	Your third loyalty is to your fellow colleagues in Moebius, especially those in Moebius medical. You are the lowest ranked personnel in the medbay, and you take orders from everyone else working there."
+	loyalties = "	You answer to the Doctors and Coordinator of the Brotherhood, and to God for your actions.<br>\
+	Keep them safe, keep out those who would do them harm, and bring in those who would do them well."
 
 /obj/landmark/join/start/paramedic
-	name = "Moebius Paramedic"
+	name = "Brotherhood Volunteer"
 	icon_state = "player-green"
 	join_tag = /datum/job/paramedic
 
-/datum/job/bioengineer
+/*datum/job/bioengineer
 	title = "Moebius Bio-Engineer"
 	flag = BIOENGINEER
 	department = DEPARTMENT_MEDICAL
@@ -292,8 +267,8 @@ Remember that you are a noncombatant. Any weapons you carry should be used for b
 
 	loyalties = "As a medical researcher, your first loyalty is to progress. Your placement on the crew of the CEV Eris is the result of Moebius' desire for knowledge and your own morbid curiosity.<br>\
 Your second loyalty is to your career with Moebius, and to your coworkers in both branches of the corporation. Help out your scientific colleagues, and aid in their pursuit of knowledge."
-
+*/
 /obj/landmark/join/start/bioengineer
 	name = "Moebius Bio-Engineer"
 	icon_state = "player-green"
-	join_tag = /datum/job/bioengineer
+	join_tag = /datum/job/doctor

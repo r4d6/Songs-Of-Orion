@@ -26,7 +26,7 @@ var/global/list/default_medbay_channels = list(
 
 /obj/item/device/radio
 	icon = 'icons/obj/radio.dmi'
-	name = "ship bounced radio"
+	name = "walkie talkie"
 	suffix = "\[3\]"
 	icon_state = "walkietalkie"
 	item_state = "walkietalkie"
@@ -898,3 +898,13 @@ var/global/list/default_medbay_channels = list(
 				to_chat(user, SPAN_WARNING("You cannot find any use of [D], maybe you need something related to mechanic to repair this?"))
 		else
 			to_chat(user, SPAN_WARNING("The [D] is useless here. Try to find another one."))
+
+/obj/item/device/radio/alt1
+	name = "walkie talkie"
+	icon_state = "walkietalkie2"
+	item_state = "walkietalkie"
+
+/obj/item/device/radio/alt2
+	name = "station radio"
+	icon_state = "walkietalkie2"
+	item_state = "walkietalkie"

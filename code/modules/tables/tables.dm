@@ -7,7 +7,9 @@
 var/list/custom_table_appearance = list(
 					"Bar - special" 	= list("bar table", "Well designed bar table.", "bar_table", CUSTOM_TABLE_ICON_REPLACE, TRUE),
 					"Gambling" 			= list("gambling table", null, "carpet", CUSTOM_TABLE_COVERING, FALSE),
-					"OneStar"			= list("One Star table", "Very durable table made by an extinct empire", "onestar", CUSTOM_TABLE_ICON_REPLACE, TRUE )
+					"OneStar"			= list("One Star table", "Very durable table made by an extinct empire", "onestar", CUSTOM_TABLE_ICON_REPLACE, TRUE ),
+					"Orion - reinf" 	= list("reinforced table", "A surface, perhaps even a robust one.", "orion_reinf", CUSTOM_TABLE_ICON_REPLACE, TRUE),
+					"Orion"				= list("table", "Interlocking folding table sections.", "orion", CUSTOM_TABLE_ICON_REPLACE, TRUE )
 										)
 
 

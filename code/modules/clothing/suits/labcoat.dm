@@ -77,6 +77,14 @@
 	icon_open = "labcoat_old_open"
 	icon_closed = "labcoat_old"
 
+/obj/item/clothing/suit/storage/toggle/labcoat/alt
+	name = "labcoat"
+	desc = "They don't make them like they used to."
+	icon_state = "labcoat_alt_open"
+	item_state = "labcoat_alt"
+	icon_open = "labcoat_alt_open"
+	icon_closed = "labcoat_alt"
+
 /obj/item/clothing/suit/storage/toggle/labcoat/syndicate
 	name = "Syndicate labcoat"
 	desc = "Dark and edgy labcoat to hide those oil stains."

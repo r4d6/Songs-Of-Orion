@@ -91,7 +91,7 @@
 	new /obj/item/tool/wirecutters/armature(src)
 	new /obj/item/tool/shovel/power(src)
 	new /obj/item/stack/cable_coil/random(src)
-	
+
 /obj/item/storage/belt/utility/roboticist
 	spawn_blacklisted = TRUE
 
@@ -103,7 +103,7 @@
 	new /obj/item/tool/wirecutters/pliers(src)
 	new /obj/item/stack/cable_coil/random(src)
 	new /obj/item/tool/multitool(src)
-	
+
 /obj/item/storage/belt/utility/neotheology
 	name = "neotheology utility belt"
 	desc = "Waist-held holy items."
@@ -159,10 +159,10 @@
 	rarity_value = 15
 
 /obj/item/storage/belt/medical/emt
-	name = "EMT utility belt"
-	desc = "A sturdy black webbing belt with attached pouches."
-	icon_state = "emsbelt"
-	item_state = "emsbelt"
+	name = "EMS utility belt"
+	desc = "A sturdy webbing belt with attached pouches."
+	icon_state = "ems"
+	item_state = "ems"
 	can_hold_extra = list(
 		/obj/item/device/radio/off,
 		/obj/item/inflatable_dispenser,
@@ -174,10 +174,23 @@
 		/obj/item/modular_computer/tablet/moebius/preset
 	)
 
+/obj/item/storage/belt/medical/emt/combat
+	name = "medic utility belt"
+	spawn_blacklisted = TRUE
+
+/obj/item/storage/belt/medical/emt/combat/populate_contents()
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/tool/crowbar/pneumatic(src)
+	new /obj/item/storage/pill_bottle/meralyne(src)
+	new /obj/item/storage/pill_bottle/tramadol(src)
+	new /obj/item/storage/pill_bottle/dermaline(src)
+
 /obj/item/storage/belt/tactical
 	name = "tactical belt"
 	desc = "Can hold various military and security equipment."
-	icon_state = "tactical_belt"
+	icon_state = "tactical"
 	rarity_value = 20
 	can_hold = list(
 		/obj/item/grenade,
@@ -207,9 +220,20 @@
 	)
 
 /obj/item/storage/belt/tactical/ironhammer
-	name = "ironhammer tactical belt"
-	icon_state = "tactical_ironhammer"
+	name = "tactical belt"
+	icon_state = "tactical"
 	spawn_blacklisted = TRUE
+	prespawned_content_amount = 2
+	prespawned_content_type = /obj/item/grenade/frag
+
+/obj/item/storage/belt/tactical/ironhammer/populate_contents()
+	for(var/i in 1 to prespawned_content_amount)
+		new prespawned_content_type(src)
+	new /obj/item/tool/knife/tacknife(src)
+	new /obj/item/tool/crowbar/pneumatic(src)
+	new /obj/item/device/lighting/toggleable/flashlight/seclite(src)
+	new /obj/item/handcuffs(src)
+
 
 /obj/item/storage/belt/tactical/neotheology
 	name = "neotheology tactical belt"

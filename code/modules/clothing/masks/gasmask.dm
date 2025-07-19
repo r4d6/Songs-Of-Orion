@@ -65,7 +65,8 @@
 /obj/item/clothing/mask/gas/ihs
 	name = "tactical gasmask"
 	desc = "A robust gas mask that offers modest protection to the wearer's face."
-	icon_state = "gasmask_alt"
+	icon_state = "gasmaskalt"
+	item_state = "gasmaskalt"
 	siemens_coefficient = 0.7
 	body_parts_covered = FACE|EYES
 	price_tag = 40

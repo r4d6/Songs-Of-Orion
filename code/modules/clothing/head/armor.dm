@@ -34,7 +34,7 @@
 		rad = 5 //UHMWPE has high hydrogen density and is used for rad shielding in real space application.
 	)
 	matter = list(
-		MATERIAL_plastic = 10, //UHMWPE
+		MATERIAL_PLASTIC = 10, //UHMWPE
 		MATERIAL_PLASTEEL = 2 //a lil bit of plasteel since it's better than handmade shit
 	)
 
@@ -163,8 +163,8 @@
 /obj/item/clothing/head/armor/bulletproof
 	name = "Peacekeeper helm"
 	desc = "For Democracy we will die, speading Freedom across the skies."
-	icon_state = "bulletproof"
-	body_parts_covered = HEAD | EARS | EYES | FACE
+	icon_state = "peace"
+	body_parts_covered = HEAD | EARS | EYES
 	armor = list(
 		melee = 7,
 		bullet = 15,
@@ -175,7 +175,7 @@
 	)
 	price_tag = 400
 	flags_inv = BLOCKHEADHAIR|HIDEEARS|HIDEEYES|HIDEFACE
-	flash_protection = FLASH_PROTECTION_MINOR
+	flash_protection = FLASH_PROTECTION_MAJOR
 	matter = list(
 		MATERIAL_STEEL = 8,
 		MATERIAL_PLASTEEL = 2, //Higher plasteel cost since it's booletproof

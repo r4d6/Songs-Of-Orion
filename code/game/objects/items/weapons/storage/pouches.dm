@@ -86,7 +86,7 @@
 	matter = list(MATERIAL_BIOMATTER = 9, MATERIAL_STEEL = 1 )
 	rarity_value = 33
 
-	storage_slots = null 
+	storage_slots = null
 	max_storage_space = DEFAULT_SMALL_STORAGE //Medkits typically hold 5 items in them, this is pocket medkit
 	max_w_class = ITEM_SIZE_NORMAL
 
@@ -115,7 +115,7 @@
 	matter = list(MATERIAL_BIOMATTER = 9, MATERIAL_STEEL = 1 )
 	rarity_value = 20
 
-	storage_slots = 4 
+	storage_slots = 4
 	max_w_class = ITEM_SIZE_NORMAL
 
 	can_hold = list(
@@ -299,3 +299,20 @@
 		/obj/item/electronics,
 		/obj/item/tool_upgrade //Now holds tool upgrades!
 		)
+
+/obj/item/storage/pouch/ammo/cl
+	name = "ammo pouch"
+	spawn_blacklisted = TRUE
+	prespawned_content_amount = 6
+	prespawned_content_type = /obj/item/ammo_magazine/ihclrifle/hv
+
+/obj/item/storage/firstaid/combat/populate_contents()
+	for(var/i in 1 to prespawned_content_amount)
+		new prespawned_content_type(src)
+
+/obj/item/storage/pouch/ammo/lrifle
+	prespawned_content_type = /obj/item/ammo_magazine/lrifle/highvelocity
+
+/obj/item/storage/pouch/ammo/srifle
+	prespawned_content_type = /obj/item/ammo_magazine/srifle/long/hv
+
