@@ -46,11 +46,13 @@
 	var/mass = 1 // kg
 	var/melting_point = 3000 // Entering the danger zone.
 	var/decay_heat = 0 // MJ/mol (Yes, using MegaJoules per Mole. Techincally reduces power, but that reflects reduced lifespan.)
+	var/refill_reagent
 
 /obj/item/fuel_rod/aetherium
 	name = "aetherium fuel rod"
 	desc = "A rod made of aetherium, acting as a suitable substitute for proper nuclear fuel. It is contained within a lead casing."
 	icon_state = "unobtanium"
+	refill_reagent = "aetherium"
 	//heat_production = 50
 
 /obj/item/fuel_rod/plutonium
@@ -63,6 +65,7 @@
 	melting_point = 914
 	decay_heat = 20342002 // MJ/mol
 	lifespan = 1800
+	refill_reagent = "plasma"
 
 /obj/item/fuel_rod/uranium
 	name = "uranium fuel rod"
@@ -73,6 +76,7 @@
 	mass = 20 // kg
 	melting_point = 1405
 	decay_heat = 19536350 // MJ/mol
+	refill_reagent = "uranium"
 
 /obj/item/fuel_rod/update_icon()
 	if(life <= 0)
