@@ -4,6 +4,9 @@
 	icon = './astra_centrifuge.dmi'
 	icon_state = "off"
 	anchored = TRUE
+	density = TRUE
+	bound_width = 64
+	bound_height = 64
 	var/obj/item/fuel_rod/fuel
 	var/obj/item/reagent_containers/container
 	var/active = FALSE
@@ -104,7 +107,9 @@
 
 /obj/machinery/nuclear_centrifuge/verb/eject_fuel()
 	set name = "Eject Fuel Rod"
+	set src in view(1)
 	if(!fuel)
+		to_chat(usr, SPAN_NOTICE("There is no fuel in [src]."))
 		return
 
 	to_chat(usr, SPAN_NOTICE("You remove [fuel] from [src]."))
@@ -116,7 +121,9 @@
 
 /obj/machinery/nuclear_centrifuge/verb/eject_container()
 	set name = "Eject Reagent Container"
+	set src in view(1)
 	if(!container)
+		to_chat(usr, SPAN_NOTICE("There is no container in [src]."))
 		return
 
 	to_chat(usr, SPAN_NOTICE("You remove [container] from [src]."))
