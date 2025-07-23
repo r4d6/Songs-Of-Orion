@@ -9,12 +9,12 @@
  * use of variables at this level
  */
 /datum
-	/**
-	  * Tick count time when this object was destroyed.
-	  *
-	  * If this is non zero then the object has been garbage collected and is awaiting either
-	  * a hard del by the GC subsystme, or to be autocollected (if it has no references)
-	  */
+	/*
+	* Tick count time when this object was destroyed.
+	*
+	* If this is non zero then the object has been garbage collected and is awaiting either
+	* a hard del by the GC subsystme, or to be autocollected (if it has no references)
+	*/
 	var/gc_destroyed
 
 	/// Active timers with this datum as the target
@@ -22,17 +22,17 @@
 
 	var/tmp/is_processing = FALSE
 
-	/**
-	  * Components attached to this datum
-	  *
-	  * Lazy associated list in the structure of `type:component/list of components`
-	  */
+	/*
+	* Components attached to this datum
+	*
+	* Lazy associated list in the structure of `type:component/list of components`
+	*/
 	var/list/datum_components
-	/**
-	  * Any datum registered to receive signals from this datum is in this list
-	  *
-	  * Lazy associated list in the structure of `[signal] = list(registered_objects)`
-	  */
+	/*
+	* Any datum registered to receive signals from this datum is in this list
+	*
+	* Lazy associated list in the structure of `[signal] = list(registered_objects)`
+	*/
 	var/list/comp_lookup
 	/// Lazy associated list in the structure of `[target][signal] = proc)` that are run when the datum receives that signal
 	var/list/list/datum/callback/signal_procs
@@ -64,6 +64,7 @@
 // This should be overridden to remove all references pointing to the object being destroyed.
 // Return the appropriate QDEL_HINT; in most cases this is QDEL_HINT_QUEUE.
 /datum/proc/Destroy(force=FALSE)
+	GLOB.destroyed_event && GLOB.destroyed_event.raise_event(src)
 	var/list/timers = active_timers
 	active_timers = null
 	tag = null
@@ -71,7 +72,7 @@
 	weak_reference = null //ensure prompt GCing of weakref.
 	for(var/thing in timers)
 		var/datum/timedevent/timer = thing
-		if (timer.spent)
+		if(timer.spent)
 			continue
 		qdel(timer)
 	SSnano.close_uis(src)
@@ -106,7 +107,16 @@
 
 	for(var/target in signal_procs)
 		UnregisterSignal(target, signal_procs[target])
-	//END: ECS SHIT
+
+	if(extensions)
+		for(var/expansion_key in extensions)
+			var/list/expansion = extensions[expansion_key]
+			if(islist(expansion))
+				expansion.Cut()
+			else
+				qdel(expansion)
+		extensions.Cut()
+	cleanup_events(src)
 
 	return QDEL_HINT_QUEUE
 

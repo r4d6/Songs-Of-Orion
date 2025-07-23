@@ -3,7 +3,7 @@
 	name = "gas thruster"
 	var/obj/machinery/atmospherics/unary/engine/nozzle
 
-/datum/ship_engine/gas_thruster/New(var/obj/machinery/_holder)
+/datum/ship_engine/gas_thruster/New(obj/machinery/_holder)
 	..()
 	nozzle = _holder
 
@@ -20,7 +20,7 @@
 /datum/ship_engine/gas_thruster/burn()
 	return nozzle.burn()
 
-/datum/ship_engine/gas_thruster/set_thrust_limit(var/new_limit)
+/datum/ship_engine/gas_thruster/set_thrust_limit(new_limit)
 	nozzle.thrust_limit = new_limit
 
 /datum/ship_engine/gas_thruster/get_thrust_limit()
@@ -89,7 +89,7 @@
 	return
 
 /obj/machinery/atmospherics/unary/engine/proc/burn()
-	if (!is_on())
+	if(!is_on())
 		return 0
 	if(!check_fuel())
 		audible_message(src,"<span class='warning'>[src] coughs once and goes silent!</span>")
@@ -112,6 +112,10 @@
 			if(!T)
 				break
 			addtimer(CALLBACK(src, PROC_REF(extend_plume), T, exhaust_dir, air_contents.temperature >= 1000, i != range - 1), i * 0.5, TIMER_UNIQUE)
+	if(network)
+		// Makes it so thruster keeps getting gas from connected pipes
+		network.update = 1
+
 
 /obj/machinery/atmospherics/unary/engine/proc/extend_plume(turf/T, exhaust_dir, is_flame, is_midsection)
 	new/obj/effect/engine_exhaust(T, exhaust_dir, is_flame, is_midsection)
@@ -127,7 +131,7 @@
 	light_color = COLOR_LIGHTING_ORANGE_BRIGHT
 	anchored = TRUE
 
-/obj/effect/engine_exhaust/New(var/turf/nloc, var/ndir, var/flame, var/midsect)
+/obj/effect/engine_exhaust/New(turf/nloc, ndir, flame, midsect)
 	..(nloc)
 	if(flame)
 		if(midsect)

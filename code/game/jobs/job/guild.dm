@@ -8,7 +8,6 @@
 	department_flag = GUILD | COMMAND
 	faction = "CEV Eris"
 	total_positions = 1
-	spawn_positions = 1
 	supervisors = "the Syndicate"
 	selection_color = "#b74938"
 	wage = WAGE_NONE	//Guild merchant draws a salary from the guild account
@@ -70,7 +69,6 @@
 	department_flag = GUILD
 	faction = "CEV Eris"
 	total_positions = 2
-	spawn_positions = 2
 	supervisors = "the Logistics Officer"
 	selection_color = "#60616a"
 	wage = WAGE_PROFESSIONAL
@@ -112,7 +110,6 @@
 	department_flag = GUILD
 	faction = "CEV Eris"
 	total_positions = 4
-	spawn_positions = 4
 	supervisors = "the Logistics Officer"
 	selection_color = "#60616a"
 	also_known_languages = list(LANGUAGE_JIVE = 100)

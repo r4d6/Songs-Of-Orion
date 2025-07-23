@@ -91,7 +91,7 @@
 	if(marker)
 		output_dir = get_dir(src, marker)
 
-/obj/machinery/mineral/stacking_machine/proc/outputMaterial(var/material_name, var/amount)
+/obj/machinery/mineral/stacking_machine/proc/outputMaterial(material_name, amount)
 	var/stored_amount = stack_storage[material_name] || 0
 	amount = min(stored_amount, amount)
 	if (amount > 0)
@@ -119,8 +119,9 @@
 					O.forceMove(get_step(src, output_dir))
 
 	//Output amounts that are past stack_amt.
-	for (var/material_name in stack_storage)
-		if (stack_storage[material_name] >= stack_amt)
+	for(var/material_name in stack_storage)
+		if(stack_storage[material_name] >= stack_amt)
 			outputMaterial(material_name, stack_amt)
 
-	console.updateUsrDialog()
+	if(console)
+		console.updateUsrDialog()

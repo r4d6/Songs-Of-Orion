@@ -60,25 +60,25 @@
 		S["default_slot"] << default_slot
 
 	if(slot != SAVE_RESET)
-		S.cd = GLOB.maps_data.character_load_path(S, slot)
+		S.cd = character_load_path(S, slot)
 		player_setup.load_character(S)
 	else
 		player_setup.load_character(S)
-		S.cd = GLOB.maps_data.character_load_path(S, default_slot)
+		S.cd = character_load_path(S, default_slot)
 
 	loaded_character = S
 
 	return 1
 
 /datum/preferences/proc/save_character()
-	if(!path)				return 0
+	if(!path)
+		return FALSE
 	if(!check_cooldown())
 		if(istype(client))
 			to_chat(client, SPAN_WARNING("You're attempting to save your character a little too fast. Wait half a second, then try again."))
-		return 0
-	var/savefile/S = new /savefile(path)
-	if(!S)					return 0
-	S.cd = GLOB.maps_data.character_save_path(default_slot)
+		return FALSE
+	var/savefile/S = new(path)
+	S.cd = "/eris/character[default_slot]"
 
 	S["version"] << SAVEFILE_VERSION_MAX
 	player_setup.save_character(S)
@@ -89,7 +89,7 @@
 	player_setup.sanitize_setup()
 	return 1
 
-/datum/preferences/proc/update_setup(var/savefile/preferences, var/savefile/character)
+/datum/preferences/proc/update_setup(savefile/preferences, savefile/character)
 	if(!preferences || !character)
 		return 0
 	return player_setup.update_setup(preferences, character)

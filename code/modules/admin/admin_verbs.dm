@@ -68,14 +68,10 @@ GLOBAL_LIST_INIT(admin_verbs_debug, list(
 	/client/proc/spawn_disciple,
 	/client/proc/delete_npcs,
 	/client/proc/getruntimelog,
-	/client/proc/map_template_load,
-	/client/proc/map_template_load_on_new_z,
-	/client/proc/map_template_upload,
 	/client/proc/cmd_admin_delete,
 	/client/proc/cmd_admin_list_open_jobs,
 	/client/proc/SDQL2_query,
 	/client/proc/show_plant_genes,
-	/client/proc/test_MD,
 	/client/proc/print_random_map,
 	/client/proc/delete_random_map,
 	/client/proc/create_random_map,
@@ -353,7 +349,7 @@ GLOBAL_LIST_INIT(admin_verbs_admin, list(
 /client/proc/secrets()
 	set name = "Secrets"
 	set category = "Admin"
-	if (holder)
+	if(holder)
 		holder.Secrets()
 
 /client/proc/fix_air()
@@ -504,7 +500,7 @@ GLOBAL_LIST_INIT(admin_verbs_admin, list(
 		var/message = sanitize(input("What do you want the message to be?", "Make Sound") as text|null)
 		if(!message)
 			return
-		for (var/mob/V in hearers(O))
+		for(var/mob/V in hearers(O))
 			V.show_message(message, 2)
 		log_admin("[key_name(usr)] made [O] at [O.x], [O.y], [O.z]. make a sound")
 		message_admins("\blue [key_name_admin(usr)] made [O] at [O.x], [O.y], [O.z]. make a sound", 1)
@@ -526,7 +522,7 @@ GLOBAL_LIST_INIT(admin_verbs_admin, list(
 	if(mob.control_object)
 		if(!msg)
 			return
-		for (var/mob/V in hearers(mob.control_object))
+		for(var/mob/V in hearers(mob.control_object))
 			V.show_message("<b>[mob.control_object.name]</b> says: \"" + msg + "\"", 2)
 
 /client/proc/enable_profiler()
@@ -542,7 +538,7 @@ GLOBAL_LIST_INIT(admin_verbs_admin, list(
 
 	// Give profiler access
 	world.SetConfig("APP/admin", ckey, "role=admin")
-	to_chat(src, "Press <a href='?debug=profile'>here</a> to access profiler panel. It will replace verb panel, and you may have to wait a couple of seconds for it to display.")
+	to_chat(src, "Press <a href='byond://?debug=profile'>here</a> to access profiler panel. It will replace verb panel, and you may have to wait a couple of seconds for it to display.")
 
 /client/proc/kill_air()
 	set category = "Debug"
@@ -681,7 +677,7 @@ GLOBAL_LIST_INIT(admin_verbs_admin, list(
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/decl/security_state/security_state = decls_repository.get_decl(GLOB.maps_data.security_state)
+	var/decl/security_state/security_state = decls_repository.get_decl(SSmapping.security_state)
 	var/decl/security_level/new_security_level = input(usr, "It's currently [security_state.current_security_level.name].", "Select Security Level")  as null|anything in (security_state.all_security_levels - security_state.current_security_level)
 	if(!new_security_level)
 		return
@@ -696,14 +692,14 @@ GLOBAL_LIST_INIT(admin_verbs_admin, list(
 	set category = "Admin"
 	if(holder)
 		var/list/jobs = list()
-		for (var/datum/job/J in SSjob.occupations)
-			if (J.current_positions >= J.total_positions && J.total_positions != -1)
+		for(var/datum/job/J in SSjob.occupations)
+			if(J.current_positions >= J.total_positions && J.total_positions != -1)
 				jobs += J.title
-		if (!jobs.len)
+		if(!jobs.len)
 			to_chat(usr, "There are no fully staffed jobs.")
 			return
 		var/job = input("Please select job slot to free", "Free job slot")  as null|anything in jobs
-		if (job)
+		if(job)
 			SSjob.FreeRole(job)
 			message_admins("A job slot for [job] has been opened by [key_name_admin(usr)]")
 			return
@@ -739,7 +735,7 @@ GLOBAL_LIST_INIT(admin_verbs_admin, list(
 	set name = "Man Up Global"
 	set desc = "Tells everyone to man up and deal with it."
 
-	for (var/mob/T as mob in SSmobs.mob_list | SShumans.mob_list)
+	for(var/mob/T as mob in SSmobs.mob_list | SShumans.mob_list)
 		to_chat(T, "<br><center><span class='notice'><b><font size=4>Man up.<br> Deal with it.</font></b><br>Move on.</span></center><br>")
 		T << 'sound/voice/ManUp1.ogg'
 

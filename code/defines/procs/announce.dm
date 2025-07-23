@@ -30,7 +30,7 @@
 	title = "Security Announcement"
 	announcement_type = "Security Announcement"
 
-/datum/announcement/proc/Announce(message, new_title = "", new_sound, do_newscast = newscast, msg_sanitized, zlevels = GLOB.maps_data.contact_levels, use_text_to_speech)
+/datum/announcement/proc/Announce(message, new_title = "", new_sound, do_newscast = newscast, msg_sanitized, use_text_to_speech)
 	if(!message)
 		return
 	var/message_title = new_title ? new_title : title
@@ -45,7 +45,7 @@
 		NewsCast(message, message_title)
 
 	for(var/mob/M in GLOB.player_list)
-		if((M.z in (zlevels | GLOB.maps_data.admin_levels)) && !istype(M,/mob/new_player) && !isdeaf(M) && message_sound)
+		if(!isdeaf(M) && message_sound)
 			sound_to(M, message_sound)
 	Log(message, message_title)
 
@@ -115,7 +115,7 @@ datum/announcement/proc/Log(message as text, message_title as text)
 	command_announcement.Announce("It has come to our attention that the ship passed through an ion storm.  Please monitor all electronic equipment for malfunctions.", "Anomaly Alert")
 
 /proc/AnnounceArrival(var/mob/living/character, var/rank, var/join_message)
-	if (join_message && SSticker.current_state == GAME_STATE_PLAYING && SSjob.ShouldCreateRecords(rank))
+	if(join_message && SSticker.current_state == GAME_STATE_PLAYING && SSjob.ShouldCreateRecords(rank))
 		if(issilicon(character))
 			global_announcer.autosay("A new [rank] [join_message].", ANNOUNCER_NAME, use_text_to_speech = TRUE)
 		else

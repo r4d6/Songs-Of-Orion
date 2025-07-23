@@ -9,7 +9,6 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	department_flag = COMMAND
 	faction = "CEV Eris"
 	total_positions = 1
-	spawn_positions = 1
 	supervisors = "your heart and wisdom... and the company."
 	selection_color = "#0c9d98"
 	req_admin_notify = 1
@@ -69,7 +68,6 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	department_flag = COMMAND
 	faction = "CEV Eris"
 	total_positions = 1
-	spawn_positions = 1
 	supervisors = "the Captain, and the Company"
 	selection_color = "#5c0e34"
 	req_admin_notify = 1

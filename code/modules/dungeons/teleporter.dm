@@ -22,7 +22,11 @@
 	var/victims_to_teleport = list()
 	var/obj/crawler/spawnpoint/target
 	var/obj/crawler/map_maker/dungeon_generator
+	var/destination_map_name = "crawler"
+	var/destination_map_is_generated = FALSE
+	var/dungeon_generation_started = FALSE
 	var/dungeon_is_generated = FALSE
+
 	anchored = TRUE
 	unacidable = 1
 	density = TRUE
@@ -36,27 +40,45 @@
 		order++
 		if(order == 3)
 			order = 1
-		sleep(10 SECONDS) 
-		
+		sleep(10 SECONDS)
+
 
 /obj/rogue/teleporter/attack_hand(mob/user)
+	// In case dungeon_generator haven't initialized in time and
+	// on_destination_map_loaded() failed to locate it
+	if(destination_map_is_generated && !dungeon_generation_started)
+		on_destination_map_loaded()
+	// Only trigger map loading if it wasn't queued before
+	else if(destination_map_name in SSmapping.loaded_map_names)
+		if(!destination_map_is_generated)
+			on_destination_map_loaded()
+		to_chat(user, "Nothing seems to happen.")
+	else if(destination_map_name in SSmapping.map_loading_queue)
+		to_chat(user, "Teleporter is charging up.")
+	else
+		to_chat(user, "You activate the teleporter. A strange rumbling fills the area around you.")
+		SSmapping.queue_map_loading(destination_map_name)
+
 	if(!charge)
 		charge++
-		dungeon_generator = locate(/obj/crawler/map_maker)
-		if(dungeon_generator)
-			to_chat(user, "You activate the teleporter. A strange rumbling fills the area around you.")
-			// Listen to signal for when the generation will be finished
-			RegisterSignal(src, COMSIG_DUNGEON_GENERATED, PROC_REF(dungeon_generated))
-			// Generate the dungeon while mobs are spawning to attack the teleporter
-			SEND_SIGNAL_OLD(dungeon_generator, COMSIG_GENERATE_DUNGEON, src)
-			start_teleporter_event()
-		else
-			to_chat(user, "Nothing seems to happen.")
+
 	else if(charging)
 		if(flick_lighting)
 			to_chat(user, "The portal looks too unstable to pass through!")
 		else
 			to_chat(user, "The teleporter needs time to charge.")
+
+/obj/rogue/teleporter/proc/on_destination_map_loaded()
+	destination_map_is_generated = TRUE
+	dungeon_generator = locate(/obj/crawler/map_maker)
+	if(dungeon_generator)
+		dungeon_generation_started = TRUE
+		// Listen to signal for when the generation will be finished
+		RegisterSignal(src, COMSIG_DUNGEON_GENERATED, PROC_REF(dungeon_generated))
+		// Generate the dungeon while mobs are spawning to attack the teleporter
+		SEND_SIGNAL_OLD(dungeon_generator, COMSIG_GENERATE_DUNGEON, src)
+		start_teleporter_event()
+
 
 /obj/rogue/teleporter/proc/dungeon_generated()
 	SIGNAL_HANDLER
@@ -205,19 +227,19 @@
 	overlays.Add(image(icon, icon_state = "portal_pop"))
 	visible_message("The portal bursts!")
 
-	playsound(src.loc, 'sound/weapons/flash.ogg', 100, 1)
+	playsound(loc, 'sound/weapons/flash.ogg', 100, 1)
 
-	for (var/mob/living/O in viewers(src, null))
-		if (get_dist(src, O) > 8)
+	for(var/mob/living/O in viewers(src, null))
+		if(get_dist(src, O) > 8)
 			continue
 
-		if (ishuman(O))
+		if(ishuman(O))
 			var/mob/living/carbon/human/H = O
 			H.flash(8, FALSE , FALSE , FALSE, 8)
 
 		else
 			if(!O.blinded)
-				if (istype(O,/mob/living/silicon/ai))
+				if(istype(O,/mob/living/silicon/ai))
 					return
 				O.flash(8, FALSE, FALSE ,FALSE)
 

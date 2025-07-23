@@ -9,18 +9,16 @@
 
 	var/datum/computer/file/embedded_program/docking/multi/docking_program
 
-/obj/machinery/embedded_controller/radio/docking_port_multi/New()
-	. = ..()
-	docking_program = new/datum/computer/file/embedded_program/docking/multi(src)
-	program = docking_program
 
 /obj/machinery/embedded_controller/radio/docking_port_multi/Initialize()
 	.=..()
+	docking_program = new/datum/computer/file/embedded_program/docking/multi(src)
+	program = docking_program
 	var/list/names = splittext(child_names_txt, ";")
 	var/list/tags = splittext(child_tags_txt, ";")
 
-	if (names.len == tags.len)
-		for (var/i = 1; i <= tags.len; i++)
+	if(names.len == tags.len)
+		for(var/i = 1; i <= tags.len; i++)
 			child_names[tags[i]] = names[i]
 
 
@@ -29,7 +27,7 @@
 
 	var/list/airlocks[child_names.len]
 	var/i = 1
-	for (var/child_tag in child_names)
+	for(var/child_tag in child_names)
 		airlocks[i++] = list("name"=child_names[child_tag], "override_enabled"=(docking_program.children_override[child_tag] == "enabled"))
 
 	data = list(
@@ -39,7 +37,7 @@
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 
-	if (!ui)
+	if(!ui)
 		ui = new(user, src, ui_key, "multi_docking_console.tmpl", name, 470, 290)
 		ui.set_initial_data(data)
 		ui.open()
@@ -57,9 +55,9 @@
 	var/datum/computer/file/embedded_program/airlock/multi_docking/airlock_program
 	tag_secure = 1
 
-/obj/machinery/embedded_controller/radio/airlock/docking_port_multi/Initialize()
-	. = ..()
-	airlock_program = new/datum/computer/file/embedded_program/airlock/multi_docking(src)
+/obj/machinery/embedded_controller/radio/airlock/docking_port_multi/LateInitialize()
+	..()
+	airlock_program = new /datum/computer/file/embedded_program/airlock/multi_docking(src)
 	program = airlock_program
 
 /obj/machinery/embedded_controller/radio/airlock/docking_port_multi/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
@@ -77,7 +75,7 @@
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 
-	if (!ui)
+	if(!ui)
 		ui = new(user, src, ui_key, "docking_airlock_console.tmpl", name, 470, 290)
 		ui.set_initial_data(data)
 		ui.open()
@@ -88,7 +86,7 @@
 		return
 
 	usr.set_machine(src)
-	src.add_fingerprint(usr)
+	add_fingerprint(usr)
 
 	var/clean = FALSE
 	switch(href_list["command"])
