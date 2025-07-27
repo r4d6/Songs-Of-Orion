@@ -26,7 +26,7 @@
 		if(player_is_antag_faction(target, ROLE_EXCELSIOR_REV, faction))
 			return TRUE
 
-		if(!isOnStationLevel(target.current) && !isOnAdminLevel(target.current))
+		if(!IS_SHIP_LEVEL(target.current.z) && !IS_TECHNICAL_LEVEL(target.current.z))
 			return TRUE
 
 	if(!target)

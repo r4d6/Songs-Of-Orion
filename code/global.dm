@@ -1,13 +1,6 @@
 // Items that ask to be called every cycle.
 var/global/datum/datacore/data_core
 var/global/datum/DB_search/db_search = new()
-var/global/list/all_areas                = list()
-var/global/list/ship_areas               = list()
-
-//var/global/list/machines                 = list()		//Removed
-//var/global/list/processing_objects       = list()		//Removed
-//var/global/list/processing_power_items   = list()		//Removed
-var/global/list/active_diseases          = list()
 var/global/list/med_hud_users            = list() // List of all entities using a medical HUD.
 var/global/list/sec_hud_users            = list() // List of all entities using a security HUD.
 var/global/list/excel_hud_users          = list() // List of all entities using an excelsior HUD.
@@ -26,16 +19,16 @@ var/runtime_diary
 var/diary
 var/world_qdel_log
 var/href_logfile
-var/station_name        = "CEV Eris"
-var/station_short       = "Eris"
-var/const/dock_name     = "NTV Faith"
-var/const/boss_name     = "Hansa Trade Union"
-var/const/boss_short    = "Hansa"
-var/const/company_name  = "CEV Eris"
-var/const/company_short = "Eris"
-var/game_version        = "Discordia"
+var/station_name        = "NTS-13"
+var/station_short       = "SS13"
+var/const/dock_name     = "Midway Station"
+var/const/boss_name     = "NanoTrasen CENTCOM"
+var/const/boss_short    = "CENTCOM"
+var/const/company_name  = "NanoTrasen"
+var/const/company_short = "NT"
+var/game_version        = "Alpha Testing"
 var/changelog_hash      = ""
-var/game_year           = (text2num(time2text(world.realtime, "YYYY")) + 319)
+var/game_year           = "325"//(text2num(time2text(world.realtime, "YYYY")) - 1700)
 
 var/round_progressing = 1
 var/master_storyteller       = "shitgenerator"

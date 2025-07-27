@@ -918,3 +918,23 @@
 	siemens_coefficient = 0.8
 	price_tag = 250
 	style = STYLE_HIGH
+
+/obj/item/clothing/suit/storage/clown
+	name = "clown suit"
+	desc = "Oh no- not again."
+	icon_state = "clown"
+	item_state = "clown"
+	blood_overlay_type = "coat"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	style_coverage = COVERS_TORSO|COVERS_UPPER_ARMS|COVERS_UPPER_LEGS
+	armor = list(
+		melee = 4,
+		bullet = 4,
+		energy = 6,
+		bomb = 4,
+		bio = 4,
+		rad = 4
+	)
+	siemens_coefficient = 0.8
+	price_tag = 2000
+	style = STYLE_HIGH

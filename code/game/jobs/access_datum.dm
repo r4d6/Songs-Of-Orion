@@ -193,7 +193,7 @@
 /var/const/access_rd = 30
 /datum/access/rd
 	id = access_rd
-	desc = "Moebius Expedition Overseer"
+	desc = "Human Resources Officer"
 	region = ACCESS_REGION_RESEARCH
 
 /var/const/access_cargo = 31
@@ -289,14 +289,14 @@
 /var/const/access_mining = 48
 /datum/access/mining
 	id = access_mining
-	desc = "Mining"
-	region = ACCESS_REGION_SUPPLY
+	desc = "Expedition"
+	region = ACCESS_REGION_ENGINEERING
 
 /var/const/access_mining_office = 49
 /datum/access/mining_office
 	id = access_mining_office
-	desc = "Mining Office"
-	access_type = ACCESS_TYPE_NONE
+	desc = "Expedition Office"
+	region = ACCESS_REGION_ENGINEERING
 
 /var/const/access_mailsorting = 50
 /datum/access/mailsorting
@@ -317,7 +317,7 @@
 /var/const/access_mining_station = 54
 /datum/access/mining_station
 	id = access_mining_station
-	desc = "Mining EVA"
+	desc = "Waystation"
 	region = ACCESS_REGION_SUPPLY
 
 /var/const/access_xenobiology = 55
@@ -329,7 +329,7 @@
 /var/const/access_ce = 56
 /datum/access/ce
 	id = access_ce
-	desc = "Technomancer Exultant"
+	desc = "Chief Engineer"
 	region = ACCESS_REGION_ENGINEERING
 
 /var/const/access_hop = 57
@@ -341,7 +341,7 @@
 /var/const/access_hos = 58
 /datum/access/hos
 	id = access_hos
-	desc = "Ironhammer Commander"
+	desc = "Head of Security"
 	region = ACCESS_REGION_SECURITY
 
 /var/const/access_RC_announce = 59 //Request console announcements

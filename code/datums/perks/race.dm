@@ -38,6 +38,8 @@
 		if(holder.gender == FEMALE)
 			holder.stats.changeStat(STAT_VIG, stat_increase)
 			holder.stats.changeStat(STAT_ROB, -stat_increase)
+			holder.stats.changeStat(STAT_TGH, -stat_increase)
+			holder.stats.changeStat(STAT_BIO, stat_increase)
 
 /datum/perk/exile/remove()
 	holder.stats.changeStat(STAT_MEC, stat_increase)

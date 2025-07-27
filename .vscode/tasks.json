@@ -26,12 +26,12 @@
 		},
 		{
 			"type": "dreammaker",
-			"dme": "citadel.dme",
+			"dme": "BreakingPoint.dme",
 			"problemMatcher": [
 				"$dreammaker"
 			],
 			"group": "build",
-			"label": "dm: build - citadel.dme"
+			"label": "dm: build - BreakingPoint.dme"
 		},
 		{
 			"command": "${command:dreammaker.reparse}",

@@ -151,8 +151,8 @@ var/list/channel_to_radio_key = new
 			var/warning_message = "A splitting spike of headache prevents you from saying whatever vile words you planned to say! You think better of saying such nonsense again. The following terms break the atmosphere and are not allowed: &quot;"
 			var/list/words = splittext(message, " ")
 			var/cringe = ""
-			for (var/word in words)
-				if (findtext(word, config.ic_filter_regex))
+			for(var/word in words)
+				if(findtext(word, config.ic_filter_regex))
 					warning_message = "[warning_message]<b>[word]</b> "
 					cringe += "/<b>[word]</b>"
 				else
@@ -179,8 +179,8 @@ var/list/channel_to_radio_key = new
 
 	//parse the radio code and consume it
 	var/message_mode = parse_message_mode(message, "headset")
-	if (message_mode)
-		if (message_mode == "headset")
+	if(message_mode)
+		if(message_mode == "headset")
 			message = copytext(message,2)//parse ;
 		else
 			message = copytext_char(message,3)//parse :s
@@ -267,25 +267,18 @@ var/list/channel_to_radio_key = new
 			sound_vol *= 0.5 //muffle the sound a bit, so it's like we're actually talking through contact
 		var/falloff = (message_range + round(3 * (chem_effects[CE_SPEECH_VOLUME] ? chem_effects[CE_SPEECH_VOLUME] : 1))) //A wider radius where you're heard, but only quietly. This means you can hear people offscreen.
 		//DO NOT FUCKING CHANGE THIS TO GET_OBJ_OR_MOB_AND_BULLSHIT() -- Hugs and Kisses ~Ccomp
-		var/list/hear = hear(message_range, T)
-		var/list/hear_falloff = hear(falloff, T)
 
-		for(var/X in SSmobs.mob_list | SShumans.mob_list)
-			if(!ismob(X))
-				continue
-			var/mob/M = X
+		for(var/mob/M as anything in getMobsInRangeChunked(T, max(message_range, falloff), FALSE, TRUE) | GLOB.player_ghost_list)
 			if(M.stat == DEAD && M.get_preference_value(/datum/client_preference/ghost_ears) == GLOB.PREF_ALL_SPEECH)
 				listening |= M
 				continue
-			if(M.locs.len && (M.locs[1] in hear))
+			var/turf/listenerTurf = get_turf(M)
+			if(DIST_EUCLIDIAN(T.x , T.y, listenerTurf.x, listenerTurf.y) <= message_range)
 				listening |= M
-				continue //To avoid seeing BOTH normal message and quiet message
-			else if(M.locs.len && (M.locs[1] in hear_falloff))
+			else
 				listening_falloff |= M
 
-			for(var/obj in GLOB.hearing_objects)
-				if(get_turf(obj) in hear)
-					listening_obj |= obj
+		listening_obj |= getHearersInRangeChunked(T, message_range)
 
 	var/speech_bubble_test = say_test(message)
 	var/image/speech_bubble = image('icons/mob/talk.dmi', src, "h[speech_bubble_test]")
@@ -346,7 +339,7 @@ var/list/channel_to_radio_key = new
 
 
 /mob/living/proc/say_signlang(var/message, var/verb="gestures", var/datum/language/language)
-	for (var/mob/O in viewers(src, null))
+	for(var/mob/O in viewers(src, null))
 		O.hear_signlang(message, verb, language, src)
 	return 1
 

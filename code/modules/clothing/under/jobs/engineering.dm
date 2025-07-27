@@ -84,7 +84,7 @@
 	name = "Diveboss uniform"
 	desc = "A comfortable, and very tactical sweater."
 	icon_state = "dive_boss"
-	item_state = "engineer"
+	item_state = "dive_boss"
 	sensor_mode = 3
 	armor = list(
 		melee = 5,

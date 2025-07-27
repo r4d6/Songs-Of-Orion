@@ -19,7 +19,7 @@
 		// Check for stomping people
 		if(legs)
 			var/blocked = FALSE
-			var/turf/theDepths = GetBelow(src)
+			var/turf/theDepths = SSmapping.GetBelow(src)
 			if(isinspace())
 				if(theDepths)
 					for(var/obj/thing in theDepths.contents)
@@ -107,7 +107,7 @@
 	expected_host_type = /mob/living/exosuit
 	var/next_move
 
-/datum/movement_handler/mob/exosuit/MayMove(var/mob/mover, var/is_external)
+/datum/movement_handler/mob/exosuit/MayMove(mob/mover, is_external)
 	var/mob/living/exosuit/exosuit = host
 	if(world.time < next_move)
 		return MOVEMENT_STOP
@@ -139,7 +139,7 @@
 	next_move = world.time + (exosuit.legs ? exosuit.legs.move_delay : 3)
 	return MOVEMENT_PROCEED
 
-/datum/movement_handler/mob/exosuit/DoMove(var/direction, var/mob/mover, var/is_external)
+/datum/movement_handler/mob/exosuit/DoMove(direction, mob/mover, is_external)
 	var/mob/living/exosuit/exosuit = host
 	var/moving_dir = direction
 
@@ -168,7 +168,7 @@
 /datum/movement_handler/mob/space/exosuit/expected_host_type = /mob/living/exosuit
 
 // Space movement
-/datum/movement_handler/mob/space/exosuit/DoMove(var/direction, var/mob/mover)
+/datum/movement_handler/mob/space/exosuit/DoMove(direction, mob/mover)
 
 	if(!mob.check_gravity())
 		var/allowmove = mob.allow_spacemove()
@@ -180,7 +180,7 @@
 			mob.inertia_dir = 0 //If not then we can reset inertia and move
 	else
 
-/datum/movement_handler/mob/space/exosuit/MayMove(var/mob/mover, var/is_external)
+/datum/movement_handler/mob/space/exosuit/MayMove(mob/mover, is_external)
 	if((mover != host) && is_external)
 		return MOVEMENT_PROCEED
 
@@ -189,13 +189,7 @@
 			return MOVEMENT_STOP
 	return MOVEMENT_PROCEED
 
-/mob/living/exosuit/lost_in_space()
-	for(var/atom/movable/AM in contents)
-		if(!AM.lost_in_space())
-			return FALSE
-	return !pilots.len
-
-/mob/living/exosuit/get_fall_damage(var/turf/from, var/turf/dest)
+/mob/living/exosuit/get_fall_damage(turf/from, turf/dest)
 	//Exosuits are big and heavy, but one z level can't damage them
 	. = (from && dest) ? ((from.z - dest.z > 1) ? (50 * from.z - dest.z) : 0) : min(15, maxHealth * 0.4)
 

@@ -12,6 +12,11 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 */
 
+// Special area for use in .dmm chunks that compose randomly generated maps
+/area/template_noop
+	name = "Area Passthrough"
+
+
 /area/space
 	name = "\improper Space"
 	icon_state = "space"
@@ -354,7 +359,7 @@ area/space/atmosalert()
 	dynamic_lighting = TRUE
 	holomap_color = HOLOMAP_AREACOLOR_ENGINEERING
 	ambience = list('sound/ambience/technoambient1.ogg','sound/ambience/technoambient2.ogg',
-	                'sound/ambience/technoambient3.ogg','sound/ambience/technoambient4.ogg',
+					'sound/ambience/technoambient3.ogg','sound/ambience/technoambient4.ogg',
 					'sound/ambience/technoambient5.ogg','sound/ambience/technoambient6.ogg')
 
 /area/outpost/pulsar/maintenance
@@ -386,51 +391,11 @@ area/space/atmosalert()
 	icon_state = "cave"
 	sound_env = SMALL_ENCLOSED
 
-
-
 /area/wizard_station
 	name = "\improper Wizard's Den"
 	icon_state = "yellow"
 	requires_power = FALSE
 	dynamic_lighting = 0
-
-/area/skipjack_station
-	name = "\improper Skipjack"
-	icon_state = "yellow"
-	requires_power = FALSE
-
-/area/skipjack_station/start
-	name = "\improper Skipjack"
-	icon_state = "yellow"
-
-/area/skipjack_station/transit
-	name = "\improper hyperspace"
-	icon_state = "shuttle"
-
-/area/skipjack_station/southwest_solars
-	name = "\improper aft port solars"
-	icon_state = "southwest"
-
-/area/skipjack_station/northwest_solars
-	name = "\improper fore port solars"
-	icon_state = "northwest"
-
-/area/skipjack_station/northeast_solars
-	name = "\improper fore starboard solars"
-	icon_state = "northeast"
-
-/area/skipjack_station/southeast_solars
-	name = "\improper aft starboard solars"
-	icon_state = "southeast"
-
-/area/skipjack_station/mining
-	name = "\improper south of mining station"
-	icon_state = "north"
-	base_turf = /turf/floor/asteroid
-
-
-
-//Holodeck
 
 /area/holodeck
 	name = "\improper Holodeck"
@@ -799,7 +764,7 @@ area/space/atmosalert()
 	requires_power = FALSE
 
 /area/awaymission/spacebattle/cruiser
-	name = "\improper Nanotrasen Cruiser"
+	name = "\improper NanoTrasen Cruiser"
 
 /area/awaymission/spacebattle/syndicate1
 	name = "\improper Syndicate Assault Ship 1"
@@ -889,8 +854,8 @@ area/space/atmosalert()
 
 /////////////////////////////////////////////////////////////////////
 /*
- Lists of areas to be used with is_type_in_list.
- Used in gamemodes code at the moment. --rastaf0
+Lists of areas to be used with is_type_in_list.
+Used in gamemodes code at the moment. --rastaf0
 */
 
 // CENTCOM

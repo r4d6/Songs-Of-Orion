@@ -3,11 +3,11 @@
 	hierarchy_type = /decl/hierarchy/outfit/job/cargo
 
 /decl/hierarchy/outfit/job/cargo/merchant
-	name = OUTFIT_JOB_NAME("Guild Merchant")
-	uniform = /obj/item/clothing/under/rank/cargotech
-	shoes = /obj/item/clothing/shoes/color/brown
-	glasses = /obj/item/clothing/glasses/sunglasses/big
-	suit = /obj/item/clothing/suit/storage/qm_coat
+	name = OUTFIT_JOB_NAME("Syndicate Logistics Officer")
+	uniform = /obj/item/clothing/under/syndicate
+	shoes = /obj/item/clothing/shoes/reinforced
+	glasses = /obj/item/clothing/glasses/sunglasses
+	suit = /obj/item/clothing/suit/storage/syndicate/officer
 	l_hand = /obj/item/clipboard
 	id_type = /obj/item/card/id/car
 	pda_type = /obj/item/modular_computer/pda/cargo
@@ -15,31 +15,16 @@
 	backpack_contents = list(/obj/item/gun/projectile/olivaw = 1, /obj/item/ammo_magazine/pistol/rubber = 2)
 
 /decl/hierarchy/outfit/job/cargo/cargo_tech
-	name = OUTFIT_JOB_NAME("Guild Technician")
+	name = OUTFIT_JOB_NAME("Syndicate Technician")
 	uniform = /obj/item/clothing/under/rank/cargotech
-	suit = /obj/item/clothing/suit/storage/cargo_jacket
-	belt = /obj/item/storage/belt/utility
+	l_hand = /obj/item/clipboard
+	shoes = /obj/item/clothing/shoes/color/black
+	head = /obj/item/clothing/head/soft/synd
 	pda_type = /obj/item/modular_computer/pda/cargo
-
-/decl/hierarchy/outfit/job/cargo/mining
-	name = OUTFIT_JOB_NAME("Guild Miner")
-	uniform = /obj/item/clothing/under/rank/miner
-	pda_type = /obj/item/modular_computer/pda/moebius/science
-	belt = /obj/item/storage/belt/utility
-	backpack_contents = list(/obj/item/tool/crowbar = 1, /obj/item/storage/bag/ore = 1)
-	flags = OUTFIT_HAS_BACKPACK|OUTFIT_EXTENDED_SURVIVAL
-
-/decl/hierarchy/outfit/job/cargo/mining/New()
-	..()
-	BACKPACK_OVERRIDE_ENGINEERING
-
-/decl/hierarchy/outfit/job/cargo/mining/void
-	name = OUTFIT_JOB_NAME("Guild Miner - Voidsuit")
-	mask = /obj/item/clothing/mask/breath
-	suit = /obj/item/clothing/suit/space/void/mining
+	gloves = /obj/item/clothing/gloves/fingerless
 
 /decl/hierarchy/outfit/job/cargo/artist/clown
-	name = OUTFIT_JOB_NAME("Guild Clown")
+	name = OUTFIT_JOB_NAME("Clown")
 	uniform = /obj/item/clothing/under/rank/clown
 	shoes = /obj/item/clothing/shoes/clown_shoes
 	mask = /obj/item/clothing/mask/gas/clown_hat
@@ -55,3 +40,11 @@
 ///decl/hierarchy/outfit/job/cargo/artist/clown/post_equip(var/mob/living/carbon/human/H)
 //	..()
 //	H.mutations.Add(CLUMSY)
+
+/decl/hierarchy/outfit/job/cargo/hacker
+	name = OUTFIT_JOB_NAME("Syndicate Hacker")
+	uniform = /obj/item/clothing/under/rank/hacker
+	l_hand = /obj/item/clipboard
+	shoes = /obj/item/clothing/shoes/color/black
+	head = /obj/item/clothing/head/soft/synd
+	pda_type = /obj/item/modular_computer/pda/cargo

@@ -135,7 +135,7 @@
 
 /obj/item/clothing/under/rank/hos
 	name = "Director of Asset Denial uniform"
-	desc = "The uniform of an on-field Ironhammer officer. Used to distinguish officers from the grunts. It has \"Lieutenant\" rank pins on the shoulder"
+	desc = "The uniform an overworked PCRC middle manager, with the appropriate pins and badges upon a white button-up and some navy slacks."
 	icon_state = "hos"
 	item_state = "r_suit"
 	siemens_coefficient = 0.8

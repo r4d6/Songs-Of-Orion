@@ -27,9 +27,9 @@ So sometimes this event can result in people finding new and interesting things
 
 /datum/event/grid_check/start()
 	var/strength = 1
-	if (severity == EVENT_LEVEL_MODERATE)
+	if(severity == EVENT_LEVEL_MODERATE)
 		strength = 2
-	power_failure(0, strength, GLOB.maps_data.contact_levels)
+	power_failure(0, strength, SSmapping.main_ship_z_levels)
 
 /datum/event/grid_check/announce()
 	command_announcement.Announce("Abnormal activity detected in [station_name]'s powernet. As a precautionary measure, the ship's power will be shut off for an indeterminate duration.", "Automated Grid Check", new_sound = 'sound/AI/poweroff.ogg')
@@ -41,7 +41,7 @@ So sometimes this event can result in people finding new and interesting things
 		command_announcement.Announce("Abnormal activity detected in [station_name]'s powernet. As a precautionary measure, the ship's power will be shut off for an indeterminate duration.", "Critical Power Failure", new_sound = 'sound/AI/poweroff.ogg')
 
 	for(var/obj/machinery/power/smes/buildable/S in GLOB.smes_list)
-		if (is_valid_smes(S))
+		if(is_valid_smes(S))
 			S.energy_fail(rand(30 * severity*severity,40 * severity*severity))
 
 
@@ -81,6 +81,6 @@ So sometimes this event can result in people finding new and interesting things
 		S.power_change()
 
 
-/proc/is_valid_smes(var/obj/machinery/power/smes/S)
+/proc/is_valid_smes(obj/machinery/power/smes/S)
 	var/area/A = get_area(S)
-	return !(A && (A.flags & AREA_FLAG_CRITICAL)) && isOnShipLevel(S)
+	return !(A && (A.flags & AREA_FLAG_CRITICAL)) && IS_SHIP_LEVEL(S.z)

@@ -344,3 +344,53 @@ var/const/NO_EMAG_ACT = -50
 	fingerprint_hash = md5("A"+registered_name)
 	blood_type = pick(GLOB.blood_types)
 	update_name()
+
+
+/obj/item/card/id/solcom
+	name = "\improper SOLCOM ID"
+	desc = "An ID straight from Cent. Com."
+	icon_state = "centcom"
+	registered_name = "SOLCOM Officer"
+	assignment = "Colonel"
+
+/obj/item/card/id/solcom/New()
+	access = get_all_station_access() + access_synth + get_all_centcom_access()
+	..()
+
+/obj/item/card/id/solcom/marine
+	name = "\improper Solar Marine ID"
+	desc = "Things are probably bad if the Marines are here."
+	icon_state = "centcom"
+	registered_name = "Solar Marine"
+	assignment = "Corporal"
+
+/obj/item/card/id/solcom/marine/sarge
+	name = "\improper Solar Marine Command ID"
+	registered_name = "Solar Marine Sergeant"
+	assignment = "Gunnery Sergeant"
+
+/obj/item/card/id/solcom/marine/corpsman
+	name = "\improper Solar Marine Corpsman ID"
+	registered_name = "Solar Marine Corpsman"
+	assignment = "Hospital Corpsman 2nd Class"
+
+/obj/item/card/id/solcom/peace
+	name = "\improper SOLCOM Peacekeeper ID"
+	desc = "Things are probably bad if the Peacekeepers are here."
+	registered_name = "Peacekeeper"
+	assignment = "Trooper 2nd Class"
+
+/obj/item/card/id/solcom/peace/sarge
+	name = "\improper SOLCOM Peacekeeper ID"
+	registered_name = "Peacekeeper Sergeant"
+	assignment = "Sergeant"
+
+/obj/item/card/id/solcom/peace/medic
+	name = "\improper SOLCOM Peacekeeper ID"
+	registered_name = "Peacekeeper Medic"
+	assignment = "Medic 3rd Class"
+
+/obj/item/card/id/solcom/marshal
+	name = "\improper SOLCOM Solar Marshal ID"
+	registered_name = "Sky Marshal"
+	assignment = "Sky Marshal"

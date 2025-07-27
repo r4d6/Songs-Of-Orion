@@ -22,9 +22,9 @@
 	var/mob/living/carbon/human/bst/bst = new(T)
 	bst.anchored = TRUE
 	bst.ckey = usr.ckey
-	bst.name = "Bluespace Technician"
-	bst.real_name = "Bluespace Technician"
-	bst.voice_name = "Bluespace Technician"
+	bst.name = "Stagehand"
+	bst.real_name = "Stagehand"
+	bst.voice_name = "Stagehand"
 	bst.h_style = "Crewcut"
 	var/list/stat_modifiers = list(
 		STAT_ROB = 99,
@@ -38,16 +38,16 @@
 		bst.stats.changeStat(stat, stat_modifiers[stat])
 
 	//Items
-	bst.equip_to_slot_or_del(new /obj/item/clothing/under/assistantformal/bst(bst), slot_w_uniform)
+	bst.equip_to_slot_or_del(new /obj/item/clothing/under/bst(bst), slot_w_uniform)
 	bst.equip_to_slot_or_del(new /obj/item/device/radio/headset/ert/bst(bst), slot_l_ear)
 	bst.equip_to_slot_or_del(new /obj/item/storage/backpack/holding/bst(bst), slot_back)
 	bst.equip_to_slot_or_del(new /obj/item/storage/box/survival(bst.back), slot_in_backpack)
 	bst.equip_to_slot_or_del(new /obj/item/clothing/shoes/color/black/bst(bst), slot_shoes)
-	bst.equip_to_slot_or_del(new /obj/item/clothing/head/beret(bst), slot_head)
+	bst.equip_to_slot_or_del(new /obj/item/clothing/head/soft/yellow/bst(bst), slot_head)
 	bst.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/bst(bst), slot_glasses)
 	bst.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full/bst(bst), slot_belt)
-	bst.equip_to_slot_or_del(new /obj/item/clothing/gloves/color/white/bst(bst), slot_gloves)
-
+	bst.equip_to_slot_or_del(new /obj/item/clothing/gloves/bst(bst), slot_gloves)
+	bst.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/harness(bst), slot_wear_suit)
 	bst.equip_to_slot_or_del(new /obj/item/storage/box/ids(bst.back), slot_in_backpack)
 	bst.equip_to_slot_or_del(new /obj/item/device/t_scanner(bst.back), slot_in_backpack)
 	bst.equip_to_slot_or_del(new /obj/item/modular_computer/pda/captain(bst.back), slot_in_backpack)
@@ -58,10 +58,12 @@
 		new /obj/item/reagent_containers/pill/adminordrazine(pills)
 	bst.equip_to_slot_or_del(pills, slot_in_backpack)
 
+
+
 	//Sort out ID
 	var/obj/item/card/id/bst/id = new/obj/item/card/id/bst(bst)
 	id.registered_name = bst.real_name
-	id.assignment = "Bluespace Technician"
+	id.assignment = "Stagehand"
 	id.name = "[id.assignment]"
 	bst.equip_to_slot_or_del(id, slot_wear_id)
 	bst.update_inv_wear_id()
@@ -116,17 +118,21 @@
 
 /mob/living/carbon/human/bst/proc/suicide()
 
-	src.custom_emote(1,"presses a button on their suit, followed by a polite bow.")
+	src.custom_emote(1,"gives a polite wave and steps backstage.")
+	qdel(src)
+
+/*
 	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
 	s.set_up(5, 1, src)
 	s.start()
 	spawn(10)
-		qdel(src)
+*/
+
 	if(key)
 		var/mob/observer/ghost/ghost = ghostize(TRUE)
-		ghost.name = "[ghost.key] BSTech"
-		ghost.real_name = "[ghost.key] BSTech"
-		ghost.voice_name = "[ghost.key] BSTech"
+		ghost.name = "[ghost.key] Stagehand"
+		ghost.real_name = "[ghost.key] Stagehand"
+		ghost.voice_name = "[ghost.key] Stagehand"
 		ghost.admin_ghosted = TRUE
 
 /mob/living/carbon/human/bst/verb/antigrav()
@@ -197,10 +203,11 @@
 /obj/item/storage/backpack/holding/bst
 	worn_access = TRUE
 	spawn_frequency = 0
+	icon_state = "satchel"
 
 /obj/item/device/radio/headset/ert/bst
-	name = "bluespace technician's headset"
-	desc = "A Bluespace Technician's headset. The letters 'BST' are stamped on the side."
+	name = "stagehand headset"
+	desc = "A stagehand's headset. The word 'STAFF' is stamped on the side."
 	translate_binary = TRUE
 	translate_hive = TRUE
 	keyslot1 = new /obj/item/device/encryptionkey/binary
@@ -220,17 +227,33 @@
 	translate_binary = TRUE
 	translate_hive = TRUE
 
-/obj/item/clothing/under/assistantformal/bst
-	name = "bluespace technician's uniform"
-	desc = "A Bluespace Technician's Uniform. There is a logo on the sleeve that reads 'BST'."
-	has_sensor = FALSE
-	sensor_mode = 0
-	siemens_coefficient = 0
+
+/obj/item/clothing/under/bst
+	name = "Staff uniform"
+	desc = "A stagehand uniform. Has writing on the sleeves reading 'STAFF'."
+	icon_state = "tee_black"
+	item_state = "tee_black"
+	body_parts_covered = FULL_BODY
 	cold_protection = FULL_BODY
 	heat_protection = FULL_BODY
+	min_cold_protection_temperature = T0C - 400
+	max_heat_protection_temperature = 10000
+	siemens_coefficient = 0.1
+	permeability_coefficient = 0.50
+	armor = list(
+		melee = 20,
+		bullet = 20,
+		energy = 20,
+		bomb = 100,
+		bio = 100,
+		rad = 100
+	)
 	spawn_frequency = 0
+	sensor_mode = 0
+	siemens_coefficient = 0
+	has_sensor = FALSE
 
-/obj/item/clothing/under/assistantformal/bst/attack_hand()
+/obj/item/clothing/under/bst/attack_hand()
 	if(!usr)
 		return
 	if(!isbst(usr))
@@ -239,14 +262,33 @@
 	else
 		..()
 
-/obj/item/clothing/gloves/color/white/bst
-	name = "bluespace technician's gloves"
-	desc = "A pair of modified gloves. The letters 'BST' are stamped on the side."
+/obj/item/clothing/head/soft/yellow/bst
+	name = "STAFF cap"
+	initial_name = "STAFF cap"
+	desc = "A baseball cap worn by stagehands and behind the scene staff."
 	siemens_coefficient = 0
 	permeability_coefficient = 0
 	spawn_frequency = 0
 
-/obj/item/clothing/gloves/color/white/bst/attack_hand()
+/obj/item/clothing/head/soft/yellow/bst/attack_hand()
+	if(!usr)
+		return
+	if(!isbst(usr))
+		to_chat(usr, span("alert", "Your hand seems to go right through the [src]. It's like it doesn't exist."))
+		return
+	else
+		..()
+
+/obj/item/clothing/gloves/bst
+	name = "stagehand's gloves"
+	desc = "A pair of modified gloves. The word 'STAFF' is printed on the wrists."
+	icon_state = "yellow"
+	item_state = "yellow"
+	siemens_coefficient = 0
+	permeability_coefficient = 0
+	spawn_frequency = 0
+
+/obj/item/clothing/gloves/bst/attack_hand()
 	if(!usr)
 		return
 	if(!isbst(usr))
@@ -256,8 +298,8 @@
 		..()
 
 /obj/item/clothing/glasses/sunglasses/bst
-	name = "bluespace technician's glasses"
-	desc = "A pair of modified sunglasses. The word 'BST' is stamped on the side."
+	name = "stagehand's glasses"
+	desc = "A pair of safety glasses, marked as studio property."
 	vision_flags = (SEE_TURFS|SEE_OBJS|SEE_MOBS)
 	see_invisible = SEE_INVISIBLE_NOLIGHTING
 	flash_protection = FLASH_PROTECTION_MAJOR
@@ -292,9 +334,9 @@
 		..()
 
 /obj/item/clothing/shoes/color/black/bst
-	name = "bluespace technician's shoes"
-	desc = "A pair of black shoes with extra grip. The letters 'BST' are stamped on the side."
-	icon_state = "black"
+	name = "stagehand's shoes"
+	desc = "A pair of black shoes with extra grip. The word 'STAFF' is stamped on the side."
+	icon_state = "shoes_bk"
 	item_flags = NOSLIP
 	spawn_frequency = 0
 
@@ -311,7 +353,7 @@
 
 /obj/item/card/id/bst
 	icon_state = "centcom"
-	desc = "An ID straight from Hansa. This one looks as though its very existence is a trade secret."
+	desc = "A stagehand ID, worn by the grips and staff behind the scenes."
 	spawn_frequency = 0
 
 /obj/item/card/id/bst/Initialize(mapload)

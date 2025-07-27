@@ -42,26 +42,6 @@
 /datum/shuttle/autodock/overmap/can_force()
 	return ..() && can_go()
 
-/datum/shuttle/autodock/overmap/proc/set_destination(var/obj/effect/shuttle_landmark/A)
-	if(A != current_location)
-		next_location = A
-		move_time = initial(move_time) * (1 + 0.01 * get_dist(waypoint_sector(current_location),waypoint_sector(next_location)))
-
-/datum/shuttle/autodock/overmap/proc/get_possible_destinations()
-	var/list/res = list()
-	var/area/overmap/map = locate() in world
-	for(var/obj/effect/overmap/sector/S in map) // Infinite range to avoid depending on ship position
-		if(S.known)
-			for(var/obj/effect/shuttle_landmark/LZ in S.get_waypoints(src.name))
-				if(LZ.is_valid(src))
-					res["[S.name_stages[1]] - [LZ.name]"] = LZ
-
-	for(var/obj/effect/overmap/ship/eris/S in map)
-		for(var/obj/effect/shuttle_landmark/LZ in S.get_waypoints(src.name))
-			if(LZ.is_valid(src))
-				res["[S.name_stages[1]] - [LZ.name]"] = LZ
-	return res
-
 /datum/shuttle/autodock/overmap/proc/get_location_name()
 	if(moving_status == SHUTTLE_INTRANSIT)
 		return "In transit"
@@ -121,7 +101,7 @@
 /obj/structure/fuel_port/New()
 	src.contents.Add(new/obj/item/tank/plasma)
 
-/obj/structure/fuel_port/attack_hand(mob/user as mob)
+/obj/structure/fuel_port/attack_hand(mob/user)
 	if(!opened)
 		to_chat(user, "<spawn class='notice'>The door is secured tightly. You'll need a crowbar to open it.")
 		return
@@ -138,16 +118,16 @@
 	else
 		icon_state = icon_closed
 
-/obj/structure/fuel_port/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/fuel_port/attackby(obj/item/W as obj, mob/user)
 	if(QUALITY_PRYING in W.tool_qualities)
 		if(W.use_tool(user, src, WORKTIME_NEAR_INSTANT, QUALITY_PRYING, FAILCHANCE_EASY, required_stat = STAT_ROB))
 			if(opened)
 				to_chat(user, "<spawn class='notice'>You tightly shut \the [src] door.")
-				playsound(src.loc, 'sound/machines/Custom_closetclose.ogg', 25, 0, -3)
+				playsound(loc, 'sound/machines/Custom_closetclose.ogg', 25, 0, -3)
 				opened = 0
 			else
 				to_chat(user, "<spawn class='notice'>You open up \the [src] door.")
-				playsound(src.loc, 'sound/machines/Custom_closetopen.ogg', 15, 1, -3)
+				playsound(loc, 'sound/machines/Custom_closetopen.ogg', 15, 1, -3)
 				opened = 1
 	else if(istype(W,/obj/item/tank))
 		if(!opened)

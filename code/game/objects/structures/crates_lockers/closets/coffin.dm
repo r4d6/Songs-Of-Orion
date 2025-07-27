@@ -25,9 +25,9 @@
 	..()
 	if(on_fire)
 		add_overlay("coffin_pyre") //Otherwise the flame visual goes away from the icon changing
-	for (var/mob/living/L in contents)
+	for(var/mob/living/L in contents)
 		//When the coffin is closed we check for mobs in it.
-		if (L.mind && L.mind.key)
+		if(L.mind && L.mind.key)
 			//We won't check if the mob is dead yet, maybe being spaced in a coffin is an execution method
 			occupant = L
 			break
@@ -41,9 +41,12 @@
 		visible_message(SPAN_NOTICE("Opening the coffin has disrupted the fire!"))
 
 //The coffin processes when there's a mob inside
-/obj/structure/closet/coffin/lost_in_space()
+/obj/structure/closet/coffin/touch_map_edge()
+	if(z in SSmapping.sealed_z_levels)
+		return
+
 	//The coffin has left the ship. Burial at space
-	if (occupant && occupant.is_dead())
+	if(occupant && occupant.is_dead())
 		var/mob/M = key2mob(occupant.mind.key)
 		//We send a message to the occupant's current mob - probably a ghost, but who knows.
 		to_chat(M, SPAN_NOTICE("Your remains have been committed to the void. Your crew respawn time has been reduced by [(COFFIN_RESPAWN_BONUS)/600] minutes."))
@@ -54,8 +57,9 @@
 
 		qdel(occupant)
 		qdel(src)
+		return
+	..()
 
-	return TRUE
 
 /obj/structure/closet/coffin/proc/pyre()
 	if(opened)

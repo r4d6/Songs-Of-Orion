@@ -9,12 +9,12 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	department_flag = COMMAND
 	faction = "CEV Eris"
 	total_positions = 1
-	spawn_positions = 1
-	supervisors = "your heart and wisdom"
-	selection_color = "#ccccff"
+	supervisors = "your heart and wisdom... and the company."
+	selection_color = "#0c9d98"
 	req_admin_notify = 1
 	wage = WAGE_NONE //The captain doesn't get paid, he's the one who does the paying
 	//The ship account is his, and he's free to draw as much salary as he likes
+	alt_titles = list("Site Manager", "Corporate Rep")
 
 	also_known_languages = list(LANGUAGE_CYRILLIC = 20, LANGUAGE_SERBIAN = 20)
 
@@ -23,19 +23,11 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	ideal_character_age = 70 // Old geezer captains ftw
 	outfit_type = /decl/hierarchy/outfit/job/captain
 
-	description = "You are a privateeer. <br>\
-The owner of the vast rusting hulk that is the CEV Eris. At least, as long as you keep up repayments.<br>\
-This ship is your life's work, crewed by an alliance of corporations and factions that you've brokered uneasy treaties with.<br>\
-
-You are the supreme leader of this world, and your word is law. But only as long as you can enforce that law.<br>\
-The heads of the factions which make up your command staff, each have their own agendas. Their interests must be served too. If you make them unhappy, the loyalty of their faction goes with them, and you may have a mutiny on your hands.<br>\
-Treat your command officers with respect, and listen to their council. Try not to micromanage their departments or interfere in their affairs, and they should serve you well<br>\
-
-You are a free agent, able to go where you will, and loyal to no particular government or nation. You are however, in quite a lot of debt. So wherever you go, you should be sure a profitable venture awaits."
-
-	loyalties = "Your first loyalty is to Eris, your ship. It is the purpose of your life, and you are nothing without it. If it were to be destroyed, you and your descendants would be ruined for centuries. <br>\
-
-Your second loyalty is to your command officers. The heads of each faction. Listen to their counsel, ensure their interests are served, and keep them happy"
+	description = "You are the executive officer of the station, the leader of the hopeless. <br>\
+	Yours is the hand that guides the facility to glory or ruin. Using power and influence (and money) to get what your want, you are the face of the station and the company. <br>\
+	As an officer of Keystone Securities, you're responsible for keeping this rust bucket profitable."
+	loyalties = "Your first loyalty is the company and the Station. It is the purpose of your life, and you are nothing without it. <br>\
+	You second loyalty is to your command officers. The First Officer is your right hand, and possibly the only one you can trust. The heads of each faction. Listen to their counsel, ensure their interests are served, and keep them happy"
 
 	stat_modifiers = list(
 		STAT_ROB = 15,
@@ -67,8 +59,6 @@ Your second loyalty is to your command officers. The heads of each faction. List
 	icon_state = "player-gold-officer"
 	join_tag = /datum/job/captain
 
-
-
 /datum/job/hop
 	title = "First Officer"
 	flag = FIRSTOFFICER
@@ -78,36 +68,33 @@ Your second loyalty is to your command officers. The heads of each faction. List
 	department_flag = COMMAND
 	faction = "CEV Eris"
 	total_positions = 1
-	spawn_positions = 1
-	supervisors = "the captain"
-	selection_color = "#ddddff"
+	supervisors = "the Captain, and the Company"
+	selection_color = "#5c0e34"
 	req_admin_notify = 1
 	wage = WAGE_COMMAND
 	also_known_languages = list(LANGUAGE_CYRILLIC = 20, LANGUAGE_SERBIAN = 15)
 	perks = list(/datum/perk/sommelier)
 	ideal_character_age = 50
+	alt_titles = list("Head of Personnel")
 
-	description = "You are the captain's right hand. His second in command. Where he goes, you follow. Where he leads, you drag everyone else along. You make sure his will is done, his orders obeyed, and his laws enforced.<br>\
-If he makes mistakes, discreetly inform him. Help to cover up his indiscretions and smooth relations with the crew, especially other command staff. Keep the captain safe, by endangering yourself in his stead if necessary.<br>\
-<br>\
-Do not embarass him or harm relations with faction leaders.<br>\
-<br>\
-But who are you?<br>\
-Perhaps you are the captain's lifelong friend, or a trusted associate to whom he gave a position of power.<br>\
-Perhaps you're a consummate professional who comes highly recommended.<br>\
-A retired general or naval officer?<br>\
-Perhaps you're the captain's brother, firstborn son, or spouse. Nobody can prevent nepotism if he chooses<br>\
-Perhaps you're a foreign diplomat, your position a ceremonial one to ensure a treaty.<br>\
-
-Whatever your origin, you are fiercely loyal to the captain"
+	description = "You are the captain's right hand. Their second in command. Where they go, you follow. Where they lead, you drag everyone else along. You make sure their will is done, their orders obeyed, and their rules enforced.<br>\
+	If they makes mistakes, discreetly inform them. Help to cover up their indiscretions and smooth relations with the crew, especially other command staff. Keep the captain safe, by endangering yourself in their stead if necessary.<br>\
+	<br>\
+	Do not embarass him or harm relations with faction leaders.<br>\
+	<br>\
+	But who are you?<br>\
+	Perhaps you're a consummate professional who comes highly recommended.<br>\
+	A retired general or naval officer? An advisor sent by Keystone Securies to keep an eye on the Captain?<br>\
+	Perhaps you're the captain's sibbling, firstborn offspring, or spouse. Nobody can prevent nepotism if they choose.<br>\
+	Whatever your origin, you are fiercely loyal to the captain"
 
 	duties = "Oversee everyone else, especially the other command staff, to ensure the captain's orders are being carried out.<br>\
-Handle job reassignments and promotion requests, if an appropriate faction leader isn't available<br>\
-Act as the captain's surrogate in risky situations where a command presence is required<br>\
-Replace the captain if they become incapacitated, need to take a break, or suffer a premature death<br>\
-Act as the captain's sidekick, bodyguard, and last line of defense in a crisis or mutiny situation"
+	Handle job reassignments and promotion requests, if an appropriate faction leader isn't available<br>\
+	Act as the captain's surrogate in risky situations where a command presence is required<br>\
+	Replace the captain if they become incapacitated, need to take a break, or suffer a premature death<br>\
+	Act as the captain's sidekick, bodyguard, and last line of defense in a crisis or mutiny situation"
 
-	loyalties = "Your first and only loyalty is to the captain. Unless you're an antagonist and have a good reason for betrayal, you should remain loyal to the death. You are the only one he can trust"
+	loyalties = "Your first and only loyalty is to the captain as an extension of Keystone's interests. Unless you're an antagonist and have a good reason for betrayal, you should remain loyal to the death. You are the only one they can trust"
 
 	outfit_type = /decl/hierarchy/outfit/job/hop
 

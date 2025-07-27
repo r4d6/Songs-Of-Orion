@@ -39,6 +39,7 @@
 /obj/item/pen/multi
 	desc = "A pen with multiple colors of ink!"
 	var/selectedColor = 1
+	icon_state = "pen_fancy"
 	var/colors = list("black","blue","red")
 
 /obj/item/pen/multi/attack_self(mob/user)
@@ -56,9 +57,22 @@
 
 /obj/item/pen/invisible
 	desc = "An invisble pen marker."
-	icon_state = "pen"
+	icon_state = "white"
 	colour = "white"
 
+/obj/item/pen/pencil
+	desc = "A pencil, though the eraser has dried out."
+	icon_state = "pencil"
+	colour = "grey"
+
+/obj/item/pen/pencil/fancy
+	desc = "A pencil, though the eraser has dried out."
+	icon_state = "pencil_fancy"
+	colour = "black"
+
+/obj/item/pen/multi/wood
+	desc = "A fancy pen made of wood and golden trim, with several colors of ink."
+	icon_state = "pen_wood"
 
 /obj/item/pen/attack(mob/M, mob/user)
 	if(!ismob(M))

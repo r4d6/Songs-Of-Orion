@@ -2,6 +2,18 @@
 	var/datum/category_item/setup_option/selected_option
 	var/datum/category_group/setup_option_category/option_category
 	var/topic_onset = TOPIC_REFRESH
+	var/allowed_jobs = list(/datum/job/captain, /datum/job/rd, /datum/job/hop, /datum/job/cmo, /datum/job/chief_engineer, /datum/job/ihc,
+					/datum/job/inspector, /datum/job/medspec, /datum/job/ihoper,
+					/datum/job/doctor, /datum/job/paramedic,
+					/datum/job/technomancer, /datum/job/dive_boss, /datum/job/mining,
+					/datum/job/cargo_tech, /datum/job/merchant, /datum/job/roboticist,
+					/datum/job/scientist, /datum/job/wagie,
+					/datum/job/ai, /datum/job/cyborg,
+					/datum/job/assistant,
+					/datum/job/captain_nt, /datum/job/hop_nt,
+					/datum/job/cargo_tech_nt, /datum/job/janitor_nt, /datum/job/cook_nt, /datum/job/botanist_nt, /datum/job/doctor_nt,
+					/datum/job/detective_nt, /datum/job/engineer_nt, /datum/job/scientist_nt, /datum/job/clown_nt,
+					/datum/job/greytide)
 
 /datum/category_item/player_setup_item/proc/get_options()
 	return option_category.items
