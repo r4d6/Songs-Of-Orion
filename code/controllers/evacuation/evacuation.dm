@@ -8,7 +8,6 @@
 var/datum/evacuation_controller/evacuation_controller
 
 /datum/evacuation_controller
-
 	var/name = "generic evac controller"
 	var/state = EVAC_IDLE
 	var/deny
@@ -39,7 +38,7 @@ var/datum/evacuation_controller/evacuation_controller
 	var/datum/announcement/priority/evac_called =   new(0)
 	var/datum/announcement/priority/evac_recalled = new(0)
 
-/datum/evacuation_controller/proc/auto_recall(var/_recall)
+/datum/evacuation_controller/proc/auto_recall(_recall)
 	recall = _recall
 
 /datum/evacuation_controller/proc/set_up()
@@ -50,19 +49,15 @@ var/datum/evacuation_controller/evacuation_controller
 /datum/evacuation_controller/proc/get_cooldown_message()
 	return "An evacuation cannot be called at this time. Please wait another [round((evac_cooldown_time-world.time)/600)] minute\s before trying again."
 
-/datum/evacuation_controller/proc/add_can_call_predicate(var/datum/evacuation_predicate/esp)
+/datum/evacuation_controller/proc/add_can_call_predicate(datum/evacuation_predicate/esp)
 	if(esp in evacuation_predicates)
 		CRASH("[esp] has already been added as an evacuation predicate")
 	evacuation_predicates += esp
 
-/datum/evacuation_controller/proc/call_evacuation(var/mob/user, var/_emergency_evac, var/forced, var/skip_announce, var/autotransfer)
-
+/datum/evacuation_controller/proc/call_evacuation(mob/user, _emergency_evac, forced, skip_announce, autotransfer)
 	if(!can_evacuate(user, forced))
 		return 0
-
 	emergency_evacuation = _emergency_evac
-
-
 	var/additional_delay
 	if(_emergency_evac)
 		additional_delay = emergency_prep_additional_delay
@@ -83,19 +78,17 @@ var/datum/evacuation_controller/evacuation_controller
 	state = EVAC_PREPPING
 
 	if(emergency_evacuation)
-		for(var/area/A in GLOB.map_areas)
+		for(var/area/A in SSmapping.all_areas)
 			if(istype(A, /area/eris/hallway))
 				A.readyalert()
 		if(!skip_announce)
-			evacuation_controller.evac_called.Announce(replacetext(GLOB.maps_data.emergency_shuttle_called_message, "%ETA%", "[round(evacuation_controller.get_eta()/60)] minute\s."))
+			evacuation_controller.evac_called.Announce(replacetext(SSmapping.emergency_shuttle_called_message, "%ETA%", "[round(evacuation_controller.get_eta()/60)] minute\s."))
 	else
 		if(!skip_announce)
-			priority_announcement.Announce(replacetext(replacetext(GLOB.maps_data.shuttle_called_message, "%dock_name%", "[dock_name]"),  "%ETA%", "[round(get_eta()/60)] minute\s"))
-
+			priority_announcement.Announce(replacetext(replacetext(SSmapping.shuttle_called_message, "%dock_name%", "[dock_name]"),  "%ETA%", "[round(get_eta()/60)] minute\s"))
 	return 1
 
 /datum/evacuation_controller/proc/cancel_evacuation()
-
 	if(!can_cancel())
 		return 0
 
@@ -110,46 +103,40 @@ var/datum/evacuation_controller/evacuation_controller
 	auto_recall_time =  null
 
 	if(emergency_evacuation)
-		evac_recalled.Announce(GLOB.maps_data.emergency_shuttle_recall_message)
-		for(var/area/A in GLOB.map_areas)
+		evac_recalled.Announce(SSmapping.emergency_shuttle_recall_message)
+		for(var/area/A in SSmapping.all_areas)
 			if(istype(A, /area/eris/hallway))
 				A.readyreset()
 		emergency_evacuation = 0
 	else
-		priority_announcement.Announce(GLOB.maps_data.shuttle_recall_message)
-
+		priority_announcement.Announce(SSmapping.shuttle_recall_message)
 	return 1
 
 /datum/evacuation_controller/proc/finish_preparing_evac()
 	state = EVAC_LAUNCHING
-
 	var/estimated_time = round(get_eta()/60,1)
-	if (emergency_evacuation)
-		evac_waiting.Announce(replacetext(GLOB.maps_data.emergency_shuttle_docked_message, "%ETD%", "[estimated_time] minute\s"), new_sound = sound('sound/effects/Evacuation.ogg', volume = 35))
+	if(emergency_evacuation)
+		evac_waiting.Announce(replacetext(SSmapping.emergency_shuttle_docked_message, "%ETD%", "[estimated_time] minute\s"), new_sound = sound('sound/effects/Evacuation.ogg', volume = 35))
 	else
-		priority_announcement.Announce(replacetext(replacetext(GLOB.maps_data.shuttle_docked_message, "%dock_name%", "[dock_name]"),  "%ETD%", "[estimated_time] minute\s"))
+		priority_announcement.Announce(replacetext(replacetext(SSmapping.shuttle_docked_message, "%dock_name%", "[dock_name]"),  "%ETD%", "[estimated_time] minute\s"))
 	if(config.announce_shuttle_dock_to_irc)
 		send2mainirc("The shuttle has docked with the station. It will depart in approximately [estimated_time] minute\s.")
 
 /datum/evacuation_controller/proc/launch_evacuation()
-
 	if(waiting_to_leave())
 		return
 
 	state = EVAC_IN_TRANSIT
-
-	if (emergency_evacuation)
-		priority_announcement.Announce(replacetext(replacetext(GLOB.maps_data.emergency_shuttle_leaving_dock, "%dock_name%", "[dock_name]"),  "%ETA%", "[round(get_eta()/60,1)] minute\s"))
+	if(emergency_evacuation)
+		priority_announcement.Announce(replacetext(replacetext(SSmapping.emergency_shuttle_leaving_dock, "%dock_name%", "[dock_name]"),  "%ETA%", "[round(get_eta()/60,1)] minute\s"))
 	else
-		priority_announcement.Announce(replacetext(replacetext(GLOB.maps_data.shuttle_leaving_dock, "%dock_name%", "[dock_name]"),  "%ETA%", "[round(get_eta()/60,1)] minute\s"))
-
+		priority_announcement.Announce(replacetext(replacetext(SSmapping.shuttle_leaving_dock, "%dock_name%", "[dock_name]"),  "%ETA%", "[round(get_eta()/60,1)] minute\s"))
 	return 1
 
 /datum/evacuation_controller/proc/finish_evacuation()
 	state = EVAC_COMPLETE
 
 /datum/evacuation_controller/Process()
-
 	if(state == EVAC_PREPPING && recall && world.time >= auto_recall_time)
 		cancel_evacuation()
 		return
@@ -170,11 +157,9 @@ var/datum/evacuation_controller/evacuation_controller
 /datum/evacuation_controller/proc/available_evac_options()
 	return list()
 
-/datum/evacuation_controller/proc/handle_evac_option(var/option_target, var/mob/user)
+/datum/evacuation_controller/proc/handle_evac_option(option_target, mob/user)
 	var/datum/evacuation_option/selected = evacuation_options[option_target]
-	if (!isnull(selected) && istype(selected))
+	if(!isnull(selected) && istype(selected))
 		selected.execute(user)
 
-/datum/evacuation_controller/proc/get_evac_option(var/option_target)
-	return null
-
+/datum/evacuation_controller/proc/get_evac_option(option_target)

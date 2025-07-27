@@ -45,7 +45,7 @@ GLOBAL_VAR_INIT(ironhammer_operative_dead_score, 0)
 GLOBAL_VAR_INIT(ironhammer_escaped_antagonists, 0)
 GLOBAL_VAR_INIT(ironhammer_escaped_antagonists_score, 0)
 
-//Neotheology_score
+//NeoTheology
 GLOBAL_VAR_INIT(neotheology_score, 0)
 GLOBAL_VAR_INIT(initial_neotheology_score, 250)
 
@@ -131,7 +131,7 @@ GLOBAL_VAR_INIT(score_technomancer_faction_item_loss, 0)
 				var/area/A = get_area(M.current)
 				if(istype(A, /area/eris/security/prison) || istype(A, /area/eris/security/brig) || M.current.restrained())
 					GLOB.captured_or_dead_antags++
-				else if(isOnAdminLevel(M.current))
+				else if(IS_TECHNICAL_LEVEL(M.current.z))
 					GLOB.ironhammer_escaped_antagonists++
 			else if(M.assigned_job && M.assigned_job.department == DEPARTMENT_GUILD && ishuman(M.current))
 				var/mob/living/carbon/human/H = M.current
@@ -140,7 +140,7 @@ GLOBAL_VAR_INIT(score_technomancer_faction_item_loss, 0)
 	for(var/mob/living/L in (GLOB.player_list & GLOB.living_mob_list))
 		if(L.client)
 			L.client.survive = TRUE
-			if(isOnAdminLevel(L))
+			if(IS_TECHNICAL_LEVEL(L.z))
 				L.client.escaped = TRUE
 		if(ishuman(L))
 			var/mob/living/carbon/human/H = L
@@ -160,7 +160,7 @@ GLOBAL_VAR_INIT(score_technomancer_faction_item_loss, 0)
 	GLOB.supply_profit = ending_balance - guild_var.account_initial_balance
 
 	//Check station's power levels
-	for(var/area/A in ship_areas)
+	for(var/area/A as anything in SSmapping.main_ship_areas)
 		if(A.fire || A.atmosalm)
 			GLOB.area_fireloss++
 		if(!A.apc)
@@ -172,7 +172,8 @@ GLOBAL_VAR_INIT(score_technomancer_faction_item_loss, 0)
 
 	var/smes_count = 0
 	for(var/obj/machinery/power/smes/S in GLOB.smes_list)
-		if(!isStationLevel(S.z)) continue
+		if(!IS_SHIP_LEVEL(S.z))
+			continue
 		smes_count++
 		if(S.charge < S.capacity*0.7)
 			GLOB.all_smes_powered = FALSE
@@ -181,9 +182,11 @@ GLOBAL_VAR_INIT(score_technomancer_faction_item_loss, 0)
 		GLOB.all_smes_powered = FALSE
 
 	for(var/obj/machinery/power/shipside/shield_generator/S in GLOB.machines)
-		if(!isStationLevel(S.z)) continue
+		if(!IS_SHIP_LEVEL(S.z))
+			continue
 		smes_count++
-		if(!S.running) continue
+		if(!S.running)
+			continue
 		GLOB.field_radius += S.field_radius
 	GLOB.field_radius = CLAMP(GLOB.field_radius, 0, world.maxx)
 
@@ -202,11 +205,15 @@ GLOBAL_VAR_INIT(score_technomancer_faction_item_loss, 0)
 	var/list/dirt_areas = list()
 	//Check how much uncleaned mess is on the station
 	for(var/obj/effect/decal/cleanable/M in world)
-		if(!isStationLevel(M.z)) continue
+		if(!IS_SHIP_LEVEL(M.z))
+			continue
 		var/area/A = get_area(M)
-		if(A in dirt_areas) continue
-		if(!(A in ship_areas)) continue
-		if(A.is_maintenance) continue
+		if(A in dirt_areas)
+			continue
+		if(!(A in SSmapping.main_ship_areas))
+			continue
+		if(A.is_maintenance)
+			continue
 		dirt_areas += A
 	GLOB.dirt_areas = dirt_areas.len
 
@@ -231,7 +238,7 @@ GLOBAL_VAR_INIT(score_technomancer_faction_item_loss, 0)
 
 	GLOB.moebius_score = GLOB.initial_moebius_score + GLOB.score_moebius_faction_item_loss + GLOB.moebius_objectives_score + GLOB.score_crew_dead + GLOB.score_research_point_gained + GLOB.score_moebius_autopsies_mobs
 
-	//Ironhammer score
+	//IronHammer score
 	GLOB.score_ironhammer_faction_item_loss -= 150 * GLOB.ironhammer_faction_item_loss
 	GLOB.ironhammer_objectives_score = GLOB.ironhammer_objectives_completed * 25
 	GLOB.score_antag_contracts -= GLOB.completed_antag_contracts * 30
@@ -277,7 +284,7 @@ GLOBAL_VAR_INIT(score_technomancer_faction_item_loss, 0)
 
 	//ironhammer
 	dat += {"
-	<u>Ironhammer scores</u><br>
+	<u>IronHammer scores</u><br>
 	<b>Base score:</b> [green_text(GLOB.initial_ironhammer_score)]<br>
 	<b>Lost faction items:</b> [GLOB.ironhammer_faction_item_loss] ([to_score_color(GLOB.score_ironhammer_faction_item_loss)] Points)<br>
 	<b>Faction objectives completed:</b> [GLOB.ironhammer_objectives_completed] ([to_score_color(GLOB.ironhammer_objectives_score)] Points)<br>
@@ -285,7 +292,7 @@ GLOBAL_VAR_INIT(score_technomancer_faction_item_loss, 0)
 	<b>Antagonists killed or captured:</b> [GLOB.captured_or_dead_antags] ([to_score_color(GLOB.captured_or_dead_antags_score)] Points)<br>
 	<b>Escaped Antagonists:</b> [GLOB.ironhammer_escaped_antagonists] ([to_score_color(GLOB.ironhammer_escaped_antagonists_score)] Points)<br>
 	<b>IH operatives killed:</b> [GLOB.ironhammer_operative_dead] ([to_score_color(GLOB.ironhammer_operative_dead_score)] Points)<br>
-	<b>Final Ironhammer score:</b> [get_color_score(GLOB.ironhammer_score, GLOB.ironhammer_score)] Points<br><br>
+	<b>Final IronHammer score:</b> [get_color_score(GLOB.ironhammer_score, GLOB.ironhammer_score)] Points<br><br>
 	"}
 
 	//moebius
@@ -310,7 +317,7 @@ GLOBAL_VAR_INIT(score_technomancer_faction_item_loss, 0)
 	<b>Biomatter produced:</b> [GLOB.biomatter_neothecnology_amt] ([to_score_color(GLOB.biomatter_score)] Points)<br>
 	<b>Total of conversions:</b> [GLOB.new_neothecnology_convert] ([to_score_color(GLOB.new_neothecnology_convert_score)] Points)<br>
 	<b>Group rituals performed:</b> [GLOB.grup_ritual_performed] ([to_score_color(GLOB.grup_ritual_score)] Points)<br>
-	<b>Final Neotheology score:</b> [get_color_score(GLOB.neotheology_score, GLOB.neotheology_score)] Points<br><br>
+	<b>Final NeoTheology score:</b> [get_color_score(GLOB.neotheology_score, GLOB.neotheology_score)] Points<br><br>
 	"}
 
 	//guild

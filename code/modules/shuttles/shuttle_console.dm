@@ -29,13 +29,13 @@
 	var/shuttle_status
 	switch (shuttle.process_state)
 		if(IDLE_STATE)
-			if (shuttle.in_use)
+			if(shuttle.in_use)
 				shuttle_status = "Busy."
 			else
 				shuttle_status = "Standing-by at [shuttle.current_location]."
 
 		if(WAIT_LAUNCH, FORCE_LAUNCH)
-			shuttle_status = "Shuttle has recieved command and will depart shortly."
+			shuttle_status = "Shuttle has received command and will depart shortly."
 		if(WAIT_ARRIVE)
 			shuttle_status = "Proceeding to [shuttle.next_location]."
 		if(WAIT_FINISH)
@@ -52,13 +52,13 @@
 		"can_force" = shuttle.can_force(),
 	)
 
-/obj/machinery/computer/shuttle_control/proc/handle_topic_href(var/datum/shuttle/autodock/shuttle, var/list/href_list, var/user)
+/obj/machinery/computer/shuttle_control/proc/handle_topic_href(datum/shuttle/autodock/shuttle, list/href_list)
 	if(!istype(shuttle))
 		return TOPIC_NOACTION
 
 	if(href_list["move"])
 		if(!shuttle.next_location.is_valid(shuttle))
-			to_chat(user, "<span class='warning'>Destination zone is invalid or obstructed.</span>")
+			to_chat(usr, "<span class='warning'>Destination zone is invalid or obstructed.</span>")
 			return TOPIC_HANDLED
 		shuttle.launch(src)
 		return TOPIC_REFRESH
@@ -71,9 +71,15 @@
 		shuttle.cancel_launch(src)
 		return TOPIC_REFRESH
 
+	if(href_list["pick"])
+		var/dest_key = input("Choose shuttle destination", "Shuttle Destination") as null|anything in shuttle.get_possible_destinations()
+		if(dest_key && CanInteract(usr, GLOB.default_state))
+			shuttle.set_destination(dest_key, usr)
+		return TOPIC_REFRESH
+
 /obj/machinery/computer/shuttle_control/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	var/datum/shuttle/autodock/shuttle = SSshuttle.shuttles[shuttle_tag]
-	if (!istype(shuttle))
+	if(!istype(shuttle))
 		to_chat(user, "<span class='warning'>Unable to establish link with the shuttle.</span>")
 		return
 
@@ -87,10 +93,10 @@
 		ui.set_auto_update(1)
 
 /obj/machinery/computer/shuttle_control/Topic(user, href_list)
-	return handle_topic_href(SSshuttle.shuttles[shuttle_tag], href_list, user)
+	return handle_topic_href(SSshuttle.shuttles[shuttle_tag], href_list)
 
 /obj/machinery/computer/shuttle_control/emag_act(var/remaining_charges, var/mob/user)
-	if (!hacked)
+	if(!hacked)
 		req_access = list()
 		req_one_access = list()
 		hacked = 1

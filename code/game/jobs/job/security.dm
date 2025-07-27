@@ -6,7 +6,6 @@
 	department_flag = IRONHAMMER | COMMAND
 	faction = "CEV Eris"
 	total_positions = 1
-	spawn_positions = 1
 	supervisors = "the Captain"
 	selection_color = "#4e729e"
 	req_admin_notify = 1
@@ -68,7 +67,6 @@
 	department_flag = IRONHAMMER
 	faction = "CEV Eris"
 	total_positions = 0
-	spawn_positions = 0
 	supervisors = "the Ironhammer Commander"
 	selection_color = "#a7bbc6"
 	department_account_access = TRUE
@@ -122,7 +120,6 @@
 	department_flag = IRONHAMMER
 	faction = "CEV Eris"
 	total_positions = 1
-	spawn_positions = 1
 	supervisors = "the Head of Security, regional Sky Marshal, and SOLCOM high command"
 	selection_color = "#60616a"
 	wage = WAGE_PROFESSIONAL
@@ -179,7 +176,6 @@
 	department_flag = IRONHAMMER
 	faction = "CEV Eris"
 	total_positions = 2
-	spawn_positions = 2
 	supervisors = "the Director of Asset Denial, Solar Marshals"
 	alt_titles = list("Asset Protection Specialist")
 	selection_color = "#3c5485"
@@ -237,7 +233,6 @@
 	department_flag = IRONHAMMER
 	faction = "CEV Eris"
 	total_positions = 1
-	spawn_positions = 1
 	supervisors = "the Director of Asset Denial"
 	selection_color = "#66788f"
 	wage = WAGE_PROFESSIONAL

@@ -6,7 +6,6 @@
 	department_flag = MEDICAL | COMMAND
 	faction = "CEV Eris"
 	total_positions = 1
-	spawn_positions = 1
 	supervisors = "The Brotherhood and God"
 	selection_color = "#424b4d"
 	req_admin_notify = 1
@@ -67,7 +66,6 @@
 	department_flag = MEDICAL
 	faction = "CEV Eris"
 	total_positions = 2
-	spawn_positions = 2
 	supervisors = "the Brotherhood Coordinator"
 	selection_color = "#6a817a"
 	wage = WAGE_LABOUR_DUMB //RIP
@@ -120,7 +118,6 @@
 	department_flag = MEDICAL
 	faction = "CEV Eris"
 	total_positions = 1
-	spawn_positions = 1
 	supervisors = "the Moebius Biolab Officer"
 	selection_color = "#a8b69a"
 	wage = WAGE_PROFESSIONAL
@@ -172,7 +169,6 @@
 	department_flag = MEDICAL
 	faction = "CEV Eris"
 	total_positions = -1
-	spawn_positions = -1
 	supervisors = "the Coordinator and Brotherhood doctors"
 	selection_color = "#6a817a"
 	wage = WAGE_LABOUR_DUMB //RIP
@@ -223,7 +219,6 @@
 	department_flag = MEDICAL
 	faction = "CEV Eris"
 	total_positions = 1
-	spawn_positions = 1
 	supervisors = "the Moebius Biolab Officer"
 	selection_color = "#a8b69a"
 	wage = WAGE_PROFESSIONAL

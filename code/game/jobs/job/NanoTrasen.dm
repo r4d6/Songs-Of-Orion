@@ -5,7 +5,6 @@
 	department_flag = CIVILIAN
 	faction = "CEV Eris"
 	total_positions = -1
-	spawn_positions = -1
 	supervisors = "anyone who pays you"
 	selection_color = "#dddddd"
 	initial_balance	= 0 // This is now defined in code\modules\economy\cash.dm under spacecash/bundle/Vagabond as they carry cash on them.
@@ -45,7 +44,6 @@
 	department_flag = GUILD
 	faction = "CEV Eris"
 	total_positions = 4
-	spawn_positions = 4
 	supervisors = "the chain of command"
 	selection_color = "#c3b9a6"
 	also_known_languages = list(LANGUAGE_JIVE = 100)
@@ -87,7 +85,6 @@
 	department_flag = SERVICE
 	faction = "CEV Eris"
 	total_positions = 2
-	spawn_positions = 2
 	supervisors = "the chain of command"
 	selection_color = "#dddddd"
 	also_known_languages = list(LANGUAGE_CYRILLIC = 10, LANGUAGE_JIVE = 60)
@@ -116,7 +113,6 @@
 	department_flag = SERVICE
 	faction = "CEV Eris"
 	total_positions = 1
-	spawn_positions = 1
 	supervisors = "the chain of command"
 	selection_color = "#dddddd"
 	also_known_languages = list(LANGUAGE_CYRILLIC = 25, LANGUAGE_SERBIAN = 15, LANGUAGE_JIVE = 80)
@@ -145,7 +141,6 @@
 	department_flag = SERVICE
 	faction = "CEV Eris"
 	total_positions = 1
-	spawn_positions = 1
 	supervisors = "the chain of command, and the Cook"
 	selection_color = "#dddddd"
 	also_known_languages = list(LANGUAGE_CYRILLIC = 25, LANGUAGE_SERBIAN = 15, LANGUAGE_JIVE = 80)
@@ -174,7 +169,6 @@
 	department_flag = MEDICAL
 	faction = "CEV Eris"
 	total_positions = 3
-	spawn_positions = 3
 	supervisors = "the chain of command"
 	selection_color = "#dddddd"
 	wage = WAGE_PROFESSIONAL
@@ -211,7 +205,6 @@
 	department_flag = IRONHAMMER
 	faction = "CEV Eris"
 	total_positions = 2
-	spawn_positions = 2
 	supervisors = "the chain of command"
 	//alt_titles = list("Ironhammer Junior Operative")
 	selection_color = "#a7bbc6"
@@ -250,7 +243,6 @@
 	department_flag = IRONHAMMER
 	faction = "CEV Eris"
 	total_positions = 1
-	spawn_positions = 1
 	supervisors = "the chain of command"
 	selection_color = "#a7bbc6"
 	wage = WAGE_PROFESSIONAL
@@ -293,7 +285,6 @@
 	department_flag = ENGINEERING
 	faction = "CEV Eris"
 	total_positions = 3
-	spawn_positions = 3
 	supervisors = "the chain of command"
 	selection_color = "#d5c88f"
 	also_known_languages = list(LANGUAGE_CYRILLIC = 50)
@@ -337,7 +328,6 @@
 	department_flag = SCIENCE
 	faction = "CEV Eris"
 	total_positions = 3
-	spawn_positions = 3
 	supervisors = "the chain of command"
 	selection_color = "#bdb1bb"
 	wage = WAGE_PROFESSIONAL
@@ -373,7 +363,6 @@
 	department_flag = SERVICE
 	faction = "CEV Eris"
 	total_positions = 1
-	spawn_positions = 1
 	supervisors = "the funny ones"
 	selection_color = "#dddddd"
 	also_known_languages = list(LANGUAGE_CYRILLIC = 10, LANGUAGE_JIVE = 40, LANGUAGE_MONKEY = 20)
@@ -403,7 +392,6 @@
 	department_flag = COMMAND
 	faction = "CEV Eris"
 	total_positions = 1
-	spawn_positions = 1
 	supervisors = "your heart and wisdom"
 	selection_color = "#ccccff"
 	req_admin_notify = 1
@@ -458,7 +446,6 @@
 	department_flag = COMMAND
 	faction = "CEV Eris"
 	total_positions = 1
-	spawn_positions = 1
 	supervisors = "the captain"
 	selection_color = "#ddddff"
 	req_admin_notify = 1

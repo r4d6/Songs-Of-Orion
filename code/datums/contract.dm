@@ -14,12 +14,12 @@ GLOBAL_LIST_INIT(antag_item_targets,list(
 		"a Moebius expedition overseer's jumpsuit" = /obj/item/clothing/under/rank/expedition_overseer,
 		"a exultant's jumpsuit" = /obj/item/clothing/under/rank/exultant,
 		"a Moebius biolab officer's jumpsuit" = /obj/item/clothing/under/rank/moebius_biolab_officer,
-		"a Ironhammer commander's jumpsuit" = /obj/item/clothing/under/rank/ih_commander,
+		"a IronHammer commander's jumpsuit" = /obj/item/clothing/under/rank/ih_commander,
 		"a First Officer's jumpsuit" = /obj/item/clothing/under/rank/first_officer,
 		"the hypospray" = /obj/item/reagent_containers/hypospray,
 		"the captain's pinpointer" = /obj/item/pinpointer,
 		"an ablative armor vest" = /obj/item/clothing/suit/armor/laserproof/full,
-		"an Ironhammer hardsuit control module" = /obj/item/rig/combat/ironhammer
+		"an IronHammer hardsuit control module" = /obj/item/rig/combat/ironhammer
 	))
 GLOBAL_LIST_INIT(excel_item_targets,list(
 		"a Miller revolver" = /obj/item/gun/projectile/revolver,
@@ -141,7 +141,7 @@ GLOBAL_LIST_INIT(excel_item_targets,list(
 
 		// No check for cruciform because the spying implant can bypass it
 		var/mob/living/carbon/human/H = candidate_mind.current
-		if(!istype(H) || H.stat == DEAD || !isOnStationLevel(H))
+		if(!istype(H) || H.stat == DEAD || !IS_SHIP_LEVEL(H.z))
 			continue
 
 		target_mind = candidate_mind
@@ -172,7 +172,7 @@ GLOBAL_LIST_INIT(excel_item_targets,list(
 	var/list/area/targets = list()
 
 /datum/antag_contract/recon/New()
-	var/list/candidates = ship_areas.Copy()
+	var/list/candidates = SSmapping.main_ship_areas.Copy()
 	for(var/datum/antag_contract/recon/C in GLOB.various_antag_contracts)
 		if(C.completed)
 			continue
@@ -227,7 +227,7 @@ GLOBAL_LIST_INIT(excel_item_targets,list(
 	while(candidates.len)
 		target_mind = pick(candidates)
 		var/mob/living/carbon/human/H = target_mind.current
-		if(!istype(H) || H.stat == DEAD || !isOnStationLevel(H))
+		if(!istype(H) || H.stat == DEAD || !IS_SHIP_LEVEL(H.z))
 			candidates -= target_mind
 			continue
 		target = H.get_core_implant(/obj/item/implant/core_implant/cruciform)
@@ -339,7 +339,7 @@ GLOBAL_LIST_INIT(excel_item_targets,list(
 		to_chat(user, SPAN_NOTICE("Mandate completed: [name] ([reward] energy)"))
 
 	excelsior_energy += reward
-	for (var/obj/machinery/complant_teleporter/t in excelsior_teleporters)
+	for(var/obj/machinery/complant_teleporter/t in excelsior_teleporters)
 		t.update_nano_data()
 
 /datum/antag_contract/excel/appropriate
@@ -387,14 +387,14 @@ GLOBAL_LIST_INIT(excel_item_targets,list(
 			continue
 
 		var/mob/living/carbon/human/H = candidate_mind.current
-		if(!istype(H) || H.stat == DEAD || !isOnStationLevel(H))
+		if(!istype(H) || H.stat == DEAD || !IS_SHIP_LEVEL(H.z))
 			continue
 
-		if (targets_command)
+		if(targets_command)
 			if(!(candidate_mind.assigned_role in list(JOBS_COMMAND + JOBS_SECURITY)))
 				continue
 
-		if (cruciform_check)
+		if(cruciform_check)
 			var/cruciform = H.get_core_implant(/obj/item/implant/core_implant/cruciform)
 			if(cruciform)
 				continue
@@ -431,7 +431,7 @@ GLOBAL_LIST_INIT(excel_item_targets,list(
 	var/list/area/targets = list()
 
 /datum/antag_contract/excel/propaganda/New()
-	var/list/candidates = ship_areas.Copy()
+	var/list/candidates = SSmapping.main_ship_areas.Copy()
 	for(var/datum/antag_contract/excel/propaganda/M in GLOB.excel_antag_contracts)
 		if(M.completed)
 			continue

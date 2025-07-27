@@ -13,12 +13,6 @@
 	var/turf/loc = get_turf(O)
 	return loc ? loc.z : 0
 
-/proc/get_area_name(N) //get area by its name
-	for(var/area/A in GLOB.map_areas)
-		if(A.name == N)
-			return A
-	return 0
-
 // get the area's name
 /proc/get_area_name_litteral(atom/X, format_text = FALSE)
 	var/area/A = isarea(X) ? X : get_area(X)
@@ -28,7 +22,7 @@
 
 /proc/get_area_master(const/O)
 	var/area/A = get_area(O)
-	if (isarea(A))
+	if(isarea(A))
 		return A
 
 // Like view but bypasses luminosity check
@@ -149,7 +143,7 @@
 
 	for(var/am in hear)
 		var/atom/movable/AM = am
-		if (!AM.loc)
+		if(!AM.loc)
 			continue
 
 		if(ismob(AM))
@@ -159,22 +153,13 @@
 			objs[AM] = TRUE
 			hearturfs[AM.locs[1]] = TRUE
 
+	for(var/mob/M as anything in getMobsInRangeChunked(T, range, FALSE, TRUE))
+		mobs[M] = TRUE
+	for(var/mob/M as anything in GLOB.player_ghost_list)
+		if(checkghosts == GHOSTS_ALL_HEAR && M.stat == DEAD && M.get_preference_value(/datum/client_preference/ghost_ears) == GLOB.PREF_ALL_SPEECH)
+			mobs[M] = TRUE
 
-	for(var/m in GLOB.player_list)
-		var/mob/M = m
-		if(checkghosts == GHOSTS_ALL_HEAR && M.stat == DEAD && !isnewplayer(M) && (M.client && M.get_preference_value(/datum/client_preference/ghost_ears) == GLOB.PREF_ALL_SPEECH))
-			if (!mobs[M])
-				mobs[M] = TRUE
-			continue
-		if(M.loc && hearturfs[M.locs[1]])
-			if (!mobs[M])
-				mobs[M] = TRUE
-
-
-	for(var/obj in GLOB.hearing_objects)
-		if(get_turf(obj) in hearturfs)
-			objs |= obj
-
+	objs |= getHearersInRangeChunked(T, range)
 
 
 /proc/get_mobs_in_radio_ranges(list/obj/item/device/radio/radios)
@@ -332,7 +317,7 @@
 	var/dest_y
 
 /datum/projectile_data/New(src_x, src_y, time, distance, \
-						   power_x, power_y, dest_x, dest_y)
+							power_x, power_y, dest_x, dest_y)
 	src.src_x = src_x
 	src.src_y = src_y
 	src.time = time
@@ -398,7 +383,7 @@
 	var/list/greens = list()
 	var/list/weights = list()
 
-	for (var/i = 0, ++i <= colors.len)
+	for(var/i = 0, ++i <= colors.len)
 		reds.Add(GetRedPart(colors[i]))
 		blues.Add(GetBluePart(colors[i]))
 		greens.Add(GetGreenPart(colors[i]))
@@ -410,7 +395,7 @@
 	return rgb(r, g, b)
 
 /proc/mixOneColor(list/weight, list/color)
-	if (!weight || !color || length(weight)!=length(color))
+	if(!weight || !color || length(weight)!=length(color))
 		return 0
 
 	var/contents = length(weight)
@@ -504,7 +489,7 @@
 /proc/get_vents()
 	var/list/vents = list()
 	for(var/obj/machinery/atmospherics/unary/vent_pump/temp_vent in GLOB.machines)
-		if(!temp_vent.welded && temp_vent.network && isOnStationLevel(temp_vent))
+		if(!temp_vent.welded && temp_vent.network && IS_SHIP_LEVEL(temp_vent.z))
 			if(temp_vent.network.normal_members.len > 15)
 				vents += temp_vent
 	return vents
@@ -513,20 +498,20 @@
 /proc/is_opaque(turf/T)
 	if(!T)
 		return FALSE
-	if (T.opacity)
+	if(T.opacity)
 		return TRUE
 	for(var/obj/O in T.contents)
-		if (O.opacity)
+		if(O.opacity)
 			return TRUE
 	return FALSE
 
 /proc/get_preferences(mob/target)
 	var/datum/preferences/P = null
-	if (target.client)
+	if(target.client)
 		P = target.client.prefs
-	else if (target.ckey)
+	else if(target.ckey)
 		P = SScharacter_setup.preferences_datums[target.ckey]
-	else if (target.mind && target.mind.key)
+	else if(target.mind && target.mind.key)
 		P = SScharacter_setup.preferences_datums[target.mind.key]
 
 	return P
@@ -536,10 +521,10 @@
 /proc/pick_landmark(ltype)
 	var/list/L = list()
 	for(var/S in GLOB.landmarks_list)
-		if (istype(S, ltype))
+		if(istype(S, ltype))
 			L.Add(S)
 
-	if (L.len)
+	if(L.len)
 		return pick(L)
 
 /proc/activate_mobs_in_range(atom/caller , distance)

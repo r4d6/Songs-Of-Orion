@@ -6,7 +6,6 @@
 	department_flag = SCIENCE | COMMAND
 	faction = "CEV Eris"
 	total_positions = 1
-	spawn_positions = 1
 	supervisors = "Human Resources, Inc"
 	selection_color = "#27cab3"
 	req_admin_notify = 1
@@ -66,7 +65,6 @@ access_kitchen
 	department_flag = SCIENCE
 	faction = "CEV Eris"
 	total_positions = 3
-	spawn_positions = 3
 	supervisors = "the Human Resources Officer"
 	selection_color = "#0c9d98"
 	wage = WAGE_PROFESSIONAL
@@ -114,7 +112,6 @@ access_kitchen
 	department_flag = SCIENCE
 	faction = "CEV Eris"
 	total_positions = -1
-	spawn_positions = -1
 	supervisors = "Human Resources personnel, the First Officer, and anyone you're put under by them"
 	selection_color = "#246775"
 	initial_balance	= 0 // This is now defined in code\modules\economy\cash.dm under spacecash/bundle/Vagabond as they carry cash on them.
@@ -161,7 +158,6 @@ access_kitchen
 	department_flag = SCIENCE
 	faction = "CEV Eris"
 	total_positions = 0
-	spawn_positions = 0
 	wage = WAGE_PROFESSIONAL
 	supervisors = "the Moebius Expedition Overseer"
 	selection_color = "#bdb1bb"
