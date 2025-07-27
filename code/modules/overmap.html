@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><base href="../../"><link rel="stylesheet" href="dmdoc.css"><title>code/modules/overmap/README.md - Space Station 13</title></head><body><header><a href="index.html">Space Station 13</a> - <a href="index.html#modules">Modules</a> - <a href="index.html#types">Types</a></header><main><h1>code/modules/overmap/README.md <a href="https://github.com/r4d6/Songs-Of-Orion/blob/fb161ff31d51e9ae18dfb2da325436bc057816c0/code/modules/overmap/README.md"><img src="git.png" width="16" height="16" title="code/modules/overmap/README.md"></a></h1><table class="summary" cellspacing="0"><tr><td colspan="2"><p>/*
+The overmap system allows adding new maps to the big 'galaxy' map.
+There's overmap zlevel, that looks like a map. On it, token objects (overmap objects) are moved, representing ship movement etc.
+No actual turfs are moved, you would need exploration shuttles or teleports to move atoms between different sectors/ships.
+Unless stated otherwise, you just need to place any of things below somewhere on the map and they'll handle the rest.</p>
+<h1 id="how-to-make-new-sector">How to make new sector</h1>
+<ol start="0">
+<li>Map whatever.</li>
+<li>Make /obj/effect/overmap/sector/[whatever]
+If you want explorations shuttles be able to dock here, remember to set waypoints lists</li>
+<li>Put /obj/effect/overmap/sector/[whatever] on the map. Even if it's multiz, only one is needed, on any z.</li>
+<li>Done.</li>
+</ol>
+<h1 id="how-to-make-new-ship">How to make new ship</h1>
+<ol start="0">
+<li>Map whatever.</li>
+<li>Make /obj/effect/overmap/ship/[whatever]
+If you want explorations shuttles be able to dock here, remember to set waypoints lists</li>
+<li>Put /obj/effect/overmap/ship/[whatever] on the map. If it's multiz, only one is needed, on any z.</li>
+<li>Put Helm Console anywhere on the map.</li>
+<li>Put Engines Control Console anywhere on the map.</li>
+<li>Put some engines hooked up to gas supply anywhere on the map.</li>
+<li>Done.</li>
+</ol>
+<h1 id="overmap-object">Overmap object</h1>
+<p>/obj/effect/overmap</p>
+<h3 id="what-it-does">WHAT IT DOES</h3>
+<p>Lets overmap know this place should be represented on the map as a sector/ship.
+If this zlevel (or any of connected ones for multiz) doesn't have this object, you won't be able to travel there by ovemap means.</p>
+<h3 id="how-to-use">HOW TO USE</h3>
+<ol>
+<li>Create subtype for your ship/sector. Use /ship one for ships.</li>
+<li>Put it anywhere on the ship/sector map. It will do the rest on its own during init.
+If your thing is multiz, only one is needed per multiz sector/ship.</li>
+</ol>
+<p>If it's player's main base (e.g Exodus), set 'base' var to 1, so it adds itself to station_levels list.
+If this place cannot be reached or left with EVA, set 'in_space' var to 0
+If you want exploration shuttles (look below) to be able to dock here, set up waypoints lists.
+generic_waypoints is list of landmark_tags of waypoints any shttle should be able to visit.
+restricted_waypoints is list of 'shuttle name = list(landmark_tags)' pairs for waypoints only those shuttles can visit</p>
+<h1 id="helm-console">Helm console</h1>
+<p>/obj/machinery/computer/helm</p>
+<h3 id="what-it-does">WHAT IT DOES</h3>
+<p>Lets you steer ship around on overmap.
+Lets you use autopilot.</p>
+<h3 id="how-to-use">HOW TO USE</h3>
+<p>Just place it anywhere on the ship.</p>
+<h1 id="engines-control-console">Engines control console</h1>
+<p>/obj/machinery/computer/engines</p>
+<h3 id="what-it-does">WHAT IT DOES</h3>
+<p>Lets use set thrust limits for engines of your ship.
+Lets you shutdown/restart the engines.
+Lets you check status of engines.</p>
+<h3 id="how-to-use">HOW TO USE</h3>
+<p>Just place it anywhere on the ship.</p>
+<h1 id="thermal-engines">Thermal engines</h1>
+<p>/obj/machinery/atmospherics/unary/engine</p>
+<h3 id="what-it-does">WHAT IT DOES</h3>
+<p>Lets your ship move on the map at all.</p>
+<h3 id="how-to-use">HOW TO USE</h3>
+<p>Put them on map, hook up to pipes with any gas. Heavier gas (CO2/plasma) + More pressure = more thrust.</p>
+<h1 id="exploration-shuttle-terminal">Exploration shuttle terminal</h1>
+<p>/obj/machinery/computer/shuttle_control/explore</p>
+<h3 id="what-it-does">WHAT IT DOES</h3>
+<p>Lets you control shuttles that can change destinations and visit other sectors/ships.</p>
+<h3 id="how-to-use">HOW TO USE</h3>
+<ol>
+<li>Define starting shuttle landmark.</li>
+<li>Define a /datum/shuttle/autodock/overmap for your shuttle. Same as normal shuttle, aside from 'range' var - how many squares on overmap it can travel on its own.</li>
+<li>Place console anywhere on the ship/sector. Set shuttle_tag to shuttle's name.</li>
+<li>Use. You can select destinations if you're in range (on same tile by defualt) on the map and sector has waypoints lists defined
+*/</li>
+</ol></td></tr></table></main><footer>BreakingPoint.dme <a href="https://github.com/r4d6/Songs-Of-Orion/tree/fb161ff31d51e9ae18dfb2da325436bc057816c0">fb161ff</a> (master) — <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.10.0</a></footer></body></html>
